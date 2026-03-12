@@ -1,0 +1,21387 @@
+
+/**
+ * Client
+**/
+
+import * as runtime from './runtime/client.js';
+import $Types = runtime.Types // general types
+import $Public = runtime.Types.Public
+import $Utils = runtime.Types.Utils
+import $Extensions = runtime.Types.Extensions
+import $Result = runtime.Types.Result
+
+export type PrismaPromise<T> = $Public.PrismaPromise<T>
+
+
+/**
+ * Model User
+ * 
+ */
+export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+/**
+ * Model Otp
+ * 
+ */
+export type Otp = $Result.DefaultSelection<Prisma.$OtpPayload>
+/**
+ * Model Store
+ * 
+ */
+export type Store = $Result.DefaultSelection<Prisma.$StorePayload>
+/**
+ * Model StoreImage
+ * 
+ */
+export type StoreImage = $Result.DefaultSelection<Prisma.$StoreImagePayload>
+/**
+ * Model StoreLike
+ * 
+ */
+export type StoreLike = $Result.DefaultSelection<Prisma.$StoreLikePayload>
+/**
+ * Model Conversation
+ * 
+ */
+export type Conversation = $Result.DefaultSelection<Prisma.$ConversationPayload>
+/**
+ * Model Message
+ * 
+ */
+export type Message = $Result.DefaultSelection<Prisma.$MessagePayload>
+/**
+ * Model Notification
+ * 
+ */
+export type Notification = $Result.DefaultSelection<Prisma.$NotificationPayload>
+/**
+ * Model UserPresence
+ * 
+ */
+export type UserPresence = $Result.DefaultSelection<Prisma.$UserPresencePayload>
+/**
+ * Model Agreement
+ * 
+ */
+export type Agreement = $Result.DefaultSelection<Prisma.$AgreementPayload>
+/**
+ * Model StoreAnlyalic
+ * 
+ */
+export type StoreAnlyalic = $Result.DefaultSelection<Prisma.$StoreAnlyalicPayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const ShareMode: {
+  HOURS_BY_HOURS: 'HOURS_BY_HOURS',
+  DAYS_BY_DAYS: 'DAYS_BY_DAYS',
+  SPLIT_STORE: 'SPLIT_STORE',
+  DAY_OR_NIGHT: 'DAY_OR_NIGHT',
+  Weekend: 'Weekend',
+  Regular: 'Regular'
+};
+
+export type ShareMode = (typeof ShareMode)[keyof typeof ShareMode]
+
+}
+
+export type ShareMode = $Enums.ShareMode
+
+export const ShareMode: typeof $Enums.ShareMode
+
+/**
+ * ##  Prisma Client ʲˢ
+ *
+ * Type-safe database client for TypeScript & Node.js
+ * @example
+ * ```
+ * const prisma = new PrismaClient({
+ *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
+ * })
+ * // Fetch zero or more Users
+ * const users = await prisma.user.findMany()
+ * ```
+ *
+ *
+ * Read more in our [docs](https://pris.ly/d/client).
+ */
+export class PrismaClient<
+  ClientOptions extends Prisma.PrismaClientOptions = Prisma.PrismaClientOptions,
+  const U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
+  ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+> {
+  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }
+
+    /**
+   * ##  Prisma Client ʲˢ
+   *
+   * Type-safe database client for TypeScript & Node.js
+   * @example
+   * ```
+   * const prisma = new PrismaClient({
+   *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
+   * })
+   * // Fetch zero or more Users
+   * const users = await prisma.user.findMany()
+   * ```
+   *
+   *
+   * Read more in our [docs](https://pris.ly/d/client).
+   */
+
+  constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
+  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): PrismaClient;
+
+  /**
+   * Connect with the database
+   */
+  $connect(): $Utils.JsPromise<void>;
+
+  /**
+   * Disconnect from the database
+   */
+  $disconnect(): $Utils.JsPromise<void>;
+
+/**
+   * Executes a prepared raw query and returns the number of affected rows.
+   * @example
+   * ```
+   * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
+   * ```
+   *
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
+   */
+  $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
+
+  /**
+   * Executes a raw query and returns the number of affected rows.
+   * Susceptible to SQL injections, see documentation.
+   * @example
+   * ```
+   * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'user@email.com')
+   * ```
+   *
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
+   */
+  $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
+
+  /**
+   * Performs a prepared raw query and returns the `SELECT` data.
+   * @example
+   * ```
+   * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
+   * ```
+   *
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
+   */
+  $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
+
+  /**
+   * Performs a raw query and returns the `SELECT` data.
+   * Susceptible to SQL injections, see documentation.
+   * @example
+   * ```
+   * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
+   * ```
+   *
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
+   */
+  $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
+
+
+  /**
+   * Allows the running of a sequence of read/write operations that are guaranteed to either succeed or fail as a whole.
+   * @example
+   * ```
+   * const [george, bob, alice] = await prisma.$transaction([
+   *   prisma.user.create({ data: { name: 'George' } }),
+   *   prisma.user.create({ data: { name: 'Bob' } }),
+   *   prisma.user.create({ data: { name: 'Alice' } }),
+   * ])
+   * ```
+   * 
+   * Read more in our [docs](https://www.prisma.io/docs/orm/prisma-client/queries/transactions).
+   */
+  $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P], options?: { isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>
+
+  $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => $Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<R>
+
+  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb<ClientOptions>, ExtArgs, $Utils.Call<Prisma.TypeMapCb<ClientOptions>, {
+    extArgs: ExtArgs
+  }>>
+
+      /**
+   * `prisma.user`: Exposes CRUD operations for the **User** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Users
+    * const users = await prisma.user.findMany()
+    * ```
+    */
+  get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.otp`: Exposes CRUD operations for the **Otp** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Otps
+    * const otps = await prisma.otp.findMany()
+    * ```
+    */
+  get otp(): Prisma.OtpDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.store`: Exposes CRUD operations for the **Store** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Stores
+    * const stores = await prisma.store.findMany()
+    * ```
+    */
+  get store(): Prisma.StoreDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.storeImage`: Exposes CRUD operations for the **StoreImage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more StoreImages
+    * const storeImages = await prisma.storeImage.findMany()
+    * ```
+    */
+  get storeImage(): Prisma.StoreImageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.storeLike`: Exposes CRUD operations for the **StoreLike** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more StoreLikes
+    * const storeLikes = await prisma.storeLike.findMany()
+    * ```
+    */
+  get storeLike(): Prisma.StoreLikeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.conversation`: Exposes CRUD operations for the **Conversation** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Conversations
+    * const conversations = await prisma.conversation.findMany()
+    * ```
+    */
+  get conversation(): Prisma.ConversationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.message`: Exposes CRUD operations for the **Message** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Messages
+    * const messages = await prisma.message.findMany()
+    * ```
+    */
+  get message(): Prisma.MessageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.notification`: Exposes CRUD operations for the **Notification** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Notifications
+    * const notifications = await prisma.notification.findMany()
+    * ```
+    */
+  get notification(): Prisma.NotificationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.userPresence`: Exposes CRUD operations for the **UserPresence** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserPresences
+    * const userPresences = await prisma.userPresence.findMany()
+    * ```
+    */
+  get userPresence(): Prisma.UserPresenceDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.agreement`: Exposes CRUD operations for the **Agreement** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Agreements
+    * const agreements = await prisma.agreement.findMany()
+    * ```
+    */
+  get agreement(): Prisma.AgreementDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.storeAnlyalic`: Exposes CRUD operations for the **StoreAnlyalic** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more StoreAnlyalics
+    * const storeAnlyalics = await prisma.storeAnlyalic.findMany()
+    * ```
+    */
+  get storeAnlyalic(): Prisma.StoreAnlyalicDelegate<ExtArgs, ClientOptions>;
+}
+
+export namespace Prisma {
+  export import DMMF = runtime.DMMF
+
+  export type PrismaPromise<T> = $Public.PrismaPromise<T>
+
+  /**
+   * Validator
+   */
+  export import validator = runtime.Public.validator
+
+  /**
+   * Prisma Errors
+   */
+  export import PrismaClientKnownRequestError = runtime.PrismaClientKnownRequestError
+  export import PrismaClientUnknownRequestError = runtime.PrismaClientUnknownRequestError
+  export import PrismaClientRustPanicError = runtime.PrismaClientRustPanicError
+  export import PrismaClientInitializationError = runtime.PrismaClientInitializationError
+  export import PrismaClientValidationError = runtime.PrismaClientValidationError
+
+  /**
+   * Re-export of sql-template-tag
+   */
+  export import sql = runtime.sqltag
+  export import empty = runtime.empty
+  export import join = runtime.join
+  export import raw = runtime.raw
+  export import Sql = runtime.Sql
+
+
+
+  /**
+   * Decimal.js
+   */
+  export import Decimal = runtime.Decimal
+
+  export type DecimalJsLike = runtime.DecimalJsLike
+
+  /**
+  * Extensions
+  */
+  export import Extension = $Extensions.UserArgs
+  export import getExtensionContext = runtime.Extensions.getExtensionContext
+  export import Args = $Public.Args
+  export import Payload = $Public.Payload
+  export import Result = $Public.Result
+  export import Exact = $Public.Exact
+
+  /**
+   * Prisma Client JS version: 7.5.0
+   * Query Engine version: 280c870be64f457428992c43c1f6d557fab6e29e
+   */
+  export type PrismaVersion = {
+    client: string
+    engine: string
+  }
+
+  export const prismaVersion: PrismaVersion
+
+  /**
+   * Utility Types
+   */
+
+
+  export import Bytes = runtime.Bytes
+  export import JsonObject = runtime.JsonObject
+  export import JsonArray = runtime.JsonArray
+  export import JsonValue = runtime.JsonValue
+  export import InputJsonObject = runtime.InputJsonObject
+  export import InputJsonArray = runtime.InputJsonArray
+  export import InputJsonValue = runtime.InputJsonValue
+
+  /**
+   * Types of the values used to represent different kinds of `null` values when working with JSON fields.
+   *
+   * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+   */
+  namespace NullTypes {
+    /**
+    * Type of `Prisma.DbNull`.
+    *
+    * You cannot use other instances of this class. Please use the `Prisma.DbNull` value.
+    *
+    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+    */
+    class DbNull {
+      private DbNull: never
+      private constructor()
+    }
+
+    /**
+    * Type of `Prisma.JsonNull`.
+    *
+    * You cannot use other instances of this class. Please use the `Prisma.JsonNull` value.
+    *
+    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+    */
+    class JsonNull {
+      private JsonNull: never
+      private constructor()
+    }
+
+    /**
+    * Type of `Prisma.AnyNull`.
+    *
+    * You cannot use other instances of this class. Please use the `Prisma.AnyNull` value.
+    *
+    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+    */
+    class AnyNull {
+      private AnyNull: never
+      private constructor()
+    }
+  }
+
+  /**
+   * Helper for filtering JSON entries that have `null` on the database (empty on the db)
+   *
+   * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+   */
+  export const DbNull: NullTypes.DbNull
+
+  /**
+   * Helper for filtering JSON entries that have JSON `null` values (not empty on the db)
+   *
+   * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+   */
+  export const JsonNull: NullTypes.JsonNull
+
+  /**
+   * Helper for filtering JSON entries that are `Prisma.DbNull` or `Prisma.JsonNull`
+   *
+   * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+   */
+  export const AnyNull: NullTypes.AnyNull
+
+  type SelectAndInclude = {
+    select: any
+    include: any
+  }
+
+  type SelectAndOmit = {
+    select: any
+    omit: any
+  }
+
+  /**
+   * Get the type of the value, that the Promise holds.
+   */
+  export type PromiseType<T extends PromiseLike<any>> = T extends PromiseLike<infer U> ? U : T;
+
+  /**
+   * Get the return type of a function which returns a Promise.
+   */
+  export type PromiseReturnType<T extends (...args: any) => $Utils.JsPromise<any>> = PromiseType<ReturnType<T>>
+
+  /**
+   * From T, pick a set of properties whose keys are in the union K
+   */
+  type Prisma__Pick<T, K extends keyof T> = {
+      [P in K]: T[P];
+  };
+
+
+  export type Enumerable<T> = T | Array<T>;
+
+  export type RequiredKeys<T> = {
+    [K in keyof T]-?: {} extends Prisma__Pick<T, K> ? never : K
+  }[keyof T]
+
+  export type TruthyKeys<T> = keyof {
+    [K in keyof T as T[K] extends false | undefined | null ? never : K]: K
+  }
+
+  export type TrueKeys<T> = TruthyKeys<Prisma__Pick<T, RequiredKeys<T>>>
+
+  /**
+   * Subset
+   * @desc From `T` pick properties that exist in `U`. Simple version of Intersection
+   */
+  export type Subset<T, U> = {
+    [key in keyof T]: key extends keyof U ? T[key] : never;
+  };
+
+  /**
+   * SelectSubset
+   * @desc From `T` pick properties that exist in `U`. Simple version of Intersection.
+   * Additionally, it validates, if both select and include are present. If the case, it errors.
+   */
+  export type SelectSubset<T, U> = {
+    [key in keyof T]: key extends keyof U ? T[key] : never
+  } &
+    (T extends SelectAndInclude
+      ? 'Please either choose `select` or `include`.'
+      : T extends SelectAndOmit
+        ? 'Please either choose `select` or `omit`.'
+        : {})
+
+  /**
+   * Subset + Intersection
+   * @desc From `T` pick properties that exist in `U` and intersect `K`
+   */
+  export type SubsetIntersection<T, U, K> = {
+    [key in keyof T]: key extends keyof U ? T[key] : never
+  } &
+    K
+
+  type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
+
+  /**
+   * XOR is needed to have a real mutually exclusive union type
+   * https://stackoverflow.com/questions/42123407/does-typescript-support-mutually-exclusive-types
+   */
+  type XOR<T, U> =
+    T extends object ?
+    U extends object ?
+      (Without<T, U> & U) | (Without<U, T> & T)
+    : U : T
+
+
+  /**
+   * Is T a Record?
+   */
+  type IsObject<T extends any> = T extends Array<any>
+  ? False
+  : T extends Date
+  ? False
+  : T extends Uint8Array
+  ? False
+  : T extends BigInt
+  ? False
+  : T extends object
+  ? True
+  : False
+
+
+  /**
+   * If it's T[], return T
+   */
+  export type UnEnumerate<T extends unknown> = T extends Array<infer U> ? U : T
+
+  /**
+   * From ts-toolbelt
+   */
+
+  type __Either<O extends object, K extends Key> = Omit<O, K> &
+    {
+      // Merge all but K
+      [P in K]: Prisma__Pick<O, P & keyof O> // With K possibilities
+    }[K]
+
+  type EitherStrict<O extends object, K extends Key> = Strict<__Either<O, K>>
+
+  type EitherLoose<O extends object, K extends Key> = ComputeRaw<__Either<O, K>>
+
+  type _Either<
+    O extends object,
+    K extends Key,
+    strict extends Boolean
+  > = {
+    1: EitherStrict<O, K>
+    0: EitherLoose<O, K>
+  }[strict]
+
+  type Either<
+    O extends object,
+    K extends Key,
+    strict extends Boolean = 1
+  > = O extends unknown ? _Either<O, K, strict> : never
+
+  export type Union = any
+
+  type PatchUndefined<O extends object, O1 extends object> = {
+    [K in keyof O]: O[K] extends undefined ? At<O1, K> : O[K]
+  } & {}
+
+  /** Helper Types for "Merge" **/
+  export type IntersectOf<U extends Union> = (
+    U extends unknown ? (k: U) => void : never
+  ) extends (k: infer I) => void
+    ? I
+    : never
+
+  export type Overwrite<O extends object, O1 extends object> = {
+      [K in keyof O]: K extends keyof O1 ? O1[K] : O[K];
+  } & {};
+
+  type _Merge<U extends object> = IntersectOf<Overwrite<U, {
+      [K in keyof U]-?: At<U, K>;
+  }>>;
+
+  type Key = string | number | symbol;
+  type AtBasic<O extends object, K extends Key> = K extends keyof O ? O[K] : never;
+  type AtStrict<O extends object, K extends Key> = O[K & keyof O];
+  type AtLoose<O extends object, K extends Key> = O extends unknown ? AtStrict<O, K> : never;
+  export type At<O extends object, K extends Key, strict extends Boolean = 1> = {
+      1: AtStrict<O, K>;
+      0: AtLoose<O, K>;
+  }[strict];
+
+  export type ComputeRaw<A extends any> = A extends Function ? A : {
+    [K in keyof A]: A[K];
+  } & {};
+
+  export type OptionalFlat<O> = {
+    [K in keyof O]?: O[K];
+  } & {};
+
+  type _Record<K extends keyof any, T> = {
+    [P in K]: T;
+  };
+
+  // cause typescript not to expand types and preserve names
+  type NoExpand<T> = T extends unknown ? T : never;
+
+  // this type assumes the passed object is entirely optional
+  type AtLeast<O extends object, K extends string> = NoExpand<
+    O extends unknown
+    ? | (K extends keyof O ? { [P in K]: O[P] } & O : O)
+      | {[P in keyof O as P extends K ? P : never]-?: O[P]} & O
+    : never>;
+
+  type _Strict<U, _U = U> = U extends unknown ? U & OptionalFlat<_Record<Exclude<Keys<_U>, keyof U>, never>> : never;
+
+  export type Strict<U extends object> = ComputeRaw<_Strict<U>>;
+  /** End Helper Types for "Merge" **/
+
+  export type Merge<U extends object> = ComputeRaw<_Merge<Strict<U>>>;
+
+  /**
+  A [[Boolean]]
+  */
+  export type Boolean = True | False
+
+  // /**
+  // 1
+  // */
+  export type True = 1
+
+  /**
+  0
+  */
+  export type False = 0
+
+  export type Not<B extends Boolean> = {
+    0: 1
+    1: 0
+  }[B]
+
+  export type Extends<A1 extends any, A2 extends any> = [A1] extends [never]
+    ? 0 // anything `never` is false
+    : A1 extends A2
+    ? 1
+    : 0
+
+  export type Has<U extends Union, U1 extends Union> = Not<
+    Extends<Exclude<U1, U>, U1>
+  >
+
+  export type Or<B1 extends Boolean, B2 extends Boolean> = {
+    0: {
+      0: 0
+      1: 1
+    }
+    1: {
+      0: 1
+      1: 1
+    }
+  }[B1][B2]
+
+  export type Keys<U extends Union> = U extends unknown ? keyof U : never
+
+  type Cast<A, B> = A extends B ? A : B;
+
+  export const type: unique symbol;
+
+
+
+  /**
+   * Used by group by
+   */
+
+  export type GetScalarType<T, O> = O extends object ? {
+    [P in keyof T]: P extends keyof O
+      ? O[P]
+      : never
+  } : never
+
+  type FieldPaths<
+    T,
+    U = Omit<T, '_avg' | '_sum' | '_count' | '_min' | '_max'>
+  > = IsObject<T> extends True ? U : T
+
+  type GetHavingFields<T> = {
+    [K in keyof T]: Or<
+      Or<Extends<'OR', K>, Extends<'AND', K>>,
+      Extends<'NOT', K>
+    > extends True
+      ? // infer is only needed to not hit TS limit
+        // based on the brilliant idea of Pierre-Antoine Mills
+        // https://github.com/microsoft/TypeScript/issues/30188#issuecomment-478938437
+        T[K] extends infer TK
+        ? GetHavingFields<UnEnumerate<TK> extends object ? Merge<UnEnumerate<TK>> : never>
+        : never
+      : {} extends FieldPaths<T[K]>
+      ? never
+      : K
+  }[keyof T]
+
+  /**
+   * Convert tuple to union
+   */
+  type _TupleToUnion<T> = T extends (infer E)[] ? E : never
+  type TupleToUnion<K extends readonly any[]> = _TupleToUnion<K>
+  type MaybeTupleToUnion<T> = T extends any[] ? TupleToUnion<T> : T
+
+  /**
+   * Like `Pick`, but additionally can also accept an array of keys
+   */
+  type PickEnumerable<T, K extends Enumerable<keyof T> | keyof T> = Prisma__Pick<T, MaybeTupleToUnion<K>>
+
+  /**
+   * Exclude all keys with underscores
+   */
+  type ExcludeUnderscoreKeys<T extends string> = T extends `_${string}` ? never : T
+
+
+  export type FieldRef<Model, FieldType> = runtime.FieldRef<Model, FieldType>
+
+  type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRef<Model, FieldType>
+
+
+  export const ModelName: {
+    User: 'User',
+    Otp: 'Otp',
+    Store: 'Store',
+    StoreImage: 'StoreImage',
+    StoreLike: 'StoreLike',
+    Conversation: 'Conversation',
+    Message: 'Message',
+    Notification: 'Notification',
+    UserPresence: 'UserPresence',
+    Agreement: 'Agreement',
+    StoreAnlyalic: 'StoreAnlyalic'
+  };
+
+  export type ModelName = (typeof ModelName)[keyof typeof ModelName]
+
+
+
+  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
+    returns: Prisma.TypeMap<this['params']['extArgs'], ClientOptions extends { omit: infer OmitOptions } ? OmitOptions : {}>
+  }
+
+  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> = {
+    globalOmitOptions: {
+      omit: GlobalOmitOptions
+    }
+    meta: {
+      modelProps: "user" | "otp" | "store" | "storeImage" | "storeLike" | "conversation" | "message" | "notification" | "userPresence" | "agreement" | "storeAnlyalic"
+      txIsolationLevel: Prisma.TransactionIsolationLevel
+    }
+    model: {
+      User: {
+        payload: Prisma.$UserPayload<ExtArgs>
+        fields: Prisma.UserFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          findFirst: {
+            args: Prisma.UserFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          findMany: {
+            args: Prisma.UserFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+          }
+          create: {
+            args: Prisma.UserCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          createMany: {
+            args: Prisma.UserCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+          }
+          delete: {
+            args: Prisma.UserDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          update: {
+            args: Prisma.UserUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          deleteMany: {
+            args: Prisma.UserDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+          }
+          upsert: {
+            args: Prisma.UserUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          aggregate: {
+            args: Prisma.UserAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUser>
+          }
+          groupBy: {
+            args: Prisma.UserGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserCountArgs<ExtArgs>
+            result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      Otp: {
+        payload: Prisma.$OtpPayload<ExtArgs>
+        fields: Prisma.OtpFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.OtpFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.OtpFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload>
+          }
+          findFirst: {
+            args: Prisma.OtpFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.OtpFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload>
+          }
+          findMany: {
+            args: Prisma.OtpFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload>[]
+          }
+          create: {
+            args: Prisma.OtpCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload>
+          }
+          createMany: {
+            args: Prisma.OtpCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.OtpCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload>[]
+          }
+          delete: {
+            args: Prisma.OtpDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload>
+          }
+          update: {
+            args: Prisma.OtpUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload>
+          }
+          deleteMany: {
+            args: Prisma.OtpDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.OtpUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.OtpUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload>[]
+          }
+          upsert: {
+            args: Prisma.OtpUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OtpPayload>
+          }
+          aggregate: {
+            args: Prisma.OtpAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOtp>
+          }
+          groupBy: {
+            args: Prisma.OtpGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OtpGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.OtpCountArgs<ExtArgs>
+            result: $Utils.Optional<OtpCountAggregateOutputType> | number
+          }
+        }
+      }
+      Store: {
+        payload: Prisma.$StorePayload<ExtArgs>
+        fields: Prisma.StoreFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StoreFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StorePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StoreFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StorePayload>
+          }
+          findFirst: {
+            args: Prisma.StoreFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StorePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StoreFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StorePayload>
+          }
+          findMany: {
+            args: Prisma.StoreFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StorePayload>[]
+          }
+          create: {
+            args: Prisma.StoreCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StorePayload>
+          }
+          createMany: {
+            args: Prisma.StoreCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.StoreCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StorePayload>[]
+          }
+          delete: {
+            args: Prisma.StoreDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StorePayload>
+          }
+          update: {
+            args: Prisma.StoreUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StorePayload>
+          }
+          deleteMany: {
+            args: Prisma.StoreDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StoreUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.StoreUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StorePayload>[]
+          }
+          upsert: {
+            args: Prisma.StoreUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StorePayload>
+          }
+          aggregate: {
+            args: Prisma.StoreAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateStore>
+          }
+          groupBy: {
+            args: Prisma.StoreGroupByArgs<ExtArgs>
+            result: $Utils.Optional<StoreGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StoreCountArgs<ExtArgs>
+            result: $Utils.Optional<StoreCountAggregateOutputType> | number
+          }
+        }
+      }
+      StoreImage: {
+        payload: Prisma.$StoreImagePayload<ExtArgs>
+        fields: Prisma.StoreImageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StoreImageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreImagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StoreImageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreImagePayload>
+          }
+          findFirst: {
+            args: Prisma.StoreImageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreImagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StoreImageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreImagePayload>
+          }
+          findMany: {
+            args: Prisma.StoreImageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreImagePayload>[]
+          }
+          create: {
+            args: Prisma.StoreImageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreImagePayload>
+          }
+          createMany: {
+            args: Prisma.StoreImageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.StoreImageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreImagePayload>[]
+          }
+          delete: {
+            args: Prisma.StoreImageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreImagePayload>
+          }
+          update: {
+            args: Prisma.StoreImageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreImagePayload>
+          }
+          deleteMany: {
+            args: Prisma.StoreImageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StoreImageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.StoreImageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreImagePayload>[]
+          }
+          upsert: {
+            args: Prisma.StoreImageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreImagePayload>
+          }
+          aggregate: {
+            args: Prisma.StoreImageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateStoreImage>
+          }
+          groupBy: {
+            args: Prisma.StoreImageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<StoreImageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StoreImageCountArgs<ExtArgs>
+            result: $Utils.Optional<StoreImageCountAggregateOutputType> | number
+          }
+        }
+      }
+      StoreLike: {
+        payload: Prisma.$StoreLikePayload<ExtArgs>
+        fields: Prisma.StoreLikeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StoreLikeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreLikePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StoreLikeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreLikePayload>
+          }
+          findFirst: {
+            args: Prisma.StoreLikeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreLikePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StoreLikeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreLikePayload>
+          }
+          findMany: {
+            args: Prisma.StoreLikeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreLikePayload>[]
+          }
+          create: {
+            args: Prisma.StoreLikeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreLikePayload>
+          }
+          createMany: {
+            args: Prisma.StoreLikeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.StoreLikeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreLikePayload>[]
+          }
+          delete: {
+            args: Prisma.StoreLikeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreLikePayload>
+          }
+          update: {
+            args: Prisma.StoreLikeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreLikePayload>
+          }
+          deleteMany: {
+            args: Prisma.StoreLikeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StoreLikeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.StoreLikeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreLikePayload>[]
+          }
+          upsert: {
+            args: Prisma.StoreLikeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreLikePayload>
+          }
+          aggregate: {
+            args: Prisma.StoreLikeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateStoreLike>
+          }
+          groupBy: {
+            args: Prisma.StoreLikeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<StoreLikeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StoreLikeCountArgs<ExtArgs>
+            result: $Utils.Optional<StoreLikeCountAggregateOutputType> | number
+          }
+        }
+      }
+      Conversation: {
+        payload: Prisma.$ConversationPayload<ExtArgs>
+        fields: Prisma.ConversationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ConversationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConversationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ConversationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConversationPayload>
+          }
+          findFirst: {
+            args: Prisma.ConversationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConversationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ConversationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConversationPayload>
+          }
+          findMany: {
+            args: Prisma.ConversationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConversationPayload>[]
+          }
+          create: {
+            args: Prisma.ConversationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConversationPayload>
+          }
+          createMany: {
+            args: Prisma.ConversationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ConversationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConversationPayload>[]
+          }
+          delete: {
+            args: Prisma.ConversationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConversationPayload>
+          }
+          update: {
+            args: Prisma.ConversationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConversationPayload>
+          }
+          deleteMany: {
+            args: Prisma.ConversationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ConversationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ConversationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConversationPayload>[]
+          }
+          upsert: {
+            args: Prisma.ConversationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConversationPayload>
+          }
+          aggregate: {
+            args: Prisma.ConversationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateConversation>
+          }
+          groupBy: {
+            args: Prisma.ConversationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ConversationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ConversationCountArgs<ExtArgs>
+            result: $Utils.Optional<ConversationCountAggregateOutputType> | number
+          }
+        }
+      }
+      Message: {
+        payload: Prisma.$MessagePayload<ExtArgs>
+        fields: Prisma.MessageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MessageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MessageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>
+          }
+          findFirst: {
+            args: Prisma.MessageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MessageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>
+          }
+          findMany: {
+            args: Prisma.MessageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>[]
+          }
+          create: {
+            args: Prisma.MessageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>
+          }
+          createMany: {
+            args: Prisma.MessageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MessageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>[]
+          }
+          delete: {
+            args: Prisma.MessageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>
+          }
+          update: {
+            args: Prisma.MessageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>
+          }
+          deleteMany: {
+            args: Prisma.MessageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MessageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MessageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>[]
+          }
+          upsert: {
+            args: Prisma.MessageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>
+          }
+          aggregate: {
+            args: Prisma.MessageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMessage>
+          }
+          groupBy: {
+            args: Prisma.MessageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MessageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MessageCountArgs<ExtArgs>
+            result: $Utils.Optional<MessageCountAggregateOutputType> | number
+          }
+        }
+      }
+      Notification: {
+        payload: Prisma.$NotificationPayload<ExtArgs>
+        fields: Prisma.NotificationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.NotificationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.NotificationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+          }
+          findFirst: {
+            args: Prisma.NotificationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.NotificationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+          }
+          findMany: {
+            args: Prisma.NotificationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>[]
+          }
+          create: {
+            args: Prisma.NotificationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+          }
+          createMany: {
+            args: Prisma.NotificationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.NotificationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>[]
+          }
+          delete: {
+            args: Prisma.NotificationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+          }
+          update: {
+            args: Prisma.NotificationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+          }
+          deleteMany: {
+            args: Prisma.NotificationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.NotificationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.NotificationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>[]
+          }
+          upsert: {
+            args: Prisma.NotificationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+          }
+          aggregate: {
+            args: Prisma.NotificationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateNotification>
+          }
+          groupBy: {
+            args: Prisma.NotificationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<NotificationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.NotificationCountArgs<ExtArgs>
+            result: $Utils.Optional<NotificationCountAggregateOutputType> | number
+          }
+        }
+      }
+      UserPresence: {
+        payload: Prisma.$UserPresencePayload<ExtArgs>
+        fields: Prisma.UserPresenceFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserPresenceFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPresencePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserPresenceFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPresencePayload>
+          }
+          findFirst: {
+            args: Prisma.UserPresenceFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPresencePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserPresenceFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPresencePayload>
+          }
+          findMany: {
+            args: Prisma.UserPresenceFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPresencePayload>[]
+          }
+          create: {
+            args: Prisma.UserPresenceCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPresencePayload>
+          }
+          createMany: {
+            args: Prisma.UserPresenceCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserPresenceCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPresencePayload>[]
+          }
+          delete: {
+            args: Prisma.UserPresenceDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPresencePayload>
+          }
+          update: {
+            args: Prisma.UserPresenceUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPresencePayload>
+          }
+          deleteMany: {
+            args: Prisma.UserPresenceDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserPresenceUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserPresenceUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPresencePayload>[]
+          }
+          upsert: {
+            args: Prisma.UserPresenceUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPresencePayload>
+          }
+          aggregate: {
+            args: Prisma.UserPresenceAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserPresence>
+          }
+          groupBy: {
+            args: Prisma.UserPresenceGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserPresenceGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserPresenceCountArgs<ExtArgs>
+            result: $Utils.Optional<UserPresenceCountAggregateOutputType> | number
+          }
+        }
+      }
+      Agreement: {
+        payload: Prisma.$AgreementPayload<ExtArgs>
+        fields: Prisma.AgreementFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AgreementFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AgreementFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload>
+          }
+          findFirst: {
+            args: Prisma.AgreementFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AgreementFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload>
+          }
+          findMany: {
+            args: Prisma.AgreementFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload>[]
+          }
+          create: {
+            args: Prisma.AgreementCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload>
+          }
+          createMany: {
+            args: Prisma.AgreementCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AgreementCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload>[]
+          }
+          delete: {
+            args: Prisma.AgreementDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload>
+          }
+          update: {
+            args: Prisma.AgreementUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload>
+          }
+          deleteMany: {
+            args: Prisma.AgreementDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AgreementUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AgreementUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload>[]
+          }
+          upsert: {
+            args: Prisma.AgreementUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload>
+          }
+          aggregate: {
+            args: Prisma.AgreementAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAgreement>
+          }
+          groupBy: {
+            args: Prisma.AgreementGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AgreementGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AgreementCountArgs<ExtArgs>
+            result: $Utils.Optional<AgreementCountAggregateOutputType> | number
+          }
+        }
+      }
+      StoreAnlyalic: {
+        payload: Prisma.$StoreAnlyalicPayload<ExtArgs>
+        fields: Prisma.StoreAnlyalicFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StoreAnlyalicFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreAnlyalicPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StoreAnlyalicFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreAnlyalicPayload>
+          }
+          findFirst: {
+            args: Prisma.StoreAnlyalicFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreAnlyalicPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StoreAnlyalicFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreAnlyalicPayload>
+          }
+          findMany: {
+            args: Prisma.StoreAnlyalicFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreAnlyalicPayload>[]
+          }
+          create: {
+            args: Prisma.StoreAnlyalicCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreAnlyalicPayload>
+          }
+          createMany: {
+            args: Prisma.StoreAnlyalicCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.StoreAnlyalicCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreAnlyalicPayload>[]
+          }
+          delete: {
+            args: Prisma.StoreAnlyalicDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreAnlyalicPayload>
+          }
+          update: {
+            args: Prisma.StoreAnlyalicUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreAnlyalicPayload>
+          }
+          deleteMany: {
+            args: Prisma.StoreAnlyalicDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StoreAnlyalicUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.StoreAnlyalicUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreAnlyalicPayload>[]
+          }
+          upsert: {
+            args: Prisma.StoreAnlyalicUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StoreAnlyalicPayload>
+          }
+          aggregate: {
+            args: Prisma.StoreAnlyalicAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateStoreAnlyalic>
+          }
+          groupBy: {
+            args: Prisma.StoreAnlyalicGroupByArgs<ExtArgs>
+            result: $Utils.Optional<StoreAnlyalicGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StoreAnlyalicCountArgs<ExtArgs>
+            result: $Utils.Optional<StoreAnlyalicCountAggregateOutputType> | number
+          }
+        }
+      }
+    }
+  } & {
+    other: {
+      payload: any
+      operations: {
+        $executeRaw: {
+          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]],
+          result: any
+        }
+        $executeRawUnsafe: {
+          args: [query: string, ...values: any[]],
+          result: any
+        }
+        $queryRaw: {
+          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]],
+          result: any
+        }
+        $queryRawUnsafe: {
+          args: [query: string, ...values: any[]],
+          result: any
+        }
+      }
+    }
+  }
+  export const defineExtension: $Extensions.ExtendsHook<"define", Prisma.TypeMapCb, $Extensions.DefaultArgs>
+  export type DefaultPrismaClient = PrismaClient
+  export type ErrorFormat = 'pretty' | 'colorless' | 'minimal'
+  export interface PrismaClientOptions {
+    /**
+     * @default "colorless"
+     */
+    errorFormat?: ErrorFormat
+    /**
+     * @example
+     * ```
+     * // Shorthand for `emit: 'stdout'`
+     * log: ['query', 'info', 'warn', 'error']
+     * 
+     * // Emit as events only
+     * log: [
+     *   { emit: 'event', level: 'query' },
+     *   { emit: 'event', level: 'info' },
+     *   { emit: 'event', level: 'warn' }
+     *   { emit: 'event', level: 'error' }
+     * ]
+     * 
+     * / Emit as events and log to stdout
+     * og: [
+     *  { emit: 'stdout', level: 'query' },
+     *  { emit: 'stdout', level: 'info' },
+     *  { emit: 'stdout', level: 'warn' }
+     *  { emit: 'stdout', level: 'error' }
+     * 
+     * ```
+     * Read more in our [docs](https://pris.ly/d/logging).
+     */
+    log?: (LogLevel | LogDefinition)[]
+    /**
+     * The default values for transactionOptions
+     * maxWait ?= 2000
+     * timeout ?= 5000
+     */
+    transactionOptions?: {
+      maxWait?: number
+      timeout?: number
+      isolationLevel?: Prisma.TransactionIsolationLevel
+    }
+    /**
+     * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-planetscale`
+     */
+    adapter?: runtime.SqlDriverAdapterFactory
+    /**
+     * Prisma Accelerate URL allowing the client to connect through Accelerate instead of a direct database.
+     */
+    accelerateUrl?: string
+    /**
+     * Global configuration for omitting model fields by default.
+     * 
+     * @example
+     * ```
+     * const prisma = new PrismaClient({
+     *   omit: {
+     *     user: {
+     *       password: true
+     *     }
+     *   }
+     * })
+     * ```
+     */
+    omit?: Prisma.GlobalOmitConfig
+    /**
+     * SQL commenter plugins that add metadata to SQL queries as comments.
+     * Comments follow the sqlcommenter format: https://google.github.io/sqlcommenter/
+     * 
+     * @example
+     * ```
+     * const prisma = new PrismaClient({
+     *   adapter,
+     *   comments: [
+     *     traceContext(),
+     *     queryInsights(),
+     *   ],
+     * })
+     * ```
+     */
+    comments?: runtime.SqlCommenterPlugin[]
+  }
+  export type GlobalOmitConfig = {
+    user?: UserOmit
+    otp?: OtpOmit
+    store?: StoreOmit
+    storeImage?: StoreImageOmit
+    storeLike?: StoreLikeOmit
+    conversation?: ConversationOmit
+    message?: MessageOmit
+    notification?: NotificationOmit
+    userPresence?: UserPresenceOmit
+    agreement?: AgreementOmit
+    storeAnlyalic?: StoreAnlyalicOmit
+  }
+
+  /* Types for Logging */
+  export type LogLevel = 'info' | 'query' | 'warn' | 'error'
+  export type LogDefinition = {
+    level: LogLevel
+    emit: 'stdout' | 'event'
+  }
+
+  export type CheckIsLogLevel<T> = T extends LogLevel ? T : never;
+
+  export type GetLogType<T> = CheckIsLogLevel<
+    T extends LogDefinition ? T['level'] : T
+  >;
+
+  export type GetEvents<T extends any[]> = T extends Array<LogLevel | LogDefinition>
+    ? GetLogType<T[number]>
+    : never;
+
+  export type QueryEvent = {
+    timestamp: Date
+    query: string
+    params: string
+    duration: number
+    target: string
+  }
+
+  export type LogEvent = {
+    timestamp: Date
+    message: string
+    target: string
+  }
+  /* End Types for Logging */
+
+
+  export type PrismaAction =
+    | 'findUnique'
+    | 'findUniqueOrThrow'
+    | 'findMany'
+    | 'findFirst'
+    | 'findFirstOrThrow'
+    | 'create'
+    | 'createMany'
+    | 'createManyAndReturn'
+    | 'update'
+    | 'updateMany'
+    | 'updateManyAndReturn'
+    | 'upsert'
+    | 'delete'
+    | 'deleteMany'
+    | 'executeRaw'
+    | 'queryRaw'
+    | 'aggregate'
+    | 'count'
+    | 'runCommandRaw'
+    | 'findRaw'
+    | 'groupBy'
+
+  // tested in getLogLevel.test.ts
+  export function getLogLevel(log: Array<LogLevel | LogDefinition>): LogLevel | undefined;
+
+  /**
+   * `PrismaClient` proxy available in interactive transactions.
+   */
+  export type TransactionClient = Omit<Prisma.DefaultPrismaClient, runtime.ITXClientDenyList>
+
+  export type Datasource = {
+    url?: string
+  }
+
+  /**
+   * Count Types
+   */
+
+
+  /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    stores: number
+    likedStores: number
+    notification: number
+    messages: number
+    buyer: number
+    UserPresence: number
+    Agreement: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    stores?: boolean | UserCountOutputTypeCountStoresArgs
+    likedStores?: boolean | UserCountOutputTypeCountLikedStoresArgs
+    notification?: boolean | UserCountOutputTypeCountNotificationArgs
+    messages?: boolean | UserCountOutputTypeCountMessagesArgs
+    buyer?: boolean | UserCountOutputTypeCountBuyerArgs
+    UserPresence?: boolean | UserCountOutputTypeCountUserPresenceArgs
+    Agreement?: boolean | UserCountOutputTypeCountAgreementArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountStoresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StoreWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountLikedStoresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StoreLikeWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountNotificationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NotificationWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MessageWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountBuyerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ConversationWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountUserPresenceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserPresenceWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAgreementArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AgreementWhereInput
+  }
+
+
+  /**
+   * Count Type StoreCountOutputType
+   */
+
+  export type StoreCountOutputType = {
+    images: number
+    likes: number
+    store: number
+    Agreement: number
+  }
+
+  export type StoreCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    images?: boolean | StoreCountOutputTypeCountImagesArgs
+    likes?: boolean | StoreCountOutputTypeCountLikesArgs
+    store?: boolean | StoreCountOutputTypeCountStoreArgs
+    Agreement?: boolean | StoreCountOutputTypeCountAgreementArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * StoreCountOutputType without action
+   */
+  export type StoreCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreCountOutputType
+     */
+    select?: StoreCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * StoreCountOutputType without action
+   */
+  export type StoreCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StoreImageWhereInput
+  }
+
+  /**
+   * StoreCountOutputType without action
+   */
+  export type StoreCountOutputTypeCountLikesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StoreLikeWhereInput
+  }
+
+  /**
+   * StoreCountOutputType without action
+   */
+  export type StoreCountOutputTypeCountStoreArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ConversationWhereInput
+  }
+
+  /**
+   * StoreCountOutputType without action
+   */
+  export type StoreCountOutputTypeCountAgreementArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AgreementWhereInput
+  }
+
+
+  /**
+   * Count Type ConversationCountOutputType
+   */
+
+  export type ConversationCountOutputType = {
+    messages: number
+    notification: number
+    UserPresence: number
+  }
+
+  export type ConversationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    messages?: boolean | ConversationCountOutputTypeCountMessagesArgs
+    notification?: boolean | ConversationCountOutputTypeCountNotificationArgs
+    UserPresence?: boolean | ConversationCountOutputTypeCountUserPresenceArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ConversationCountOutputType without action
+   */
+  export type ConversationCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ConversationCountOutputType
+     */
+    select?: ConversationCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ConversationCountOutputType without action
+   */
+  export type ConversationCountOutputTypeCountMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MessageWhereInput
+  }
+
+  /**
+   * ConversationCountOutputType without action
+   */
+  export type ConversationCountOutputTypeCountNotificationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NotificationWhereInput
+  }
+
+  /**
+   * ConversationCountOutputType without action
+   */
+  export type ConversationCountOutputTypeCountUserPresenceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserPresenceWhereInput
+  }
+
+
+  /**
+   * Models
+   */
+
+  /**
+   * Model User
+   */
+
+  export type AggregateUser = {
+    _count: UserCountAggregateOutputType | null
+    _min: UserMinAggregateOutputType | null
+    _max: UserMaxAggregateOutputType | null
+  }
+
+  export type UserMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    email: string | null
+    image: string | null
+    phone: string | null
+    phoneVerified: boolean | null
+    createdAt: Date | null
+    userBussinessType: string | null
+  }
+
+  export type UserMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    email: string | null
+    image: string | null
+    phone: string | null
+    phoneVerified: boolean | null
+    createdAt: Date | null
+    userBussinessType: string | null
+  }
+
+  export type UserCountAggregateOutputType = {
+    id: number
+    name: number
+    email: number
+    image: number
+    phone: number
+    phoneVerified: number
+    createdAt: number
+    userBussinessType: number
+    _all: number
+  }
+
+
+  export type UserMinAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    image?: true
+    phone?: true
+    phoneVerified?: true
+    createdAt?: true
+    userBussinessType?: true
+  }
+
+  export type UserMaxAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    image?: true
+    phone?: true
+    phoneVerified?: true
+    createdAt?: true
+    userBussinessType?: true
+  }
+
+  export type UserCountAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    image?: true
+    phone?: true
+    phoneVerified?: true
+    createdAt?: true
+    userBussinessType?: true
+    _all?: true
+  }
+
+  export type UserAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which User to aggregate.
+     */
+    where?: UserWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Users to fetch.
+     */
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Users
+    **/
+    _count?: true | UserCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserMaxAggregateInputType
+  }
+
+  export type GetUserAggregateType<T extends UserAggregateArgs> = {
+        [P in keyof T & keyof AggregateUser]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUser[P]>
+      : GetScalarType<T[P], AggregateUser[P]>
+  }
+
+
+
+
+  export type UserGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserWhereInput
+    orderBy?: UserOrderByWithAggregationInput | UserOrderByWithAggregationInput[]
+    by: UserScalarFieldEnum[] | UserScalarFieldEnum
+    having?: UserScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserCountAggregateInputType | true
+    _min?: UserMinAggregateInputType
+    _max?: UserMaxAggregateInputType
+  }
+
+  export type UserGroupByOutputType = {
+    id: string
+    name: string | null
+    email: string | null
+    image: string | null
+    phone: string | null
+    phoneVerified: boolean
+    createdAt: Date
+    userBussinessType: string | null
+    _count: UserCountAggregateOutputType | null
+    _min: UserMinAggregateOutputType | null
+    _max: UserMaxAggregateOutputType | null
+  }
+
+  type GetUserGroupByPayload<T extends UserGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserGroupByOutputType[P]>
+            : GetScalarType<T[P], UserGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    image?: boolean
+    phone?: boolean
+    phoneVerified?: boolean
+    createdAt?: boolean
+    userBussinessType?: boolean
+    stores?: boolean | User$storesArgs<ExtArgs>
+    likedStores?: boolean | User$likedStoresArgs<ExtArgs>
+    notification?: boolean | User$notificationArgs<ExtArgs>
+    messages?: boolean | User$messagesArgs<ExtArgs>
+    buyer?: boolean | User$buyerArgs<ExtArgs>
+    UserPresence?: boolean | User$UserPresenceArgs<ExtArgs>
+    Agreement?: boolean | User$AgreementArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["user"]>
+
+  export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    image?: boolean
+    phone?: boolean
+    phoneVerified?: boolean
+    createdAt?: boolean
+    userBussinessType?: boolean
+  }, ExtArgs["result"]["user"]>
+
+  export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    image?: boolean
+    phone?: boolean
+    phoneVerified?: boolean
+    createdAt?: boolean
+    userBussinessType?: boolean
+  }, ExtArgs["result"]["user"]>
+
+  export type UserSelectScalar = {
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    image?: boolean
+    phone?: boolean
+    phoneVerified?: boolean
+    createdAt?: boolean
+    userBussinessType?: boolean
+  }
+
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "image" | "phone" | "phoneVerified" | "createdAt" | "userBussinessType", ExtArgs["result"]["user"]>
+  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    stores?: boolean | User$storesArgs<ExtArgs>
+    likedStores?: boolean | User$likedStoresArgs<ExtArgs>
+    notification?: boolean | User$notificationArgs<ExtArgs>
+    messages?: boolean | User$messagesArgs<ExtArgs>
+    buyer?: boolean | User$buyerArgs<ExtArgs>
+    UserPresence?: boolean | User$UserPresenceArgs<ExtArgs>
+    Agreement?: boolean | User$AgreementArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "User"
+    objects: {
+      stores: Prisma.$StorePayload<ExtArgs>[]
+      likedStores: Prisma.$StoreLikePayload<ExtArgs>[]
+      notification: Prisma.$NotificationPayload<ExtArgs>[]
+      messages: Prisma.$MessagePayload<ExtArgs>[]
+      buyer: Prisma.$ConversationPayload<ExtArgs>[]
+      UserPresence: Prisma.$UserPresencePayload<ExtArgs>[]
+      Agreement: Prisma.$AgreementPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string | null
+      email: string | null
+      image: string | null
+      phone: string | null
+      phoneVerified: boolean
+      createdAt: Date
+      userBussinessType: string | null
+    }, ExtArgs["result"]["user"]>
+    composites: {}
+  }
+
+  type UserGetPayload<S extends boolean | null | undefined | UserDefaultArgs> = $Result.GetResult<Prisma.$UserPayload, S>
+
+  type UserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserCountAggregateInputType | true
+    }
+
+  export interface UserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['User'], meta: { name: 'User' } }
+    /**
+     * Find zero or one User that matches the filter.
+     * @param {UserFindUniqueArgs} args - Arguments to find a User
+     * @example
+     * // Get one User
+     * const user = await prisma.user.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserFindUniqueArgs>(args: SelectSubset<T, UserFindUniqueArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one User that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserFindUniqueOrThrowArgs} args - Arguments to find a User
+     * @example
+     * // Get one User
+     * const user = await prisma.user.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserFindUniqueOrThrowArgs>(args: SelectSubset<T, UserFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFindFirstArgs} args - Arguments to find a User
+     * @example
+     * // Get one User
+     * const user = await prisma.user.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserFindFirstArgs>(args?: SelectSubset<T, UserFindFirstArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFindFirstOrThrowArgs} args - Arguments to find a User
+     * @example
+     * // Get one User
+     * const user = await prisma.user.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserFindFirstOrThrowArgs>(args?: SelectSubset<T, UserFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Users that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Users
+     * const users = await prisma.user.findMany()
+     * 
+     * // Get first 10 Users
+     * const users = await prisma.user.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userWithIdOnly = await prisma.user.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserFindManyArgs>(args?: SelectSubset<T, UserFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a User.
+     * @param {UserCreateArgs} args - Arguments to create a User.
+     * @example
+     * // Create one User
+     * const User = await prisma.user.create({
+     *   data: {
+     *     // ... data to create a User
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserCreateArgs>(args: SelectSubset<T, UserCreateArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Users.
+     * @param {UserCreateManyArgs} args - Arguments to create many Users.
+     * @example
+     * // Create many Users
+     * const user = await prisma.user.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserCreateManyArgs>(args?: SelectSubset<T, UserCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Users and returns the data saved in the database.
+     * @param {UserCreateManyAndReturnArgs} args - Arguments to create many Users.
+     * @example
+     * // Create many Users
+     * const user = await prisma.user.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Users and only return the `id`
+     * const userWithIdOnly = await prisma.user.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserCreateManyAndReturnArgs>(args?: SelectSubset<T, UserCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a User.
+     * @param {UserDeleteArgs} args - Arguments to delete one User.
+     * @example
+     * // Delete one User
+     * const User = await prisma.user.delete({
+     *   where: {
+     *     // ... filter to delete one User
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserDeleteArgs>(args: SelectSubset<T, UserDeleteArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one User.
+     * @param {UserUpdateArgs} args - Arguments to update one User.
+     * @example
+     * // Update one User
+     * const user = await prisma.user.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserUpdateArgs>(args: SelectSubset<T, UserUpdateArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Users.
+     * @param {UserDeleteManyArgs} args - Arguments to filter Users to delete.
+     * @example
+     * // Delete a few Users
+     * const { count } = await prisma.user.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserDeleteManyArgs>(args?: SelectSubset<T, UserDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Users
+     * const user = await prisma.user.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserUpdateManyArgs>(args: SelectSubset<T, UserUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Users and returns the data updated in the database.
+     * @param {UserUpdateManyAndReturnArgs} args - Arguments to update many Users.
+     * @example
+     * // Update many Users
+     * const user = await prisma.user.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Users and only return the `id`
+     * const userWithIdOnly = await prisma.user.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserUpdateManyAndReturnArgs>(args: SelectSubset<T, UserUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one User.
+     * @param {UserUpsertArgs} args - Arguments to update or create a User.
+     * @example
+     * // Update or create a User
+     * const user = await prisma.user.upsert({
+     *   create: {
+     *     // ... data to create a User
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the User we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserUpsertArgs>(args: SelectSubset<T, UserUpsertArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserCountArgs} args - Arguments to filter Users to count.
+     * @example
+     * // Count the number of Users
+     * const count = await prisma.user.count({
+     *   where: {
+     *     // ... the filter for the Users we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserCountArgs>(
+      args?: Subset<T, UserCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a User.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserAggregateArgs>(args: Subset<T, UserAggregateArgs>): Prisma.PrismaPromise<GetUserAggregateType<T>>
+
+    /**
+     * Group by User.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserGroupByArgs['orderBy'] }
+        : { orderBy?: UserGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the User model
+   */
+  readonly fields: UserFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for User.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    stores<T extends User$storesArgs<ExtArgs> = {}>(args?: Subset<T, User$storesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    likedStores<T extends User$likedStoresArgs<ExtArgs> = {}>(args?: Subset<T, User$likedStoresArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StoreLikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    notification<T extends User$notificationArgs<ExtArgs> = {}>(args?: Subset<T, User$notificationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    messages<T extends User$messagesArgs<ExtArgs> = {}>(args?: Subset<T, User$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    buyer<T extends User$buyerArgs<ExtArgs> = {}>(args?: Subset<T, User$buyerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    UserPresence<T extends User$UserPresenceArgs<ExtArgs> = {}>(args?: Subset<T, User$UserPresenceArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPresencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Agreement<T extends User$AgreementArgs<ExtArgs> = {}>(args?: Subset<T, User$AgreementArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the User model
+   */
+  interface UserFieldRefs {
+    readonly id: FieldRef<"User", 'String'>
+    readonly name: FieldRef<"User", 'String'>
+    readonly email: FieldRef<"User", 'String'>
+    readonly image: FieldRef<"User", 'String'>
+    readonly phone: FieldRef<"User", 'String'>
+    readonly phoneVerified: FieldRef<"User", 'Boolean'>
+    readonly createdAt: FieldRef<"User", 'DateTime'>
+    readonly userBussinessType: FieldRef<"User", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * User findUnique
+   */
+  export type UserFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * Filter, which User to fetch.
+     */
+    where: UserWhereUniqueInput
+  }
+
+  /**
+   * User findUniqueOrThrow
+   */
+  export type UserFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * Filter, which User to fetch.
+     */
+    where: UserWhereUniqueInput
+  }
+
+  /**
+   * User findFirst
+   */
+  export type UserFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * Filter, which User to fetch.
+     */
+    where?: UserWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Users to fetch.
+     */
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Users.
+     */
+    cursor?: UserWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Users.
+     */
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
+   * User findFirstOrThrow
+   */
+  export type UserFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * Filter, which User to fetch.
+     */
+    where?: UserWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Users to fetch.
+     */
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Users.
+     */
+    cursor?: UserWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Users.
+     */
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
+   * User findMany
+   */
+  export type UserFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * Filter, which Users to fetch.
+     */
+    where?: UserWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Users to fetch.
+     */
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Users.
+     */
+    cursor?: UserWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Users.
+     */
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
+   * User create
+   */
+  export type UserCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * The data needed to create a User.
+     */
+    data?: XOR<UserCreateInput, UserUncheckedCreateInput>
+  }
+
+  /**
+   * User createMany
+   */
+  export type UserCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Users.
+     */
+    data: UserCreateManyInput | UserCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * User createManyAndReturn
+   */
+  export type UserCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * The data used to create many Users.
+     */
+    data: UserCreateManyInput | UserCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * User update
+   */
+  export type UserUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * The data needed to update a User.
+     */
+    data: XOR<UserUpdateInput, UserUncheckedUpdateInput>
+    /**
+     * Choose, which User to update.
+     */
+    where: UserWhereUniqueInput
+  }
+
+  /**
+   * User updateMany
+   */
+  export type UserUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Users.
+     */
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyInput>
+    /**
+     * Filter which Users to update
+     */
+    where?: UserWhereInput
+    /**
+     * Limit how many Users to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * User updateManyAndReturn
+   */
+  export type UserUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * The data used to update Users.
+     */
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyInput>
+    /**
+     * Filter which Users to update
+     */
+    where?: UserWhereInput
+    /**
+     * Limit how many Users to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * User upsert
+   */
+  export type UserUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * The filter to search for the User to update in case it exists.
+     */
+    where: UserWhereUniqueInput
+    /**
+     * In case the User found by the `where` argument doesn't exist, create a new User with this data.
+     */
+    create: XOR<UserCreateInput, UserUncheckedCreateInput>
+    /**
+     * In case the User was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserUpdateInput, UserUncheckedUpdateInput>
+  }
+
+  /**
+   * User delete
+   */
+  export type UserDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * Filter which User to delete.
+     */
+    where: UserWhereUniqueInput
+  }
+
+  /**
+   * User deleteMany
+   */
+  export type UserDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Users to delete
+     */
+    where?: UserWhereInput
+    /**
+     * Limit how many Users to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * User.stores
+   */
+  export type User$storesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Store
+     */
+    select?: StoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Store
+     */
+    omit?: StoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
+    where?: StoreWhereInput
+    orderBy?: StoreOrderByWithRelationInput | StoreOrderByWithRelationInput[]
+    cursor?: StoreWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StoreScalarFieldEnum | StoreScalarFieldEnum[]
+  }
+
+  /**
+   * User.likedStores
+   */
+  export type User$likedStoresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreLike
+     */
+    select?: StoreLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreLike
+     */
+    omit?: StoreLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreLikeInclude<ExtArgs> | null
+    where?: StoreLikeWhereInput
+    orderBy?: StoreLikeOrderByWithRelationInput | StoreLikeOrderByWithRelationInput[]
+    cursor?: StoreLikeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StoreLikeScalarFieldEnum | StoreLikeScalarFieldEnum[]
+  }
+
+  /**
+   * User.notification
+   */
+  export type User$notificationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    where?: NotificationWhereInput
+    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    cursor?: NotificationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: NotificationScalarFieldEnum | NotificationScalarFieldEnum[]
+  }
+
+  /**
+   * User.messages
+   */
+  export type User$messagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    where?: MessageWhereInput
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    cursor?: MessageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MessageScalarFieldEnum | MessageScalarFieldEnum[]
+  }
+
+  /**
+   * User.buyer
+   */
+  export type User$buyerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    where?: ConversationWhereInput
+    orderBy?: ConversationOrderByWithRelationInput | ConversationOrderByWithRelationInput[]
+    cursor?: ConversationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ConversationScalarFieldEnum | ConversationScalarFieldEnum[]
+  }
+
+  /**
+   * User.UserPresence
+   */
+  export type User$UserPresenceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPresence
+     */
+    select?: UserPresenceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPresence
+     */
+    omit?: UserPresenceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPresenceInclude<ExtArgs> | null
+    where?: UserPresenceWhereInput
+    orderBy?: UserPresenceOrderByWithRelationInput | UserPresenceOrderByWithRelationInput[]
+    cursor?: UserPresenceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserPresenceScalarFieldEnum | UserPresenceScalarFieldEnum[]
+  }
+
+  /**
+   * User.Agreement
+   */
+  export type User$AgreementArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agreement
+     */
+    omit?: AgreementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    where?: AgreementWhereInput
+    orderBy?: AgreementOrderByWithRelationInput | AgreementOrderByWithRelationInput[]
+    cursor?: AgreementWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AgreementScalarFieldEnum | AgreementScalarFieldEnum[]
+  }
+
+  /**
+   * User without action
+   */
+  export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Otp
+   */
+
+  export type AggregateOtp = {
+    _count: OtpCountAggregateOutputType | null
+    _min: OtpMinAggregateOutputType | null
+    _max: OtpMaxAggregateOutputType | null
+  }
+
+  export type OtpMinAggregateOutputType = {
+    id: string | null
+    phone: string | null
+    code: string | null
+    expiresAt: Date | null
+    createdAt: Date | null
+  }
+
+  export type OtpMaxAggregateOutputType = {
+    id: string | null
+    phone: string | null
+    code: string | null
+    expiresAt: Date | null
+    createdAt: Date | null
+  }
+
+  export type OtpCountAggregateOutputType = {
+    id: number
+    phone: number
+    code: number
+    expiresAt: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type OtpMinAggregateInputType = {
+    id?: true
+    phone?: true
+    code?: true
+    expiresAt?: true
+    createdAt?: true
+  }
+
+  export type OtpMaxAggregateInputType = {
+    id?: true
+    phone?: true
+    code?: true
+    expiresAt?: true
+    createdAt?: true
+  }
+
+  export type OtpCountAggregateInputType = {
+    id?: true
+    phone?: true
+    code?: true
+    expiresAt?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type OtpAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Otp to aggregate.
+     */
+    where?: OtpWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Otps to fetch.
+     */
+    orderBy?: OtpOrderByWithRelationInput | OtpOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: OtpWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Otps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Otps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Otps
+    **/
+    _count?: true | OtpCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: OtpMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: OtpMaxAggregateInputType
+  }
+
+  export type GetOtpAggregateType<T extends OtpAggregateArgs> = {
+        [P in keyof T & keyof AggregateOtp]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOtp[P]>
+      : GetScalarType<T[P], AggregateOtp[P]>
+  }
+
+
+
+
+  export type OtpGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OtpWhereInput
+    orderBy?: OtpOrderByWithAggregationInput | OtpOrderByWithAggregationInput[]
+    by: OtpScalarFieldEnum[] | OtpScalarFieldEnum
+    having?: OtpScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: OtpCountAggregateInputType | true
+    _min?: OtpMinAggregateInputType
+    _max?: OtpMaxAggregateInputType
+  }
+
+  export type OtpGroupByOutputType = {
+    id: string
+    phone: string
+    code: string
+    expiresAt: Date
+    createdAt: Date
+    _count: OtpCountAggregateOutputType | null
+    _min: OtpMinAggregateOutputType | null
+    _max: OtpMaxAggregateOutputType | null
+  }
+
+  type GetOtpGroupByPayload<T extends OtpGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<OtpGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof OtpGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], OtpGroupByOutputType[P]>
+            : GetScalarType<T[P], OtpGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type OtpSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    phone?: boolean
+    code?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["otp"]>
+
+  export type OtpSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    phone?: boolean
+    code?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["otp"]>
+
+  export type OtpSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    phone?: boolean
+    code?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["otp"]>
+
+  export type OtpSelectScalar = {
+    id?: boolean
+    phone?: boolean
+    code?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+  }
+
+  export type OtpOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "phone" | "code" | "expiresAt" | "createdAt", ExtArgs["result"]["otp"]>
+
+  export type $OtpPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Otp"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      phone: string
+      code: string
+      expiresAt: Date
+      createdAt: Date
+    }, ExtArgs["result"]["otp"]>
+    composites: {}
+  }
+
+  type OtpGetPayload<S extends boolean | null | undefined | OtpDefaultArgs> = $Result.GetResult<Prisma.$OtpPayload, S>
+
+  type OtpCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OtpFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OtpCountAggregateInputType | true
+    }
+
+  export interface OtpDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Otp'], meta: { name: 'Otp' } }
+    /**
+     * Find zero or one Otp that matches the filter.
+     * @param {OtpFindUniqueArgs} args - Arguments to find a Otp
+     * @example
+     * // Get one Otp
+     * const otp = await prisma.otp.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends OtpFindUniqueArgs>(args: SelectSubset<T, OtpFindUniqueArgs<ExtArgs>>): Prisma__OtpClient<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Otp that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {OtpFindUniqueOrThrowArgs} args - Arguments to find a Otp
+     * @example
+     * // Get one Otp
+     * const otp = await prisma.otp.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends OtpFindUniqueOrThrowArgs>(args: SelectSubset<T, OtpFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OtpClient<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Otp that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OtpFindFirstArgs} args - Arguments to find a Otp
+     * @example
+     * // Get one Otp
+     * const otp = await prisma.otp.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends OtpFindFirstArgs>(args?: SelectSubset<T, OtpFindFirstArgs<ExtArgs>>): Prisma__OtpClient<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Otp that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OtpFindFirstOrThrowArgs} args - Arguments to find a Otp
+     * @example
+     * // Get one Otp
+     * const otp = await prisma.otp.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends OtpFindFirstOrThrowArgs>(args?: SelectSubset<T, OtpFindFirstOrThrowArgs<ExtArgs>>): Prisma__OtpClient<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Otps that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OtpFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Otps
+     * const otps = await prisma.otp.findMany()
+     * 
+     * // Get first 10 Otps
+     * const otps = await prisma.otp.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const otpWithIdOnly = await prisma.otp.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends OtpFindManyArgs>(args?: SelectSubset<T, OtpFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Otp.
+     * @param {OtpCreateArgs} args - Arguments to create a Otp.
+     * @example
+     * // Create one Otp
+     * const Otp = await prisma.otp.create({
+     *   data: {
+     *     // ... data to create a Otp
+     *   }
+     * })
+     * 
+     */
+    create<T extends OtpCreateArgs>(args: SelectSubset<T, OtpCreateArgs<ExtArgs>>): Prisma__OtpClient<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Otps.
+     * @param {OtpCreateManyArgs} args - Arguments to create many Otps.
+     * @example
+     * // Create many Otps
+     * const otp = await prisma.otp.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends OtpCreateManyArgs>(args?: SelectSubset<T, OtpCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Otps and returns the data saved in the database.
+     * @param {OtpCreateManyAndReturnArgs} args - Arguments to create many Otps.
+     * @example
+     * // Create many Otps
+     * const otp = await prisma.otp.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Otps and only return the `id`
+     * const otpWithIdOnly = await prisma.otp.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends OtpCreateManyAndReturnArgs>(args?: SelectSubset<T, OtpCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Otp.
+     * @param {OtpDeleteArgs} args - Arguments to delete one Otp.
+     * @example
+     * // Delete one Otp
+     * const Otp = await prisma.otp.delete({
+     *   where: {
+     *     // ... filter to delete one Otp
+     *   }
+     * })
+     * 
+     */
+    delete<T extends OtpDeleteArgs>(args: SelectSubset<T, OtpDeleteArgs<ExtArgs>>): Prisma__OtpClient<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Otp.
+     * @param {OtpUpdateArgs} args - Arguments to update one Otp.
+     * @example
+     * // Update one Otp
+     * const otp = await prisma.otp.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends OtpUpdateArgs>(args: SelectSubset<T, OtpUpdateArgs<ExtArgs>>): Prisma__OtpClient<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Otps.
+     * @param {OtpDeleteManyArgs} args - Arguments to filter Otps to delete.
+     * @example
+     * // Delete a few Otps
+     * const { count } = await prisma.otp.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends OtpDeleteManyArgs>(args?: SelectSubset<T, OtpDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Otps.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OtpUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Otps
+     * const otp = await prisma.otp.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends OtpUpdateManyArgs>(args: SelectSubset<T, OtpUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Otps and returns the data updated in the database.
+     * @param {OtpUpdateManyAndReturnArgs} args - Arguments to update many Otps.
+     * @example
+     * // Update many Otps
+     * const otp = await prisma.otp.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Otps and only return the `id`
+     * const otpWithIdOnly = await prisma.otp.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends OtpUpdateManyAndReturnArgs>(args: SelectSubset<T, OtpUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Otp.
+     * @param {OtpUpsertArgs} args - Arguments to update or create a Otp.
+     * @example
+     * // Update or create a Otp
+     * const otp = await prisma.otp.upsert({
+     *   create: {
+     *     // ... data to create a Otp
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Otp we want to update
+     *   }
+     * })
+     */
+    upsert<T extends OtpUpsertArgs>(args: SelectSubset<T, OtpUpsertArgs<ExtArgs>>): Prisma__OtpClient<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Otps.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OtpCountArgs} args - Arguments to filter Otps to count.
+     * @example
+     * // Count the number of Otps
+     * const count = await prisma.otp.count({
+     *   where: {
+     *     // ... the filter for the Otps we want to count
+     *   }
+     * })
+    **/
+    count<T extends OtpCountArgs>(
+      args?: Subset<T, OtpCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], OtpCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Otp.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OtpAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends OtpAggregateArgs>(args: Subset<T, OtpAggregateArgs>): Prisma.PrismaPromise<GetOtpAggregateType<T>>
+
+    /**
+     * Group by Otp.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OtpGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends OtpGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: OtpGroupByArgs['orderBy'] }
+        : { orderBy?: OtpGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, OtpGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOtpGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Otp model
+   */
+  readonly fields: OtpFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Otp.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__OtpClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Otp model
+   */
+  interface OtpFieldRefs {
+    readonly id: FieldRef<"Otp", 'String'>
+    readonly phone: FieldRef<"Otp", 'String'>
+    readonly code: FieldRef<"Otp", 'String'>
+    readonly expiresAt: FieldRef<"Otp", 'DateTime'>
+    readonly createdAt: FieldRef<"Otp", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Otp findUnique
+   */
+  export type OtpFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * Filter, which Otp to fetch.
+     */
+    where: OtpWhereUniqueInput
+  }
+
+  /**
+   * Otp findUniqueOrThrow
+   */
+  export type OtpFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * Filter, which Otp to fetch.
+     */
+    where: OtpWhereUniqueInput
+  }
+
+  /**
+   * Otp findFirst
+   */
+  export type OtpFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * Filter, which Otp to fetch.
+     */
+    where?: OtpWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Otps to fetch.
+     */
+    orderBy?: OtpOrderByWithRelationInput | OtpOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Otps.
+     */
+    cursor?: OtpWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Otps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Otps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Otps.
+     */
+    distinct?: OtpScalarFieldEnum | OtpScalarFieldEnum[]
+  }
+
+  /**
+   * Otp findFirstOrThrow
+   */
+  export type OtpFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * Filter, which Otp to fetch.
+     */
+    where?: OtpWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Otps to fetch.
+     */
+    orderBy?: OtpOrderByWithRelationInput | OtpOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Otps.
+     */
+    cursor?: OtpWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Otps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Otps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Otps.
+     */
+    distinct?: OtpScalarFieldEnum | OtpScalarFieldEnum[]
+  }
+
+  /**
+   * Otp findMany
+   */
+  export type OtpFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * Filter, which Otps to fetch.
+     */
+    where?: OtpWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Otps to fetch.
+     */
+    orderBy?: OtpOrderByWithRelationInput | OtpOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Otps.
+     */
+    cursor?: OtpWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Otps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Otps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Otps.
+     */
+    distinct?: OtpScalarFieldEnum | OtpScalarFieldEnum[]
+  }
+
+  /**
+   * Otp create
+   */
+  export type OtpCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Otp.
+     */
+    data: XOR<OtpCreateInput, OtpUncheckedCreateInput>
+  }
+
+  /**
+   * Otp createMany
+   */
+  export type OtpCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Otps.
+     */
+    data: OtpCreateManyInput | OtpCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Otp createManyAndReturn
+   */
+  export type OtpCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * The data used to create many Otps.
+     */
+    data: OtpCreateManyInput | OtpCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Otp update
+   */
+  export type OtpUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Otp.
+     */
+    data: XOR<OtpUpdateInput, OtpUncheckedUpdateInput>
+    /**
+     * Choose, which Otp to update.
+     */
+    where: OtpWhereUniqueInput
+  }
+
+  /**
+   * Otp updateMany
+   */
+  export type OtpUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Otps.
+     */
+    data: XOR<OtpUpdateManyMutationInput, OtpUncheckedUpdateManyInput>
+    /**
+     * Filter which Otps to update
+     */
+    where?: OtpWhereInput
+    /**
+     * Limit how many Otps to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Otp updateManyAndReturn
+   */
+  export type OtpUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * The data used to update Otps.
+     */
+    data: XOR<OtpUpdateManyMutationInput, OtpUncheckedUpdateManyInput>
+    /**
+     * Filter which Otps to update
+     */
+    where?: OtpWhereInput
+    /**
+     * Limit how many Otps to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Otp upsert
+   */
+  export type OtpUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Otp to update in case it exists.
+     */
+    where: OtpWhereUniqueInput
+    /**
+     * In case the Otp found by the `where` argument doesn't exist, create a new Otp with this data.
+     */
+    create: XOR<OtpCreateInput, OtpUncheckedCreateInput>
+    /**
+     * In case the Otp was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<OtpUpdateInput, OtpUncheckedUpdateInput>
+  }
+
+  /**
+   * Otp delete
+   */
+  export type OtpDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+    /**
+     * Filter which Otp to delete.
+     */
+    where: OtpWhereUniqueInput
+  }
+
+  /**
+   * Otp deleteMany
+   */
+  export type OtpDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Otps to delete
+     */
+    where?: OtpWhereInput
+    /**
+     * Limit how many Otps to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Otp without action
+   */
+  export type OtpDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Otp
+     */
+    select?: OtpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Otp
+     */
+    omit?: OtpOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Store
+   */
+
+  export type AggregateStore = {
+    _count: StoreCountAggregateOutputType | null
+    _avg: StoreAvgAggregateOutputType | null
+    _sum: StoreSumAggregateOutputType | null
+    _min: StoreMinAggregateOutputType | null
+    _max: StoreMaxAggregateOutputType | null
+  }
+
+  export type StoreAvgAggregateOutputType = {
+    latitude: number | null
+    longitude: number | null
+    priceInr: number | null
+    sqft: number | null
+  }
+
+  export type StoreSumAggregateOutputType = {
+    latitude: number | null
+    longitude: number | null
+    priceInr: number | null
+    sqft: number | null
+  }
+
+  export type StoreMinAggregateOutputType = {
+    id: string | null
+    ownerId: string | null
+    title: string | null
+    desc: string | null
+    peopleDesc: string | null
+    flatno: string | null
+    streetAddress: string | null
+    NearbyLandMark: string | null
+    areaLocality: string | null
+    storeSize: string | null
+    businessType: string | null
+    country: string | null
+    state: string | null
+    city: string | null
+    pin: string | null
+    latitude: number | null
+    longitude: number | null
+    bannerImageUrl: string | null
+    priceInr: number | null
+    shareMode: $Enums.ShareMode | null
+    startTime: string | null
+    endTime: string | null
+    sqft: number | null
+    dayOrNight: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StoreMaxAggregateOutputType = {
+    id: string | null
+    ownerId: string | null
+    title: string | null
+    desc: string | null
+    peopleDesc: string | null
+    flatno: string | null
+    streetAddress: string | null
+    NearbyLandMark: string | null
+    areaLocality: string | null
+    storeSize: string | null
+    businessType: string | null
+    country: string | null
+    state: string | null
+    city: string | null
+    pin: string | null
+    latitude: number | null
+    longitude: number | null
+    bannerImageUrl: string | null
+    priceInr: number | null
+    shareMode: $Enums.ShareMode | null
+    startTime: string | null
+    endTime: string | null
+    sqft: number | null
+    dayOrNight: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StoreCountAggregateOutputType = {
+    id: number
+    ownerId: number
+    title: number
+    desc: number
+    peopleDesc: number
+    flatno: number
+    streetAddress: number
+    NearbyLandMark: number
+    areaLocality: number
+    storeSize: number
+    businessType: number
+    country: number
+    state: number
+    city: number
+    pin: number
+    latitude: number
+    longitude: number
+    bannerImageUrl: number
+    priceInr: number
+    shareMode: number
+    startTime: number
+    endTime: number
+    days: number
+    sqft: number
+    dayOrNight: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type StoreAvgAggregateInputType = {
+    latitude?: true
+    longitude?: true
+    priceInr?: true
+    sqft?: true
+  }
+
+  export type StoreSumAggregateInputType = {
+    latitude?: true
+    longitude?: true
+    priceInr?: true
+    sqft?: true
+  }
+
+  export type StoreMinAggregateInputType = {
+    id?: true
+    ownerId?: true
+    title?: true
+    desc?: true
+    peopleDesc?: true
+    flatno?: true
+    streetAddress?: true
+    NearbyLandMark?: true
+    areaLocality?: true
+    storeSize?: true
+    businessType?: true
+    country?: true
+    state?: true
+    city?: true
+    pin?: true
+    latitude?: true
+    longitude?: true
+    bannerImageUrl?: true
+    priceInr?: true
+    shareMode?: true
+    startTime?: true
+    endTime?: true
+    sqft?: true
+    dayOrNight?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StoreMaxAggregateInputType = {
+    id?: true
+    ownerId?: true
+    title?: true
+    desc?: true
+    peopleDesc?: true
+    flatno?: true
+    streetAddress?: true
+    NearbyLandMark?: true
+    areaLocality?: true
+    storeSize?: true
+    businessType?: true
+    country?: true
+    state?: true
+    city?: true
+    pin?: true
+    latitude?: true
+    longitude?: true
+    bannerImageUrl?: true
+    priceInr?: true
+    shareMode?: true
+    startTime?: true
+    endTime?: true
+    sqft?: true
+    dayOrNight?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StoreCountAggregateInputType = {
+    id?: true
+    ownerId?: true
+    title?: true
+    desc?: true
+    peopleDesc?: true
+    flatno?: true
+    streetAddress?: true
+    NearbyLandMark?: true
+    areaLocality?: true
+    storeSize?: true
+    businessType?: true
+    country?: true
+    state?: true
+    city?: true
+    pin?: true
+    latitude?: true
+    longitude?: true
+    bannerImageUrl?: true
+    priceInr?: true
+    shareMode?: true
+    startTime?: true
+    endTime?: true
+    days?: true
+    sqft?: true
+    dayOrNight?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type StoreAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Store to aggregate.
+     */
+    where?: StoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Stores to fetch.
+     */
+    orderBy?: StoreOrderByWithRelationInput | StoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Stores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Stores.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Stores
+    **/
+    _count?: true | StoreCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: StoreAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: StoreSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StoreMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StoreMaxAggregateInputType
+  }
+
+  export type GetStoreAggregateType<T extends StoreAggregateArgs> = {
+        [P in keyof T & keyof AggregateStore]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStore[P]>
+      : GetScalarType<T[P], AggregateStore[P]>
+  }
+
+
+
+
+  export type StoreGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StoreWhereInput
+    orderBy?: StoreOrderByWithAggregationInput | StoreOrderByWithAggregationInput[]
+    by: StoreScalarFieldEnum[] | StoreScalarFieldEnum
+    having?: StoreScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StoreCountAggregateInputType | true
+    _avg?: StoreAvgAggregateInputType
+    _sum?: StoreSumAggregateInputType
+    _min?: StoreMinAggregateInputType
+    _max?: StoreMaxAggregateInputType
+  }
+
+  export type StoreGroupByOutputType = {
+    id: string
+    ownerId: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude: number | null
+    longitude: number | null
+    bannerImageUrl: string | null
+    priceInr: number
+    shareMode: $Enums.ShareMode
+    startTime: string | null
+    endTime: string | null
+    days: string[]
+    sqft: number | null
+    dayOrNight: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: StoreCountAggregateOutputType | null
+    _avg: StoreAvgAggregateOutputType | null
+    _sum: StoreSumAggregateOutputType | null
+    _min: StoreMinAggregateOutputType | null
+    _max: StoreMaxAggregateOutputType | null
+  }
+
+  type GetStoreGroupByPayload<T extends StoreGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StoreGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StoreGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StoreGroupByOutputType[P]>
+            : GetScalarType<T[P], StoreGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StoreSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ownerId?: boolean
+    title?: boolean
+    desc?: boolean
+    peopleDesc?: boolean
+    flatno?: boolean
+    streetAddress?: boolean
+    NearbyLandMark?: boolean
+    areaLocality?: boolean
+    storeSize?: boolean
+    businessType?: boolean
+    country?: boolean
+    state?: boolean
+    city?: boolean
+    pin?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    bannerImageUrl?: boolean
+    priceInr?: boolean
+    shareMode?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    days?: boolean
+    sqft?: boolean
+    dayOrNight?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    owner?: boolean | UserDefaultArgs<ExtArgs>
+    images?: boolean | Store$imagesArgs<ExtArgs>
+    likes?: boolean | Store$likesArgs<ExtArgs>
+    store?: boolean | Store$storeArgs<ExtArgs>
+    Agreement?: boolean | Store$AgreementArgs<ExtArgs>
+    _count?: boolean | StoreCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["store"]>
+
+  export type StoreSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ownerId?: boolean
+    title?: boolean
+    desc?: boolean
+    peopleDesc?: boolean
+    flatno?: boolean
+    streetAddress?: boolean
+    NearbyLandMark?: boolean
+    areaLocality?: boolean
+    storeSize?: boolean
+    businessType?: boolean
+    country?: boolean
+    state?: boolean
+    city?: boolean
+    pin?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    bannerImageUrl?: boolean
+    priceInr?: boolean
+    shareMode?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    days?: boolean
+    sqft?: boolean
+    dayOrNight?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    owner?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["store"]>
+
+  export type StoreSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ownerId?: boolean
+    title?: boolean
+    desc?: boolean
+    peopleDesc?: boolean
+    flatno?: boolean
+    streetAddress?: boolean
+    NearbyLandMark?: boolean
+    areaLocality?: boolean
+    storeSize?: boolean
+    businessType?: boolean
+    country?: boolean
+    state?: boolean
+    city?: boolean
+    pin?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    bannerImageUrl?: boolean
+    priceInr?: boolean
+    shareMode?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    days?: boolean
+    sqft?: boolean
+    dayOrNight?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    owner?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["store"]>
+
+  export type StoreSelectScalar = {
+    id?: boolean
+    ownerId?: boolean
+    title?: boolean
+    desc?: boolean
+    peopleDesc?: boolean
+    flatno?: boolean
+    streetAddress?: boolean
+    NearbyLandMark?: boolean
+    areaLocality?: boolean
+    storeSize?: boolean
+    businessType?: boolean
+    country?: boolean
+    state?: boolean
+    city?: boolean
+    pin?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    bannerImageUrl?: boolean
+    priceInr?: boolean
+    shareMode?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    days?: boolean
+    sqft?: boolean
+    dayOrNight?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type StoreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "title" | "desc" | "peopleDesc" | "flatno" | "streetAddress" | "NearbyLandMark" | "areaLocality" | "storeSize" | "businessType" | "country" | "state" | "city" | "pin" | "latitude" | "longitude" | "bannerImageUrl" | "priceInr" | "shareMode" | "startTime" | "endTime" | "days" | "sqft" | "dayOrNight" | "createdAt" | "updatedAt", ExtArgs["result"]["store"]>
+  export type StoreInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | UserDefaultArgs<ExtArgs>
+    images?: boolean | Store$imagesArgs<ExtArgs>
+    likes?: boolean | Store$likesArgs<ExtArgs>
+    store?: boolean | Store$storeArgs<ExtArgs>
+    Agreement?: boolean | Store$AgreementArgs<ExtArgs>
+    _count?: boolean | StoreCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type StoreIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type StoreIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $StorePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Store"
+    objects: {
+      owner: Prisma.$UserPayload<ExtArgs>
+      images: Prisma.$StoreImagePayload<ExtArgs>[]
+      likes: Prisma.$StoreLikePayload<ExtArgs>[]
+      store: Prisma.$ConversationPayload<ExtArgs>[]
+      Agreement: Prisma.$AgreementPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      ownerId: string
+      title: string
+      desc: string
+      peopleDesc: string
+      flatno: string
+      streetAddress: string
+      NearbyLandMark: string
+      areaLocality: string
+      storeSize: string
+      businessType: string
+      country: string
+      state: string
+      city: string
+      pin: string
+      latitude: number | null
+      longitude: number | null
+      bannerImageUrl: string | null
+      priceInr: number
+      shareMode: $Enums.ShareMode
+      startTime: string | null
+      endTime: string | null
+      days: string[]
+      sqft: number | null
+      dayOrNight: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["store"]>
+    composites: {}
+  }
+
+  type StoreGetPayload<S extends boolean | null | undefined | StoreDefaultArgs> = $Result.GetResult<Prisma.$StorePayload, S>
+
+  type StoreCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<StoreFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: StoreCountAggregateInputType | true
+    }
+
+  export interface StoreDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Store'], meta: { name: 'Store' } }
+    /**
+     * Find zero or one Store that matches the filter.
+     * @param {StoreFindUniqueArgs} args - Arguments to find a Store
+     * @example
+     * // Get one Store
+     * const store = await prisma.store.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends StoreFindUniqueArgs>(args: SelectSubset<T, StoreFindUniqueArgs<ExtArgs>>): Prisma__StoreClient<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Store that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {StoreFindUniqueOrThrowArgs} args - Arguments to find a Store
+     * @example
+     * // Get one Store
+     * const store = await prisma.store.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends StoreFindUniqueOrThrowArgs>(args: SelectSubset<T, StoreFindUniqueOrThrowArgs<ExtArgs>>): Prisma__StoreClient<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Store that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreFindFirstArgs} args - Arguments to find a Store
+     * @example
+     * // Get one Store
+     * const store = await prisma.store.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends StoreFindFirstArgs>(args?: SelectSubset<T, StoreFindFirstArgs<ExtArgs>>): Prisma__StoreClient<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Store that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreFindFirstOrThrowArgs} args - Arguments to find a Store
+     * @example
+     * // Get one Store
+     * const store = await prisma.store.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends StoreFindFirstOrThrowArgs>(args?: SelectSubset<T, StoreFindFirstOrThrowArgs<ExtArgs>>): Prisma__StoreClient<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Stores that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Stores
+     * const stores = await prisma.store.findMany()
+     * 
+     * // Get first 10 Stores
+     * const stores = await prisma.store.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const storeWithIdOnly = await prisma.store.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends StoreFindManyArgs>(args?: SelectSubset<T, StoreFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Store.
+     * @param {StoreCreateArgs} args - Arguments to create a Store.
+     * @example
+     * // Create one Store
+     * const Store = await prisma.store.create({
+     *   data: {
+     *     // ... data to create a Store
+     *   }
+     * })
+     * 
+     */
+    create<T extends StoreCreateArgs>(args: SelectSubset<T, StoreCreateArgs<ExtArgs>>): Prisma__StoreClient<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Stores.
+     * @param {StoreCreateManyArgs} args - Arguments to create many Stores.
+     * @example
+     * // Create many Stores
+     * const store = await prisma.store.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends StoreCreateManyArgs>(args?: SelectSubset<T, StoreCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Stores and returns the data saved in the database.
+     * @param {StoreCreateManyAndReturnArgs} args - Arguments to create many Stores.
+     * @example
+     * // Create many Stores
+     * const store = await prisma.store.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Stores and only return the `id`
+     * const storeWithIdOnly = await prisma.store.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends StoreCreateManyAndReturnArgs>(args?: SelectSubset<T, StoreCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Store.
+     * @param {StoreDeleteArgs} args - Arguments to delete one Store.
+     * @example
+     * // Delete one Store
+     * const Store = await prisma.store.delete({
+     *   where: {
+     *     // ... filter to delete one Store
+     *   }
+     * })
+     * 
+     */
+    delete<T extends StoreDeleteArgs>(args: SelectSubset<T, StoreDeleteArgs<ExtArgs>>): Prisma__StoreClient<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Store.
+     * @param {StoreUpdateArgs} args - Arguments to update one Store.
+     * @example
+     * // Update one Store
+     * const store = await prisma.store.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends StoreUpdateArgs>(args: SelectSubset<T, StoreUpdateArgs<ExtArgs>>): Prisma__StoreClient<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Stores.
+     * @param {StoreDeleteManyArgs} args - Arguments to filter Stores to delete.
+     * @example
+     * // Delete a few Stores
+     * const { count } = await prisma.store.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends StoreDeleteManyArgs>(args?: SelectSubset<T, StoreDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Stores.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Stores
+     * const store = await prisma.store.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends StoreUpdateManyArgs>(args: SelectSubset<T, StoreUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Stores and returns the data updated in the database.
+     * @param {StoreUpdateManyAndReturnArgs} args - Arguments to update many Stores.
+     * @example
+     * // Update many Stores
+     * const store = await prisma.store.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Stores and only return the `id`
+     * const storeWithIdOnly = await prisma.store.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends StoreUpdateManyAndReturnArgs>(args: SelectSubset<T, StoreUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Store.
+     * @param {StoreUpsertArgs} args - Arguments to update or create a Store.
+     * @example
+     * // Update or create a Store
+     * const store = await prisma.store.upsert({
+     *   create: {
+     *     // ... data to create a Store
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Store we want to update
+     *   }
+     * })
+     */
+    upsert<T extends StoreUpsertArgs>(args: SelectSubset<T, StoreUpsertArgs<ExtArgs>>): Prisma__StoreClient<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Stores.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreCountArgs} args - Arguments to filter Stores to count.
+     * @example
+     * // Count the number of Stores
+     * const count = await prisma.store.count({
+     *   where: {
+     *     // ... the filter for the Stores we want to count
+     *   }
+     * })
+    **/
+    count<T extends StoreCountArgs>(
+      args?: Subset<T, StoreCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StoreCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Store.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StoreAggregateArgs>(args: Subset<T, StoreAggregateArgs>): Prisma.PrismaPromise<GetStoreAggregateType<T>>
+
+    /**
+     * Group by Store.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StoreGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StoreGroupByArgs['orderBy'] }
+        : { orderBy?: StoreGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StoreGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStoreGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Store model
+   */
+  readonly fields: StoreFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Store.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StoreClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    owner<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    images<T extends Store$imagesArgs<ExtArgs> = {}>(args?: Subset<T, Store$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StoreImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    likes<T extends Store$likesArgs<ExtArgs> = {}>(args?: Subset<T, Store$likesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StoreLikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    store<T extends Store$storeArgs<ExtArgs> = {}>(args?: Subset<T, Store$storeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Agreement<T extends Store$AgreementArgs<ExtArgs> = {}>(args?: Subset<T, Store$AgreementArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Store model
+   */
+  interface StoreFieldRefs {
+    readonly id: FieldRef<"Store", 'String'>
+    readonly ownerId: FieldRef<"Store", 'String'>
+    readonly title: FieldRef<"Store", 'String'>
+    readonly desc: FieldRef<"Store", 'String'>
+    readonly peopleDesc: FieldRef<"Store", 'String'>
+    readonly flatno: FieldRef<"Store", 'String'>
+    readonly streetAddress: FieldRef<"Store", 'String'>
+    readonly NearbyLandMark: FieldRef<"Store", 'String'>
+    readonly areaLocality: FieldRef<"Store", 'String'>
+    readonly storeSize: FieldRef<"Store", 'String'>
+    readonly businessType: FieldRef<"Store", 'String'>
+    readonly country: FieldRef<"Store", 'String'>
+    readonly state: FieldRef<"Store", 'String'>
+    readonly city: FieldRef<"Store", 'String'>
+    readonly pin: FieldRef<"Store", 'String'>
+    readonly latitude: FieldRef<"Store", 'Float'>
+    readonly longitude: FieldRef<"Store", 'Float'>
+    readonly bannerImageUrl: FieldRef<"Store", 'String'>
+    readonly priceInr: FieldRef<"Store", 'Int'>
+    readonly shareMode: FieldRef<"Store", 'ShareMode'>
+    readonly startTime: FieldRef<"Store", 'String'>
+    readonly endTime: FieldRef<"Store", 'String'>
+    readonly days: FieldRef<"Store", 'String[]'>
+    readonly sqft: FieldRef<"Store", 'Int'>
+    readonly dayOrNight: FieldRef<"Store", 'String'>
+    readonly createdAt: FieldRef<"Store", 'DateTime'>
+    readonly updatedAt: FieldRef<"Store", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Store findUnique
+   */
+  export type StoreFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Store
+     */
+    select?: StoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Store
+     */
+    omit?: StoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
+    /**
+     * Filter, which Store to fetch.
+     */
+    where: StoreWhereUniqueInput
+  }
+
+  /**
+   * Store findUniqueOrThrow
+   */
+  export type StoreFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Store
+     */
+    select?: StoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Store
+     */
+    omit?: StoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
+    /**
+     * Filter, which Store to fetch.
+     */
+    where: StoreWhereUniqueInput
+  }
+
+  /**
+   * Store findFirst
+   */
+  export type StoreFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Store
+     */
+    select?: StoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Store
+     */
+    omit?: StoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
+    /**
+     * Filter, which Store to fetch.
+     */
+    where?: StoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Stores to fetch.
+     */
+    orderBy?: StoreOrderByWithRelationInput | StoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Stores.
+     */
+    cursor?: StoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Stores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Stores.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Stores.
+     */
+    distinct?: StoreScalarFieldEnum | StoreScalarFieldEnum[]
+  }
+
+  /**
+   * Store findFirstOrThrow
+   */
+  export type StoreFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Store
+     */
+    select?: StoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Store
+     */
+    omit?: StoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
+    /**
+     * Filter, which Store to fetch.
+     */
+    where?: StoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Stores to fetch.
+     */
+    orderBy?: StoreOrderByWithRelationInput | StoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Stores.
+     */
+    cursor?: StoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Stores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Stores.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Stores.
+     */
+    distinct?: StoreScalarFieldEnum | StoreScalarFieldEnum[]
+  }
+
+  /**
+   * Store findMany
+   */
+  export type StoreFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Store
+     */
+    select?: StoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Store
+     */
+    omit?: StoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
+    /**
+     * Filter, which Stores to fetch.
+     */
+    where?: StoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Stores to fetch.
+     */
+    orderBy?: StoreOrderByWithRelationInput | StoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Stores.
+     */
+    cursor?: StoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Stores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Stores.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Stores.
+     */
+    distinct?: StoreScalarFieldEnum | StoreScalarFieldEnum[]
+  }
+
+  /**
+   * Store create
+   */
+  export type StoreCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Store
+     */
+    select?: StoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Store
+     */
+    omit?: StoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Store.
+     */
+    data: XOR<StoreCreateInput, StoreUncheckedCreateInput>
+  }
+
+  /**
+   * Store createMany
+   */
+  export type StoreCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Stores.
+     */
+    data: StoreCreateManyInput | StoreCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Store createManyAndReturn
+   */
+  export type StoreCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Store
+     */
+    select?: StoreSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Store
+     */
+    omit?: StoreOmit<ExtArgs> | null
+    /**
+     * The data used to create many Stores.
+     */
+    data: StoreCreateManyInput | StoreCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Store update
+   */
+  export type StoreUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Store
+     */
+    select?: StoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Store
+     */
+    omit?: StoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Store.
+     */
+    data: XOR<StoreUpdateInput, StoreUncheckedUpdateInput>
+    /**
+     * Choose, which Store to update.
+     */
+    where: StoreWhereUniqueInput
+  }
+
+  /**
+   * Store updateMany
+   */
+  export type StoreUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Stores.
+     */
+    data: XOR<StoreUpdateManyMutationInput, StoreUncheckedUpdateManyInput>
+    /**
+     * Filter which Stores to update
+     */
+    where?: StoreWhereInput
+    /**
+     * Limit how many Stores to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Store updateManyAndReturn
+   */
+  export type StoreUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Store
+     */
+    select?: StoreSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Store
+     */
+    omit?: StoreOmit<ExtArgs> | null
+    /**
+     * The data used to update Stores.
+     */
+    data: XOR<StoreUpdateManyMutationInput, StoreUncheckedUpdateManyInput>
+    /**
+     * Filter which Stores to update
+     */
+    where?: StoreWhereInput
+    /**
+     * Limit how many Stores to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Store upsert
+   */
+  export type StoreUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Store
+     */
+    select?: StoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Store
+     */
+    omit?: StoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Store to update in case it exists.
+     */
+    where: StoreWhereUniqueInput
+    /**
+     * In case the Store found by the `where` argument doesn't exist, create a new Store with this data.
+     */
+    create: XOR<StoreCreateInput, StoreUncheckedCreateInput>
+    /**
+     * In case the Store was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StoreUpdateInput, StoreUncheckedUpdateInput>
+  }
+
+  /**
+   * Store delete
+   */
+  export type StoreDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Store
+     */
+    select?: StoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Store
+     */
+    omit?: StoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
+    /**
+     * Filter which Store to delete.
+     */
+    where: StoreWhereUniqueInput
+  }
+
+  /**
+   * Store deleteMany
+   */
+  export type StoreDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Stores to delete
+     */
+    where?: StoreWhereInput
+    /**
+     * Limit how many Stores to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Store.images
+   */
+  export type Store$imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreImage
+     */
+    select?: StoreImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreImage
+     */
+    omit?: StoreImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreImageInclude<ExtArgs> | null
+    where?: StoreImageWhereInput
+    orderBy?: StoreImageOrderByWithRelationInput | StoreImageOrderByWithRelationInput[]
+    cursor?: StoreImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StoreImageScalarFieldEnum | StoreImageScalarFieldEnum[]
+  }
+
+  /**
+   * Store.likes
+   */
+  export type Store$likesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreLike
+     */
+    select?: StoreLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreLike
+     */
+    omit?: StoreLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreLikeInclude<ExtArgs> | null
+    where?: StoreLikeWhereInput
+    orderBy?: StoreLikeOrderByWithRelationInput | StoreLikeOrderByWithRelationInput[]
+    cursor?: StoreLikeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StoreLikeScalarFieldEnum | StoreLikeScalarFieldEnum[]
+  }
+
+  /**
+   * Store.store
+   */
+  export type Store$storeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    where?: ConversationWhereInput
+    orderBy?: ConversationOrderByWithRelationInput | ConversationOrderByWithRelationInput[]
+    cursor?: ConversationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ConversationScalarFieldEnum | ConversationScalarFieldEnum[]
+  }
+
+  /**
+   * Store.Agreement
+   */
+  export type Store$AgreementArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agreement
+     */
+    omit?: AgreementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    where?: AgreementWhereInput
+    orderBy?: AgreementOrderByWithRelationInput | AgreementOrderByWithRelationInput[]
+    cursor?: AgreementWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AgreementScalarFieldEnum | AgreementScalarFieldEnum[]
+  }
+
+  /**
+   * Store without action
+   */
+  export type StoreDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Store
+     */
+    select?: StoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Store
+     */
+    omit?: StoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model StoreImage
+   */
+
+  export type AggregateStoreImage = {
+    _count: StoreImageCountAggregateOutputType | null
+    _avg: StoreImageAvgAggregateOutputType | null
+    _sum: StoreImageSumAggregateOutputType | null
+    _min: StoreImageMinAggregateOutputType | null
+    _max: StoreImageMaxAggregateOutputType | null
+  }
+
+  export type StoreImageAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type StoreImageSumAggregateOutputType = {
+    order: number | null
+  }
+
+  export type StoreImageMinAggregateOutputType = {
+    id: string | null
+    storeId: string | null
+    url: string | null
+    order: number | null
+    createdAt: Date | null
+  }
+
+  export type StoreImageMaxAggregateOutputType = {
+    id: string | null
+    storeId: string | null
+    url: string | null
+    order: number | null
+    createdAt: Date | null
+  }
+
+  export type StoreImageCountAggregateOutputType = {
+    id: number
+    storeId: number
+    url: number
+    order: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type StoreImageAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type StoreImageSumAggregateInputType = {
+    order?: true
+  }
+
+  export type StoreImageMinAggregateInputType = {
+    id?: true
+    storeId?: true
+    url?: true
+    order?: true
+    createdAt?: true
+  }
+
+  export type StoreImageMaxAggregateInputType = {
+    id?: true
+    storeId?: true
+    url?: true
+    order?: true
+    createdAt?: true
+  }
+
+  export type StoreImageCountAggregateInputType = {
+    id?: true
+    storeId?: true
+    url?: true
+    order?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type StoreImageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StoreImage to aggregate.
+     */
+    where?: StoreImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StoreImages to fetch.
+     */
+    orderBy?: StoreImageOrderByWithRelationInput | StoreImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StoreImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StoreImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StoreImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned StoreImages
+    **/
+    _count?: true | StoreImageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: StoreImageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: StoreImageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StoreImageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StoreImageMaxAggregateInputType
+  }
+
+  export type GetStoreImageAggregateType<T extends StoreImageAggregateArgs> = {
+        [P in keyof T & keyof AggregateStoreImage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStoreImage[P]>
+      : GetScalarType<T[P], AggregateStoreImage[P]>
+  }
+
+
+
+
+  export type StoreImageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StoreImageWhereInput
+    orderBy?: StoreImageOrderByWithAggregationInput | StoreImageOrderByWithAggregationInput[]
+    by: StoreImageScalarFieldEnum[] | StoreImageScalarFieldEnum
+    having?: StoreImageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StoreImageCountAggregateInputType | true
+    _avg?: StoreImageAvgAggregateInputType
+    _sum?: StoreImageSumAggregateInputType
+    _min?: StoreImageMinAggregateInputType
+    _max?: StoreImageMaxAggregateInputType
+  }
+
+  export type StoreImageGroupByOutputType = {
+    id: string
+    storeId: string
+    url: string
+    order: number
+    createdAt: Date
+    _count: StoreImageCountAggregateOutputType | null
+    _avg: StoreImageAvgAggregateOutputType | null
+    _sum: StoreImageSumAggregateOutputType | null
+    _min: StoreImageMinAggregateOutputType | null
+    _max: StoreImageMaxAggregateOutputType | null
+  }
+
+  type GetStoreImageGroupByPayload<T extends StoreImageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StoreImageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StoreImageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StoreImageGroupByOutputType[P]>
+            : GetScalarType<T[P], StoreImageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StoreImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    storeId?: boolean
+    url?: boolean
+    order?: boolean
+    createdAt?: boolean
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["storeImage"]>
+
+  export type StoreImageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    storeId?: boolean
+    url?: boolean
+    order?: boolean
+    createdAt?: boolean
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["storeImage"]>
+
+  export type StoreImageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    storeId?: boolean
+    url?: boolean
+    order?: boolean
+    createdAt?: boolean
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["storeImage"]>
+
+  export type StoreImageSelectScalar = {
+    id?: boolean
+    storeId?: boolean
+    url?: boolean
+    order?: boolean
+    createdAt?: boolean
+  }
+
+  export type StoreImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "storeId" | "url" | "order" | "createdAt", ExtArgs["result"]["storeImage"]>
+  export type StoreImageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }
+  export type StoreImageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }
+  export type StoreImageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }
+
+  export type $StoreImagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "StoreImage"
+    objects: {
+      store: Prisma.$StorePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      storeId: string
+      url: string
+      order: number
+      createdAt: Date
+    }, ExtArgs["result"]["storeImage"]>
+    composites: {}
+  }
+
+  type StoreImageGetPayload<S extends boolean | null | undefined | StoreImageDefaultArgs> = $Result.GetResult<Prisma.$StoreImagePayload, S>
+
+  type StoreImageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<StoreImageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: StoreImageCountAggregateInputType | true
+    }
+
+  export interface StoreImageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StoreImage'], meta: { name: 'StoreImage' } }
+    /**
+     * Find zero or one StoreImage that matches the filter.
+     * @param {StoreImageFindUniqueArgs} args - Arguments to find a StoreImage
+     * @example
+     * // Get one StoreImage
+     * const storeImage = await prisma.storeImage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends StoreImageFindUniqueArgs>(args: SelectSubset<T, StoreImageFindUniqueArgs<ExtArgs>>): Prisma__StoreImageClient<$Result.GetResult<Prisma.$StoreImagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one StoreImage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {StoreImageFindUniqueOrThrowArgs} args - Arguments to find a StoreImage
+     * @example
+     * // Get one StoreImage
+     * const storeImage = await prisma.storeImage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends StoreImageFindUniqueOrThrowArgs>(args: SelectSubset<T, StoreImageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__StoreImageClient<$Result.GetResult<Prisma.$StoreImagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first StoreImage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreImageFindFirstArgs} args - Arguments to find a StoreImage
+     * @example
+     * // Get one StoreImage
+     * const storeImage = await prisma.storeImage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends StoreImageFindFirstArgs>(args?: SelectSubset<T, StoreImageFindFirstArgs<ExtArgs>>): Prisma__StoreImageClient<$Result.GetResult<Prisma.$StoreImagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first StoreImage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreImageFindFirstOrThrowArgs} args - Arguments to find a StoreImage
+     * @example
+     * // Get one StoreImage
+     * const storeImage = await prisma.storeImage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends StoreImageFindFirstOrThrowArgs>(args?: SelectSubset<T, StoreImageFindFirstOrThrowArgs<ExtArgs>>): Prisma__StoreImageClient<$Result.GetResult<Prisma.$StoreImagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more StoreImages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreImageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all StoreImages
+     * const storeImages = await prisma.storeImage.findMany()
+     * 
+     * // Get first 10 StoreImages
+     * const storeImages = await prisma.storeImage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const storeImageWithIdOnly = await prisma.storeImage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends StoreImageFindManyArgs>(args?: SelectSubset<T, StoreImageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StoreImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a StoreImage.
+     * @param {StoreImageCreateArgs} args - Arguments to create a StoreImage.
+     * @example
+     * // Create one StoreImage
+     * const StoreImage = await prisma.storeImage.create({
+     *   data: {
+     *     // ... data to create a StoreImage
+     *   }
+     * })
+     * 
+     */
+    create<T extends StoreImageCreateArgs>(args: SelectSubset<T, StoreImageCreateArgs<ExtArgs>>): Prisma__StoreImageClient<$Result.GetResult<Prisma.$StoreImagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many StoreImages.
+     * @param {StoreImageCreateManyArgs} args - Arguments to create many StoreImages.
+     * @example
+     * // Create many StoreImages
+     * const storeImage = await prisma.storeImage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends StoreImageCreateManyArgs>(args?: SelectSubset<T, StoreImageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many StoreImages and returns the data saved in the database.
+     * @param {StoreImageCreateManyAndReturnArgs} args - Arguments to create many StoreImages.
+     * @example
+     * // Create many StoreImages
+     * const storeImage = await prisma.storeImage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many StoreImages and only return the `id`
+     * const storeImageWithIdOnly = await prisma.storeImage.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends StoreImageCreateManyAndReturnArgs>(args?: SelectSubset<T, StoreImageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StoreImagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a StoreImage.
+     * @param {StoreImageDeleteArgs} args - Arguments to delete one StoreImage.
+     * @example
+     * // Delete one StoreImage
+     * const StoreImage = await prisma.storeImage.delete({
+     *   where: {
+     *     // ... filter to delete one StoreImage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends StoreImageDeleteArgs>(args: SelectSubset<T, StoreImageDeleteArgs<ExtArgs>>): Prisma__StoreImageClient<$Result.GetResult<Prisma.$StoreImagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one StoreImage.
+     * @param {StoreImageUpdateArgs} args - Arguments to update one StoreImage.
+     * @example
+     * // Update one StoreImage
+     * const storeImage = await prisma.storeImage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends StoreImageUpdateArgs>(args: SelectSubset<T, StoreImageUpdateArgs<ExtArgs>>): Prisma__StoreImageClient<$Result.GetResult<Prisma.$StoreImagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more StoreImages.
+     * @param {StoreImageDeleteManyArgs} args - Arguments to filter StoreImages to delete.
+     * @example
+     * // Delete a few StoreImages
+     * const { count } = await prisma.storeImage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends StoreImageDeleteManyArgs>(args?: SelectSubset<T, StoreImageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StoreImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreImageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many StoreImages
+     * const storeImage = await prisma.storeImage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends StoreImageUpdateManyArgs>(args: SelectSubset<T, StoreImageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StoreImages and returns the data updated in the database.
+     * @param {StoreImageUpdateManyAndReturnArgs} args - Arguments to update many StoreImages.
+     * @example
+     * // Update many StoreImages
+     * const storeImage = await prisma.storeImage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more StoreImages and only return the `id`
+     * const storeImageWithIdOnly = await prisma.storeImage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends StoreImageUpdateManyAndReturnArgs>(args: SelectSubset<T, StoreImageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StoreImagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one StoreImage.
+     * @param {StoreImageUpsertArgs} args - Arguments to update or create a StoreImage.
+     * @example
+     * // Update or create a StoreImage
+     * const storeImage = await prisma.storeImage.upsert({
+     *   create: {
+     *     // ... data to create a StoreImage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the StoreImage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends StoreImageUpsertArgs>(args: SelectSubset<T, StoreImageUpsertArgs<ExtArgs>>): Prisma__StoreImageClient<$Result.GetResult<Prisma.$StoreImagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of StoreImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreImageCountArgs} args - Arguments to filter StoreImages to count.
+     * @example
+     * // Count the number of StoreImages
+     * const count = await prisma.storeImage.count({
+     *   where: {
+     *     // ... the filter for the StoreImages we want to count
+     *   }
+     * })
+    **/
+    count<T extends StoreImageCountArgs>(
+      args?: Subset<T, StoreImageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StoreImageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a StoreImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreImageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StoreImageAggregateArgs>(args: Subset<T, StoreImageAggregateArgs>): Prisma.PrismaPromise<GetStoreImageAggregateType<T>>
+
+    /**
+     * Group by StoreImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreImageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StoreImageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StoreImageGroupByArgs['orderBy'] }
+        : { orderBy?: StoreImageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StoreImageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStoreImageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the StoreImage model
+   */
+  readonly fields: StoreImageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for StoreImage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StoreImageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    store<T extends StoreDefaultArgs<ExtArgs> = {}>(args?: Subset<T, StoreDefaultArgs<ExtArgs>>): Prisma__StoreClient<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the StoreImage model
+   */
+  interface StoreImageFieldRefs {
+    readonly id: FieldRef<"StoreImage", 'String'>
+    readonly storeId: FieldRef<"StoreImage", 'String'>
+    readonly url: FieldRef<"StoreImage", 'String'>
+    readonly order: FieldRef<"StoreImage", 'Int'>
+    readonly createdAt: FieldRef<"StoreImage", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * StoreImage findUnique
+   */
+  export type StoreImageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreImage
+     */
+    select?: StoreImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreImage
+     */
+    omit?: StoreImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreImageInclude<ExtArgs> | null
+    /**
+     * Filter, which StoreImage to fetch.
+     */
+    where: StoreImageWhereUniqueInput
+  }
+
+  /**
+   * StoreImage findUniqueOrThrow
+   */
+  export type StoreImageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreImage
+     */
+    select?: StoreImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreImage
+     */
+    omit?: StoreImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreImageInclude<ExtArgs> | null
+    /**
+     * Filter, which StoreImage to fetch.
+     */
+    where: StoreImageWhereUniqueInput
+  }
+
+  /**
+   * StoreImage findFirst
+   */
+  export type StoreImageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreImage
+     */
+    select?: StoreImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreImage
+     */
+    omit?: StoreImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreImageInclude<ExtArgs> | null
+    /**
+     * Filter, which StoreImage to fetch.
+     */
+    where?: StoreImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StoreImages to fetch.
+     */
+    orderBy?: StoreImageOrderByWithRelationInput | StoreImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StoreImages.
+     */
+    cursor?: StoreImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StoreImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StoreImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StoreImages.
+     */
+    distinct?: StoreImageScalarFieldEnum | StoreImageScalarFieldEnum[]
+  }
+
+  /**
+   * StoreImage findFirstOrThrow
+   */
+  export type StoreImageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreImage
+     */
+    select?: StoreImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreImage
+     */
+    omit?: StoreImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreImageInclude<ExtArgs> | null
+    /**
+     * Filter, which StoreImage to fetch.
+     */
+    where?: StoreImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StoreImages to fetch.
+     */
+    orderBy?: StoreImageOrderByWithRelationInput | StoreImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StoreImages.
+     */
+    cursor?: StoreImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StoreImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StoreImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StoreImages.
+     */
+    distinct?: StoreImageScalarFieldEnum | StoreImageScalarFieldEnum[]
+  }
+
+  /**
+   * StoreImage findMany
+   */
+  export type StoreImageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreImage
+     */
+    select?: StoreImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreImage
+     */
+    omit?: StoreImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreImageInclude<ExtArgs> | null
+    /**
+     * Filter, which StoreImages to fetch.
+     */
+    where?: StoreImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StoreImages to fetch.
+     */
+    orderBy?: StoreImageOrderByWithRelationInput | StoreImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing StoreImages.
+     */
+    cursor?: StoreImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StoreImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StoreImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StoreImages.
+     */
+    distinct?: StoreImageScalarFieldEnum | StoreImageScalarFieldEnum[]
+  }
+
+  /**
+   * StoreImage create
+   */
+  export type StoreImageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreImage
+     */
+    select?: StoreImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreImage
+     */
+    omit?: StoreImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreImageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a StoreImage.
+     */
+    data: XOR<StoreImageCreateInput, StoreImageUncheckedCreateInput>
+  }
+
+  /**
+   * StoreImage createMany
+   */
+  export type StoreImageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many StoreImages.
+     */
+    data: StoreImageCreateManyInput | StoreImageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * StoreImage createManyAndReturn
+   */
+  export type StoreImageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreImage
+     */
+    select?: StoreImageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreImage
+     */
+    omit?: StoreImageOmit<ExtArgs> | null
+    /**
+     * The data used to create many StoreImages.
+     */
+    data: StoreImageCreateManyInput | StoreImageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreImageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * StoreImage update
+   */
+  export type StoreImageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreImage
+     */
+    select?: StoreImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreImage
+     */
+    omit?: StoreImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreImageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a StoreImage.
+     */
+    data: XOR<StoreImageUpdateInput, StoreImageUncheckedUpdateInput>
+    /**
+     * Choose, which StoreImage to update.
+     */
+    where: StoreImageWhereUniqueInput
+  }
+
+  /**
+   * StoreImage updateMany
+   */
+  export type StoreImageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update StoreImages.
+     */
+    data: XOR<StoreImageUpdateManyMutationInput, StoreImageUncheckedUpdateManyInput>
+    /**
+     * Filter which StoreImages to update
+     */
+    where?: StoreImageWhereInput
+    /**
+     * Limit how many StoreImages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * StoreImage updateManyAndReturn
+   */
+  export type StoreImageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreImage
+     */
+    select?: StoreImageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreImage
+     */
+    omit?: StoreImageOmit<ExtArgs> | null
+    /**
+     * The data used to update StoreImages.
+     */
+    data: XOR<StoreImageUpdateManyMutationInput, StoreImageUncheckedUpdateManyInput>
+    /**
+     * Filter which StoreImages to update
+     */
+    where?: StoreImageWhereInput
+    /**
+     * Limit how many StoreImages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreImageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * StoreImage upsert
+   */
+  export type StoreImageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreImage
+     */
+    select?: StoreImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreImage
+     */
+    omit?: StoreImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreImageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the StoreImage to update in case it exists.
+     */
+    where: StoreImageWhereUniqueInput
+    /**
+     * In case the StoreImage found by the `where` argument doesn't exist, create a new StoreImage with this data.
+     */
+    create: XOR<StoreImageCreateInput, StoreImageUncheckedCreateInput>
+    /**
+     * In case the StoreImage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StoreImageUpdateInput, StoreImageUncheckedUpdateInput>
+  }
+
+  /**
+   * StoreImage delete
+   */
+  export type StoreImageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreImage
+     */
+    select?: StoreImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreImage
+     */
+    omit?: StoreImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreImageInclude<ExtArgs> | null
+    /**
+     * Filter which StoreImage to delete.
+     */
+    where: StoreImageWhereUniqueInput
+  }
+
+  /**
+   * StoreImage deleteMany
+   */
+  export type StoreImageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StoreImages to delete
+     */
+    where?: StoreImageWhereInput
+    /**
+     * Limit how many StoreImages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * StoreImage without action
+   */
+  export type StoreImageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreImage
+     */
+    select?: StoreImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreImage
+     */
+    omit?: StoreImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreImageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model StoreLike
+   */
+
+  export type AggregateStoreLike = {
+    _count: StoreLikeCountAggregateOutputType | null
+    _min: StoreLikeMinAggregateOutputType | null
+    _max: StoreLikeMaxAggregateOutputType | null
+  }
+
+  export type StoreLikeMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    storeId: string | null
+    createdAt: Date | null
+  }
+
+  export type StoreLikeMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    storeId: string | null
+    createdAt: Date | null
+  }
+
+  export type StoreLikeCountAggregateOutputType = {
+    id: number
+    userId: number
+    storeId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type StoreLikeMinAggregateInputType = {
+    id?: true
+    userId?: true
+    storeId?: true
+    createdAt?: true
+  }
+
+  export type StoreLikeMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    storeId?: true
+    createdAt?: true
+  }
+
+  export type StoreLikeCountAggregateInputType = {
+    id?: true
+    userId?: true
+    storeId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type StoreLikeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StoreLike to aggregate.
+     */
+    where?: StoreLikeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StoreLikes to fetch.
+     */
+    orderBy?: StoreLikeOrderByWithRelationInput | StoreLikeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StoreLikeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StoreLikes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StoreLikes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned StoreLikes
+    **/
+    _count?: true | StoreLikeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StoreLikeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StoreLikeMaxAggregateInputType
+  }
+
+  export type GetStoreLikeAggregateType<T extends StoreLikeAggregateArgs> = {
+        [P in keyof T & keyof AggregateStoreLike]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStoreLike[P]>
+      : GetScalarType<T[P], AggregateStoreLike[P]>
+  }
+
+
+
+
+  export type StoreLikeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StoreLikeWhereInput
+    orderBy?: StoreLikeOrderByWithAggregationInput | StoreLikeOrderByWithAggregationInput[]
+    by: StoreLikeScalarFieldEnum[] | StoreLikeScalarFieldEnum
+    having?: StoreLikeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StoreLikeCountAggregateInputType | true
+    _min?: StoreLikeMinAggregateInputType
+    _max?: StoreLikeMaxAggregateInputType
+  }
+
+  export type StoreLikeGroupByOutputType = {
+    id: string
+    userId: string
+    storeId: string
+    createdAt: Date
+    _count: StoreLikeCountAggregateOutputType | null
+    _min: StoreLikeMinAggregateOutputType | null
+    _max: StoreLikeMaxAggregateOutputType | null
+  }
+
+  type GetStoreLikeGroupByPayload<T extends StoreLikeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StoreLikeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StoreLikeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StoreLikeGroupByOutputType[P]>
+            : GetScalarType<T[P], StoreLikeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StoreLikeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    storeId?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["storeLike"]>
+
+  export type StoreLikeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    storeId?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["storeLike"]>
+
+  export type StoreLikeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    storeId?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["storeLike"]>
+
+  export type StoreLikeSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    storeId?: boolean
+    createdAt?: boolean
+  }
+
+  export type StoreLikeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "storeId" | "createdAt", ExtArgs["result"]["storeLike"]>
+  export type StoreLikeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }
+  export type StoreLikeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }
+  export type StoreLikeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }
+
+  export type $StoreLikePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "StoreLike"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      store: Prisma.$StorePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      storeId: string
+      createdAt: Date
+    }, ExtArgs["result"]["storeLike"]>
+    composites: {}
+  }
+
+  type StoreLikeGetPayload<S extends boolean | null | undefined | StoreLikeDefaultArgs> = $Result.GetResult<Prisma.$StoreLikePayload, S>
+
+  type StoreLikeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<StoreLikeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: StoreLikeCountAggregateInputType | true
+    }
+
+  export interface StoreLikeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StoreLike'], meta: { name: 'StoreLike' } }
+    /**
+     * Find zero or one StoreLike that matches the filter.
+     * @param {StoreLikeFindUniqueArgs} args - Arguments to find a StoreLike
+     * @example
+     * // Get one StoreLike
+     * const storeLike = await prisma.storeLike.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends StoreLikeFindUniqueArgs>(args: SelectSubset<T, StoreLikeFindUniqueArgs<ExtArgs>>): Prisma__StoreLikeClient<$Result.GetResult<Prisma.$StoreLikePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one StoreLike that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {StoreLikeFindUniqueOrThrowArgs} args - Arguments to find a StoreLike
+     * @example
+     * // Get one StoreLike
+     * const storeLike = await prisma.storeLike.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends StoreLikeFindUniqueOrThrowArgs>(args: SelectSubset<T, StoreLikeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__StoreLikeClient<$Result.GetResult<Prisma.$StoreLikePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first StoreLike that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreLikeFindFirstArgs} args - Arguments to find a StoreLike
+     * @example
+     * // Get one StoreLike
+     * const storeLike = await prisma.storeLike.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends StoreLikeFindFirstArgs>(args?: SelectSubset<T, StoreLikeFindFirstArgs<ExtArgs>>): Prisma__StoreLikeClient<$Result.GetResult<Prisma.$StoreLikePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first StoreLike that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreLikeFindFirstOrThrowArgs} args - Arguments to find a StoreLike
+     * @example
+     * // Get one StoreLike
+     * const storeLike = await prisma.storeLike.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends StoreLikeFindFirstOrThrowArgs>(args?: SelectSubset<T, StoreLikeFindFirstOrThrowArgs<ExtArgs>>): Prisma__StoreLikeClient<$Result.GetResult<Prisma.$StoreLikePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more StoreLikes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreLikeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all StoreLikes
+     * const storeLikes = await prisma.storeLike.findMany()
+     * 
+     * // Get first 10 StoreLikes
+     * const storeLikes = await prisma.storeLike.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const storeLikeWithIdOnly = await prisma.storeLike.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends StoreLikeFindManyArgs>(args?: SelectSubset<T, StoreLikeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StoreLikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a StoreLike.
+     * @param {StoreLikeCreateArgs} args - Arguments to create a StoreLike.
+     * @example
+     * // Create one StoreLike
+     * const StoreLike = await prisma.storeLike.create({
+     *   data: {
+     *     // ... data to create a StoreLike
+     *   }
+     * })
+     * 
+     */
+    create<T extends StoreLikeCreateArgs>(args: SelectSubset<T, StoreLikeCreateArgs<ExtArgs>>): Prisma__StoreLikeClient<$Result.GetResult<Prisma.$StoreLikePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many StoreLikes.
+     * @param {StoreLikeCreateManyArgs} args - Arguments to create many StoreLikes.
+     * @example
+     * // Create many StoreLikes
+     * const storeLike = await prisma.storeLike.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends StoreLikeCreateManyArgs>(args?: SelectSubset<T, StoreLikeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many StoreLikes and returns the data saved in the database.
+     * @param {StoreLikeCreateManyAndReturnArgs} args - Arguments to create many StoreLikes.
+     * @example
+     * // Create many StoreLikes
+     * const storeLike = await prisma.storeLike.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many StoreLikes and only return the `id`
+     * const storeLikeWithIdOnly = await prisma.storeLike.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends StoreLikeCreateManyAndReturnArgs>(args?: SelectSubset<T, StoreLikeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StoreLikePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a StoreLike.
+     * @param {StoreLikeDeleteArgs} args - Arguments to delete one StoreLike.
+     * @example
+     * // Delete one StoreLike
+     * const StoreLike = await prisma.storeLike.delete({
+     *   where: {
+     *     // ... filter to delete one StoreLike
+     *   }
+     * })
+     * 
+     */
+    delete<T extends StoreLikeDeleteArgs>(args: SelectSubset<T, StoreLikeDeleteArgs<ExtArgs>>): Prisma__StoreLikeClient<$Result.GetResult<Prisma.$StoreLikePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one StoreLike.
+     * @param {StoreLikeUpdateArgs} args - Arguments to update one StoreLike.
+     * @example
+     * // Update one StoreLike
+     * const storeLike = await prisma.storeLike.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends StoreLikeUpdateArgs>(args: SelectSubset<T, StoreLikeUpdateArgs<ExtArgs>>): Prisma__StoreLikeClient<$Result.GetResult<Prisma.$StoreLikePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more StoreLikes.
+     * @param {StoreLikeDeleteManyArgs} args - Arguments to filter StoreLikes to delete.
+     * @example
+     * // Delete a few StoreLikes
+     * const { count } = await prisma.storeLike.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends StoreLikeDeleteManyArgs>(args?: SelectSubset<T, StoreLikeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StoreLikes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreLikeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many StoreLikes
+     * const storeLike = await prisma.storeLike.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends StoreLikeUpdateManyArgs>(args: SelectSubset<T, StoreLikeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StoreLikes and returns the data updated in the database.
+     * @param {StoreLikeUpdateManyAndReturnArgs} args - Arguments to update many StoreLikes.
+     * @example
+     * // Update many StoreLikes
+     * const storeLike = await prisma.storeLike.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more StoreLikes and only return the `id`
+     * const storeLikeWithIdOnly = await prisma.storeLike.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends StoreLikeUpdateManyAndReturnArgs>(args: SelectSubset<T, StoreLikeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StoreLikePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one StoreLike.
+     * @param {StoreLikeUpsertArgs} args - Arguments to update or create a StoreLike.
+     * @example
+     * // Update or create a StoreLike
+     * const storeLike = await prisma.storeLike.upsert({
+     *   create: {
+     *     // ... data to create a StoreLike
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the StoreLike we want to update
+     *   }
+     * })
+     */
+    upsert<T extends StoreLikeUpsertArgs>(args: SelectSubset<T, StoreLikeUpsertArgs<ExtArgs>>): Prisma__StoreLikeClient<$Result.GetResult<Prisma.$StoreLikePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of StoreLikes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreLikeCountArgs} args - Arguments to filter StoreLikes to count.
+     * @example
+     * // Count the number of StoreLikes
+     * const count = await prisma.storeLike.count({
+     *   where: {
+     *     // ... the filter for the StoreLikes we want to count
+     *   }
+     * })
+    **/
+    count<T extends StoreLikeCountArgs>(
+      args?: Subset<T, StoreLikeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StoreLikeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a StoreLike.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreLikeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StoreLikeAggregateArgs>(args: Subset<T, StoreLikeAggregateArgs>): Prisma.PrismaPromise<GetStoreLikeAggregateType<T>>
+
+    /**
+     * Group by StoreLike.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreLikeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StoreLikeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StoreLikeGroupByArgs['orderBy'] }
+        : { orderBy?: StoreLikeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StoreLikeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStoreLikeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the StoreLike model
+   */
+  readonly fields: StoreLikeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for StoreLike.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StoreLikeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    store<T extends StoreDefaultArgs<ExtArgs> = {}>(args?: Subset<T, StoreDefaultArgs<ExtArgs>>): Prisma__StoreClient<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the StoreLike model
+   */
+  interface StoreLikeFieldRefs {
+    readonly id: FieldRef<"StoreLike", 'String'>
+    readonly userId: FieldRef<"StoreLike", 'String'>
+    readonly storeId: FieldRef<"StoreLike", 'String'>
+    readonly createdAt: FieldRef<"StoreLike", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * StoreLike findUnique
+   */
+  export type StoreLikeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreLike
+     */
+    select?: StoreLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreLike
+     */
+    omit?: StoreLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreLikeInclude<ExtArgs> | null
+    /**
+     * Filter, which StoreLike to fetch.
+     */
+    where: StoreLikeWhereUniqueInput
+  }
+
+  /**
+   * StoreLike findUniqueOrThrow
+   */
+  export type StoreLikeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreLike
+     */
+    select?: StoreLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreLike
+     */
+    omit?: StoreLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreLikeInclude<ExtArgs> | null
+    /**
+     * Filter, which StoreLike to fetch.
+     */
+    where: StoreLikeWhereUniqueInput
+  }
+
+  /**
+   * StoreLike findFirst
+   */
+  export type StoreLikeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreLike
+     */
+    select?: StoreLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreLike
+     */
+    omit?: StoreLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreLikeInclude<ExtArgs> | null
+    /**
+     * Filter, which StoreLike to fetch.
+     */
+    where?: StoreLikeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StoreLikes to fetch.
+     */
+    orderBy?: StoreLikeOrderByWithRelationInput | StoreLikeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StoreLikes.
+     */
+    cursor?: StoreLikeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StoreLikes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StoreLikes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StoreLikes.
+     */
+    distinct?: StoreLikeScalarFieldEnum | StoreLikeScalarFieldEnum[]
+  }
+
+  /**
+   * StoreLike findFirstOrThrow
+   */
+  export type StoreLikeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreLike
+     */
+    select?: StoreLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreLike
+     */
+    omit?: StoreLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreLikeInclude<ExtArgs> | null
+    /**
+     * Filter, which StoreLike to fetch.
+     */
+    where?: StoreLikeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StoreLikes to fetch.
+     */
+    orderBy?: StoreLikeOrderByWithRelationInput | StoreLikeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StoreLikes.
+     */
+    cursor?: StoreLikeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StoreLikes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StoreLikes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StoreLikes.
+     */
+    distinct?: StoreLikeScalarFieldEnum | StoreLikeScalarFieldEnum[]
+  }
+
+  /**
+   * StoreLike findMany
+   */
+  export type StoreLikeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreLike
+     */
+    select?: StoreLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreLike
+     */
+    omit?: StoreLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreLikeInclude<ExtArgs> | null
+    /**
+     * Filter, which StoreLikes to fetch.
+     */
+    where?: StoreLikeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StoreLikes to fetch.
+     */
+    orderBy?: StoreLikeOrderByWithRelationInput | StoreLikeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing StoreLikes.
+     */
+    cursor?: StoreLikeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StoreLikes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StoreLikes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StoreLikes.
+     */
+    distinct?: StoreLikeScalarFieldEnum | StoreLikeScalarFieldEnum[]
+  }
+
+  /**
+   * StoreLike create
+   */
+  export type StoreLikeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreLike
+     */
+    select?: StoreLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreLike
+     */
+    omit?: StoreLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreLikeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a StoreLike.
+     */
+    data: XOR<StoreLikeCreateInput, StoreLikeUncheckedCreateInput>
+  }
+
+  /**
+   * StoreLike createMany
+   */
+  export type StoreLikeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many StoreLikes.
+     */
+    data: StoreLikeCreateManyInput | StoreLikeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * StoreLike createManyAndReturn
+   */
+  export type StoreLikeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreLike
+     */
+    select?: StoreLikeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreLike
+     */
+    omit?: StoreLikeOmit<ExtArgs> | null
+    /**
+     * The data used to create many StoreLikes.
+     */
+    data: StoreLikeCreateManyInput | StoreLikeCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreLikeIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * StoreLike update
+   */
+  export type StoreLikeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreLike
+     */
+    select?: StoreLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreLike
+     */
+    omit?: StoreLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreLikeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a StoreLike.
+     */
+    data: XOR<StoreLikeUpdateInput, StoreLikeUncheckedUpdateInput>
+    /**
+     * Choose, which StoreLike to update.
+     */
+    where: StoreLikeWhereUniqueInput
+  }
+
+  /**
+   * StoreLike updateMany
+   */
+  export type StoreLikeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update StoreLikes.
+     */
+    data: XOR<StoreLikeUpdateManyMutationInput, StoreLikeUncheckedUpdateManyInput>
+    /**
+     * Filter which StoreLikes to update
+     */
+    where?: StoreLikeWhereInput
+    /**
+     * Limit how many StoreLikes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * StoreLike updateManyAndReturn
+   */
+  export type StoreLikeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreLike
+     */
+    select?: StoreLikeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreLike
+     */
+    omit?: StoreLikeOmit<ExtArgs> | null
+    /**
+     * The data used to update StoreLikes.
+     */
+    data: XOR<StoreLikeUpdateManyMutationInput, StoreLikeUncheckedUpdateManyInput>
+    /**
+     * Filter which StoreLikes to update
+     */
+    where?: StoreLikeWhereInput
+    /**
+     * Limit how many StoreLikes to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreLikeIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * StoreLike upsert
+   */
+  export type StoreLikeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreLike
+     */
+    select?: StoreLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreLike
+     */
+    omit?: StoreLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreLikeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the StoreLike to update in case it exists.
+     */
+    where: StoreLikeWhereUniqueInput
+    /**
+     * In case the StoreLike found by the `where` argument doesn't exist, create a new StoreLike with this data.
+     */
+    create: XOR<StoreLikeCreateInput, StoreLikeUncheckedCreateInput>
+    /**
+     * In case the StoreLike was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StoreLikeUpdateInput, StoreLikeUncheckedUpdateInput>
+  }
+
+  /**
+   * StoreLike delete
+   */
+  export type StoreLikeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreLike
+     */
+    select?: StoreLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreLike
+     */
+    omit?: StoreLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreLikeInclude<ExtArgs> | null
+    /**
+     * Filter which StoreLike to delete.
+     */
+    where: StoreLikeWhereUniqueInput
+  }
+
+  /**
+   * StoreLike deleteMany
+   */
+  export type StoreLikeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StoreLikes to delete
+     */
+    where?: StoreLikeWhereInput
+    /**
+     * Limit how many StoreLikes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * StoreLike without action
+   */
+  export type StoreLikeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreLike
+     */
+    select?: StoreLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreLike
+     */
+    omit?: StoreLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreLikeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Conversation
+   */
+
+  export type AggregateConversation = {
+    _count: ConversationCountAggregateOutputType | null
+    _min: ConversationMinAggregateOutputType | null
+    _max: ConversationMaxAggregateOutputType | null
+  }
+
+  export type ConversationMinAggregateOutputType = {
+    id: string | null
+    storeId: string | null
+    buyerId: string | null
+    createdAt: Date | null
+    lastMessageAt: Date | null
+  }
+
+  export type ConversationMaxAggregateOutputType = {
+    id: string | null
+    storeId: string | null
+    buyerId: string | null
+    createdAt: Date | null
+    lastMessageAt: Date | null
+  }
+
+  export type ConversationCountAggregateOutputType = {
+    id: number
+    storeId: number
+    buyerId: number
+    createdAt: number
+    lastMessageAt: number
+    _all: number
+  }
+
+
+  export type ConversationMinAggregateInputType = {
+    id?: true
+    storeId?: true
+    buyerId?: true
+    createdAt?: true
+    lastMessageAt?: true
+  }
+
+  export type ConversationMaxAggregateInputType = {
+    id?: true
+    storeId?: true
+    buyerId?: true
+    createdAt?: true
+    lastMessageAt?: true
+  }
+
+  export type ConversationCountAggregateInputType = {
+    id?: true
+    storeId?: true
+    buyerId?: true
+    createdAt?: true
+    lastMessageAt?: true
+    _all?: true
+  }
+
+  export type ConversationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Conversation to aggregate.
+     */
+    where?: ConversationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Conversations to fetch.
+     */
+    orderBy?: ConversationOrderByWithRelationInput | ConversationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ConversationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Conversations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Conversations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Conversations
+    **/
+    _count?: true | ConversationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ConversationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ConversationMaxAggregateInputType
+  }
+
+  export type GetConversationAggregateType<T extends ConversationAggregateArgs> = {
+        [P in keyof T & keyof AggregateConversation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateConversation[P]>
+      : GetScalarType<T[P], AggregateConversation[P]>
+  }
+
+
+
+
+  export type ConversationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ConversationWhereInput
+    orderBy?: ConversationOrderByWithAggregationInput | ConversationOrderByWithAggregationInput[]
+    by: ConversationScalarFieldEnum[] | ConversationScalarFieldEnum
+    having?: ConversationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ConversationCountAggregateInputType | true
+    _min?: ConversationMinAggregateInputType
+    _max?: ConversationMaxAggregateInputType
+  }
+
+  export type ConversationGroupByOutputType = {
+    id: string
+    storeId: string
+    buyerId: string
+    createdAt: Date
+    lastMessageAt: Date
+    _count: ConversationCountAggregateOutputType | null
+    _min: ConversationMinAggregateOutputType | null
+    _max: ConversationMaxAggregateOutputType | null
+  }
+
+  type GetConversationGroupByPayload<T extends ConversationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ConversationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ConversationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ConversationGroupByOutputType[P]>
+            : GetScalarType<T[P], ConversationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ConversationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    storeId?: boolean
+    buyerId?: boolean
+    createdAt?: boolean
+    lastMessageAt?: boolean
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+    buyer?: boolean | UserDefaultArgs<ExtArgs>
+    messages?: boolean | Conversation$messagesArgs<ExtArgs>
+    notification?: boolean | Conversation$notificationArgs<ExtArgs>
+    UserPresence?: boolean | Conversation$UserPresenceArgs<ExtArgs>
+    _count?: boolean | ConversationCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["conversation"]>
+
+  export type ConversationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    storeId?: boolean
+    buyerId?: boolean
+    createdAt?: boolean
+    lastMessageAt?: boolean
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+    buyer?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["conversation"]>
+
+  export type ConversationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    storeId?: boolean
+    buyerId?: boolean
+    createdAt?: boolean
+    lastMessageAt?: boolean
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+    buyer?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["conversation"]>
+
+  export type ConversationSelectScalar = {
+    id?: boolean
+    storeId?: boolean
+    buyerId?: boolean
+    createdAt?: boolean
+    lastMessageAt?: boolean
+  }
+
+  export type ConversationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "storeId" | "buyerId" | "createdAt" | "lastMessageAt", ExtArgs["result"]["conversation"]>
+  export type ConversationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+    buyer?: boolean | UserDefaultArgs<ExtArgs>
+    messages?: boolean | Conversation$messagesArgs<ExtArgs>
+    notification?: boolean | Conversation$notificationArgs<ExtArgs>
+    UserPresence?: boolean | Conversation$UserPresenceArgs<ExtArgs>
+    _count?: boolean | ConversationCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ConversationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+    buyer?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ConversationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+    buyer?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ConversationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Conversation"
+    objects: {
+      store: Prisma.$StorePayload<ExtArgs>
+      buyer: Prisma.$UserPayload<ExtArgs>
+      messages: Prisma.$MessagePayload<ExtArgs>[]
+      notification: Prisma.$NotificationPayload<ExtArgs>[]
+      UserPresence: Prisma.$UserPresencePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      storeId: string
+      buyerId: string
+      createdAt: Date
+      lastMessageAt: Date
+    }, ExtArgs["result"]["conversation"]>
+    composites: {}
+  }
+
+  type ConversationGetPayload<S extends boolean | null | undefined | ConversationDefaultArgs> = $Result.GetResult<Prisma.$ConversationPayload, S>
+
+  type ConversationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ConversationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ConversationCountAggregateInputType | true
+    }
+
+  export interface ConversationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Conversation'], meta: { name: 'Conversation' } }
+    /**
+     * Find zero or one Conversation that matches the filter.
+     * @param {ConversationFindUniqueArgs} args - Arguments to find a Conversation
+     * @example
+     * // Get one Conversation
+     * const conversation = await prisma.conversation.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ConversationFindUniqueArgs>(args: SelectSubset<T, ConversationFindUniqueArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Conversation that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ConversationFindUniqueOrThrowArgs} args - Arguments to find a Conversation
+     * @example
+     * // Get one Conversation
+     * const conversation = await prisma.conversation.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ConversationFindUniqueOrThrowArgs>(args: SelectSubset<T, ConversationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Conversation that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConversationFindFirstArgs} args - Arguments to find a Conversation
+     * @example
+     * // Get one Conversation
+     * const conversation = await prisma.conversation.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ConversationFindFirstArgs>(args?: SelectSubset<T, ConversationFindFirstArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Conversation that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConversationFindFirstOrThrowArgs} args - Arguments to find a Conversation
+     * @example
+     * // Get one Conversation
+     * const conversation = await prisma.conversation.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ConversationFindFirstOrThrowArgs>(args?: SelectSubset<T, ConversationFindFirstOrThrowArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Conversations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConversationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Conversations
+     * const conversations = await prisma.conversation.findMany()
+     * 
+     * // Get first 10 Conversations
+     * const conversations = await prisma.conversation.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const conversationWithIdOnly = await prisma.conversation.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ConversationFindManyArgs>(args?: SelectSubset<T, ConversationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Conversation.
+     * @param {ConversationCreateArgs} args - Arguments to create a Conversation.
+     * @example
+     * // Create one Conversation
+     * const Conversation = await prisma.conversation.create({
+     *   data: {
+     *     // ... data to create a Conversation
+     *   }
+     * })
+     * 
+     */
+    create<T extends ConversationCreateArgs>(args: SelectSubset<T, ConversationCreateArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Conversations.
+     * @param {ConversationCreateManyArgs} args - Arguments to create many Conversations.
+     * @example
+     * // Create many Conversations
+     * const conversation = await prisma.conversation.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ConversationCreateManyArgs>(args?: SelectSubset<T, ConversationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Conversations and returns the data saved in the database.
+     * @param {ConversationCreateManyAndReturnArgs} args - Arguments to create many Conversations.
+     * @example
+     * // Create many Conversations
+     * const conversation = await prisma.conversation.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Conversations and only return the `id`
+     * const conversationWithIdOnly = await prisma.conversation.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ConversationCreateManyAndReturnArgs>(args?: SelectSubset<T, ConversationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Conversation.
+     * @param {ConversationDeleteArgs} args - Arguments to delete one Conversation.
+     * @example
+     * // Delete one Conversation
+     * const Conversation = await prisma.conversation.delete({
+     *   where: {
+     *     // ... filter to delete one Conversation
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ConversationDeleteArgs>(args: SelectSubset<T, ConversationDeleteArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Conversation.
+     * @param {ConversationUpdateArgs} args - Arguments to update one Conversation.
+     * @example
+     * // Update one Conversation
+     * const conversation = await prisma.conversation.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ConversationUpdateArgs>(args: SelectSubset<T, ConversationUpdateArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Conversations.
+     * @param {ConversationDeleteManyArgs} args - Arguments to filter Conversations to delete.
+     * @example
+     * // Delete a few Conversations
+     * const { count } = await prisma.conversation.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ConversationDeleteManyArgs>(args?: SelectSubset<T, ConversationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Conversations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConversationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Conversations
+     * const conversation = await prisma.conversation.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ConversationUpdateManyArgs>(args: SelectSubset<T, ConversationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Conversations and returns the data updated in the database.
+     * @param {ConversationUpdateManyAndReturnArgs} args - Arguments to update many Conversations.
+     * @example
+     * // Update many Conversations
+     * const conversation = await prisma.conversation.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Conversations and only return the `id`
+     * const conversationWithIdOnly = await prisma.conversation.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ConversationUpdateManyAndReturnArgs>(args: SelectSubset<T, ConversationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Conversation.
+     * @param {ConversationUpsertArgs} args - Arguments to update or create a Conversation.
+     * @example
+     * // Update or create a Conversation
+     * const conversation = await prisma.conversation.upsert({
+     *   create: {
+     *     // ... data to create a Conversation
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Conversation we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ConversationUpsertArgs>(args: SelectSubset<T, ConversationUpsertArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Conversations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConversationCountArgs} args - Arguments to filter Conversations to count.
+     * @example
+     * // Count the number of Conversations
+     * const count = await prisma.conversation.count({
+     *   where: {
+     *     // ... the filter for the Conversations we want to count
+     *   }
+     * })
+    **/
+    count<T extends ConversationCountArgs>(
+      args?: Subset<T, ConversationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ConversationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Conversation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConversationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ConversationAggregateArgs>(args: Subset<T, ConversationAggregateArgs>): Prisma.PrismaPromise<GetConversationAggregateType<T>>
+
+    /**
+     * Group by Conversation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConversationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ConversationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ConversationGroupByArgs['orderBy'] }
+        : { orderBy?: ConversationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ConversationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetConversationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Conversation model
+   */
+  readonly fields: ConversationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Conversation.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ConversationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    store<T extends StoreDefaultArgs<ExtArgs> = {}>(args?: Subset<T, StoreDefaultArgs<ExtArgs>>): Prisma__StoreClient<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    buyer<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    messages<T extends Conversation$messagesArgs<ExtArgs> = {}>(args?: Subset<T, Conversation$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    notification<T extends Conversation$notificationArgs<ExtArgs> = {}>(args?: Subset<T, Conversation$notificationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    UserPresence<T extends Conversation$UserPresenceArgs<ExtArgs> = {}>(args?: Subset<T, Conversation$UserPresenceArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPresencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Conversation model
+   */
+  interface ConversationFieldRefs {
+    readonly id: FieldRef<"Conversation", 'String'>
+    readonly storeId: FieldRef<"Conversation", 'String'>
+    readonly buyerId: FieldRef<"Conversation", 'String'>
+    readonly createdAt: FieldRef<"Conversation", 'DateTime'>
+    readonly lastMessageAt: FieldRef<"Conversation", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Conversation findUnique
+   */
+  export type ConversationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    /**
+     * Filter, which Conversation to fetch.
+     */
+    where: ConversationWhereUniqueInput
+  }
+
+  /**
+   * Conversation findUniqueOrThrow
+   */
+  export type ConversationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    /**
+     * Filter, which Conversation to fetch.
+     */
+    where: ConversationWhereUniqueInput
+  }
+
+  /**
+   * Conversation findFirst
+   */
+  export type ConversationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    /**
+     * Filter, which Conversation to fetch.
+     */
+    where?: ConversationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Conversations to fetch.
+     */
+    orderBy?: ConversationOrderByWithRelationInput | ConversationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Conversations.
+     */
+    cursor?: ConversationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Conversations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Conversations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Conversations.
+     */
+    distinct?: ConversationScalarFieldEnum | ConversationScalarFieldEnum[]
+  }
+
+  /**
+   * Conversation findFirstOrThrow
+   */
+  export type ConversationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    /**
+     * Filter, which Conversation to fetch.
+     */
+    where?: ConversationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Conversations to fetch.
+     */
+    orderBy?: ConversationOrderByWithRelationInput | ConversationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Conversations.
+     */
+    cursor?: ConversationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Conversations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Conversations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Conversations.
+     */
+    distinct?: ConversationScalarFieldEnum | ConversationScalarFieldEnum[]
+  }
+
+  /**
+   * Conversation findMany
+   */
+  export type ConversationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    /**
+     * Filter, which Conversations to fetch.
+     */
+    where?: ConversationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Conversations to fetch.
+     */
+    orderBy?: ConversationOrderByWithRelationInput | ConversationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Conversations.
+     */
+    cursor?: ConversationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Conversations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Conversations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Conversations.
+     */
+    distinct?: ConversationScalarFieldEnum | ConversationScalarFieldEnum[]
+  }
+
+  /**
+   * Conversation create
+   */
+  export type ConversationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Conversation.
+     */
+    data: XOR<ConversationCreateInput, ConversationUncheckedCreateInput>
+  }
+
+  /**
+   * Conversation createMany
+   */
+  export type ConversationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Conversations.
+     */
+    data: ConversationCreateManyInput | ConversationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Conversation createManyAndReturn
+   */
+  export type ConversationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * The data used to create many Conversations.
+     */
+    data: ConversationCreateManyInput | ConversationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Conversation update
+   */
+  export type ConversationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Conversation.
+     */
+    data: XOR<ConversationUpdateInput, ConversationUncheckedUpdateInput>
+    /**
+     * Choose, which Conversation to update.
+     */
+    where: ConversationWhereUniqueInput
+  }
+
+  /**
+   * Conversation updateMany
+   */
+  export type ConversationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Conversations.
+     */
+    data: XOR<ConversationUpdateManyMutationInput, ConversationUncheckedUpdateManyInput>
+    /**
+     * Filter which Conversations to update
+     */
+    where?: ConversationWhereInput
+    /**
+     * Limit how many Conversations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Conversation updateManyAndReturn
+   */
+  export type ConversationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * The data used to update Conversations.
+     */
+    data: XOR<ConversationUpdateManyMutationInput, ConversationUncheckedUpdateManyInput>
+    /**
+     * Filter which Conversations to update
+     */
+    where?: ConversationWhereInput
+    /**
+     * Limit how many Conversations to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Conversation upsert
+   */
+  export type ConversationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Conversation to update in case it exists.
+     */
+    where: ConversationWhereUniqueInput
+    /**
+     * In case the Conversation found by the `where` argument doesn't exist, create a new Conversation with this data.
+     */
+    create: XOR<ConversationCreateInput, ConversationUncheckedCreateInput>
+    /**
+     * In case the Conversation was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ConversationUpdateInput, ConversationUncheckedUpdateInput>
+  }
+
+  /**
+   * Conversation delete
+   */
+  export type ConversationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    /**
+     * Filter which Conversation to delete.
+     */
+    where: ConversationWhereUniqueInput
+  }
+
+  /**
+   * Conversation deleteMany
+   */
+  export type ConversationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Conversations to delete
+     */
+    where?: ConversationWhereInput
+    /**
+     * Limit how many Conversations to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Conversation.messages
+   */
+  export type Conversation$messagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    where?: MessageWhereInput
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    cursor?: MessageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MessageScalarFieldEnum | MessageScalarFieldEnum[]
+  }
+
+  /**
+   * Conversation.notification
+   */
+  export type Conversation$notificationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    where?: NotificationWhereInput
+    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    cursor?: NotificationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: NotificationScalarFieldEnum | NotificationScalarFieldEnum[]
+  }
+
+  /**
+   * Conversation.UserPresence
+   */
+  export type Conversation$UserPresenceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPresence
+     */
+    select?: UserPresenceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPresence
+     */
+    omit?: UserPresenceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPresenceInclude<ExtArgs> | null
+    where?: UserPresenceWhereInput
+    orderBy?: UserPresenceOrderByWithRelationInput | UserPresenceOrderByWithRelationInput[]
+    cursor?: UserPresenceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserPresenceScalarFieldEnum | UserPresenceScalarFieldEnum[]
+  }
+
+  /**
+   * Conversation without action
+   */
+  export type ConversationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Message
+   */
+
+  export type AggregateMessage = {
+    _count: MessageCountAggregateOutputType | null
+    _min: MessageMinAggregateOutputType | null
+    _max: MessageMaxAggregateOutputType | null
+  }
+
+  export type MessageMinAggregateOutputType = {
+    id: string | null
+    conversationId: string | null
+    senderId: string | null
+    text: string | null
+    seen: boolean | null
+    createdAt: Date | null
+  }
+
+  export type MessageMaxAggregateOutputType = {
+    id: string | null
+    conversationId: string | null
+    senderId: string | null
+    text: string | null
+    seen: boolean | null
+    createdAt: Date | null
+  }
+
+  export type MessageCountAggregateOutputType = {
+    id: number
+    conversationId: number
+    senderId: number
+    text: number
+    seen: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type MessageMinAggregateInputType = {
+    id?: true
+    conversationId?: true
+    senderId?: true
+    text?: true
+    seen?: true
+    createdAt?: true
+  }
+
+  export type MessageMaxAggregateInputType = {
+    id?: true
+    conversationId?: true
+    senderId?: true
+    text?: true
+    seen?: true
+    createdAt?: true
+  }
+
+  export type MessageCountAggregateInputType = {
+    id?: true
+    conversationId?: true
+    senderId?: true
+    text?: true
+    seen?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type MessageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Message to aggregate.
+     */
+    where?: MessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Messages to fetch.
+     */
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Messages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Messages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Messages
+    **/
+    _count?: true | MessageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MessageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MessageMaxAggregateInputType
+  }
+
+  export type GetMessageAggregateType<T extends MessageAggregateArgs> = {
+        [P in keyof T & keyof AggregateMessage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMessage[P]>
+      : GetScalarType<T[P], AggregateMessage[P]>
+  }
+
+
+
+
+  export type MessageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MessageWhereInput
+    orderBy?: MessageOrderByWithAggregationInput | MessageOrderByWithAggregationInput[]
+    by: MessageScalarFieldEnum[] | MessageScalarFieldEnum
+    having?: MessageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MessageCountAggregateInputType | true
+    _min?: MessageMinAggregateInputType
+    _max?: MessageMaxAggregateInputType
+  }
+
+  export type MessageGroupByOutputType = {
+    id: string
+    conversationId: string
+    senderId: string
+    text: string
+    seen: boolean
+    createdAt: Date
+    _count: MessageCountAggregateOutputType | null
+    _min: MessageMinAggregateOutputType | null
+    _max: MessageMaxAggregateOutputType | null
+  }
+
+  type GetMessageGroupByPayload<T extends MessageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MessageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MessageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MessageGroupByOutputType[P]>
+            : GetScalarType<T[P], MessageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MessageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    conversationId?: boolean
+    senderId?: boolean
+    text?: boolean
+    seen?: boolean
+    createdAt?: boolean
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["message"]>
+
+  export type MessageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    conversationId?: boolean
+    senderId?: boolean
+    text?: boolean
+    seen?: boolean
+    createdAt?: boolean
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["message"]>
+
+  export type MessageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    conversationId?: boolean
+    senderId?: boolean
+    text?: boolean
+    seen?: boolean
+    createdAt?: boolean
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["message"]>
+
+  export type MessageSelectScalar = {
+    id?: boolean
+    conversationId?: boolean
+    senderId?: boolean
+    text?: boolean
+    seen?: boolean
+    createdAt?: boolean
+  }
+
+  export type MessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "conversationId" | "senderId" | "text" | "seen" | "createdAt", ExtArgs["result"]["message"]>
+  export type MessageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type MessageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type MessageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $MessagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Message"
+    objects: {
+      conversation: Prisma.$ConversationPayload<ExtArgs>
+      sender: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      conversationId: string
+      senderId: string
+      text: string
+      seen: boolean
+      createdAt: Date
+    }, ExtArgs["result"]["message"]>
+    composites: {}
+  }
+
+  type MessageGetPayload<S extends boolean | null | undefined | MessageDefaultArgs> = $Result.GetResult<Prisma.$MessagePayload, S>
+
+  type MessageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MessageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MessageCountAggregateInputType | true
+    }
+
+  export interface MessageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Message'], meta: { name: 'Message' } }
+    /**
+     * Find zero or one Message that matches the filter.
+     * @param {MessageFindUniqueArgs} args - Arguments to find a Message
+     * @example
+     * // Get one Message
+     * const message = await prisma.message.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MessageFindUniqueArgs>(args: SelectSubset<T, MessageFindUniqueArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Message that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MessageFindUniqueOrThrowArgs} args - Arguments to find a Message
+     * @example
+     * // Get one Message
+     * const message = await prisma.message.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MessageFindUniqueOrThrowArgs>(args: SelectSubset<T, MessageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Message that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageFindFirstArgs} args - Arguments to find a Message
+     * @example
+     * // Get one Message
+     * const message = await prisma.message.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MessageFindFirstArgs>(args?: SelectSubset<T, MessageFindFirstArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Message that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageFindFirstOrThrowArgs} args - Arguments to find a Message
+     * @example
+     * // Get one Message
+     * const message = await prisma.message.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MessageFindFirstOrThrowArgs>(args?: SelectSubset<T, MessageFindFirstOrThrowArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Messages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Messages
+     * const messages = await prisma.message.findMany()
+     * 
+     * // Get first 10 Messages
+     * const messages = await prisma.message.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const messageWithIdOnly = await prisma.message.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MessageFindManyArgs>(args?: SelectSubset<T, MessageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Message.
+     * @param {MessageCreateArgs} args - Arguments to create a Message.
+     * @example
+     * // Create one Message
+     * const Message = await prisma.message.create({
+     *   data: {
+     *     // ... data to create a Message
+     *   }
+     * })
+     * 
+     */
+    create<T extends MessageCreateArgs>(args: SelectSubset<T, MessageCreateArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Messages.
+     * @param {MessageCreateManyArgs} args - Arguments to create many Messages.
+     * @example
+     * // Create many Messages
+     * const message = await prisma.message.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MessageCreateManyArgs>(args?: SelectSubset<T, MessageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Messages and returns the data saved in the database.
+     * @param {MessageCreateManyAndReturnArgs} args - Arguments to create many Messages.
+     * @example
+     * // Create many Messages
+     * const message = await prisma.message.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Messages and only return the `id`
+     * const messageWithIdOnly = await prisma.message.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MessageCreateManyAndReturnArgs>(args?: SelectSubset<T, MessageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Message.
+     * @param {MessageDeleteArgs} args - Arguments to delete one Message.
+     * @example
+     * // Delete one Message
+     * const Message = await prisma.message.delete({
+     *   where: {
+     *     // ... filter to delete one Message
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MessageDeleteArgs>(args: SelectSubset<T, MessageDeleteArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Message.
+     * @param {MessageUpdateArgs} args - Arguments to update one Message.
+     * @example
+     * // Update one Message
+     * const message = await prisma.message.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MessageUpdateArgs>(args: SelectSubset<T, MessageUpdateArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Messages.
+     * @param {MessageDeleteManyArgs} args - Arguments to filter Messages to delete.
+     * @example
+     * // Delete a few Messages
+     * const { count } = await prisma.message.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MessageDeleteManyArgs>(args?: SelectSubset<T, MessageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Messages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Messages
+     * const message = await prisma.message.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MessageUpdateManyArgs>(args: SelectSubset<T, MessageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Messages and returns the data updated in the database.
+     * @param {MessageUpdateManyAndReturnArgs} args - Arguments to update many Messages.
+     * @example
+     * // Update many Messages
+     * const message = await prisma.message.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Messages and only return the `id`
+     * const messageWithIdOnly = await prisma.message.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MessageUpdateManyAndReturnArgs>(args: SelectSubset<T, MessageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Message.
+     * @param {MessageUpsertArgs} args - Arguments to update or create a Message.
+     * @example
+     * // Update or create a Message
+     * const message = await prisma.message.upsert({
+     *   create: {
+     *     // ... data to create a Message
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Message we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MessageUpsertArgs>(args: SelectSubset<T, MessageUpsertArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Messages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageCountArgs} args - Arguments to filter Messages to count.
+     * @example
+     * // Count the number of Messages
+     * const count = await prisma.message.count({
+     *   where: {
+     *     // ... the filter for the Messages we want to count
+     *   }
+     * })
+    **/
+    count<T extends MessageCountArgs>(
+      args?: Subset<T, MessageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MessageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Message.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MessageAggregateArgs>(args: Subset<T, MessageAggregateArgs>): Prisma.PrismaPromise<GetMessageAggregateType<T>>
+
+    /**
+     * Group by Message.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MessageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MessageGroupByArgs['orderBy'] }
+        : { orderBy?: MessageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MessageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMessageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Message model
+   */
+  readonly fields: MessageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Message.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MessageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    conversation<T extends ConversationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ConversationDefaultArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    sender<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Message model
+   */
+  interface MessageFieldRefs {
+    readonly id: FieldRef<"Message", 'String'>
+    readonly conversationId: FieldRef<"Message", 'String'>
+    readonly senderId: FieldRef<"Message", 'String'>
+    readonly text: FieldRef<"Message", 'String'>
+    readonly seen: FieldRef<"Message", 'Boolean'>
+    readonly createdAt: FieldRef<"Message", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Message findUnique
+   */
+  export type MessageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * Filter, which Message to fetch.
+     */
+    where: MessageWhereUniqueInput
+  }
+
+  /**
+   * Message findUniqueOrThrow
+   */
+  export type MessageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * Filter, which Message to fetch.
+     */
+    where: MessageWhereUniqueInput
+  }
+
+  /**
+   * Message findFirst
+   */
+  export type MessageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * Filter, which Message to fetch.
+     */
+    where?: MessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Messages to fetch.
+     */
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Messages.
+     */
+    cursor?: MessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Messages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Messages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Messages.
+     */
+    distinct?: MessageScalarFieldEnum | MessageScalarFieldEnum[]
+  }
+
+  /**
+   * Message findFirstOrThrow
+   */
+  export type MessageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * Filter, which Message to fetch.
+     */
+    where?: MessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Messages to fetch.
+     */
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Messages.
+     */
+    cursor?: MessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Messages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Messages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Messages.
+     */
+    distinct?: MessageScalarFieldEnum | MessageScalarFieldEnum[]
+  }
+
+  /**
+   * Message findMany
+   */
+  export type MessageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * Filter, which Messages to fetch.
+     */
+    where?: MessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Messages to fetch.
+     */
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Messages.
+     */
+    cursor?: MessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Messages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Messages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Messages.
+     */
+    distinct?: MessageScalarFieldEnum | MessageScalarFieldEnum[]
+  }
+
+  /**
+   * Message create
+   */
+  export type MessageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Message.
+     */
+    data: XOR<MessageCreateInput, MessageUncheckedCreateInput>
+  }
+
+  /**
+   * Message createMany
+   */
+  export type MessageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Messages.
+     */
+    data: MessageCreateManyInput | MessageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Message createManyAndReturn
+   */
+  export type MessageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * The data used to create many Messages.
+     */
+    data: MessageCreateManyInput | MessageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Message update
+   */
+  export type MessageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Message.
+     */
+    data: XOR<MessageUpdateInput, MessageUncheckedUpdateInput>
+    /**
+     * Choose, which Message to update.
+     */
+    where: MessageWhereUniqueInput
+  }
+
+  /**
+   * Message updateMany
+   */
+  export type MessageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Messages.
+     */
+    data: XOR<MessageUpdateManyMutationInput, MessageUncheckedUpdateManyInput>
+    /**
+     * Filter which Messages to update
+     */
+    where?: MessageWhereInput
+    /**
+     * Limit how many Messages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Message updateManyAndReturn
+   */
+  export type MessageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * The data used to update Messages.
+     */
+    data: XOR<MessageUpdateManyMutationInput, MessageUncheckedUpdateManyInput>
+    /**
+     * Filter which Messages to update
+     */
+    where?: MessageWhereInput
+    /**
+     * Limit how many Messages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Message upsert
+   */
+  export type MessageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Message to update in case it exists.
+     */
+    where: MessageWhereUniqueInput
+    /**
+     * In case the Message found by the `where` argument doesn't exist, create a new Message with this data.
+     */
+    create: XOR<MessageCreateInput, MessageUncheckedCreateInput>
+    /**
+     * In case the Message was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MessageUpdateInput, MessageUncheckedUpdateInput>
+  }
+
+  /**
+   * Message delete
+   */
+  export type MessageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * Filter which Message to delete.
+     */
+    where: MessageWhereUniqueInput
+  }
+
+  /**
+   * Message deleteMany
+   */
+  export type MessageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Messages to delete
+     */
+    where?: MessageWhereInput
+    /**
+     * Limit how many Messages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Message without action
+   */
+  export type MessageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Notification
+   */
+
+  export type AggregateNotification = {
+    _count: NotificationCountAggregateOutputType | null
+    _min: NotificationMinAggregateOutputType | null
+    _max: NotificationMaxAggregateOutputType | null
+  }
+
+  export type NotificationMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    conversationId: string | null
+    message: string | null
+    isRead: boolean | null
+    createdAt: Date | null
+  }
+
+  export type NotificationMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    conversationId: string | null
+    message: string | null
+    isRead: boolean | null
+    createdAt: Date | null
+  }
+
+  export type NotificationCountAggregateOutputType = {
+    id: number
+    userId: number
+    conversationId: number
+    message: number
+    isRead: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type NotificationMinAggregateInputType = {
+    id?: true
+    userId?: true
+    conversationId?: true
+    message?: true
+    isRead?: true
+    createdAt?: true
+  }
+
+  export type NotificationMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    conversationId?: true
+    message?: true
+    isRead?: true
+    createdAt?: true
+  }
+
+  export type NotificationCountAggregateInputType = {
+    id?: true
+    userId?: true
+    conversationId?: true
+    message?: true
+    isRead?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type NotificationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Notification to aggregate.
+     */
+    where?: NotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notifications to fetch.
+     */
+    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: NotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Notifications
+    **/
+    _count?: true | NotificationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: NotificationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: NotificationMaxAggregateInputType
+  }
+
+  export type GetNotificationAggregateType<T extends NotificationAggregateArgs> = {
+        [P in keyof T & keyof AggregateNotification]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNotification[P]>
+      : GetScalarType<T[P], AggregateNotification[P]>
+  }
+
+
+
+
+  export type NotificationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NotificationWhereInput
+    orderBy?: NotificationOrderByWithAggregationInput | NotificationOrderByWithAggregationInput[]
+    by: NotificationScalarFieldEnum[] | NotificationScalarFieldEnum
+    having?: NotificationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: NotificationCountAggregateInputType | true
+    _min?: NotificationMinAggregateInputType
+    _max?: NotificationMaxAggregateInputType
+  }
+
+  export type NotificationGroupByOutputType = {
+    id: string
+    userId: string
+    conversationId: string
+    message: string
+    isRead: boolean
+    createdAt: Date
+    _count: NotificationCountAggregateOutputType | null
+    _min: NotificationMinAggregateOutputType | null
+    _max: NotificationMaxAggregateOutputType | null
+  }
+
+  type GetNotificationGroupByPayload<T extends NotificationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<NotificationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof NotificationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NotificationGroupByOutputType[P]>
+            : GetScalarType<T[P], NotificationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type NotificationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    conversationId?: boolean
+    message?: boolean
+    isRead?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["notification"]>
+
+  export type NotificationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    conversationId?: boolean
+    message?: boolean
+    isRead?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["notification"]>
+
+  export type NotificationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    conversationId?: boolean
+    message?: boolean
+    isRead?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["notification"]>
+
+  export type NotificationSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    conversationId?: boolean
+    message?: boolean
+    isRead?: boolean
+    createdAt?: boolean
+  }
+
+  export type NotificationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "conversationId" | "message" | "isRead" | "createdAt", ExtArgs["result"]["notification"]>
+  export type NotificationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+  }
+  export type NotificationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+  }
+  export type NotificationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+  }
+
+  export type $NotificationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Notification"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      conversation: Prisma.$ConversationPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      conversationId: string
+      message: string
+      isRead: boolean
+      createdAt: Date
+    }, ExtArgs["result"]["notification"]>
+    composites: {}
+  }
+
+  type NotificationGetPayload<S extends boolean | null | undefined | NotificationDefaultArgs> = $Result.GetResult<Prisma.$NotificationPayload, S>
+
+  type NotificationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<NotificationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: NotificationCountAggregateInputType | true
+    }
+
+  export interface NotificationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Notification'], meta: { name: 'Notification' } }
+    /**
+     * Find zero or one Notification that matches the filter.
+     * @param {NotificationFindUniqueArgs} args - Arguments to find a Notification
+     * @example
+     * // Get one Notification
+     * const notification = await prisma.notification.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends NotificationFindUniqueArgs>(args: SelectSubset<T, NotificationFindUniqueArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Notification that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {NotificationFindUniqueOrThrowArgs} args - Arguments to find a Notification
+     * @example
+     * // Get one Notification
+     * const notification = await prisma.notification.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends NotificationFindUniqueOrThrowArgs>(args: SelectSubset<T, NotificationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Notification that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationFindFirstArgs} args - Arguments to find a Notification
+     * @example
+     * // Get one Notification
+     * const notification = await prisma.notification.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends NotificationFindFirstArgs>(args?: SelectSubset<T, NotificationFindFirstArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Notification that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationFindFirstOrThrowArgs} args - Arguments to find a Notification
+     * @example
+     * // Get one Notification
+     * const notification = await prisma.notification.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends NotificationFindFirstOrThrowArgs>(args?: SelectSubset<T, NotificationFindFirstOrThrowArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Notifications that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Notifications
+     * const notifications = await prisma.notification.findMany()
+     * 
+     * // Get first 10 Notifications
+     * const notifications = await prisma.notification.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const notificationWithIdOnly = await prisma.notification.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends NotificationFindManyArgs>(args?: SelectSubset<T, NotificationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Notification.
+     * @param {NotificationCreateArgs} args - Arguments to create a Notification.
+     * @example
+     * // Create one Notification
+     * const Notification = await prisma.notification.create({
+     *   data: {
+     *     // ... data to create a Notification
+     *   }
+     * })
+     * 
+     */
+    create<T extends NotificationCreateArgs>(args: SelectSubset<T, NotificationCreateArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Notifications.
+     * @param {NotificationCreateManyArgs} args - Arguments to create many Notifications.
+     * @example
+     * // Create many Notifications
+     * const notification = await prisma.notification.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends NotificationCreateManyArgs>(args?: SelectSubset<T, NotificationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Notifications and returns the data saved in the database.
+     * @param {NotificationCreateManyAndReturnArgs} args - Arguments to create many Notifications.
+     * @example
+     * // Create many Notifications
+     * const notification = await prisma.notification.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Notifications and only return the `id`
+     * const notificationWithIdOnly = await prisma.notification.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends NotificationCreateManyAndReturnArgs>(args?: SelectSubset<T, NotificationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Notification.
+     * @param {NotificationDeleteArgs} args - Arguments to delete one Notification.
+     * @example
+     * // Delete one Notification
+     * const Notification = await prisma.notification.delete({
+     *   where: {
+     *     // ... filter to delete one Notification
+     *   }
+     * })
+     * 
+     */
+    delete<T extends NotificationDeleteArgs>(args: SelectSubset<T, NotificationDeleteArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Notification.
+     * @param {NotificationUpdateArgs} args - Arguments to update one Notification.
+     * @example
+     * // Update one Notification
+     * const notification = await prisma.notification.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends NotificationUpdateArgs>(args: SelectSubset<T, NotificationUpdateArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Notifications.
+     * @param {NotificationDeleteManyArgs} args - Arguments to filter Notifications to delete.
+     * @example
+     * // Delete a few Notifications
+     * const { count } = await prisma.notification.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends NotificationDeleteManyArgs>(args?: SelectSubset<T, NotificationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Notifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Notifications
+     * const notification = await prisma.notification.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends NotificationUpdateManyArgs>(args: SelectSubset<T, NotificationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Notifications and returns the data updated in the database.
+     * @param {NotificationUpdateManyAndReturnArgs} args - Arguments to update many Notifications.
+     * @example
+     * // Update many Notifications
+     * const notification = await prisma.notification.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Notifications and only return the `id`
+     * const notificationWithIdOnly = await prisma.notification.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends NotificationUpdateManyAndReturnArgs>(args: SelectSubset<T, NotificationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Notification.
+     * @param {NotificationUpsertArgs} args - Arguments to update or create a Notification.
+     * @example
+     * // Update or create a Notification
+     * const notification = await prisma.notification.upsert({
+     *   create: {
+     *     // ... data to create a Notification
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Notification we want to update
+     *   }
+     * })
+     */
+    upsert<T extends NotificationUpsertArgs>(args: SelectSubset<T, NotificationUpsertArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Notifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationCountArgs} args - Arguments to filter Notifications to count.
+     * @example
+     * // Count the number of Notifications
+     * const count = await prisma.notification.count({
+     *   where: {
+     *     // ... the filter for the Notifications we want to count
+     *   }
+     * })
+    **/
+    count<T extends NotificationCountArgs>(
+      args?: Subset<T, NotificationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NotificationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Notification.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends NotificationAggregateArgs>(args: Subset<T, NotificationAggregateArgs>): Prisma.PrismaPromise<GetNotificationAggregateType<T>>
+
+    /**
+     * Group by Notification.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends NotificationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: NotificationGroupByArgs['orderBy'] }
+        : { orderBy?: NotificationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, NotificationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNotificationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Notification model
+   */
+  readonly fields: NotificationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Notification.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__NotificationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    conversation<T extends ConversationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ConversationDefaultArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Notification model
+   */
+  interface NotificationFieldRefs {
+    readonly id: FieldRef<"Notification", 'String'>
+    readonly userId: FieldRef<"Notification", 'String'>
+    readonly conversationId: FieldRef<"Notification", 'String'>
+    readonly message: FieldRef<"Notification", 'String'>
+    readonly isRead: FieldRef<"Notification", 'Boolean'>
+    readonly createdAt: FieldRef<"Notification", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Notification findUnique
+   */
+  export type NotificationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which Notification to fetch.
+     */
+    where: NotificationWhereUniqueInput
+  }
+
+  /**
+   * Notification findUniqueOrThrow
+   */
+  export type NotificationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which Notification to fetch.
+     */
+    where: NotificationWhereUniqueInput
+  }
+
+  /**
+   * Notification findFirst
+   */
+  export type NotificationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which Notification to fetch.
+     */
+    where?: NotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notifications to fetch.
+     */
+    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Notifications.
+     */
+    cursor?: NotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Notifications.
+     */
+    distinct?: NotificationScalarFieldEnum | NotificationScalarFieldEnum[]
+  }
+
+  /**
+   * Notification findFirstOrThrow
+   */
+  export type NotificationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which Notification to fetch.
+     */
+    where?: NotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notifications to fetch.
+     */
+    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Notifications.
+     */
+    cursor?: NotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Notifications.
+     */
+    distinct?: NotificationScalarFieldEnum | NotificationScalarFieldEnum[]
+  }
+
+  /**
+   * Notification findMany
+   */
+  export type NotificationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which Notifications to fetch.
+     */
+    where?: NotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notifications to fetch.
+     */
+    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Notifications.
+     */
+    cursor?: NotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Notifications.
+     */
+    distinct?: NotificationScalarFieldEnum | NotificationScalarFieldEnum[]
+  }
+
+  /**
+   * Notification create
+   */
+  export type NotificationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Notification.
+     */
+    data: XOR<NotificationCreateInput, NotificationUncheckedCreateInput>
+  }
+
+  /**
+   * Notification createMany
+   */
+  export type NotificationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Notifications.
+     */
+    data: NotificationCreateManyInput | NotificationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Notification createManyAndReturn
+   */
+  export type NotificationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * The data used to create many Notifications.
+     */
+    data: NotificationCreateManyInput | NotificationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Notification update
+   */
+  export type NotificationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Notification.
+     */
+    data: XOR<NotificationUpdateInput, NotificationUncheckedUpdateInput>
+    /**
+     * Choose, which Notification to update.
+     */
+    where: NotificationWhereUniqueInput
+  }
+
+  /**
+   * Notification updateMany
+   */
+  export type NotificationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Notifications.
+     */
+    data: XOR<NotificationUpdateManyMutationInput, NotificationUncheckedUpdateManyInput>
+    /**
+     * Filter which Notifications to update
+     */
+    where?: NotificationWhereInput
+    /**
+     * Limit how many Notifications to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Notification updateManyAndReturn
+   */
+  export type NotificationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * The data used to update Notifications.
+     */
+    data: XOR<NotificationUpdateManyMutationInput, NotificationUncheckedUpdateManyInput>
+    /**
+     * Filter which Notifications to update
+     */
+    where?: NotificationWhereInput
+    /**
+     * Limit how many Notifications to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Notification upsert
+   */
+  export type NotificationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Notification to update in case it exists.
+     */
+    where: NotificationWhereUniqueInput
+    /**
+     * In case the Notification found by the `where` argument doesn't exist, create a new Notification with this data.
+     */
+    create: XOR<NotificationCreateInput, NotificationUncheckedCreateInput>
+    /**
+     * In case the Notification was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<NotificationUpdateInput, NotificationUncheckedUpdateInput>
+  }
+
+  /**
+   * Notification delete
+   */
+  export type NotificationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * Filter which Notification to delete.
+     */
+    where: NotificationWhereUniqueInput
+  }
+
+  /**
+   * Notification deleteMany
+   */
+  export type NotificationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Notifications to delete
+     */
+    where?: NotificationWhereInput
+    /**
+     * Limit how many Notifications to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Notification without action
+   */
+  export type NotificationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model UserPresence
+   */
+
+  export type AggregateUserPresence = {
+    _count: UserPresenceCountAggregateOutputType | null
+    _min: UserPresenceMinAggregateOutputType | null
+    _max: UserPresenceMaxAggregateOutputType | null
+  }
+
+  export type UserPresenceMinAggregateOutputType = {
+    userId: string | null
+    conversationId: string | null
+    updatedAt: Date | null
+  }
+
+  export type UserPresenceMaxAggregateOutputType = {
+    userId: string | null
+    conversationId: string | null
+    updatedAt: Date | null
+  }
+
+  export type UserPresenceCountAggregateOutputType = {
+    userId: number
+    conversationId: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type UserPresenceMinAggregateInputType = {
+    userId?: true
+    conversationId?: true
+    updatedAt?: true
+  }
+
+  export type UserPresenceMaxAggregateInputType = {
+    userId?: true
+    conversationId?: true
+    updatedAt?: true
+  }
+
+  export type UserPresenceCountAggregateInputType = {
+    userId?: true
+    conversationId?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type UserPresenceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserPresence to aggregate.
+     */
+    where?: UserPresenceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPresences to fetch.
+     */
+    orderBy?: UserPresenceOrderByWithRelationInput | UserPresenceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserPresenceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPresences from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPresences.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserPresences
+    **/
+    _count?: true | UserPresenceCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserPresenceMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserPresenceMaxAggregateInputType
+  }
+
+  export type GetUserPresenceAggregateType<T extends UserPresenceAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserPresence]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserPresence[P]>
+      : GetScalarType<T[P], AggregateUserPresence[P]>
+  }
+
+
+
+
+  export type UserPresenceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserPresenceWhereInput
+    orderBy?: UserPresenceOrderByWithAggregationInput | UserPresenceOrderByWithAggregationInput[]
+    by: UserPresenceScalarFieldEnum[] | UserPresenceScalarFieldEnum
+    having?: UserPresenceScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserPresenceCountAggregateInputType | true
+    _min?: UserPresenceMinAggregateInputType
+    _max?: UserPresenceMaxAggregateInputType
+  }
+
+  export type UserPresenceGroupByOutputType = {
+    userId: string
+    conversationId: string | null
+    updatedAt: Date
+    _count: UserPresenceCountAggregateOutputType | null
+    _min: UserPresenceMinAggregateOutputType | null
+    _max: UserPresenceMaxAggregateOutputType | null
+  }
+
+  type GetUserPresenceGroupByPayload<T extends UserPresenceGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserPresenceGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserPresenceGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserPresenceGroupByOutputType[P]>
+            : GetScalarType<T[P], UserPresenceGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserPresenceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    userId?: boolean
+    conversationId?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    conversation?: boolean | UserPresence$conversationArgs<ExtArgs>
+  }, ExtArgs["result"]["userPresence"]>
+
+  export type UserPresenceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    userId?: boolean
+    conversationId?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    conversation?: boolean | UserPresence$conversationArgs<ExtArgs>
+  }, ExtArgs["result"]["userPresence"]>
+
+  export type UserPresenceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    userId?: boolean
+    conversationId?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    conversation?: boolean | UserPresence$conversationArgs<ExtArgs>
+  }, ExtArgs["result"]["userPresence"]>
+
+  export type UserPresenceSelectScalar = {
+    userId?: boolean
+    conversationId?: boolean
+    updatedAt?: boolean
+  }
+
+  export type UserPresenceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "conversationId" | "updatedAt", ExtArgs["result"]["userPresence"]>
+  export type UserPresenceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    conversation?: boolean | UserPresence$conversationArgs<ExtArgs>
+  }
+  export type UserPresenceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    conversation?: boolean | UserPresence$conversationArgs<ExtArgs>
+  }
+  export type UserPresenceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    conversation?: boolean | UserPresence$conversationArgs<ExtArgs>
+  }
+
+  export type $UserPresencePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserPresence"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      conversation: Prisma.$ConversationPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      userId: string
+      conversationId: string | null
+      updatedAt: Date
+    }, ExtArgs["result"]["userPresence"]>
+    composites: {}
+  }
+
+  type UserPresenceGetPayload<S extends boolean | null | undefined | UserPresenceDefaultArgs> = $Result.GetResult<Prisma.$UserPresencePayload, S>
+
+  type UserPresenceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserPresenceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserPresenceCountAggregateInputType | true
+    }
+
+  export interface UserPresenceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserPresence'], meta: { name: 'UserPresence' } }
+    /**
+     * Find zero or one UserPresence that matches the filter.
+     * @param {UserPresenceFindUniqueArgs} args - Arguments to find a UserPresence
+     * @example
+     * // Get one UserPresence
+     * const userPresence = await prisma.userPresence.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserPresenceFindUniqueArgs>(args: SelectSubset<T, UserPresenceFindUniqueArgs<ExtArgs>>): Prisma__UserPresenceClient<$Result.GetResult<Prisma.$UserPresencePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UserPresence that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserPresenceFindUniqueOrThrowArgs} args - Arguments to find a UserPresence
+     * @example
+     * // Get one UserPresence
+     * const userPresence = await prisma.userPresence.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserPresenceFindUniqueOrThrowArgs>(args: SelectSubset<T, UserPresenceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserPresenceClient<$Result.GetResult<Prisma.$UserPresencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserPresence that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPresenceFindFirstArgs} args - Arguments to find a UserPresence
+     * @example
+     * // Get one UserPresence
+     * const userPresence = await prisma.userPresence.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserPresenceFindFirstArgs>(args?: SelectSubset<T, UserPresenceFindFirstArgs<ExtArgs>>): Prisma__UserPresenceClient<$Result.GetResult<Prisma.$UserPresencePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserPresence that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPresenceFindFirstOrThrowArgs} args - Arguments to find a UserPresence
+     * @example
+     * // Get one UserPresence
+     * const userPresence = await prisma.userPresence.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserPresenceFindFirstOrThrowArgs>(args?: SelectSubset<T, UserPresenceFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserPresenceClient<$Result.GetResult<Prisma.$UserPresencePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserPresences that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPresenceFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserPresences
+     * const userPresences = await prisma.userPresence.findMany()
+     * 
+     * // Get first 10 UserPresences
+     * const userPresences = await prisma.userPresence.findMany({ take: 10 })
+     * 
+     * // Only select the `userId`
+     * const userPresenceWithUserIdOnly = await prisma.userPresence.findMany({ select: { userId: true } })
+     * 
+     */
+    findMany<T extends UserPresenceFindManyArgs>(args?: SelectSubset<T, UserPresenceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPresencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UserPresence.
+     * @param {UserPresenceCreateArgs} args - Arguments to create a UserPresence.
+     * @example
+     * // Create one UserPresence
+     * const UserPresence = await prisma.userPresence.create({
+     *   data: {
+     *     // ... data to create a UserPresence
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserPresenceCreateArgs>(args: SelectSubset<T, UserPresenceCreateArgs<ExtArgs>>): Prisma__UserPresenceClient<$Result.GetResult<Prisma.$UserPresencePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UserPresences.
+     * @param {UserPresenceCreateManyArgs} args - Arguments to create many UserPresences.
+     * @example
+     * // Create many UserPresences
+     * const userPresence = await prisma.userPresence.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserPresenceCreateManyArgs>(args?: SelectSubset<T, UserPresenceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserPresences and returns the data saved in the database.
+     * @param {UserPresenceCreateManyAndReturnArgs} args - Arguments to create many UserPresences.
+     * @example
+     * // Create many UserPresences
+     * const userPresence = await prisma.userPresence.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserPresences and only return the `userId`
+     * const userPresenceWithUserIdOnly = await prisma.userPresence.createManyAndReturn({
+     *   select: { userId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserPresenceCreateManyAndReturnArgs>(args?: SelectSubset<T, UserPresenceCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPresencePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a UserPresence.
+     * @param {UserPresenceDeleteArgs} args - Arguments to delete one UserPresence.
+     * @example
+     * // Delete one UserPresence
+     * const UserPresence = await prisma.userPresence.delete({
+     *   where: {
+     *     // ... filter to delete one UserPresence
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserPresenceDeleteArgs>(args: SelectSubset<T, UserPresenceDeleteArgs<ExtArgs>>): Prisma__UserPresenceClient<$Result.GetResult<Prisma.$UserPresencePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UserPresence.
+     * @param {UserPresenceUpdateArgs} args - Arguments to update one UserPresence.
+     * @example
+     * // Update one UserPresence
+     * const userPresence = await prisma.userPresence.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserPresenceUpdateArgs>(args: SelectSubset<T, UserPresenceUpdateArgs<ExtArgs>>): Prisma__UserPresenceClient<$Result.GetResult<Prisma.$UserPresencePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UserPresences.
+     * @param {UserPresenceDeleteManyArgs} args - Arguments to filter UserPresences to delete.
+     * @example
+     * // Delete a few UserPresences
+     * const { count } = await prisma.userPresence.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserPresenceDeleteManyArgs>(args?: SelectSubset<T, UserPresenceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserPresences.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPresenceUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserPresences
+     * const userPresence = await prisma.userPresence.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserPresenceUpdateManyArgs>(args: SelectSubset<T, UserPresenceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserPresences and returns the data updated in the database.
+     * @param {UserPresenceUpdateManyAndReturnArgs} args - Arguments to update many UserPresences.
+     * @example
+     * // Update many UserPresences
+     * const userPresence = await prisma.userPresence.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more UserPresences and only return the `userId`
+     * const userPresenceWithUserIdOnly = await prisma.userPresence.updateManyAndReturn({
+     *   select: { userId: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserPresenceUpdateManyAndReturnArgs>(args: SelectSubset<T, UserPresenceUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPresencePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one UserPresence.
+     * @param {UserPresenceUpsertArgs} args - Arguments to update or create a UserPresence.
+     * @example
+     * // Update or create a UserPresence
+     * const userPresence = await prisma.userPresence.upsert({
+     *   create: {
+     *     // ... data to create a UserPresence
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserPresence we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserPresenceUpsertArgs>(args: SelectSubset<T, UserPresenceUpsertArgs<ExtArgs>>): Prisma__UserPresenceClient<$Result.GetResult<Prisma.$UserPresencePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UserPresences.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPresenceCountArgs} args - Arguments to filter UserPresences to count.
+     * @example
+     * // Count the number of UserPresences
+     * const count = await prisma.userPresence.count({
+     *   where: {
+     *     // ... the filter for the UserPresences we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserPresenceCountArgs>(
+      args?: Subset<T, UserPresenceCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserPresenceCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserPresence.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPresenceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserPresenceAggregateArgs>(args: Subset<T, UserPresenceAggregateArgs>): Prisma.PrismaPromise<GetUserPresenceAggregateType<T>>
+
+    /**
+     * Group by UserPresence.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPresenceGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserPresenceGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserPresenceGroupByArgs['orderBy'] }
+        : { orderBy?: UserPresenceGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserPresenceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserPresenceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserPresence model
+   */
+  readonly fields: UserPresenceFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserPresence.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserPresenceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    conversation<T extends UserPresence$conversationArgs<ExtArgs> = {}>(args?: Subset<T, UserPresence$conversationArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserPresence model
+   */
+  interface UserPresenceFieldRefs {
+    readonly userId: FieldRef<"UserPresence", 'String'>
+    readonly conversationId: FieldRef<"UserPresence", 'String'>
+    readonly updatedAt: FieldRef<"UserPresence", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserPresence findUnique
+   */
+  export type UserPresenceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPresence
+     */
+    select?: UserPresenceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPresence
+     */
+    omit?: UserPresenceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPresenceInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPresence to fetch.
+     */
+    where: UserPresenceWhereUniqueInput
+  }
+
+  /**
+   * UserPresence findUniqueOrThrow
+   */
+  export type UserPresenceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPresence
+     */
+    select?: UserPresenceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPresence
+     */
+    omit?: UserPresenceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPresenceInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPresence to fetch.
+     */
+    where: UserPresenceWhereUniqueInput
+  }
+
+  /**
+   * UserPresence findFirst
+   */
+  export type UserPresenceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPresence
+     */
+    select?: UserPresenceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPresence
+     */
+    omit?: UserPresenceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPresenceInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPresence to fetch.
+     */
+    where?: UserPresenceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPresences to fetch.
+     */
+    orderBy?: UserPresenceOrderByWithRelationInput | UserPresenceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserPresences.
+     */
+    cursor?: UserPresenceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPresences from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPresences.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserPresences.
+     */
+    distinct?: UserPresenceScalarFieldEnum | UserPresenceScalarFieldEnum[]
+  }
+
+  /**
+   * UserPresence findFirstOrThrow
+   */
+  export type UserPresenceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPresence
+     */
+    select?: UserPresenceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPresence
+     */
+    omit?: UserPresenceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPresenceInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPresence to fetch.
+     */
+    where?: UserPresenceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPresences to fetch.
+     */
+    orderBy?: UserPresenceOrderByWithRelationInput | UserPresenceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserPresences.
+     */
+    cursor?: UserPresenceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPresences from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPresences.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserPresences.
+     */
+    distinct?: UserPresenceScalarFieldEnum | UserPresenceScalarFieldEnum[]
+  }
+
+  /**
+   * UserPresence findMany
+   */
+  export type UserPresenceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPresence
+     */
+    select?: UserPresenceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPresence
+     */
+    omit?: UserPresenceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPresenceInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPresences to fetch.
+     */
+    where?: UserPresenceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPresences to fetch.
+     */
+    orderBy?: UserPresenceOrderByWithRelationInput | UserPresenceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserPresences.
+     */
+    cursor?: UserPresenceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPresences from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPresences.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserPresences.
+     */
+    distinct?: UserPresenceScalarFieldEnum | UserPresenceScalarFieldEnum[]
+  }
+
+  /**
+   * UserPresence create
+   */
+  export type UserPresenceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPresence
+     */
+    select?: UserPresenceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPresence
+     */
+    omit?: UserPresenceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPresenceInclude<ExtArgs> | null
+    /**
+     * The data needed to create a UserPresence.
+     */
+    data: XOR<UserPresenceCreateInput, UserPresenceUncheckedCreateInput>
+  }
+
+  /**
+   * UserPresence createMany
+   */
+  export type UserPresenceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserPresences.
+     */
+    data: UserPresenceCreateManyInput | UserPresenceCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserPresence createManyAndReturn
+   */
+  export type UserPresenceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPresence
+     */
+    select?: UserPresenceSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPresence
+     */
+    omit?: UserPresenceOmit<ExtArgs> | null
+    /**
+     * The data used to create many UserPresences.
+     */
+    data: UserPresenceCreateManyInput | UserPresenceCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPresenceIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserPresence update
+   */
+  export type UserPresenceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPresence
+     */
+    select?: UserPresenceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPresence
+     */
+    omit?: UserPresenceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPresenceInclude<ExtArgs> | null
+    /**
+     * The data needed to update a UserPresence.
+     */
+    data: XOR<UserPresenceUpdateInput, UserPresenceUncheckedUpdateInput>
+    /**
+     * Choose, which UserPresence to update.
+     */
+    where: UserPresenceWhereUniqueInput
+  }
+
+  /**
+   * UserPresence updateMany
+   */
+  export type UserPresenceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserPresences.
+     */
+    data: XOR<UserPresenceUpdateManyMutationInput, UserPresenceUncheckedUpdateManyInput>
+    /**
+     * Filter which UserPresences to update
+     */
+    where?: UserPresenceWhereInput
+    /**
+     * Limit how many UserPresences to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserPresence updateManyAndReturn
+   */
+  export type UserPresenceUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPresence
+     */
+    select?: UserPresenceSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPresence
+     */
+    omit?: UserPresenceOmit<ExtArgs> | null
+    /**
+     * The data used to update UserPresences.
+     */
+    data: XOR<UserPresenceUpdateManyMutationInput, UserPresenceUncheckedUpdateManyInput>
+    /**
+     * Filter which UserPresences to update
+     */
+    where?: UserPresenceWhereInput
+    /**
+     * Limit how many UserPresences to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPresenceIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserPresence upsert
+   */
+  export type UserPresenceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPresence
+     */
+    select?: UserPresenceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPresence
+     */
+    omit?: UserPresenceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPresenceInclude<ExtArgs> | null
+    /**
+     * The filter to search for the UserPresence to update in case it exists.
+     */
+    where: UserPresenceWhereUniqueInput
+    /**
+     * In case the UserPresence found by the `where` argument doesn't exist, create a new UserPresence with this data.
+     */
+    create: XOR<UserPresenceCreateInput, UserPresenceUncheckedCreateInput>
+    /**
+     * In case the UserPresence was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserPresenceUpdateInput, UserPresenceUncheckedUpdateInput>
+  }
+
+  /**
+   * UserPresence delete
+   */
+  export type UserPresenceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPresence
+     */
+    select?: UserPresenceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPresence
+     */
+    omit?: UserPresenceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPresenceInclude<ExtArgs> | null
+    /**
+     * Filter which UserPresence to delete.
+     */
+    where: UserPresenceWhereUniqueInput
+  }
+
+  /**
+   * UserPresence deleteMany
+   */
+  export type UserPresenceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserPresences to delete
+     */
+    where?: UserPresenceWhereInput
+    /**
+     * Limit how many UserPresences to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserPresence.conversation
+   */
+  export type UserPresence$conversationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    where?: ConversationWhereInput
+  }
+
+  /**
+   * UserPresence without action
+   */
+  export type UserPresenceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPresence
+     */
+    select?: UserPresenceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPresence
+     */
+    omit?: UserPresenceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPresenceInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Agreement
+   */
+
+  export type AggregateAgreement = {
+    _count: AgreementCountAggregateOutputType | null
+    _avg: AgreementAvgAggregateOutputType | null
+    _sum: AgreementSumAggregateOutputType | null
+    _min: AgreementMinAggregateOutputType | null
+    _max: AgreementMaxAggregateOutputType | null
+  }
+
+  export type AgreementAvgAggregateOutputType = {
+    sqft: number | null
+  }
+
+  export type AgreementSumAggregateOutputType = {
+    sqft: number | null
+  }
+
+  export type AgreementMinAggregateOutputType = {
+    id: string | null
+    userid: string | null
+    storeid: string | null
+    ownerName: string | null
+    tenantName: string | null
+    price: string | null
+    shareMode: $Enums.ShareMode | null
+    startTime: string | null
+    endTime: string | null
+    sqft: number | null
+    dayOrNight: string | null
+    flatno: string | null
+    streetAddress: string | null
+    NearbyLandMark: string | null
+    areaLocality: string | null
+    country: string | null
+    state: string | null
+    city: string | null
+    pin: string | null
+    bussinessType: string | null
+  }
+
+  export type AgreementMaxAggregateOutputType = {
+    id: string | null
+    userid: string | null
+    storeid: string | null
+    ownerName: string | null
+    tenantName: string | null
+    price: string | null
+    shareMode: $Enums.ShareMode | null
+    startTime: string | null
+    endTime: string | null
+    sqft: number | null
+    dayOrNight: string | null
+    flatno: string | null
+    streetAddress: string | null
+    NearbyLandMark: string | null
+    areaLocality: string | null
+    country: string | null
+    state: string | null
+    city: string | null
+    pin: string | null
+    bussinessType: string | null
+  }
+
+  export type AgreementCountAggregateOutputType = {
+    id: number
+    userid: number
+    storeid: number
+    ownerName: number
+    tenantName: number
+    price: number
+    shareMode: number
+    startTime: number
+    endTime: number
+    days: number
+    sqft: number
+    dayOrNight: number
+    flatno: number
+    streetAddress: number
+    NearbyLandMark: number
+    areaLocality: number
+    country: number
+    state: number
+    city: number
+    pin: number
+    bussinessType: number
+    _all: number
+  }
+
+
+  export type AgreementAvgAggregateInputType = {
+    sqft?: true
+  }
+
+  export type AgreementSumAggregateInputType = {
+    sqft?: true
+  }
+
+  export type AgreementMinAggregateInputType = {
+    id?: true
+    userid?: true
+    storeid?: true
+    ownerName?: true
+    tenantName?: true
+    price?: true
+    shareMode?: true
+    startTime?: true
+    endTime?: true
+    sqft?: true
+    dayOrNight?: true
+    flatno?: true
+    streetAddress?: true
+    NearbyLandMark?: true
+    areaLocality?: true
+    country?: true
+    state?: true
+    city?: true
+    pin?: true
+    bussinessType?: true
+  }
+
+  export type AgreementMaxAggregateInputType = {
+    id?: true
+    userid?: true
+    storeid?: true
+    ownerName?: true
+    tenantName?: true
+    price?: true
+    shareMode?: true
+    startTime?: true
+    endTime?: true
+    sqft?: true
+    dayOrNight?: true
+    flatno?: true
+    streetAddress?: true
+    NearbyLandMark?: true
+    areaLocality?: true
+    country?: true
+    state?: true
+    city?: true
+    pin?: true
+    bussinessType?: true
+  }
+
+  export type AgreementCountAggregateInputType = {
+    id?: true
+    userid?: true
+    storeid?: true
+    ownerName?: true
+    tenantName?: true
+    price?: true
+    shareMode?: true
+    startTime?: true
+    endTime?: true
+    days?: true
+    sqft?: true
+    dayOrNight?: true
+    flatno?: true
+    streetAddress?: true
+    NearbyLandMark?: true
+    areaLocality?: true
+    country?: true
+    state?: true
+    city?: true
+    pin?: true
+    bussinessType?: true
+    _all?: true
+  }
+
+  export type AgreementAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Agreement to aggregate.
+     */
+    where?: AgreementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Agreements to fetch.
+     */
+    orderBy?: AgreementOrderByWithRelationInput | AgreementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AgreementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Agreements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Agreements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Agreements
+    **/
+    _count?: true | AgreementCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AgreementAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AgreementSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AgreementMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AgreementMaxAggregateInputType
+  }
+
+  export type GetAgreementAggregateType<T extends AgreementAggregateArgs> = {
+        [P in keyof T & keyof AggregateAgreement]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAgreement[P]>
+      : GetScalarType<T[P], AggregateAgreement[P]>
+  }
+
+
+
+
+  export type AgreementGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AgreementWhereInput
+    orderBy?: AgreementOrderByWithAggregationInput | AgreementOrderByWithAggregationInput[]
+    by: AgreementScalarFieldEnum[] | AgreementScalarFieldEnum
+    having?: AgreementScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AgreementCountAggregateInputType | true
+    _avg?: AgreementAvgAggregateInputType
+    _sum?: AgreementSumAggregateInputType
+    _min?: AgreementMinAggregateInputType
+    _max?: AgreementMaxAggregateInputType
+  }
+
+  export type AgreementGroupByOutputType = {
+    id: string
+    userid: string
+    storeid: string
+    ownerName: string
+    tenantName: string
+    price: string
+    shareMode: $Enums.ShareMode
+    startTime: string | null
+    endTime: string | null
+    days: string[]
+    sqft: number | null
+    dayOrNight: string | null
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    bussinessType: string
+    _count: AgreementCountAggregateOutputType | null
+    _avg: AgreementAvgAggregateOutputType | null
+    _sum: AgreementSumAggregateOutputType | null
+    _min: AgreementMinAggregateOutputType | null
+    _max: AgreementMaxAggregateOutputType | null
+  }
+
+  type GetAgreementGroupByPayload<T extends AgreementGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AgreementGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AgreementGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AgreementGroupByOutputType[P]>
+            : GetScalarType<T[P], AgreementGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AgreementSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userid?: boolean
+    storeid?: boolean
+    ownerName?: boolean
+    tenantName?: boolean
+    price?: boolean
+    shareMode?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    days?: boolean
+    sqft?: boolean
+    dayOrNight?: boolean
+    flatno?: boolean
+    streetAddress?: boolean
+    NearbyLandMark?: boolean
+    areaLocality?: boolean
+    country?: boolean
+    state?: boolean
+    city?: boolean
+    pin?: boolean
+    bussinessType?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["agreement"]>
+
+  export type AgreementSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userid?: boolean
+    storeid?: boolean
+    ownerName?: boolean
+    tenantName?: boolean
+    price?: boolean
+    shareMode?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    days?: boolean
+    sqft?: boolean
+    dayOrNight?: boolean
+    flatno?: boolean
+    streetAddress?: boolean
+    NearbyLandMark?: boolean
+    areaLocality?: boolean
+    country?: boolean
+    state?: boolean
+    city?: boolean
+    pin?: boolean
+    bussinessType?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["agreement"]>
+
+  export type AgreementSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userid?: boolean
+    storeid?: boolean
+    ownerName?: boolean
+    tenantName?: boolean
+    price?: boolean
+    shareMode?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    days?: boolean
+    sqft?: boolean
+    dayOrNight?: boolean
+    flatno?: boolean
+    streetAddress?: boolean
+    NearbyLandMark?: boolean
+    areaLocality?: boolean
+    country?: boolean
+    state?: boolean
+    city?: boolean
+    pin?: boolean
+    bussinessType?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["agreement"]>
+
+  export type AgreementSelectScalar = {
+    id?: boolean
+    userid?: boolean
+    storeid?: boolean
+    ownerName?: boolean
+    tenantName?: boolean
+    price?: boolean
+    shareMode?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    days?: boolean
+    sqft?: boolean
+    dayOrNight?: boolean
+    flatno?: boolean
+    streetAddress?: boolean
+    NearbyLandMark?: boolean
+    areaLocality?: boolean
+    country?: boolean
+    state?: boolean
+    city?: boolean
+    pin?: boolean
+    bussinessType?: boolean
+  }
+
+  export type AgreementOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userid" | "storeid" | "ownerName" | "tenantName" | "price" | "shareMode" | "startTime" | "endTime" | "days" | "sqft" | "dayOrNight" | "flatno" | "streetAddress" | "NearbyLandMark" | "areaLocality" | "country" | "state" | "city" | "pin" | "bussinessType", ExtArgs["result"]["agreement"]>
+  export type AgreementInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }
+  export type AgreementIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }
+  export type AgreementIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }
+
+  export type $AgreementPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Agreement"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      store: Prisma.$StorePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userid: string
+      storeid: string
+      ownerName: string
+      tenantName: string
+      price: string
+      shareMode: $Enums.ShareMode
+      startTime: string | null
+      endTime: string | null
+      days: string[]
+      sqft: number | null
+      dayOrNight: string | null
+      flatno: string
+      streetAddress: string
+      NearbyLandMark: string
+      areaLocality: string
+      country: string
+      state: string
+      city: string
+      pin: string
+      bussinessType: string
+    }, ExtArgs["result"]["agreement"]>
+    composites: {}
+  }
+
+  type AgreementGetPayload<S extends boolean | null | undefined | AgreementDefaultArgs> = $Result.GetResult<Prisma.$AgreementPayload, S>
+
+  type AgreementCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AgreementFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AgreementCountAggregateInputType | true
+    }
+
+  export interface AgreementDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Agreement'], meta: { name: 'Agreement' } }
+    /**
+     * Find zero or one Agreement that matches the filter.
+     * @param {AgreementFindUniqueArgs} args - Arguments to find a Agreement
+     * @example
+     * // Get one Agreement
+     * const agreement = await prisma.agreement.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AgreementFindUniqueArgs>(args: SelectSubset<T, AgreementFindUniqueArgs<ExtArgs>>): Prisma__AgreementClient<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Agreement that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AgreementFindUniqueOrThrowArgs} args - Arguments to find a Agreement
+     * @example
+     * // Get one Agreement
+     * const agreement = await prisma.agreement.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AgreementFindUniqueOrThrowArgs>(args: SelectSubset<T, AgreementFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AgreementClient<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Agreement that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgreementFindFirstArgs} args - Arguments to find a Agreement
+     * @example
+     * // Get one Agreement
+     * const agreement = await prisma.agreement.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AgreementFindFirstArgs>(args?: SelectSubset<T, AgreementFindFirstArgs<ExtArgs>>): Prisma__AgreementClient<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Agreement that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgreementFindFirstOrThrowArgs} args - Arguments to find a Agreement
+     * @example
+     * // Get one Agreement
+     * const agreement = await prisma.agreement.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AgreementFindFirstOrThrowArgs>(args?: SelectSubset<T, AgreementFindFirstOrThrowArgs<ExtArgs>>): Prisma__AgreementClient<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Agreements that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgreementFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Agreements
+     * const agreements = await prisma.agreement.findMany()
+     * 
+     * // Get first 10 Agreements
+     * const agreements = await prisma.agreement.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const agreementWithIdOnly = await prisma.agreement.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AgreementFindManyArgs>(args?: SelectSubset<T, AgreementFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Agreement.
+     * @param {AgreementCreateArgs} args - Arguments to create a Agreement.
+     * @example
+     * // Create one Agreement
+     * const Agreement = await prisma.agreement.create({
+     *   data: {
+     *     // ... data to create a Agreement
+     *   }
+     * })
+     * 
+     */
+    create<T extends AgreementCreateArgs>(args: SelectSubset<T, AgreementCreateArgs<ExtArgs>>): Prisma__AgreementClient<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Agreements.
+     * @param {AgreementCreateManyArgs} args - Arguments to create many Agreements.
+     * @example
+     * // Create many Agreements
+     * const agreement = await prisma.agreement.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AgreementCreateManyArgs>(args?: SelectSubset<T, AgreementCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Agreements and returns the data saved in the database.
+     * @param {AgreementCreateManyAndReturnArgs} args - Arguments to create many Agreements.
+     * @example
+     * // Create many Agreements
+     * const agreement = await prisma.agreement.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Agreements and only return the `id`
+     * const agreementWithIdOnly = await prisma.agreement.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AgreementCreateManyAndReturnArgs>(args?: SelectSubset<T, AgreementCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Agreement.
+     * @param {AgreementDeleteArgs} args - Arguments to delete one Agreement.
+     * @example
+     * // Delete one Agreement
+     * const Agreement = await prisma.agreement.delete({
+     *   where: {
+     *     // ... filter to delete one Agreement
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AgreementDeleteArgs>(args: SelectSubset<T, AgreementDeleteArgs<ExtArgs>>): Prisma__AgreementClient<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Agreement.
+     * @param {AgreementUpdateArgs} args - Arguments to update one Agreement.
+     * @example
+     * // Update one Agreement
+     * const agreement = await prisma.agreement.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AgreementUpdateArgs>(args: SelectSubset<T, AgreementUpdateArgs<ExtArgs>>): Prisma__AgreementClient<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Agreements.
+     * @param {AgreementDeleteManyArgs} args - Arguments to filter Agreements to delete.
+     * @example
+     * // Delete a few Agreements
+     * const { count } = await prisma.agreement.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AgreementDeleteManyArgs>(args?: SelectSubset<T, AgreementDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Agreements.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgreementUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Agreements
+     * const agreement = await prisma.agreement.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AgreementUpdateManyArgs>(args: SelectSubset<T, AgreementUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Agreements and returns the data updated in the database.
+     * @param {AgreementUpdateManyAndReturnArgs} args - Arguments to update many Agreements.
+     * @example
+     * // Update many Agreements
+     * const agreement = await prisma.agreement.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Agreements and only return the `id`
+     * const agreementWithIdOnly = await prisma.agreement.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AgreementUpdateManyAndReturnArgs>(args: SelectSubset<T, AgreementUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Agreement.
+     * @param {AgreementUpsertArgs} args - Arguments to update or create a Agreement.
+     * @example
+     * // Update or create a Agreement
+     * const agreement = await prisma.agreement.upsert({
+     *   create: {
+     *     // ... data to create a Agreement
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Agreement we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AgreementUpsertArgs>(args: SelectSubset<T, AgreementUpsertArgs<ExtArgs>>): Prisma__AgreementClient<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Agreements.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgreementCountArgs} args - Arguments to filter Agreements to count.
+     * @example
+     * // Count the number of Agreements
+     * const count = await prisma.agreement.count({
+     *   where: {
+     *     // ... the filter for the Agreements we want to count
+     *   }
+     * })
+    **/
+    count<T extends AgreementCountArgs>(
+      args?: Subset<T, AgreementCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AgreementCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Agreement.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgreementAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AgreementAggregateArgs>(args: Subset<T, AgreementAggregateArgs>): Prisma.PrismaPromise<GetAgreementAggregateType<T>>
+
+    /**
+     * Group by Agreement.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgreementGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AgreementGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AgreementGroupByArgs['orderBy'] }
+        : { orderBy?: AgreementGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AgreementGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAgreementGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Agreement model
+   */
+  readonly fields: AgreementFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Agreement.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AgreementClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    store<T extends StoreDefaultArgs<ExtArgs> = {}>(args?: Subset<T, StoreDefaultArgs<ExtArgs>>): Prisma__StoreClient<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Agreement model
+   */
+  interface AgreementFieldRefs {
+    readonly id: FieldRef<"Agreement", 'String'>
+    readonly userid: FieldRef<"Agreement", 'String'>
+    readonly storeid: FieldRef<"Agreement", 'String'>
+    readonly ownerName: FieldRef<"Agreement", 'String'>
+    readonly tenantName: FieldRef<"Agreement", 'String'>
+    readonly price: FieldRef<"Agreement", 'String'>
+    readonly shareMode: FieldRef<"Agreement", 'ShareMode'>
+    readonly startTime: FieldRef<"Agreement", 'String'>
+    readonly endTime: FieldRef<"Agreement", 'String'>
+    readonly days: FieldRef<"Agreement", 'String[]'>
+    readonly sqft: FieldRef<"Agreement", 'Int'>
+    readonly dayOrNight: FieldRef<"Agreement", 'String'>
+    readonly flatno: FieldRef<"Agreement", 'String'>
+    readonly streetAddress: FieldRef<"Agreement", 'String'>
+    readonly NearbyLandMark: FieldRef<"Agreement", 'String'>
+    readonly areaLocality: FieldRef<"Agreement", 'String'>
+    readonly country: FieldRef<"Agreement", 'String'>
+    readonly state: FieldRef<"Agreement", 'String'>
+    readonly city: FieldRef<"Agreement", 'String'>
+    readonly pin: FieldRef<"Agreement", 'String'>
+    readonly bussinessType: FieldRef<"Agreement", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Agreement findUnique
+   */
+  export type AgreementFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agreement
+     */
+    omit?: AgreementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    /**
+     * Filter, which Agreement to fetch.
+     */
+    where: AgreementWhereUniqueInput
+  }
+
+  /**
+   * Agreement findUniqueOrThrow
+   */
+  export type AgreementFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agreement
+     */
+    omit?: AgreementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    /**
+     * Filter, which Agreement to fetch.
+     */
+    where: AgreementWhereUniqueInput
+  }
+
+  /**
+   * Agreement findFirst
+   */
+  export type AgreementFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agreement
+     */
+    omit?: AgreementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    /**
+     * Filter, which Agreement to fetch.
+     */
+    where?: AgreementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Agreements to fetch.
+     */
+    orderBy?: AgreementOrderByWithRelationInput | AgreementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Agreements.
+     */
+    cursor?: AgreementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Agreements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Agreements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Agreements.
+     */
+    distinct?: AgreementScalarFieldEnum | AgreementScalarFieldEnum[]
+  }
+
+  /**
+   * Agreement findFirstOrThrow
+   */
+  export type AgreementFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agreement
+     */
+    omit?: AgreementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    /**
+     * Filter, which Agreement to fetch.
+     */
+    where?: AgreementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Agreements to fetch.
+     */
+    orderBy?: AgreementOrderByWithRelationInput | AgreementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Agreements.
+     */
+    cursor?: AgreementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Agreements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Agreements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Agreements.
+     */
+    distinct?: AgreementScalarFieldEnum | AgreementScalarFieldEnum[]
+  }
+
+  /**
+   * Agreement findMany
+   */
+  export type AgreementFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agreement
+     */
+    omit?: AgreementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    /**
+     * Filter, which Agreements to fetch.
+     */
+    where?: AgreementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Agreements to fetch.
+     */
+    orderBy?: AgreementOrderByWithRelationInput | AgreementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Agreements.
+     */
+    cursor?: AgreementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Agreements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Agreements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Agreements.
+     */
+    distinct?: AgreementScalarFieldEnum | AgreementScalarFieldEnum[]
+  }
+
+  /**
+   * Agreement create
+   */
+  export type AgreementCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agreement
+     */
+    omit?: AgreementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Agreement.
+     */
+    data: XOR<AgreementCreateInput, AgreementUncheckedCreateInput>
+  }
+
+  /**
+   * Agreement createMany
+   */
+  export type AgreementCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Agreements.
+     */
+    data: AgreementCreateManyInput | AgreementCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Agreement createManyAndReturn
+   */
+  export type AgreementCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agreement
+     */
+    omit?: AgreementOmit<ExtArgs> | null
+    /**
+     * The data used to create many Agreements.
+     */
+    data: AgreementCreateManyInput | AgreementCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Agreement update
+   */
+  export type AgreementUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agreement
+     */
+    omit?: AgreementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Agreement.
+     */
+    data: XOR<AgreementUpdateInput, AgreementUncheckedUpdateInput>
+    /**
+     * Choose, which Agreement to update.
+     */
+    where: AgreementWhereUniqueInput
+  }
+
+  /**
+   * Agreement updateMany
+   */
+  export type AgreementUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Agreements.
+     */
+    data: XOR<AgreementUpdateManyMutationInput, AgreementUncheckedUpdateManyInput>
+    /**
+     * Filter which Agreements to update
+     */
+    where?: AgreementWhereInput
+    /**
+     * Limit how many Agreements to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Agreement updateManyAndReturn
+   */
+  export type AgreementUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agreement
+     */
+    omit?: AgreementOmit<ExtArgs> | null
+    /**
+     * The data used to update Agreements.
+     */
+    data: XOR<AgreementUpdateManyMutationInput, AgreementUncheckedUpdateManyInput>
+    /**
+     * Filter which Agreements to update
+     */
+    where?: AgreementWhereInput
+    /**
+     * Limit how many Agreements to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Agreement upsert
+   */
+  export type AgreementUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agreement
+     */
+    omit?: AgreementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Agreement to update in case it exists.
+     */
+    where: AgreementWhereUniqueInput
+    /**
+     * In case the Agreement found by the `where` argument doesn't exist, create a new Agreement with this data.
+     */
+    create: XOR<AgreementCreateInput, AgreementUncheckedCreateInput>
+    /**
+     * In case the Agreement was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AgreementUpdateInput, AgreementUncheckedUpdateInput>
+  }
+
+  /**
+   * Agreement delete
+   */
+  export type AgreementDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agreement
+     */
+    omit?: AgreementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    /**
+     * Filter which Agreement to delete.
+     */
+    where: AgreementWhereUniqueInput
+  }
+
+  /**
+   * Agreement deleteMany
+   */
+  export type AgreementDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Agreements to delete
+     */
+    where?: AgreementWhereInput
+    /**
+     * Limit how many Agreements to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Agreement without action
+   */
+  export type AgreementDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agreement
+     */
+    omit?: AgreementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model StoreAnlyalic
+   */
+
+  export type AggregateStoreAnlyalic = {
+    _count: StoreAnlyalicCountAggregateOutputType | null
+    _min: StoreAnlyalicMinAggregateOutputType | null
+    _max: StoreAnlyalicMaxAggregateOutputType | null
+  }
+
+  export type StoreAnlyalicMinAggregateOutputType = {
+    id: string | null
+    lat: string | null
+    log: string | null
+    userBussiness: string | null
+    earning: string | null
+    audience: string | null
+    compitation: string | null
+    FootStep: string | null
+  }
+
+  export type StoreAnlyalicMaxAggregateOutputType = {
+    id: string | null
+    lat: string | null
+    log: string | null
+    userBussiness: string | null
+    earning: string | null
+    audience: string | null
+    compitation: string | null
+    FootStep: string | null
+  }
+
+  export type StoreAnlyalicCountAggregateOutputType = {
+    id: number
+    lat: number
+    log: number
+    userBussiness: number
+    earning: number
+    audience: number
+    compitation: number
+    FootStep: number
+    _all: number
+  }
+
+
+  export type StoreAnlyalicMinAggregateInputType = {
+    id?: true
+    lat?: true
+    log?: true
+    userBussiness?: true
+    earning?: true
+    audience?: true
+    compitation?: true
+    FootStep?: true
+  }
+
+  export type StoreAnlyalicMaxAggregateInputType = {
+    id?: true
+    lat?: true
+    log?: true
+    userBussiness?: true
+    earning?: true
+    audience?: true
+    compitation?: true
+    FootStep?: true
+  }
+
+  export type StoreAnlyalicCountAggregateInputType = {
+    id?: true
+    lat?: true
+    log?: true
+    userBussiness?: true
+    earning?: true
+    audience?: true
+    compitation?: true
+    FootStep?: true
+    _all?: true
+  }
+
+  export type StoreAnlyalicAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StoreAnlyalic to aggregate.
+     */
+    where?: StoreAnlyalicWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StoreAnlyalics to fetch.
+     */
+    orderBy?: StoreAnlyalicOrderByWithRelationInput | StoreAnlyalicOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StoreAnlyalicWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StoreAnlyalics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StoreAnlyalics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned StoreAnlyalics
+    **/
+    _count?: true | StoreAnlyalicCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StoreAnlyalicMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StoreAnlyalicMaxAggregateInputType
+  }
+
+  export type GetStoreAnlyalicAggregateType<T extends StoreAnlyalicAggregateArgs> = {
+        [P in keyof T & keyof AggregateStoreAnlyalic]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStoreAnlyalic[P]>
+      : GetScalarType<T[P], AggregateStoreAnlyalic[P]>
+  }
+
+
+
+
+  export type StoreAnlyalicGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StoreAnlyalicWhereInput
+    orderBy?: StoreAnlyalicOrderByWithAggregationInput | StoreAnlyalicOrderByWithAggregationInput[]
+    by: StoreAnlyalicScalarFieldEnum[] | StoreAnlyalicScalarFieldEnum
+    having?: StoreAnlyalicScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StoreAnlyalicCountAggregateInputType | true
+    _min?: StoreAnlyalicMinAggregateInputType
+    _max?: StoreAnlyalicMaxAggregateInputType
+  }
+
+  export type StoreAnlyalicGroupByOutputType = {
+    id: string
+    lat: string
+    log: string
+    userBussiness: string
+    earning: string
+    audience: string
+    compitation: string
+    FootStep: string
+    _count: StoreAnlyalicCountAggregateOutputType | null
+    _min: StoreAnlyalicMinAggregateOutputType | null
+    _max: StoreAnlyalicMaxAggregateOutputType | null
+  }
+
+  type GetStoreAnlyalicGroupByPayload<T extends StoreAnlyalicGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StoreAnlyalicGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StoreAnlyalicGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StoreAnlyalicGroupByOutputType[P]>
+            : GetScalarType<T[P], StoreAnlyalicGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StoreAnlyalicSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    lat?: boolean
+    log?: boolean
+    userBussiness?: boolean
+    earning?: boolean
+    audience?: boolean
+    compitation?: boolean
+    FootStep?: boolean
+  }, ExtArgs["result"]["storeAnlyalic"]>
+
+  export type StoreAnlyalicSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    lat?: boolean
+    log?: boolean
+    userBussiness?: boolean
+    earning?: boolean
+    audience?: boolean
+    compitation?: boolean
+    FootStep?: boolean
+  }, ExtArgs["result"]["storeAnlyalic"]>
+
+  export type StoreAnlyalicSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    lat?: boolean
+    log?: boolean
+    userBussiness?: boolean
+    earning?: boolean
+    audience?: boolean
+    compitation?: boolean
+    FootStep?: boolean
+  }, ExtArgs["result"]["storeAnlyalic"]>
+
+  export type StoreAnlyalicSelectScalar = {
+    id?: boolean
+    lat?: boolean
+    log?: boolean
+    userBussiness?: boolean
+    earning?: boolean
+    audience?: boolean
+    compitation?: boolean
+    FootStep?: boolean
+  }
+
+  export type StoreAnlyalicOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "lat" | "log" | "userBussiness" | "earning" | "audience" | "compitation" | "FootStep", ExtArgs["result"]["storeAnlyalic"]>
+
+  export type $StoreAnlyalicPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "StoreAnlyalic"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      lat: string
+      log: string
+      userBussiness: string
+      earning: string
+      audience: string
+      compitation: string
+      FootStep: string
+    }, ExtArgs["result"]["storeAnlyalic"]>
+    composites: {}
+  }
+
+  type StoreAnlyalicGetPayload<S extends boolean | null | undefined | StoreAnlyalicDefaultArgs> = $Result.GetResult<Prisma.$StoreAnlyalicPayload, S>
+
+  type StoreAnlyalicCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<StoreAnlyalicFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: StoreAnlyalicCountAggregateInputType | true
+    }
+
+  export interface StoreAnlyalicDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StoreAnlyalic'], meta: { name: 'StoreAnlyalic' } }
+    /**
+     * Find zero or one StoreAnlyalic that matches the filter.
+     * @param {StoreAnlyalicFindUniqueArgs} args - Arguments to find a StoreAnlyalic
+     * @example
+     * // Get one StoreAnlyalic
+     * const storeAnlyalic = await prisma.storeAnlyalic.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends StoreAnlyalicFindUniqueArgs>(args: SelectSubset<T, StoreAnlyalicFindUniqueArgs<ExtArgs>>): Prisma__StoreAnlyalicClient<$Result.GetResult<Prisma.$StoreAnlyalicPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one StoreAnlyalic that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {StoreAnlyalicFindUniqueOrThrowArgs} args - Arguments to find a StoreAnlyalic
+     * @example
+     * // Get one StoreAnlyalic
+     * const storeAnlyalic = await prisma.storeAnlyalic.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends StoreAnlyalicFindUniqueOrThrowArgs>(args: SelectSubset<T, StoreAnlyalicFindUniqueOrThrowArgs<ExtArgs>>): Prisma__StoreAnlyalicClient<$Result.GetResult<Prisma.$StoreAnlyalicPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first StoreAnlyalic that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreAnlyalicFindFirstArgs} args - Arguments to find a StoreAnlyalic
+     * @example
+     * // Get one StoreAnlyalic
+     * const storeAnlyalic = await prisma.storeAnlyalic.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends StoreAnlyalicFindFirstArgs>(args?: SelectSubset<T, StoreAnlyalicFindFirstArgs<ExtArgs>>): Prisma__StoreAnlyalicClient<$Result.GetResult<Prisma.$StoreAnlyalicPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first StoreAnlyalic that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreAnlyalicFindFirstOrThrowArgs} args - Arguments to find a StoreAnlyalic
+     * @example
+     * // Get one StoreAnlyalic
+     * const storeAnlyalic = await prisma.storeAnlyalic.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends StoreAnlyalicFindFirstOrThrowArgs>(args?: SelectSubset<T, StoreAnlyalicFindFirstOrThrowArgs<ExtArgs>>): Prisma__StoreAnlyalicClient<$Result.GetResult<Prisma.$StoreAnlyalicPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more StoreAnlyalics that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreAnlyalicFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all StoreAnlyalics
+     * const storeAnlyalics = await prisma.storeAnlyalic.findMany()
+     * 
+     * // Get first 10 StoreAnlyalics
+     * const storeAnlyalics = await prisma.storeAnlyalic.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const storeAnlyalicWithIdOnly = await prisma.storeAnlyalic.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends StoreAnlyalicFindManyArgs>(args?: SelectSubset<T, StoreAnlyalicFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StoreAnlyalicPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a StoreAnlyalic.
+     * @param {StoreAnlyalicCreateArgs} args - Arguments to create a StoreAnlyalic.
+     * @example
+     * // Create one StoreAnlyalic
+     * const StoreAnlyalic = await prisma.storeAnlyalic.create({
+     *   data: {
+     *     // ... data to create a StoreAnlyalic
+     *   }
+     * })
+     * 
+     */
+    create<T extends StoreAnlyalicCreateArgs>(args: SelectSubset<T, StoreAnlyalicCreateArgs<ExtArgs>>): Prisma__StoreAnlyalicClient<$Result.GetResult<Prisma.$StoreAnlyalicPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many StoreAnlyalics.
+     * @param {StoreAnlyalicCreateManyArgs} args - Arguments to create many StoreAnlyalics.
+     * @example
+     * // Create many StoreAnlyalics
+     * const storeAnlyalic = await prisma.storeAnlyalic.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends StoreAnlyalicCreateManyArgs>(args?: SelectSubset<T, StoreAnlyalicCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many StoreAnlyalics and returns the data saved in the database.
+     * @param {StoreAnlyalicCreateManyAndReturnArgs} args - Arguments to create many StoreAnlyalics.
+     * @example
+     * // Create many StoreAnlyalics
+     * const storeAnlyalic = await prisma.storeAnlyalic.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many StoreAnlyalics and only return the `id`
+     * const storeAnlyalicWithIdOnly = await prisma.storeAnlyalic.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends StoreAnlyalicCreateManyAndReturnArgs>(args?: SelectSubset<T, StoreAnlyalicCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StoreAnlyalicPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a StoreAnlyalic.
+     * @param {StoreAnlyalicDeleteArgs} args - Arguments to delete one StoreAnlyalic.
+     * @example
+     * // Delete one StoreAnlyalic
+     * const StoreAnlyalic = await prisma.storeAnlyalic.delete({
+     *   where: {
+     *     // ... filter to delete one StoreAnlyalic
+     *   }
+     * })
+     * 
+     */
+    delete<T extends StoreAnlyalicDeleteArgs>(args: SelectSubset<T, StoreAnlyalicDeleteArgs<ExtArgs>>): Prisma__StoreAnlyalicClient<$Result.GetResult<Prisma.$StoreAnlyalicPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one StoreAnlyalic.
+     * @param {StoreAnlyalicUpdateArgs} args - Arguments to update one StoreAnlyalic.
+     * @example
+     * // Update one StoreAnlyalic
+     * const storeAnlyalic = await prisma.storeAnlyalic.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends StoreAnlyalicUpdateArgs>(args: SelectSubset<T, StoreAnlyalicUpdateArgs<ExtArgs>>): Prisma__StoreAnlyalicClient<$Result.GetResult<Prisma.$StoreAnlyalicPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more StoreAnlyalics.
+     * @param {StoreAnlyalicDeleteManyArgs} args - Arguments to filter StoreAnlyalics to delete.
+     * @example
+     * // Delete a few StoreAnlyalics
+     * const { count } = await prisma.storeAnlyalic.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends StoreAnlyalicDeleteManyArgs>(args?: SelectSubset<T, StoreAnlyalicDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StoreAnlyalics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreAnlyalicUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many StoreAnlyalics
+     * const storeAnlyalic = await prisma.storeAnlyalic.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends StoreAnlyalicUpdateManyArgs>(args: SelectSubset<T, StoreAnlyalicUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StoreAnlyalics and returns the data updated in the database.
+     * @param {StoreAnlyalicUpdateManyAndReturnArgs} args - Arguments to update many StoreAnlyalics.
+     * @example
+     * // Update many StoreAnlyalics
+     * const storeAnlyalic = await prisma.storeAnlyalic.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more StoreAnlyalics and only return the `id`
+     * const storeAnlyalicWithIdOnly = await prisma.storeAnlyalic.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends StoreAnlyalicUpdateManyAndReturnArgs>(args: SelectSubset<T, StoreAnlyalicUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StoreAnlyalicPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one StoreAnlyalic.
+     * @param {StoreAnlyalicUpsertArgs} args - Arguments to update or create a StoreAnlyalic.
+     * @example
+     * // Update or create a StoreAnlyalic
+     * const storeAnlyalic = await prisma.storeAnlyalic.upsert({
+     *   create: {
+     *     // ... data to create a StoreAnlyalic
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the StoreAnlyalic we want to update
+     *   }
+     * })
+     */
+    upsert<T extends StoreAnlyalicUpsertArgs>(args: SelectSubset<T, StoreAnlyalicUpsertArgs<ExtArgs>>): Prisma__StoreAnlyalicClient<$Result.GetResult<Prisma.$StoreAnlyalicPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of StoreAnlyalics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreAnlyalicCountArgs} args - Arguments to filter StoreAnlyalics to count.
+     * @example
+     * // Count the number of StoreAnlyalics
+     * const count = await prisma.storeAnlyalic.count({
+     *   where: {
+     *     // ... the filter for the StoreAnlyalics we want to count
+     *   }
+     * })
+    **/
+    count<T extends StoreAnlyalicCountArgs>(
+      args?: Subset<T, StoreAnlyalicCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StoreAnlyalicCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a StoreAnlyalic.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreAnlyalicAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StoreAnlyalicAggregateArgs>(args: Subset<T, StoreAnlyalicAggregateArgs>): Prisma.PrismaPromise<GetStoreAnlyalicAggregateType<T>>
+
+    /**
+     * Group by StoreAnlyalic.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StoreAnlyalicGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StoreAnlyalicGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StoreAnlyalicGroupByArgs['orderBy'] }
+        : { orderBy?: StoreAnlyalicGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StoreAnlyalicGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStoreAnlyalicGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the StoreAnlyalic model
+   */
+  readonly fields: StoreAnlyalicFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for StoreAnlyalic.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StoreAnlyalicClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the StoreAnlyalic model
+   */
+  interface StoreAnlyalicFieldRefs {
+    readonly id: FieldRef<"StoreAnlyalic", 'String'>
+    readonly lat: FieldRef<"StoreAnlyalic", 'String'>
+    readonly log: FieldRef<"StoreAnlyalic", 'String'>
+    readonly userBussiness: FieldRef<"StoreAnlyalic", 'String'>
+    readonly earning: FieldRef<"StoreAnlyalic", 'String'>
+    readonly audience: FieldRef<"StoreAnlyalic", 'String'>
+    readonly compitation: FieldRef<"StoreAnlyalic", 'String'>
+    readonly FootStep: FieldRef<"StoreAnlyalic", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * StoreAnlyalic findUnique
+   */
+  export type StoreAnlyalicFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreAnlyalic
+     */
+    select?: StoreAnlyalicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreAnlyalic
+     */
+    omit?: StoreAnlyalicOmit<ExtArgs> | null
+    /**
+     * Filter, which StoreAnlyalic to fetch.
+     */
+    where: StoreAnlyalicWhereUniqueInput
+  }
+
+  /**
+   * StoreAnlyalic findUniqueOrThrow
+   */
+  export type StoreAnlyalicFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreAnlyalic
+     */
+    select?: StoreAnlyalicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreAnlyalic
+     */
+    omit?: StoreAnlyalicOmit<ExtArgs> | null
+    /**
+     * Filter, which StoreAnlyalic to fetch.
+     */
+    where: StoreAnlyalicWhereUniqueInput
+  }
+
+  /**
+   * StoreAnlyalic findFirst
+   */
+  export type StoreAnlyalicFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreAnlyalic
+     */
+    select?: StoreAnlyalicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreAnlyalic
+     */
+    omit?: StoreAnlyalicOmit<ExtArgs> | null
+    /**
+     * Filter, which StoreAnlyalic to fetch.
+     */
+    where?: StoreAnlyalicWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StoreAnlyalics to fetch.
+     */
+    orderBy?: StoreAnlyalicOrderByWithRelationInput | StoreAnlyalicOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StoreAnlyalics.
+     */
+    cursor?: StoreAnlyalicWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StoreAnlyalics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StoreAnlyalics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StoreAnlyalics.
+     */
+    distinct?: StoreAnlyalicScalarFieldEnum | StoreAnlyalicScalarFieldEnum[]
+  }
+
+  /**
+   * StoreAnlyalic findFirstOrThrow
+   */
+  export type StoreAnlyalicFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreAnlyalic
+     */
+    select?: StoreAnlyalicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreAnlyalic
+     */
+    omit?: StoreAnlyalicOmit<ExtArgs> | null
+    /**
+     * Filter, which StoreAnlyalic to fetch.
+     */
+    where?: StoreAnlyalicWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StoreAnlyalics to fetch.
+     */
+    orderBy?: StoreAnlyalicOrderByWithRelationInput | StoreAnlyalicOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StoreAnlyalics.
+     */
+    cursor?: StoreAnlyalicWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StoreAnlyalics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StoreAnlyalics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StoreAnlyalics.
+     */
+    distinct?: StoreAnlyalicScalarFieldEnum | StoreAnlyalicScalarFieldEnum[]
+  }
+
+  /**
+   * StoreAnlyalic findMany
+   */
+  export type StoreAnlyalicFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreAnlyalic
+     */
+    select?: StoreAnlyalicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreAnlyalic
+     */
+    omit?: StoreAnlyalicOmit<ExtArgs> | null
+    /**
+     * Filter, which StoreAnlyalics to fetch.
+     */
+    where?: StoreAnlyalicWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StoreAnlyalics to fetch.
+     */
+    orderBy?: StoreAnlyalicOrderByWithRelationInput | StoreAnlyalicOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing StoreAnlyalics.
+     */
+    cursor?: StoreAnlyalicWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StoreAnlyalics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StoreAnlyalics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StoreAnlyalics.
+     */
+    distinct?: StoreAnlyalicScalarFieldEnum | StoreAnlyalicScalarFieldEnum[]
+  }
+
+  /**
+   * StoreAnlyalic create
+   */
+  export type StoreAnlyalicCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreAnlyalic
+     */
+    select?: StoreAnlyalicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreAnlyalic
+     */
+    omit?: StoreAnlyalicOmit<ExtArgs> | null
+    /**
+     * The data needed to create a StoreAnlyalic.
+     */
+    data: XOR<StoreAnlyalicCreateInput, StoreAnlyalicUncheckedCreateInput>
+  }
+
+  /**
+   * StoreAnlyalic createMany
+   */
+  export type StoreAnlyalicCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many StoreAnlyalics.
+     */
+    data: StoreAnlyalicCreateManyInput | StoreAnlyalicCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * StoreAnlyalic createManyAndReturn
+   */
+  export type StoreAnlyalicCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreAnlyalic
+     */
+    select?: StoreAnlyalicSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreAnlyalic
+     */
+    omit?: StoreAnlyalicOmit<ExtArgs> | null
+    /**
+     * The data used to create many StoreAnlyalics.
+     */
+    data: StoreAnlyalicCreateManyInput | StoreAnlyalicCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * StoreAnlyalic update
+   */
+  export type StoreAnlyalicUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreAnlyalic
+     */
+    select?: StoreAnlyalicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreAnlyalic
+     */
+    omit?: StoreAnlyalicOmit<ExtArgs> | null
+    /**
+     * The data needed to update a StoreAnlyalic.
+     */
+    data: XOR<StoreAnlyalicUpdateInput, StoreAnlyalicUncheckedUpdateInput>
+    /**
+     * Choose, which StoreAnlyalic to update.
+     */
+    where: StoreAnlyalicWhereUniqueInput
+  }
+
+  /**
+   * StoreAnlyalic updateMany
+   */
+  export type StoreAnlyalicUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update StoreAnlyalics.
+     */
+    data: XOR<StoreAnlyalicUpdateManyMutationInput, StoreAnlyalicUncheckedUpdateManyInput>
+    /**
+     * Filter which StoreAnlyalics to update
+     */
+    where?: StoreAnlyalicWhereInput
+    /**
+     * Limit how many StoreAnlyalics to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * StoreAnlyalic updateManyAndReturn
+   */
+  export type StoreAnlyalicUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreAnlyalic
+     */
+    select?: StoreAnlyalicSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreAnlyalic
+     */
+    omit?: StoreAnlyalicOmit<ExtArgs> | null
+    /**
+     * The data used to update StoreAnlyalics.
+     */
+    data: XOR<StoreAnlyalicUpdateManyMutationInput, StoreAnlyalicUncheckedUpdateManyInput>
+    /**
+     * Filter which StoreAnlyalics to update
+     */
+    where?: StoreAnlyalicWhereInput
+    /**
+     * Limit how many StoreAnlyalics to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * StoreAnlyalic upsert
+   */
+  export type StoreAnlyalicUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreAnlyalic
+     */
+    select?: StoreAnlyalicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreAnlyalic
+     */
+    omit?: StoreAnlyalicOmit<ExtArgs> | null
+    /**
+     * The filter to search for the StoreAnlyalic to update in case it exists.
+     */
+    where: StoreAnlyalicWhereUniqueInput
+    /**
+     * In case the StoreAnlyalic found by the `where` argument doesn't exist, create a new StoreAnlyalic with this data.
+     */
+    create: XOR<StoreAnlyalicCreateInput, StoreAnlyalicUncheckedCreateInput>
+    /**
+     * In case the StoreAnlyalic was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StoreAnlyalicUpdateInput, StoreAnlyalicUncheckedUpdateInput>
+  }
+
+  /**
+   * StoreAnlyalic delete
+   */
+  export type StoreAnlyalicDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreAnlyalic
+     */
+    select?: StoreAnlyalicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreAnlyalic
+     */
+    omit?: StoreAnlyalicOmit<ExtArgs> | null
+    /**
+     * Filter which StoreAnlyalic to delete.
+     */
+    where: StoreAnlyalicWhereUniqueInput
+  }
+
+  /**
+   * StoreAnlyalic deleteMany
+   */
+  export type StoreAnlyalicDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StoreAnlyalics to delete
+     */
+    where?: StoreAnlyalicWhereInput
+    /**
+     * Limit how many StoreAnlyalics to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * StoreAnlyalic without action
+   */
+  export type StoreAnlyalicDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreAnlyalic
+     */
+    select?: StoreAnlyalicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StoreAnlyalic
+     */
+    omit?: StoreAnlyalicOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Enums
+   */
+
+  export const TransactionIsolationLevel: {
+    ReadUncommitted: 'ReadUncommitted',
+    ReadCommitted: 'ReadCommitted',
+    RepeatableRead: 'RepeatableRead',
+    Serializable: 'Serializable'
+  };
+
+  export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+  export const UserScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    email: 'email',
+    image: 'image',
+    phone: 'phone',
+    phoneVerified: 'phoneVerified',
+    createdAt: 'createdAt',
+    userBussinessType: 'userBussinessType'
+  };
+
+  export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const OtpScalarFieldEnum: {
+    id: 'id',
+    phone: 'phone',
+    code: 'code',
+    expiresAt: 'expiresAt',
+    createdAt: 'createdAt'
+  };
+
+  export type OtpScalarFieldEnum = (typeof OtpScalarFieldEnum)[keyof typeof OtpScalarFieldEnum]
+
+
+  export const StoreScalarFieldEnum: {
+    id: 'id',
+    ownerId: 'ownerId',
+    title: 'title',
+    desc: 'desc',
+    peopleDesc: 'peopleDesc',
+    flatno: 'flatno',
+    streetAddress: 'streetAddress',
+    NearbyLandMark: 'NearbyLandMark',
+    areaLocality: 'areaLocality',
+    storeSize: 'storeSize',
+    businessType: 'businessType',
+    country: 'country',
+    state: 'state',
+    city: 'city',
+    pin: 'pin',
+    latitude: 'latitude',
+    longitude: 'longitude',
+    bannerImageUrl: 'bannerImageUrl',
+    priceInr: 'priceInr',
+    shareMode: 'shareMode',
+    startTime: 'startTime',
+    endTime: 'endTime',
+    days: 'days',
+    sqft: 'sqft',
+    dayOrNight: 'dayOrNight',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type StoreScalarFieldEnum = (typeof StoreScalarFieldEnum)[keyof typeof StoreScalarFieldEnum]
+
+
+  export const StoreImageScalarFieldEnum: {
+    id: 'id',
+    storeId: 'storeId',
+    url: 'url',
+    order: 'order',
+    createdAt: 'createdAt'
+  };
+
+  export type StoreImageScalarFieldEnum = (typeof StoreImageScalarFieldEnum)[keyof typeof StoreImageScalarFieldEnum]
+
+
+  export const StoreLikeScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    storeId: 'storeId',
+    createdAt: 'createdAt'
+  };
+
+  export type StoreLikeScalarFieldEnum = (typeof StoreLikeScalarFieldEnum)[keyof typeof StoreLikeScalarFieldEnum]
+
+
+  export const ConversationScalarFieldEnum: {
+    id: 'id',
+    storeId: 'storeId',
+    buyerId: 'buyerId',
+    createdAt: 'createdAt',
+    lastMessageAt: 'lastMessageAt'
+  };
+
+  export type ConversationScalarFieldEnum = (typeof ConversationScalarFieldEnum)[keyof typeof ConversationScalarFieldEnum]
+
+
+  export const MessageScalarFieldEnum: {
+    id: 'id',
+    conversationId: 'conversationId',
+    senderId: 'senderId',
+    text: 'text',
+    seen: 'seen',
+    createdAt: 'createdAt'
+  };
+
+  export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
+
+
+  export const NotificationScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    conversationId: 'conversationId',
+    message: 'message',
+    isRead: 'isRead',
+    createdAt: 'createdAt'
+  };
+
+  export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
+
+
+  export const UserPresenceScalarFieldEnum: {
+    userId: 'userId',
+    conversationId: 'conversationId',
+    updatedAt: 'updatedAt'
+  };
+
+  export type UserPresenceScalarFieldEnum = (typeof UserPresenceScalarFieldEnum)[keyof typeof UserPresenceScalarFieldEnum]
+
+
+  export const AgreementScalarFieldEnum: {
+    id: 'id',
+    userid: 'userid',
+    storeid: 'storeid',
+    ownerName: 'ownerName',
+    tenantName: 'tenantName',
+    price: 'price',
+    shareMode: 'shareMode',
+    startTime: 'startTime',
+    endTime: 'endTime',
+    days: 'days',
+    sqft: 'sqft',
+    dayOrNight: 'dayOrNight',
+    flatno: 'flatno',
+    streetAddress: 'streetAddress',
+    NearbyLandMark: 'NearbyLandMark',
+    areaLocality: 'areaLocality',
+    country: 'country',
+    state: 'state',
+    city: 'city',
+    pin: 'pin',
+    bussinessType: 'bussinessType'
+  };
+
+  export type AgreementScalarFieldEnum = (typeof AgreementScalarFieldEnum)[keyof typeof AgreementScalarFieldEnum]
+
+
+  export const StoreAnlyalicScalarFieldEnum: {
+    id: 'id',
+    lat: 'lat',
+    log: 'log',
+    userBussiness: 'userBussiness',
+    earning: 'earning',
+    audience: 'audience',
+    compitation: 'compitation',
+    FootStep: 'FootStep'
+  };
+
+  export type StoreAnlyalicScalarFieldEnum = (typeof StoreAnlyalicScalarFieldEnum)[keyof typeof StoreAnlyalicScalarFieldEnum]
+
+
+  export const SortOrder: {
+    asc: 'asc',
+    desc: 'desc'
+  };
+
+  export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const QueryMode: {
+    default: 'default',
+    insensitive: 'insensitive'
+  };
+
+  export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  /**
+   * Field references
+   */
+
+
+  /**
+   * Reference to a field of type 'String'
+   */
+  export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
+    
+
+
+  /**
+   * Reference to a field of type 'String[]'
+   */
+  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'ShareMode'
+   */
+  export type EnumShareModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ShareMode'>
+    
+
+
+  /**
+   * Reference to a field of type 'ShareMode[]'
+   */
+  export type ListEnumShareModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ShareMode[]'>
+    
+  /**
+   * Deep Input Types
+   */
+
+
+  export type UserWhereInput = {
+    AND?: UserWhereInput | UserWhereInput[]
+    OR?: UserWhereInput[]
+    NOT?: UserWhereInput | UserWhereInput[]
+    id?: StringFilter<"User"> | string
+    name?: StringNullableFilter<"User"> | string | null
+    email?: StringNullableFilter<"User"> | string | null
+    image?: StringNullableFilter<"User"> | string | null
+    phone?: StringNullableFilter<"User"> | string | null
+    phoneVerified?: BoolFilter<"User"> | boolean
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    userBussinessType?: StringNullableFilter<"User"> | string | null
+    stores?: StoreListRelationFilter
+    likedStores?: StoreLikeListRelationFilter
+    notification?: NotificationListRelationFilter
+    messages?: MessageListRelationFilter
+    buyer?: ConversationListRelationFilter
+    UserPresence?: UserPresenceListRelationFilter
+    Agreement?: AgreementListRelationFilter
+  }
+
+  export type UserOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrderInput | SortOrder
+    email?: SortOrderInput | SortOrder
+    image?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    phoneVerified?: SortOrder
+    createdAt?: SortOrder
+    userBussinessType?: SortOrderInput | SortOrder
+    stores?: StoreOrderByRelationAggregateInput
+    likedStores?: StoreLikeOrderByRelationAggregateInput
+    notification?: NotificationOrderByRelationAggregateInput
+    messages?: MessageOrderByRelationAggregateInput
+    buyer?: ConversationOrderByRelationAggregateInput
+    UserPresence?: UserPresenceOrderByRelationAggregateInput
+    Agreement?: AgreementOrderByRelationAggregateInput
+  }
+
+  export type UserWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    email?: string
+    phone?: string
+    AND?: UserWhereInput | UserWhereInput[]
+    OR?: UserWhereInput[]
+    NOT?: UserWhereInput | UserWhereInput[]
+    name?: StringNullableFilter<"User"> | string | null
+    image?: StringNullableFilter<"User"> | string | null
+    phoneVerified?: BoolFilter<"User"> | boolean
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    userBussinessType?: StringNullableFilter<"User"> | string | null
+    stores?: StoreListRelationFilter
+    likedStores?: StoreLikeListRelationFilter
+    notification?: NotificationListRelationFilter
+    messages?: MessageListRelationFilter
+    buyer?: ConversationListRelationFilter
+    UserPresence?: UserPresenceListRelationFilter
+    Agreement?: AgreementListRelationFilter
+  }, "id" | "email" | "phone">
+
+  export type UserOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrderInput | SortOrder
+    email?: SortOrderInput | SortOrder
+    image?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    phoneVerified?: SortOrder
+    createdAt?: SortOrder
+    userBussinessType?: SortOrderInput | SortOrder
+    _count?: UserCountOrderByAggregateInput
+    _max?: UserMaxOrderByAggregateInput
+    _min?: UserMinOrderByAggregateInput
+  }
+
+  export type UserScalarWhereWithAggregatesInput = {
+    AND?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
+    OR?: UserScalarWhereWithAggregatesInput[]
+    NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"User"> | string
+    name?: StringNullableWithAggregatesFilter<"User"> | string | null
+    email?: StringNullableWithAggregatesFilter<"User"> | string | null
+    image?: StringNullableWithAggregatesFilter<"User"> | string | null
+    phone?: StringNullableWithAggregatesFilter<"User"> | string | null
+    phoneVerified?: BoolWithAggregatesFilter<"User"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    userBussinessType?: StringNullableWithAggregatesFilter<"User"> | string | null
+  }
+
+  export type OtpWhereInput = {
+    AND?: OtpWhereInput | OtpWhereInput[]
+    OR?: OtpWhereInput[]
+    NOT?: OtpWhereInput | OtpWhereInput[]
+    id?: StringFilter<"Otp"> | string
+    phone?: StringFilter<"Otp"> | string
+    code?: StringFilter<"Otp"> | string
+    expiresAt?: DateTimeFilter<"Otp"> | Date | string
+    createdAt?: DateTimeFilter<"Otp"> | Date | string
+  }
+
+  export type OtpOrderByWithRelationInput = {
+    id?: SortOrder
+    phone?: SortOrder
+    code?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type OtpWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: OtpWhereInput | OtpWhereInput[]
+    OR?: OtpWhereInput[]
+    NOT?: OtpWhereInput | OtpWhereInput[]
+    phone?: StringFilter<"Otp"> | string
+    code?: StringFilter<"Otp"> | string
+    expiresAt?: DateTimeFilter<"Otp"> | Date | string
+    createdAt?: DateTimeFilter<"Otp"> | Date | string
+  }, "id">
+
+  export type OtpOrderByWithAggregationInput = {
+    id?: SortOrder
+    phone?: SortOrder
+    code?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    _count?: OtpCountOrderByAggregateInput
+    _max?: OtpMaxOrderByAggregateInput
+    _min?: OtpMinOrderByAggregateInput
+  }
+
+  export type OtpScalarWhereWithAggregatesInput = {
+    AND?: OtpScalarWhereWithAggregatesInput | OtpScalarWhereWithAggregatesInput[]
+    OR?: OtpScalarWhereWithAggregatesInput[]
+    NOT?: OtpScalarWhereWithAggregatesInput | OtpScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Otp"> | string
+    phone?: StringWithAggregatesFilter<"Otp"> | string
+    code?: StringWithAggregatesFilter<"Otp"> | string
+    expiresAt?: DateTimeWithAggregatesFilter<"Otp"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"Otp"> | Date | string
+  }
+
+  export type StoreWhereInput = {
+    AND?: StoreWhereInput | StoreWhereInput[]
+    OR?: StoreWhereInput[]
+    NOT?: StoreWhereInput | StoreWhereInput[]
+    id?: StringFilter<"Store"> | string
+    ownerId?: StringFilter<"Store"> | string
+    title?: StringFilter<"Store"> | string
+    desc?: StringFilter<"Store"> | string
+    peopleDesc?: StringFilter<"Store"> | string
+    flatno?: StringFilter<"Store"> | string
+    streetAddress?: StringFilter<"Store"> | string
+    NearbyLandMark?: StringFilter<"Store"> | string
+    areaLocality?: StringFilter<"Store"> | string
+    storeSize?: StringFilter<"Store"> | string
+    businessType?: StringFilter<"Store"> | string
+    country?: StringFilter<"Store"> | string
+    state?: StringFilter<"Store"> | string
+    city?: StringFilter<"Store"> | string
+    pin?: StringFilter<"Store"> | string
+    latitude?: FloatNullableFilter<"Store"> | number | null
+    longitude?: FloatNullableFilter<"Store"> | number | null
+    bannerImageUrl?: StringNullableFilter<"Store"> | string | null
+    priceInr?: IntFilter<"Store"> | number
+    shareMode?: EnumShareModeFilter<"Store"> | $Enums.ShareMode
+    startTime?: StringNullableFilter<"Store"> | string | null
+    endTime?: StringNullableFilter<"Store"> | string | null
+    days?: StringNullableListFilter<"Store">
+    sqft?: IntNullableFilter<"Store"> | number | null
+    dayOrNight?: StringNullableFilter<"Store"> | string | null
+    createdAt?: DateTimeFilter<"Store"> | Date | string
+    updatedAt?: DateTimeFilter<"Store"> | Date | string
+    owner?: XOR<UserScalarRelationFilter, UserWhereInput>
+    images?: StoreImageListRelationFilter
+    likes?: StoreLikeListRelationFilter
+    store?: ConversationListRelationFilter
+    Agreement?: AgreementListRelationFilter
+  }
+
+  export type StoreOrderByWithRelationInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    title?: SortOrder
+    desc?: SortOrder
+    peopleDesc?: SortOrder
+    flatno?: SortOrder
+    streetAddress?: SortOrder
+    NearbyLandMark?: SortOrder
+    areaLocality?: SortOrder
+    storeSize?: SortOrder
+    businessType?: SortOrder
+    country?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    pin?: SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
+    bannerImageUrl?: SortOrderInput | SortOrder
+    priceInr?: SortOrder
+    shareMode?: SortOrder
+    startTime?: SortOrderInput | SortOrder
+    endTime?: SortOrderInput | SortOrder
+    days?: SortOrder
+    sqft?: SortOrderInput | SortOrder
+    dayOrNight?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    owner?: UserOrderByWithRelationInput
+    images?: StoreImageOrderByRelationAggregateInput
+    likes?: StoreLikeOrderByRelationAggregateInput
+    store?: ConversationOrderByRelationAggregateInput
+    Agreement?: AgreementOrderByRelationAggregateInput
+  }
+
+  export type StoreWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: StoreWhereInput | StoreWhereInput[]
+    OR?: StoreWhereInput[]
+    NOT?: StoreWhereInput | StoreWhereInput[]
+    ownerId?: StringFilter<"Store"> | string
+    title?: StringFilter<"Store"> | string
+    desc?: StringFilter<"Store"> | string
+    peopleDesc?: StringFilter<"Store"> | string
+    flatno?: StringFilter<"Store"> | string
+    streetAddress?: StringFilter<"Store"> | string
+    NearbyLandMark?: StringFilter<"Store"> | string
+    areaLocality?: StringFilter<"Store"> | string
+    storeSize?: StringFilter<"Store"> | string
+    businessType?: StringFilter<"Store"> | string
+    country?: StringFilter<"Store"> | string
+    state?: StringFilter<"Store"> | string
+    city?: StringFilter<"Store"> | string
+    pin?: StringFilter<"Store"> | string
+    latitude?: FloatNullableFilter<"Store"> | number | null
+    longitude?: FloatNullableFilter<"Store"> | number | null
+    bannerImageUrl?: StringNullableFilter<"Store"> | string | null
+    priceInr?: IntFilter<"Store"> | number
+    shareMode?: EnumShareModeFilter<"Store"> | $Enums.ShareMode
+    startTime?: StringNullableFilter<"Store"> | string | null
+    endTime?: StringNullableFilter<"Store"> | string | null
+    days?: StringNullableListFilter<"Store">
+    sqft?: IntNullableFilter<"Store"> | number | null
+    dayOrNight?: StringNullableFilter<"Store"> | string | null
+    createdAt?: DateTimeFilter<"Store"> | Date | string
+    updatedAt?: DateTimeFilter<"Store"> | Date | string
+    owner?: XOR<UserScalarRelationFilter, UserWhereInput>
+    images?: StoreImageListRelationFilter
+    likes?: StoreLikeListRelationFilter
+    store?: ConversationListRelationFilter
+    Agreement?: AgreementListRelationFilter
+  }, "id">
+
+  export type StoreOrderByWithAggregationInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    title?: SortOrder
+    desc?: SortOrder
+    peopleDesc?: SortOrder
+    flatno?: SortOrder
+    streetAddress?: SortOrder
+    NearbyLandMark?: SortOrder
+    areaLocality?: SortOrder
+    storeSize?: SortOrder
+    businessType?: SortOrder
+    country?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    pin?: SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
+    bannerImageUrl?: SortOrderInput | SortOrder
+    priceInr?: SortOrder
+    shareMode?: SortOrder
+    startTime?: SortOrderInput | SortOrder
+    endTime?: SortOrderInput | SortOrder
+    days?: SortOrder
+    sqft?: SortOrderInput | SortOrder
+    dayOrNight?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: StoreCountOrderByAggregateInput
+    _avg?: StoreAvgOrderByAggregateInput
+    _max?: StoreMaxOrderByAggregateInput
+    _min?: StoreMinOrderByAggregateInput
+    _sum?: StoreSumOrderByAggregateInput
+  }
+
+  export type StoreScalarWhereWithAggregatesInput = {
+    AND?: StoreScalarWhereWithAggregatesInput | StoreScalarWhereWithAggregatesInput[]
+    OR?: StoreScalarWhereWithAggregatesInput[]
+    NOT?: StoreScalarWhereWithAggregatesInput | StoreScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Store"> | string
+    ownerId?: StringWithAggregatesFilter<"Store"> | string
+    title?: StringWithAggregatesFilter<"Store"> | string
+    desc?: StringWithAggregatesFilter<"Store"> | string
+    peopleDesc?: StringWithAggregatesFilter<"Store"> | string
+    flatno?: StringWithAggregatesFilter<"Store"> | string
+    streetAddress?: StringWithAggregatesFilter<"Store"> | string
+    NearbyLandMark?: StringWithAggregatesFilter<"Store"> | string
+    areaLocality?: StringWithAggregatesFilter<"Store"> | string
+    storeSize?: StringWithAggregatesFilter<"Store"> | string
+    businessType?: StringWithAggregatesFilter<"Store"> | string
+    country?: StringWithAggregatesFilter<"Store"> | string
+    state?: StringWithAggregatesFilter<"Store"> | string
+    city?: StringWithAggregatesFilter<"Store"> | string
+    pin?: StringWithAggregatesFilter<"Store"> | string
+    latitude?: FloatNullableWithAggregatesFilter<"Store"> | number | null
+    longitude?: FloatNullableWithAggregatesFilter<"Store"> | number | null
+    bannerImageUrl?: StringNullableWithAggregatesFilter<"Store"> | string | null
+    priceInr?: IntWithAggregatesFilter<"Store"> | number
+    shareMode?: EnumShareModeWithAggregatesFilter<"Store"> | $Enums.ShareMode
+    startTime?: StringNullableWithAggregatesFilter<"Store"> | string | null
+    endTime?: StringNullableWithAggregatesFilter<"Store"> | string | null
+    days?: StringNullableListFilter<"Store">
+    sqft?: IntNullableWithAggregatesFilter<"Store"> | number | null
+    dayOrNight?: StringNullableWithAggregatesFilter<"Store"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Store"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Store"> | Date | string
+  }
+
+  export type StoreImageWhereInput = {
+    AND?: StoreImageWhereInput | StoreImageWhereInput[]
+    OR?: StoreImageWhereInput[]
+    NOT?: StoreImageWhereInput | StoreImageWhereInput[]
+    id?: StringFilter<"StoreImage"> | string
+    storeId?: StringFilter<"StoreImage"> | string
+    url?: StringFilter<"StoreImage"> | string
+    order?: IntFilter<"StoreImage"> | number
+    createdAt?: DateTimeFilter<"StoreImage"> | Date | string
+    store?: XOR<StoreScalarRelationFilter, StoreWhereInput>
+  }
+
+  export type StoreImageOrderByWithRelationInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    url?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    store?: StoreOrderByWithRelationInput
+  }
+
+  export type StoreImageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: StoreImageWhereInput | StoreImageWhereInput[]
+    OR?: StoreImageWhereInput[]
+    NOT?: StoreImageWhereInput | StoreImageWhereInput[]
+    storeId?: StringFilter<"StoreImage"> | string
+    url?: StringFilter<"StoreImage"> | string
+    order?: IntFilter<"StoreImage"> | number
+    createdAt?: DateTimeFilter<"StoreImage"> | Date | string
+    store?: XOR<StoreScalarRelationFilter, StoreWhereInput>
+  }, "id">
+
+  export type StoreImageOrderByWithAggregationInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    url?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    _count?: StoreImageCountOrderByAggregateInput
+    _avg?: StoreImageAvgOrderByAggregateInput
+    _max?: StoreImageMaxOrderByAggregateInput
+    _min?: StoreImageMinOrderByAggregateInput
+    _sum?: StoreImageSumOrderByAggregateInput
+  }
+
+  export type StoreImageScalarWhereWithAggregatesInput = {
+    AND?: StoreImageScalarWhereWithAggregatesInput | StoreImageScalarWhereWithAggregatesInput[]
+    OR?: StoreImageScalarWhereWithAggregatesInput[]
+    NOT?: StoreImageScalarWhereWithAggregatesInput | StoreImageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"StoreImage"> | string
+    storeId?: StringWithAggregatesFilter<"StoreImage"> | string
+    url?: StringWithAggregatesFilter<"StoreImage"> | string
+    order?: IntWithAggregatesFilter<"StoreImage"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"StoreImage"> | Date | string
+  }
+
+  export type StoreLikeWhereInput = {
+    AND?: StoreLikeWhereInput | StoreLikeWhereInput[]
+    OR?: StoreLikeWhereInput[]
+    NOT?: StoreLikeWhereInput | StoreLikeWhereInput[]
+    id?: StringFilter<"StoreLike"> | string
+    userId?: StringFilter<"StoreLike"> | string
+    storeId?: StringFilter<"StoreLike"> | string
+    createdAt?: DateTimeFilter<"StoreLike"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    store?: XOR<StoreScalarRelationFilter, StoreWhereInput>
+  }
+
+  export type StoreLikeOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    storeId?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    store?: StoreOrderByWithRelationInput
+  }
+
+  export type StoreLikeWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId_storeId?: StoreLikeUserIdStoreIdCompoundUniqueInput
+    AND?: StoreLikeWhereInput | StoreLikeWhereInput[]
+    OR?: StoreLikeWhereInput[]
+    NOT?: StoreLikeWhereInput | StoreLikeWhereInput[]
+    userId?: StringFilter<"StoreLike"> | string
+    storeId?: StringFilter<"StoreLike"> | string
+    createdAt?: DateTimeFilter<"StoreLike"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    store?: XOR<StoreScalarRelationFilter, StoreWhereInput>
+  }, "id" | "userId_storeId">
+
+  export type StoreLikeOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    storeId?: SortOrder
+    createdAt?: SortOrder
+    _count?: StoreLikeCountOrderByAggregateInput
+    _max?: StoreLikeMaxOrderByAggregateInput
+    _min?: StoreLikeMinOrderByAggregateInput
+  }
+
+  export type StoreLikeScalarWhereWithAggregatesInput = {
+    AND?: StoreLikeScalarWhereWithAggregatesInput | StoreLikeScalarWhereWithAggregatesInput[]
+    OR?: StoreLikeScalarWhereWithAggregatesInput[]
+    NOT?: StoreLikeScalarWhereWithAggregatesInput | StoreLikeScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"StoreLike"> | string
+    userId?: StringWithAggregatesFilter<"StoreLike"> | string
+    storeId?: StringWithAggregatesFilter<"StoreLike"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"StoreLike"> | Date | string
+  }
+
+  export type ConversationWhereInput = {
+    AND?: ConversationWhereInput | ConversationWhereInput[]
+    OR?: ConversationWhereInput[]
+    NOT?: ConversationWhereInput | ConversationWhereInput[]
+    id?: StringFilter<"Conversation"> | string
+    storeId?: StringFilter<"Conversation"> | string
+    buyerId?: StringFilter<"Conversation"> | string
+    createdAt?: DateTimeFilter<"Conversation"> | Date | string
+    lastMessageAt?: DateTimeFilter<"Conversation"> | Date | string
+    store?: XOR<StoreScalarRelationFilter, StoreWhereInput>
+    buyer?: XOR<UserScalarRelationFilter, UserWhereInput>
+    messages?: MessageListRelationFilter
+    notification?: NotificationListRelationFilter
+    UserPresence?: UserPresenceListRelationFilter
+  }
+
+  export type ConversationOrderByWithRelationInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    buyerId?: SortOrder
+    createdAt?: SortOrder
+    lastMessageAt?: SortOrder
+    store?: StoreOrderByWithRelationInput
+    buyer?: UserOrderByWithRelationInput
+    messages?: MessageOrderByRelationAggregateInput
+    notification?: NotificationOrderByRelationAggregateInput
+    UserPresence?: UserPresenceOrderByRelationAggregateInput
+  }
+
+  export type ConversationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    storeId_buyerId?: ConversationStoreIdBuyerIdCompoundUniqueInput
+    AND?: ConversationWhereInput | ConversationWhereInput[]
+    OR?: ConversationWhereInput[]
+    NOT?: ConversationWhereInput | ConversationWhereInput[]
+    storeId?: StringFilter<"Conversation"> | string
+    buyerId?: StringFilter<"Conversation"> | string
+    createdAt?: DateTimeFilter<"Conversation"> | Date | string
+    lastMessageAt?: DateTimeFilter<"Conversation"> | Date | string
+    store?: XOR<StoreScalarRelationFilter, StoreWhereInput>
+    buyer?: XOR<UserScalarRelationFilter, UserWhereInput>
+    messages?: MessageListRelationFilter
+    notification?: NotificationListRelationFilter
+    UserPresence?: UserPresenceListRelationFilter
+  }, "id" | "storeId_buyerId">
+
+  export type ConversationOrderByWithAggregationInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    buyerId?: SortOrder
+    createdAt?: SortOrder
+    lastMessageAt?: SortOrder
+    _count?: ConversationCountOrderByAggregateInput
+    _max?: ConversationMaxOrderByAggregateInput
+    _min?: ConversationMinOrderByAggregateInput
+  }
+
+  export type ConversationScalarWhereWithAggregatesInput = {
+    AND?: ConversationScalarWhereWithAggregatesInput | ConversationScalarWhereWithAggregatesInput[]
+    OR?: ConversationScalarWhereWithAggregatesInput[]
+    NOT?: ConversationScalarWhereWithAggregatesInput | ConversationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Conversation"> | string
+    storeId?: StringWithAggregatesFilter<"Conversation"> | string
+    buyerId?: StringWithAggregatesFilter<"Conversation"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Conversation"> | Date | string
+    lastMessageAt?: DateTimeWithAggregatesFilter<"Conversation"> | Date | string
+  }
+
+  export type MessageWhereInput = {
+    AND?: MessageWhereInput | MessageWhereInput[]
+    OR?: MessageWhereInput[]
+    NOT?: MessageWhereInput | MessageWhereInput[]
+    id?: StringFilter<"Message"> | string
+    conversationId?: StringFilter<"Message"> | string
+    senderId?: StringFilter<"Message"> | string
+    text?: StringFilter<"Message"> | string
+    seen?: BoolFilter<"Message"> | boolean
+    createdAt?: DateTimeFilter<"Message"> | Date | string
+    conversation?: XOR<ConversationScalarRelationFilter, ConversationWhereInput>
+    sender?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type MessageOrderByWithRelationInput = {
+    id?: SortOrder
+    conversationId?: SortOrder
+    senderId?: SortOrder
+    text?: SortOrder
+    seen?: SortOrder
+    createdAt?: SortOrder
+    conversation?: ConversationOrderByWithRelationInput
+    sender?: UserOrderByWithRelationInput
+  }
+
+  export type MessageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MessageWhereInput | MessageWhereInput[]
+    OR?: MessageWhereInput[]
+    NOT?: MessageWhereInput | MessageWhereInput[]
+    conversationId?: StringFilter<"Message"> | string
+    senderId?: StringFilter<"Message"> | string
+    text?: StringFilter<"Message"> | string
+    seen?: BoolFilter<"Message"> | boolean
+    createdAt?: DateTimeFilter<"Message"> | Date | string
+    conversation?: XOR<ConversationScalarRelationFilter, ConversationWhereInput>
+    sender?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type MessageOrderByWithAggregationInput = {
+    id?: SortOrder
+    conversationId?: SortOrder
+    senderId?: SortOrder
+    text?: SortOrder
+    seen?: SortOrder
+    createdAt?: SortOrder
+    _count?: MessageCountOrderByAggregateInput
+    _max?: MessageMaxOrderByAggregateInput
+    _min?: MessageMinOrderByAggregateInput
+  }
+
+  export type MessageScalarWhereWithAggregatesInput = {
+    AND?: MessageScalarWhereWithAggregatesInput | MessageScalarWhereWithAggregatesInput[]
+    OR?: MessageScalarWhereWithAggregatesInput[]
+    NOT?: MessageScalarWhereWithAggregatesInput | MessageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Message"> | string
+    conversationId?: StringWithAggregatesFilter<"Message"> | string
+    senderId?: StringWithAggregatesFilter<"Message"> | string
+    text?: StringWithAggregatesFilter<"Message"> | string
+    seen?: BoolWithAggregatesFilter<"Message"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Message"> | Date | string
+  }
+
+  export type NotificationWhereInput = {
+    AND?: NotificationWhereInput | NotificationWhereInput[]
+    OR?: NotificationWhereInput[]
+    NOT?: NotificationWhereInput | NotificationWhereInput[]
+    id?: StringFilter<"Notification"> | string
+    userId?: StringFilter<"Notification"> | string
+    conversationId?: StringFilter<"Notification"> | string
+    message?: StringFilter<"Notification"> | string
+    isRead?: BoolFilter<"Notification"> | boolean
+    createdAt?: DateTimeFilter<"Notification"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    conversation?: XOR<ConversationScalarRelationFilter, ConversationWhereInput>
+  }
+
+  export type NotificationOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    conversationId?: SortOrder
+    message?: SortOrder
+    isRead?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    conversation?: ConversationOrderByWithRelationInput
+  }
+
+  export type NotificationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: NotificationWhereInput | NotificationWhereInput[]
+    OR?: NotificationWhereInput[]
+    NOT?: NotificationWhereInput | NotificationWhereInput[]
+    userId?: StringFilter<"Notification"> | string
+    conversationId?: StringFilter<"Notification"> | string
+    message?: StringFilter<"Notification"> | string
+    isRead?: BoolFilter<"Notification"> | boolean
+    createdAt?: DateTimeFilter<"Notification"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    conversation?: XOR<ConversationScalarRelationFilter, ConversationWhereInput>
+  }, "id">
+
+  export type NotificationOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    conversationId?: SortOrder
+    message?: SortOrder
+    isRead?: SortOrder
+    createdAt?: SortOrder
+    _count?: NotificationCountOrderByAggregateInput
+    _max?: NotificationMaxOrderByAggregateInput
+    _min?: NotificationMinOrderByAggregateInput
+  }
+
+  export type NotificationScalarWhereWithAggregatesInput = {
+    AND?: NotificationScalarWhereWithAggregatesInput | NotificationScalarWhereWithAggregatesInput[]
+    OR?: NotificationScalarWhereWithAggregatesInput[]
+    NOT?: NotificationScalarWhereWithAggregatesInput | NotificationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Notification"> | string
+    userId?: StringWithAggregatesFilter<"Notification"> | string
+    conversationId?: StringWithAggregatesFilter<"Notification"> | string
+    message?: StringWithAggregatesFilter<"Notification"> | string
+    isRead?: BoolWithAggregatesFilter<"Notification"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Notification"> | Date | string
+  }
+
+  export type UserPresenceWhereInput = {
+    AND?: UserPresenceWhereInput | UserPresenceWhereInput[]
+    OR?: UserPresenceWhereInput[]
+    NOT?: UserPresenceWhereInput | UserPresenceWhereInput[]
+    userId?: StringFilter<"UserPresence"> | string
+    conversationId?: StringNullableFilter<"UserPresence"> | string | null
+    updatedAt?: DateTimeFilter<"UserPresence"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    conversation?: XOR<ConversationNullableScalarRelationFilter, ConversationWhereInput> | null
+  }
+
+  export type UserPresenceOrderByWithRelationInput = {
+    userId?: SortOrder
+    conversationId?: SortOrderInput | SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    conversation?: ConversationOrderByWithRelationInput
+  }
+
+  export type UserPresenceWhereUniqueInput = Prisma.AtLeast<{
+    userId?: string
+    AND?: UserPresenceWhereInput | UserPresenceWhereInput[]
+    OR?: UserPresenceWhereInput[]
+    NOT?: UserPresenceWhereInput | UserPresenceWhereInput[]
+    conversationId?: StringNullableFilter<"UserPresence"> | string | null
+    updatedAt?: DateTimeFilter<"UserPresence"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    conversation?: XOR<ConversationNullableScalarRelationFilter, ConversationWhereInput> | null
+  }, "userId">
+
+  export type UserPresenceOrderByWithAggregationInput = {
+    userId?: SortOrder
+    conversationId?: SortOrderInput | SortOrder
+    updatedAt?: SortOrder
+    _count?: UserPresenceCountOrderByAggregateInput
+    _max?: UserPresenceMaxOrderByAggregateInput
+    _min?: UserPresenceMinOrderByAggregateInput
+  }
+
+  export type UserPresenceScalarWhereWithAggregatesInput = {
+    AND?: UserPresenceScalarWhereWithAggregatesInput | UserPresenceScalarWhereWithAggregatesInput[]
+    OR?: UserPresenceScalarWhereWithAggregatesInput[]
+    NOT?: UserPresenceScalarWhereWithAggregatesInput | UserPresenceScalarWhereWithAggregatesInput[]
+    userId?: StringWithAggregatesFilter<"UserPresence"> | string
+    conversationId?: StringNullableWithAggregatesFilter<"UserPresence"> | string | null
+    updatedAt?: DateTimeWithAggregatesFilter<"UserPresence"> | Date | string
+  }
+
+  export type AgreementWhereInput = {
+    AND?: AgreementWhereInput | AgreementWhereInput[]
+    OR?: AgreementWhereInput[]
+    NOT?: AgreementWhereInput | AgreementWhereInput[]
+    id?: StringFilter<"Agreement"> | string
+    userid?: StringFilter<"Agreement"> | string
+    storeid?: StringFilter<"Agreement"> | string
+    ownerName?: StringFilter<"Agreement"> | string
+    tenantName?: StringFilter<"Agreement"> | string
+    price?: StringFilter<"Agreement"> | string
+    shareMode?: EnumShareModeFilter<"Agreement"> | $Enums.ShareMode
+    startTime?: StringNullableFilter<"Agreement"> | string | null
+    endTime?: StringNullableFilter<"Agreement"> | string | null
+    days?: StringNullableListFilter<"Agreement">
+    sqft?: IntNullableFilter<"Agreement"> | number | null
+    dayOrNight?: StringNullableFilter<"Agreement"> | string | null
+    flatno?: StringFilter<"Agreement"> | string
+    streetAddress?: StringFilter<"Agreement"> | string
+    NearbyLandMark?: StringFilter<"Agreement"> | string
+    areaLocality?: StringFilter<"Agreement"> | string
+    country?: StringFilter<"Agreement"> | string
+    state?: StringFilter<"Agreement"> | string
+    city?: StringFilter<"Agreement"> | string
+    pin?: StringFilter<"Agreement"> | string
+    bussinessType?: StringFilter<"Agreement"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    store?: XOR<StoreScalarRelationFilter, StoreWhereInput>
+  }
+
+  export type AgreementOrderByWithRelationInput = {
+    id?: SortOrder
+    userid?: SortOrder
+    storeid?: SortOrder
+    ownerName?: SortOrder
+    tenantName?: SortOrder
+    price?: SortOrder
+    shareMode?: SortOrder
+    startTime?: SortOrderInput | SortOrder
+    endTime?: SortOrderInput | SortOrder
+    days?: SortOrder
+    sqft?: SortOrderInput | SortOrder
+    dayOrNight?: SortOrderInput | SortOrder
+    flatno?: SortOrder
+    streetAddress?: SortOrder
+    NearbyLandMark?: SortOrder
+    areaLocality?: SortOrder
+    country?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    pin?: SortOrder
+    bussinessType?: SortOrder
+    user?: UserOrderByWithRelationInput
+    store?: StoreOrderByWithRelationInput
+  }
+
+  export type AgreementWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AgreementWhereInput | AgreementWhereInput[]
+    OR?: AgreementWhereInput[]
+    NOT?: AgreementWhereInput | AgreementWhereInput[]
+    userid?: StringFilter<"Agreement"> | string
+    storeid?: StringFilter<"Agreement"> | string
+    ownerName?: StringFilter<"Agreement"> | string
+    tenantName?: StringFilter<"Agreement"> | string
+    price?: StringFilter<"Agreement"> | string
+    shareMode?: EnumShareModeFilter<"Agreement"> | $Enums.ShareMode
+    startTime?: StringNullableFilter<"Agreement"> | string | null
+    endTime?: StringNullableFilter<"Agreement"> | string | null
+    days?: StringNullableListFilter<"Agreement">
+    sqft?: IntNullableFilter<"Agreement"> | number | null
+    dayOrNight?: StringNullableFilter<"Agreement"> | string | null
+    flatno?: StringFilter<"Agreement"> | string
+    streetAddress?: StringFilter<"Agreement"> | string
+    NearbyLandMark?: StringFilter<"Agreement"> | string
+    areaLocality?: StringFilter<"Agreement"> | string
+    country?: StringFilter<"Agreement"> | string
+    state?: StringFilter<"Agreement"> | string
+    city?: StringFilter<"Agreement"> | string
+    pin?: StringFilter<"Agreement"> | string
+    bussinessType?: StringFilter<"Agreement"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    store?: XOR<StoreScalarRelationFilter, StoreWhereInput>
+  }, "id">
+
+  export type AgreementOrderByWithAggregationInput = {
+    id?: SortOrder
+    userid?: SortOrder
+    storeid?: SortOrder
+    ownerName?: SortOrder
+    tenantName?: SortOrder
+    price?: SortOrder
+    shareMode?: SortOrder
+    startTime?: SortOrderInput | SortOrder
+    endTime?: SortOrderInput | SortOrder
+    days?: SortOrder
+    sqft?: SortOrderInput | SortOrder
+    dayOrNight?: SortOrderInput | SortOrder
+    flatno?: SortOrder
+    streetAddress?: SortOrder
+    NearbyLandMark?: SortOrder
+    areaLocality?: SortOrder
+    country?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    pin?: SortOrder
+    bussinessType?: SortOrder
+    _count?: AgreementCountOrderByAggregateInput
+    _avg?: AgreementAvgOrderByAggregateInput
+    _max?: AgreementMaxOrderByAggregateInput
+    _min?: AgreementMinOrderByAggregateInput
+    _sum?: AgreementSumOrderByAggregateInput
+  }
+
+  export type AgreementScalarWhereWithAggregatesInput = {
+    AND?: AgreementScalarWhereWithAggregatesInput | AgreementScalarWhereWithAggregatesInput[]
+    OR?: AgreementScalarWhereWithAggregatesInput[]
+    NOT?: AgreementScalarWhereWithAggregatesInput | AgreementScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Agreement"> | string
+    userid?: StringWithAggregatesFilter<"Agreement"> | string
+    storeid?: StringWithAggregatesFilter<"Agreement"> | string
+    ownerName?: StringWithAggregatesFilter<"Agreement"> | string
+    tenantName?: StringWithAggregatesFilter<"Agreement"> | string
+    price?: StringWithAggregatesFilter<"Agreement"> | string
+    shareMode?: EnumShareModeWithAggregatesFilter<"Agreement"> | $Enums.ShareMode
+    startTime?: StringNullableWithAggregatesFilter<"Agreement"> | string | null
+    endTime?: StringNullableWithAggregatesFilter<"Agreement"> | string | null
+    days?: StringNullableListFilter<"Agreement">
+    sqft?: IntNullableWithAggregatesFilter<"Agreement"> | number | null
+    dayOrNight?: StringNullableWithAggregatesFilter<"Agreement"> | string | null
+    flatno?: StringWithAggregatesFilter<"Agreement"> | string
+    streetAddress?: StringWithAggregatesFilter<"Agreement"> | string
+    NearbyLandMark?: StringWithAggregatesFilter<"Agreement"> | string
+    areaLocality?: StringWithAggregatesFilter<"Agreement"> | string
+    country?: StringWithAggregatesFilter<"Agreement"> | string
+    state?: StringWithAggregatesFilter<"Agreement"> | string
+    city?: StringWithAggregatesFilter<"Agreement"> | string
+    pin?: StringWithAggregatesFilter<"Agreement"> | string
+    bussinessType?: StringWithAggregatesFilter<"Agreement"> | string
+  }
+
+  export type StoreAnlyalicWhereInput = {
+    AND?: StoreAnlyalicWhereInput | StoreAnlyalicWhereInput[]
+    OR?: StoreAnlyalicWhereInput[]
+    NOT?: StoreAnlyalicWhereInput | StoreAnlyalicWhereInput[]
+    id?: StringFilter<"StoreAnlyalic"> | string
+    lat?: StringFilter<"StoreAnlyalic"> | string
+    log?: StringFilter<"StoreAnlyalic"> | string
+    userBussiness?: StringFilter<"StoreAnlyalic"> | string
+    earning?: StringFilter<"StoreAnlyalic"> | string
+    audience?: StringFilter<"StoreAnlyalic"> | string
+    compitation?: StringFilter<"StoreAnlyalic"> | string
+    FootStep?: StringFilter<"StoreAnlyalic"> | string
+  }
+
+  export type StoreAnlyalicOrderByWithRelationInput = {
+    id?: SortOrder
+    lat?: SortOrder
+    log?: SortOrder
+    userBussiness?: SortOrder
+    earning?: SortOrder
+    audience?: SortOrder
+    compitation?: SortOrder
+    FootStep?: SortOrder
+  }
+
+  export type StoreAnlyalicWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: StoreAnlyalicWhereInput | StoreAnlyalicWhereInput[]
+    OR?: StoreAnlyalicWhereInput[]
+    NOT?: StoreAnlyalicWhereInput | StoreAnlyalicWhereInput[]
+    lat?: StringFilter<"StoreAnlyalic"> | string
+    log?: StringFilter<"StoreAnlyalic"> | string
+    userBussiness?: StringFilter<"StoreAnlyalic"> | string
+    earning?: StringFilter<"StoreAnlyalic"> | string
+    audience?: StringFilter<"StoreAnlyalic"> | string
+    compitation?: StringFilter<"StoreAnlyalic"> | string
+    FootStep?: StringFilter<"StoreAnlyalic"> | string
+  }, "id">
+
+  export type StoreAnlyalicOrderByWithAggregationInput = {
+    id?: SortOrder
+    lat?: SortOrder
+    log?: SortOrder
+    userBussiness?: SortOrder
+    earning?: SortOrder
+    audience?: SortOrder
+    compitation?: SortOrder
+    FootStep?: SortOrder
+    _count?: StoreAnlyalicCountOrderByAggregateInput
+    _max?: StoreAnlyalicMaxOrderByAggregateInput
+    _min?: StoreAnlyalicMinOrderByAggregateInput
+  }
+
+  export type StoreAnlyalicScalarWhereWithAggregatesInput = {
+    AND?: StoreAnlyalicScalarWhereWithAggregatesInput | StoreAnlyalicScalarWhereWithAggregatesInput[]
+    OR?: StoreAnlyalicScalarWhereWithAggregatesInput[]
+    NOT?: StoreAnlyalicScalarWhereWithAggregatesInput | StoreAnlyalicScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"StoreAnlyalic"> | string
+    lat?: StringWithAggregatesFilter<"StoreAnlyalic"> | string
+    log?: StringWithAggregatesFilter<"StoreAnlyalic"> | string
+    userBussiness?: StringWithAggregatesFilter<"StoreAnlyalic"> | string
+    earning?: StringWithAggregatesFilter<"StoreAnlyalic"> | string
+    audience?: StringWithAggregatesFilter<"StoreAnlyalic"> | string
+    compitation?: StringWithAggregatesFilter<"StoreAnlyalic"> | string
+    FootStep?: StringWithAggregatesFilter<"StoreAnlyalic"> | string
+  }
+
+  export type UserCreateInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+    phone?: string | null
+    phoneVerified?: boolean
+    createdAt?: Date | string
+    userBussinessType?: string | null
+    stores?: StoreCreateNestedManyWithoutOwnerInput
+    likedStores?: StoreLikeCreateNestedManyWithoutUserInput
+    notification?: NotificationCreateNestedManyWithoutUserInput
+    messages?: MessageCreateNestedManyWithoutSenderInput
+    buyer?: ConversationCreateNestedManyWithoutBuyerInput
+    UserPresence?: UserPresenceCreateNestedManyWithoutUserInput
+    Agreement?: AgreementCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+    phone?: string | null
+    phoneVerified?: boolean
+    createdAt?: Date | string
+    userBussinessType?: string | null
+    stores?: StoreUncheckedCreateNestedManyWithoutOwnerInput
+    likedStores?: StoreLikeUncheckedCreateNestedManyWithoutUserInput
+    notification?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    messages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    buyer?: ConversationUncheckedCreateNestedManyWithoutBuyerInput
+    UserPresence?: UserPresenceUncheckedCreateNestedManyWithoutUserInput
+    Agreement?: AgreementUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userBussinessType?: NullableStringFieldUpdateOperationsInput | string | null
+    stores?: StoreUpdateManyWithoutOwnerNestedInput
+    likedStores?: StoreLikeUpdateManyWithoutUserNestedInput
+    notification?: NotificationUpdateManyWithoutUserNestedInput
+    messages?: MessageUpdateManyWithoutSenderNestedInput
+    buyer?: ConversationUpdateManyWithoutBuyerNestedInput
+    UserPresence?: UserPresenceUpdateManyWithoutUserNestedInput
+    Agreement?: AgreementUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userBussinessType?: NullableStringFieldUpdateOperationsInput | string | null
+    stores?: StoreUncheckedUpdateManyWithoutOwnerNestedInput
+    likedStores?: StoreLikeUncheckedUpdateManyWithoutUserNestedInput
+    notification?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    messages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    buyer?: ConversationUncheckedUpdateManyWithoutBuyerNestedInput
+    UserPresence?: UserPresenceUncheckedUpdateManyWithoutUserNestedInput
+    Agreement?: AgreementUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateManyInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+    phone?: string | null
+    phoneVerified?: boolean
+    createdAt?: Date | string
+    userBussinessType?: string | null
+  }
+
+  export type UserUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userBussinessType?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type UserUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userBussinessType?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type OtpCreateInput = {
+    id?: string
+    phone: string
+    code: string
+    expiresAt: Date | string
+    createdAt?: Date | string
+  }
+
+  export type OtpUncheckedCreateInput = {
+    id?: string
+    phone: string
+    code: string
+    expiresAt: Date | string
+    createdAt?: Date | string
+  }
+
+  export type OtpUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OtpUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OtpCreateManyInput = {
+    id?: string
+    phone: string
+    code: string
+    expiresAt: Date | string
+    createdAt?: Date | string
+  }
+
+  export type OtpUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OtpUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StoreCreateInput = {
+    id?: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude?: number | null
+    longitude?: number | null
+    bannerImageUrl?: string | null
+    priceInr: number
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: StoreCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    owner: UserCreateNestedOneWithoutStoresInput
+    images?: StoreImageCreateNestedManyWithoutStoreInput
+    likes?: StoreLikeCreateNestedManyWithoutStoreInput
+    store?: ConversationCreateNestedManyWithoutStoreInput
+    Agreement?: AgreementCreateNestedManyWithoutStoreInput
+  }
+
+  export type StoreUncheckedCreateInput = {
+    id?: string
+    ownerId: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude?: number | null
+    longitude?: number | null
+    bannerImageUrl?: string | null
+    priceInr: number
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: StoreCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: StoreImageUncheckedCreateNestedManyWithoutStoreInput
+    likes?: StoreLikeUncheckedCreateNestedManyWithoutStoreInput
+    store?: ConversationUncheckedCreateNestedManyWithoutStoreInput
+    Agreement?: AgreementUncheckedCreateNestedManyWithoutStoreInput
+  }
+
+  export type StoreUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: StoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: UserUpdateOneRequiredWithoutStoresNestedInput
+    images?: StoreImageUpdateManyWithoutStoreNestedInput
+    likes?: StoreLikeUpdateManyWithoutStoreNestedInput
+    store?: ConversationUpdateManyWithoutStoreNestedInput
+    Agreement?: AgreementUpdateManyWithoutStoreNestedInput
+  }
+
+  export type StoreUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: StoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: StoreImageUncheckedUpdateManyWithoutStoreNestedInput
+    likes?: StoreLikeUncheckedUpdateManyWithoutStoreNestedInput
+    store?: ConversationUncheckedUpdateManyWithoutStoreNestedInput
+    Agreement?: AgreementUncheckedUpdateManyWithoutStoreNestedInput
+  }
+
+  export type StoreCreateManyInput = {
+    id?: string
+    ownerId: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude?: number | null
+    longitude?: number | null
+    bannerImageUrl?: string | null
+    priceInr: number
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: StoreCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StoreUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: StoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StoreUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: StoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StoreImageCreateInput = {
+    id?: string
+    url: string
+    order?: number
+    createdAt?: Date | string
+    store: StoreCreateNestedOneWithoutImagesInput
+  }
+
+  export type StoreImageUncheckedCreateInput = {
+    id?: string
+    storeId: string
+    url: string
+    order?: number
+    createdAt?: Date | string
+  }
+
+  export type StoreImageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    store?: StoreUpdateOneRequiredWithoutImagesNestedInput
+  }
+
+  export type StoreImageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StoreImageCreateManyInput = {
+    id?: string
+    storeId: string
+    url: string
+    order?: number
+    createdAt?: Date | string
+  }
+
+  export type StoreImageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StoreImageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StoreLikeCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutLikedStoresInput
+    store: StoreCreateNestedOneWithoutLikesInput
+  }
+
+  export type StoreLikeUncheckedCreateInput = {
+    id?: string
+    userId: string
+    storeId: string
+    createdAt?: Date | string
+  }
+
+  export type StoreLikeUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutLikedStoresNestedInput
+    store?: StoreUpdateOneRequiredWithoutLikesNestedInput
+  }
+
+  export type StoreLikeUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StoreLikeCreateManyInput = {
+    id?: string
+    userId: string
+    storeId: string
+    createdAt?: Date | string
+  }
+
+  export type StoreLikeUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StoreLikeUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ConversationCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    lastMessageAt?: Date | string
+    store: StoreCreateNestedOneWithoutStoreInput
+    buyer: UserCreateNestedOneWithoutBuyerInput
+    messages?: MessageCreateNestedManyWithoutConversationInput
+    notification?: NotificationCreateNestedManyWithoutConversationInput
+    UserPresence?: UserPresenceCreateNestedManyWithoutConversationInput
+  }
+
+  export type ConversationUncheckedCreateInput = {
+    id?: string
+    storeId: string
+    buyerId: string
+    createdAt?: Date | string
+    lastMessageAt?: Date | string
+    messages?: MessageUncheckedCreateNestedManyWithoutConversationInput
+    notification?: NotificationUncheckedCreateNestedManyWithoutConversationInput
+    UserPresence?: UserPresenceUncheckedCreateNestedManyWithoutConversationInput
+  }
+
+  export type ConversationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastMessageAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    store?: StoreUpdateOneRequiredWithoutStoreNestedInput
+    buyer?: UserUpdateOneRequiredWithoutBuyerNestedInput
+    messages?: MessageUpdateManyWithoutConversationNestedInput
+    notification?: NotificationUpdateManyWithoutConversationNestedInput
+    UserPresence?: UserPresenceUpdateManyWithoutConversationNestedInput
+  }
+
+  export type ConversationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastMessageAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageUncheckedUpdateManyWithoutConversationNestedInput
+    notification?: NotificationUncheckedUpdateManyWithoutConversationNestedInput
+    UserPresence?: UserPresenceUncheckedUpdateManyWithoutConversationNestedInput
+  }
+
+  export type ConversationCreateManyInput = {
+    id?: string
+    storeId: string
+    buyerId: string
+    createdAt?: Date | string
+    lastMessageAt?: Date | string
+  }
+
+  export type ConversationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastMessageAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ConversationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastMessageAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageCreateInput = {
+    id?: string
+    text: string
+    seen?: boolean
+    createdAt?: Date | string
+    conversation: ConversationCreateNestedOneWithoutMessagesInput
+    sender: UserCreateNestedOneWithoutMessagesInput
+  }
+
+  export type MessageUncheckedCreateInput = {
+    id?: string
+    conversationId: string
+    senderId: string
+    text: string
+    seen?: boolean
+    createdAt?: Date | string
+  }
+
+  export type MessageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    seen?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    conversation?: ConversationUpdateOneRequiredWithoutMessagesNestedInput
+    sender?: UserUpdateOneRequiredWithoutMessagesNestedInput
+  }
+
+  export type MessageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    conversationId?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    seen?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageCreateManyInput = {
+    id?: string
+    conversationId: string
+    senderId: string
+    text: string
+    seen?: boolean
+    createdAt?: Date | string
+  }
+
+  export type MessageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    seen?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    conversationId?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    seen?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationCreateInput = {
+    id?: string
+    message: string
+    isRead?: boolean
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutNotificationInput
+    conversation: ConversationCreateNestedOneWithoutNotificationInput
+  }
+
+  export type NotificationUncheckedCreateInput = {
+    id?: string
+    userId: string
+    conversationId: string
+    message: string
+    isRead?: boolean
+    createdAt?: Date | string
+  }
+
+  export type NotificationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutNotificationNestedInput
+    conversation?: ConversationUpdateOneRequiredWithoutNotificationNestedInput
+  }
+
+  export type NotificationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    conversationId?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationCreateManyInput = {
+    id?: string
+    userId: string
+    conversationId: string
+    message: string
+    isRead?: boolean
+    createdAt?: Date | string
+  }
+
+  export type NotificationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    conversationId?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserPresenceCreateInput = {
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutUserPresenceInput
+    conversation?: ConversationCreateNestedOneWithoutUserPresenceInput
+  }
+
+  export type UserPresenceUncheckedCreateInput = {
+    userId: string
+    conversationId?: string | null
+    updatedAt?: Date | string
+  }
+
+  export type UserPresenceUpdateInput = {
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutUserPresenceNestedInput
+    conversation?: ConversationUpdateOneWithoutUserPresenceNestedInput
+  }
+
+  export type UserPresenceUncheckedUpdateInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    conversationId?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserPresenceCreateManyInput = {
+    userId: string
+    conversationId?: string | null
+    updatedAt?: Date | string
+  }
+
+  export type UserPresenceUpdateManyMutationInput = {
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserPresenceUncheckedUpdateManyInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    conversationId?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AgreementCreateInput = {
+    id: string
+    ownerName: string
+    tenantName: string
+    price: string
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: AgreementCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    bussinessType: string
+    user: UserCreateNestedOneWithoutAgreementInput
+    store: StoreCreateNestedOneWithoutAgreementInput
+  }
+
+  export type AgreementUncheckedCreateInput = {
+    id: string
+    userid: string
+    storeid: string
+    ownerName: string
+    tenantName: string
+    price: string
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: AgreementCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    bussinessType: string
+  }
+
+  export type AgreementUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerName?: StringFieldUpdateOperationsInput | string
+    tenantName?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: AgreementUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    bussinessType?: StringFieldUpdateOperationsInput | string
+    user?: UserUpdateOneRequiredWithoutAgreementNestedInput
+    store?: StoreUpdateOneRequiredWithoutAgreementNestedInput
+  }
+
+  export type AgreementUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userid?: StringFieldUpdateOperationsInput | string
+    storeid?: StringFieldUpdateOperationsInput | string
+    ownerName?: StringFieldUpdateOperationsInput | string
+    tenantName?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: AgreementUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    bussinessType?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AgreementCreateManyInput = {
+    id: string
+    userid: string
+    storeid: string
+    ownerName: string
+    tenantName: string
+    price: string
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: AgreementCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    bussinessType: string
+  }
+
+  export type AgreementUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerName?: StringFieldUpdateOperationsInput | string
+    tenantName?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: AgreementUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    bussinessType?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AgreementUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userid?: StringFieldUpdateOperationsInput | string
+    storeid?: StringFieldUpdateOperationsInput | string
+    ownerName?: StringFieldUpdateOperationsInput | string
+    tenantName?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: AgreementUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    bussinessType?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StoreAnlyalicCreateInput = {
+    id: string
+    lat: string
+    log: string
+    userBussiness: string
+    earning: string
+    audience: string
+    compitation: string
+    FootStep: string
+  }
+
+  export type StoreAnlyalicUncheckedCreateInput = {
+    id: string
+    lat: string
+    log: string
+    userBussiness: string
+    earning: string
+    audience: string
+    compitation: string
+    FootStep: string
+  }
+
+  export type StoreAnlyalicUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lat?: StringFieldUpdateOperationsInput | string
+    log?: StringFieldUpdateOperationsInput | string
+    userBussiness?: StringFieldUpdateOperationsInput | string
+    earning?: StringFieldUpdateOperationsInput | string
+    audience?: StringFieldUpdateOperationsInput | string
+    compitation?: StringFieldUpdateOperationsInput | string
+    FootStep?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StoreAnlyalicUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lat?: StringFieldUpdateOperationsInput | string
+    log?: StringFieldUpdateOperationsInput | string
+    userBussiness?: StringFieldUpdateOperationsInput | string
+    earning?: StringFieldUpdateOperationsInput | string
+    audience?: StringFieldUpdateOperationsInput | string
+    compitation?: StringFieldUpdateOperationsInput | string
+    FootStep?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StoreAnlyalicCreateManyInput = {
+    id: string
+    lat: string
+    log: string
+    userBussiness: string
+    earning: string
+    audience: string
+    compitation: string
+    FootStep: string
+  }
+
+  export type StoreAnlyalicUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lat?: StringFieldUpdateOperationsInput | string
+    log?: StringFieldUpdateOperationsInput | string
+    userBussiness?: StringFieldUpdateOperationsInput | string
+    earning?: StringFieldUpdateOperationsInput | string
+    audience?: StringFieldUpdateOperationsInput | string
+    compitation?: StringFieldUpdateOperationsInput | string
+    FootStep?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StoreAnlyalicUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lat?: StringFieldUpdateOperationsInput | string
+    log?: StringFieldUpdateOperationsInput | string
+    userBussiness?: StringFieldUpdateOperationsInput | string
+    earning?: StringFieldUpdateOperationsInput | string
+    audience?: StringFieldUpdateOperationsInput | string
+    compitation?: StringFieldUpdateOperationsInput | string
+    FootStep?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type StoreListRelationFilter = {
+    every?: StoreWhereInput
+    some?: StoreWhereInput
+    none?: StoreWhereInput
+  }
+
+  export type StoreLikeListRelationFilter = {
+    every?: StoreLikeWhereInput
+    some?: StoreLikeWhereInput
+    none?: StoreLikeWhereInput
+  }
+
+  export type NotificationListRelationFilter = {
+    every?: NotificationWhereInput
+    some?: NotificationWhereInput
+    none?: NotificationWhereInput
+  }
+
+  export type MessageListRelationFilter = {
+    every?: MessageWhereInput
+    some?: MessageWhereInput
+    none?: MessageWhereInput
+  }
+
+  export type ConversationListRelationFilter = {
+    every?: ConversationWhereInput
+    some?: ConversationWhereInput
+    none?: ConversationWhereInput
+  }
+
+  export type UserPresenceListRelationFilter = {
+    every?: UserPresenceWhereInput
+    some?: UserPresenceWhereInput
+    none?: UserPresenceWhereInput
+  }
+
+  export type AgreementListRelationFilter = {
+    every?: AgreementWhereInput
+    some?: AgreementWhereInput
+    none?: AgreementWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type StoreOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type StoreLikeOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type NotificationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MessageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ConversationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UserPresenceOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AgreementOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UserCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    image?: SortOrder
+    phone?: SortOrder
+    phoneVerified?: SortOrder
+    createdAt?: SortOrder
+    userBussinessType?: SortOrder
+  }
+
+  export type UserMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    image?: SortOrder
+    phone?: SortOrder
+    phoneVerified?: SortOrder
+    createdAt?: SortOrder
+    userBussinessType?: SortOrder
+  }
+
+  export type UserMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    image?: SortOrder
+    phone?: SortOrder
+    phoneVerified?: SortOrder
+    createdAt?: SortOrder
+    userBussinessType?: SortOrder
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type OtpCountOrderByAggregateInput = {
+    id?: SortOrder
+    phone?: SortOrder
+    code?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type OtpMaxOrderByAggregateInput = {
+    id?: SortOrder
+    phone?: SortOrder
+    code?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type OtpMinOrderByAggregateInput = {
+    id?: SortOrder
+    phone?: SortOrder
+    code?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type EnumShareModeFilter<$PrismaModel = never> = {
+    equals?: $Enums.ShareMode | EnumShareModeFieldRefInput<$PrismaModel>
+    in?: $Enums.ShareMode[] | ListEnumShareModeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ShareMode[] | ListEnumShareModeFieldRefInput<$PrismaModel>
+    not?: NestedEnumShareModeFilter<$PrismaModel> | $Enums.ShareMode
+  }
+
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type StoreImageListRelationFilter = {
+    every?: StoreImageWhereInput
+    some?: StoreImageWhereInput
+    none?: StoreImageWhereInput
+  }
+
+  export type StoreImageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type StoreCountOrderByAggregateInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    title?: SortOrder
+    desc?: SortOrder
+    peopleDesc?: SortOrder
+    flatno?: SortOrder
+    streetAddress?: SortOrder
+    NearbyLandMark?: SortOrder
+    areaLocality?: SortOrder
+    storeSize?: SortOrder
+    businessType?: SortOrder
+    country?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    pin?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    bannerImageUrl?: SortOrder
+    priceInr?: SortOrder
+    shareMode?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    days?: SortOrder
+    sqft?: SortOrder
+    dayOrNight?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StoreAvgOrderByAggregateInput = {
+    latitude?: SortOrder
+    longitude?: SortOrder
+    priceInr?: SortOrder
+    sqft?: SortOrder
+  }
+
+  export type StoreMaxOrderByAggregateInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    title?: SortOrder
+    desc?: SortOrder
+    peopleDesc?: SortOrder
+    flatno?: SortOrder
+    streetAddress?: SortOrder
+    NearbyLandMark?: SortOrder
+    areaLocality?: SortOrder
+    storeSize?: SortOrder
+    businessType?: SortOrder
+    country?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    pin?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    bannerImageUrl?: SortOrder
+    priceInr?: SortOrder
+    shareMode?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    sqft?: SortOrder
+    dayOrNight?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StoreMinOrderByAggregateInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    title?: SortOrder
+    desc?: SortOrder
+    peopleDesc?: SortOrder
+    flatno?: SortOrder
+    streetAddress?: SortOrder
+    NearbyLandMark?: SortOrder
+    areaLocality?: SortOrder
+    storeSize?: SortOrder
+    businessType?: SortOrder
+    country?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    pin?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    bannerImageUrl?: SortOrder
+    priceInr?: SortOrder
+    shareMode?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    sqft?: SortOrder
+    dayOrNight?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StoreSumOrderByAggregateInput = {
+    latitude?: SortOrder
+    longitude?: SortOrder
+    priceInr?: SortOrder
+    sqft?: SortOrder
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type EnumShareModeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ShareMode | EnumShareModeFieldRefInput<$PrismaModel>
+    in?: $Enums.ShareMode[] | ListEnumShareModeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ShareMode[] | ListEnumShareModeFieldRefInput<$PrismaModel>
+    not?: NestedEnumShareModeWithAggregatesFilter<$PrismaModel> | $Enums.ShareMode
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumShareModeFilter<$PrismaModel>
+    _max?: NestedEnumShareModeFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type StoreScalarRelationFilter = {
+    is?: StoreWhereInput
+    isNot?: StoreWhereInput
+  }
+
+  export type StoreImageCountOrderByAggregateInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    url?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type StoreImageAvgOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type StoreImageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    url?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type StoreImageMinOrderByAggregateInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    url?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type StoreImageSumOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type StoreLikeUserIdStoreIdCompoundUniqueInput = {
+    userId: string
+    storeId: string
+  }
+
+  export type StoreLikeCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    storeId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type StoreLikeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    storeId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type StoreLikeMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    storeId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ConversationStoreIdBuyerIdCompoundUniqueInput = {
+    storeId: string
+    buyerId: string
+  }
+
+  export type ConversationCountOrderByAggregateInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    buyerId?: SortOrder
+    createdAt?: SortOrder
+    lastMessageAt?: SortOrder
+  }
+
+  export type ConversationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    buyerId?: SortOrder
+    createdAt?: SortOrder
+    lastMessageAt?: SortOrder
+  }
+
+  export type ConversationMinOrderByAggregateInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    buyerId?: SortOrder
+    createdAt?: SortOrder
+    lastMessageAt?: SortOrder
+  }
+
+  export type ConversationScalarRelationFilter = {
+    is?: ConversationWhereInput
+    isNot?: ConversationWhereInput
+  }
+
+  export type MessageCountOrderByAggregateInput = {
+    id?: SortOrder
+    conversationId?: SortOrder
+    senderId?: SortOrder
+    text?: SortOrder
+    seen?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MessageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    conversationId?: SortOrder
+    senderId?: SortOrder
+    text?: SortOrder
+    seen?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MessageMinOrderByAggregateInput = {
+    id?: SortOrder
+    conversationId?: SortOrder
+    senderId?: SortOrder
+    text?: SortOrder
+    seen?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type NotificationCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    conversationId?: SortOrder
+    message?: SortOrder
+    isRead?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type NotificationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    conversationId?: SortOrder
+    message?: SortOrder
+    isRead?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type NotificationMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    conversationId?: SortOrder
+    message?: SortOrder
+    isRead?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ConversationNullableScalarRelationFilter = {
+    is?: ConversationWhereInput | null
+    isNot?: ConversationWhereInput | null
+  }
+
+  export type UserPresenceCountOrderByAggregateInput = {
+    userId?: SortOrder
+    conversationId?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserPresenceMaxOrderByAggregateInput = {
+    userId?: SortOrder
+    conversationId?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserPresenceMinOrderByAggregateInput = {
+    userId?: SortOrder
+    conversationId?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AgreementCountOrderByAggregateInput = {
+    id?: SortOrder
+    userid?: SortOrder
+    storeid?: SortOrder
+    ownerName?: SortOrder
+    tenantName?: SortOrder
+    price?: SortOrder
+    shareMode?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    days?: SortOrder
+    sqft?: SortOrder
+    dayOrNight?: SortOrder
+    flatno?: SortOrder
+    streetAddress?: SortOrder
+    NearbyLandMark?: SortOrder
+    areaLocality?: SortOrder
+    country?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    pin?: SortOrder
+    bussinessType?: SortOrder
+  }
+
+  export type AgreementAvgOrderByAggregateInput = {
+    sqft?: SortOrder
+  }
+
+  export type AgreementMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userid?: SortOrder
+    storeid?: SortOrder
+    ownerName?: SortOrder
+    tenantName?: SortOrder
+    price?: SortOrder
+    shareMode?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    sqft?: SortOrder
+    dayOrNight?: SortOrder
+    flatno?: SortOrder
+    streetAddress?: SortOrder
+    NearbyLandMark?: SortOrder
+    areaLocality?: SortOrder
+    country?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    pin?: SortOrder
+    bussinessType?: SortOrder
+  }
+
+  export type AgreementMinOrderByAggregateInput = {
+    id?: SortOrder
+    userid?: SortOrder
+    storeid?: SortOrder
+    ownerName?: SortOrder
+    tenantName?: SortOrder
+    price?: SortOrder
+    shareMode?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    sqft?: SortOrder
+    dayOrNight?: SortOrder
+    flatno?: SortOrder
+    streetAddress?: SortOrder
+    NearbyLandMark?: SortOrder
+    areaLocality?: SortOrder
+    country?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    pin?: SortOrder
+    bussinessType?: SortOrder
+  }
+
+  export type AgreementSumOrderByAggregateInput = {
+    sqft?: SortOrder
+  }
+
+  export type StoreAnlyalicCountOrderByAggregateInput = {
+    id?: SortOrder
+    lat?: SortOrder
+    log?: SortOrder
+    userBussiness?: SortOrder
+    earning?: SortOrder
+    audience?: SortOrder
+    compitation?: SortOrder
+    FootStep?: SortOrder
+  }
+
+  export type StoreAnlyalicMaxOrderByAggregateInput = {
+    id?: SortOrder
+    lat?: SortOrder
+    log?: SortOrder
+    userBussiness?: SortOrder
+    earning?: SortOrder
+    audience?: SortOrder
+    compitation?: SortOrder
+    FootStep?: SortOrder
+  }
+
+  export type StoreAnlyalicMinOrderByAggregateInput = {
+    id?: SortOrder
+    lat?: SortOrder
+    log?: SortOrder
+    userBussiness?: SortOrder
+    earning?: SortOrder
+    audience?: SortOrder
+    compitation?: SortOrder
+    FootStep?: SortOrder
+  }
+
+  export type StoreCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<StoreCreateWithoutOwnerInput, StoreUncheckedCreateWithoutOwnerInput> | StoreCreateWithoutOwnerInput[] | StoreUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: StoreCreateOrConnectWithoutOwnerInput | StoreCreateOrConnectWithoutOwnerInput[]
+    createMany?: StoreCreateManyOwnerInputEnvelope
+    connect?: StoreWhereUniqueInput | StoreWhereUniqueInput[]
+  }
+
+  export type StoreLikeCreateNestedManyWithoutUserInput = {
+    create?: XOR<StoreLikeCreateWithoutUserInput, StoreLikeUncheckedCreateWithoutUserInput> | StoreLikeCreateWithoutUserInput[] | StoreLikeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: StoreLikeCreateOrConnectWithoutUserInput | StoreLikeCreateOrConnectWithoutUserInput[]
+    createMany?: StoreLikeCreateManyUserInputEnvelope
+    connect?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+  }
+
+  export type NotificationCreateNestedManyWithoutUserInput = {
+    create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
+    createMany?: NotificationCreateManyUserInputEnvelope
+    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+  }
+
+  export type MessageCreateNestedManyWithoutSenderInput = {
+    create?: XOR<MessageCreateWithoutSenderInput, MessageUncheckedCreateWithoutSenderInput> | MessageCreateWithoutSenderInput[] | MessageUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutSenderInput | MessageCreateOrConnectWithoutSenderInput[]
+    createMany?: MessageCreateManySenderInputEnvelope
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+  }
+
+  export type ConversationCreateNestedManyWithoutBuyerInput = {
+    create?: XOR<ConversationCreateWithoutBuyerInput, ConversationUncheckedCreateWithoutBuyerInput> | ConversationCreateWithoutBuyerInput[] | ConversationUncheckedCreateWithoutBuyerInput[]
+    connectOrCreate?: ConversationCreateOrConnectWithoutBuyerInput | ConversationCreateOrConnectWithoutBuyerInput[]
+    createMany?: ConversationCreateManyBuyerInputEnvelope
+    connect?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+  }
+
+  export type UserPresenceCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserPresenceCreateWithoutUserInput, UserPresenceUncheckedCreateWithoutUserInput> | UserPresenceCreateWithoutUserInput[] | UserPresenceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserPresenceCreateOrConnectWithoutUserInput | UserPresenceCreateOrConnectWithoutUserInput[]
+    createMany?: UserPresenceCreateManyUserInputEnvelope
+    connect?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+  }
+
+  export type AgreementCreateNestedManyWithoutUserInput = {
+    create?: XOR<AgreementCreateWithoutUserInput, AgreementUncheckedCreateWithoutUserInput> | AgreementCreateWithoutUserInput[] | AgreementUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AgreementCreateOrConnectWithoutUserInput | AgreementCreateOrConnectWithoutUserInput[]
+    createMany?: AgreementCreateManyUserInputEnvelope
+    connect?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+  }
+
+  export type StoreUncheckedCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<StoreCreateWithoutOwnerInput, StoreUncheckedCreateWithoutOwnerInput> | StoreCreateWithoutOwnerInput[] | StoreUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: StoreCreateOrConnectWithoutOwnerInput | StoreCreateOrConnectWithoutOwnerInput[]
+    createMany?: StoreCreateManyOwnerInputEnvelope
+    connect?: StoreWhereUniqueInput | StoreWhereUniqueInput[]
+  }
+
+  export type StoreLikeUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<StoreLikeCreateWithoutUserInput, StoreLikeUncheckedCreateWithoutUserInput> | StoreLikeCreateWithoutUserInput[] | StoreLikeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: StoreLikeCreateOrConnectWithoutUserInput | StoreLikeCreateOrConnectWithoutUserInput[]
+    createMany?: StoreLikeCreateManyUserInputEnvelope
+    connect?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+  }
+
+  export type NotificationUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
+    createMany?: NotificationCreateManyUserInputEnvelope
+    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+  }
+
+  export type MessageUncheckedCreateNestedManyWithoutSenderInput = {
+    create?: XOR<MessageCreateWithoutSenderInput, MessageUncheckedCreateWithoutSenderInput> | MessageCreateWithoutSenderInput[] | MessageUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutSenderInput | MessageCreateOrConnectWithoutSenderInput[]
+    createMany?: MessageCreateManySenderInputEnvelope
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+  }
+
+  export type ConversationUncheckedCreateNestedManyWithoutBuyerInput = {
+    create?: XOR<ConversationCreateWithoutBuyerInput, ConversationUncheckedCreateWithoutBuyerInput> | ConversationCreateWithoutBuyerInput[] | ConversationUncheckedCreateWithoutBuyerInput[]
+    connectOrCreate?: ConversationCreateOrConnectWithoutBuyerInput | ConversationCreateOrConnectWithoutBuyerInput[]
+    createMany?: ConversationCreateManyBuyerInputEnvelope
+    connect?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+  }
+
+  export type UserPresenceUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserPresenceCreateWithoutUserInput, UserPresenceUncheckedCreateWithoutUserInput> | UserPresenceCreateWithoutUserInput[] | UserPresenceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserPresenceCreateOrConnectWithoutUserInput | UserPresenceCreateOrConnectWithoutUserInput[]
+    createMany?: UserPresenceCreateManyUserInputEnvelope
+    connect?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+  }
+
+  export type AgreementUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<AgreementCreateWithoutUserInput, AgreementUncheckedCreateWithoutUserInput> | AgreementCreateWithoutUserInput[] | AgreementUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AgreementCreateOrConnectWithoutUserInput | AgreementCreateOrConnectWithoutUserInput[]
+    createMany?: AgreementCreateManyUserInputEnvelope
+    connect?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type StoreUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<StoreCreateWithoutOwnerInput, StoreUncheckedCreateWithoutOwnerInput> | StoreCreateWithoutOwnerInput[] | StoreUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: StoreCreateOrConnectWithoutOwnerInput | StoreCreateOrConnectWithoutOwnerInput[]
+    upsert?: StoreUpsertWithWhereUniqueWithoutOwnerInput | StoreUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: StoreCreateManyOwnerInputEnvelope
+    set?: StoreWhereUniqueInput | StoreWhereUniqueInput[]
+    disconnect?: StoreWhereUniqueInput | StoreWhereUniqueInput[]
+    delete?: StoreWhereUniqueInput | StoreWhereUniqueInput[]
+    connect?: StoreWhereUniqueInput | StoreWhereUniqueInput[]
+    update?: StoreUpdateWithWhereUniqueWithoutOwnerInput | StoreUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: StoreUpdateManyWithWhereWithoutOwnerInput | StoreUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: StoreScalarWhereInput | StoreScalarWhereInput[]
+  }
+
+  export type StoreLikeUpdateManyWithoutUserNestedInput = {
+    create?: XOR<StoreLikeCreateWithoutUserInput, StoreLikeUncheckedCreateWithoutUserInput> | StoreLikeCreateWithoutUserInput[] | StoreLikeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: StoreLikeCreateOrConnectWithoutUserInput | StoreLikeCreateOrConnectWithoutUserInput[]
+    upsert?: StoreLikeUpsertWithWhereUniqueWithoutUserInput | StoreLikeUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: StoreLikeCreateManyUserInputEnvelope
+    set?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+    disconnect?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+    delete?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+    connect?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+    update?: StoreLikeUpdateWithWhereUniqueWithoutUserInput | StoreLikeUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: StoreLikeUpdateManyWithWhereWithoutUserInput | StoreLikeUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: StoreLikeScalarWhereInput | StoreLikeScalarWhereInput[]
+  }
+
+  export type NotificationUpdateManyWithoutUserNestedInput = {
+    create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
+    upsert?: NotificationUpsertWithWhereUniqueWithoutUserInput | NotificationUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: NotificationCreateManyUserInputEnvelope
+    set?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    disconnect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    delete?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    update?: NotificationUpdateWithWhereUniqueWithoutUserInput | NotificationUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: NotificationUpdateManyWithWhereWithoutUserInput | NotificationUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
+  }
+
+  export type MessageUpdateManyWithoutSenderNestedInput = {
+    create?: XOR<MessageCreateWithoutSenderInput, MessageUncheckedCreateWithoutSenderInput> | MessageCreateWithoutSenderInput[] | MessageUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutSenderInput | MessageCreateOrConnectWithoutSenderInput[]
+    upsert?: MessageUpsertWithWhereUniqueWithoutSenderInput | MessageUpsertWithWhereUniqueWithoutSenderInput[]
+    createMany?: MessageCreateManySenderInputEnvelope
+    set?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    disconnect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    delete?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    update?: MessageUpdateWithWhereUniqueWithoutSenderInput | MessageUpdateWithWhereUniqueWithoutSenderInput[]
+    updateMany?: MessageUpdateManyWithWhereWithoutSenderInput | MessageUpdateManyWithWhereWithoutSenderInput[]
+    deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
+  }
+
+  export type ConversationUpdateManyWithoutBuyerNestedInput = {
+    create?: XOR<ConversationCreateWithoutBuyerInput, ConversationUncheckedCreateWithoutBuyerInput> | ConversationCreateWithoutBuyerInput[] | ConversationUncheckedCreateWithoutBuyerInput[]
+    connectOrCreate?: ConversationCreateOrConnectWithoutBuyerInput | ConversationCreateOrConnectWithoutBuyerInput[]
+    upsert?: ConversationUpsertWithWhereUniqueWithoutBuyerInput | ConversationUpsertWithWhereUniqueWithoutBuyerInput[]
+    createMany?: ConversationCreateManyBuyerInputEnvelope
+    set?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+    disconnect?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+    delete?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+    connect?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+    update?: ConversationUpdateWithWhereUniqueWithoutBuyerInput | ConversationUpdateWithWhereUniqueWithoutBuyerInput[]
+    updateMany?: ConversationUpdateManyWithWhereWithoutBuyerInput | ConversationUpdateManyWithWhereWithoutBuyerInput[]
+    deleteMany?: ConversationScalarWhereInput | ConversationScalarWhereInput[]
+  }
+
+  export type UserPresenceUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserPresenceCreateWithoutUserInput, UserPresenceUncheckedCreateWithoutUserInput> | UserPresenceCreateWithoutUserInput[] | UserPresenceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserPresenceCreateOrConnectWithoutUserInput | UserPresenceCreateOrConnectWithoutUserInput[]
+    upsert?: UserPresenceUpsertWithWhereUniqueWithoutUserInput | UserPresenceUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserPresenceCreateManyUserInputEnvelope
+    set?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+    disconnect?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+    delete?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+    connect?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+    update?: UserPresenceUpdateWithWhereUniqueWithoutUserInput | UserPresenceUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserPresenceUpdateManyWithWhereWithoutUserInput | UserPresenceUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserPresenceScalarWhereInput | UserPresenceScalarWhereInput[]
+  }
+
+  export type AgreementUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AgreementCreateWithoutUserInput, AgreementUncheckedCreateWithoutUserInput> | AgreementCreateWithoutUserInput[] | AgreementUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AgreementCreateOrConnectWithoutUserInput | AgreementCreateOrConnectWithoutUserInput[]
+    upsert?: AgreementUpsertWithWhereUniqueWithoutUserInput | AgreementUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AgreementCreateManyUserInputEnvelope
+    set?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+    disconnect?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+    delete?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+    connect?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+    update?: AgreementUpdateWithWhereUniqueWithoutUserInput | AgreementUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AgreementUpdateManyWithWhereWithoutUserInput | AgreementUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AgreementScalarWhereInput | AgreementScalarWhereInput[]
+  }
+
+  export type StoreUncheckedUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<StoreCreateWithoutOwnerInput, StoreUncheckedCreateWithoutOwnerInput> | StoreCreateWithoutOwnerInput[] | StoreUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: StoreCreateOrConnectWithoutOwnerInput | StoreCreateOrConnectWithoutOwnerInput[]
+    upsert?: StoreUpsertWithWhereUniqueWithoutOwnerInput | StoreUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: StoreCreateManyOwnerInputEnvelope
+    set?: StoreWhereUniqueInput | StoreWhereUniqueInput[]
+    disconnect?: StoreWhereUniqueInput | StoreWhereUniqueInput[]
+    delete?: StoreWhereUniqueInput | StoreWhereUniqueInput[]
+    connect?: StoreWhereUniqueInput | StoreWhereUniqueInput[]
+    update?: StoreUpdateWithWhereUniqueWithoutOwnerInput | StoreUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: StoreUpdateManyWithWhereWithoutOwnerInput | StoreUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: StoreScalarWhereInput | StoreScalarWhereInput[]
+  }
+
+  export type StoreLikeUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<StoreLikeCreateWithoutUserInput, StoreLikeUncheckedCreateWithoutUserInput> | StoreLikeCreateWithoutUserInput[] | StoreLikeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: StoreLikeCreateOrConnectWithoutUserInput | StoreLikeCreateOrConnectWithoutUserInput[]
+    upsert?: StoreLikeUpsertWithWhereUniqueWithoutUserInput | StoreLikeUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: StoreLikeCreateManyUserInputEnvelope
+    set?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+    disconnect?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+    delete?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+    connect?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+    update?: StoreLikeUpdateWithWhereUniqueWithoutUserInput | StoreLikeUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: StoreLikeUpdateManyWithWhereWithoutUserInput | StoreLikeUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: StoreLikeScalarWhereInput | StoreLikeScalarWhereInput[]
+  }
+
+  export type NotificationUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
+    upsert?: NotificationUpsertWithWhereUniqueWithoutUserInput | NotificationUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: NotificationCreateManyUserInputEnvelope
+    set?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    disconnect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    delete?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    update?: NotificationUpdateWithWhereUniqueWithoutUserInput | NotificationUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: NotificationUpdateManyWithWhereWithoutUserInput | NotificationUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
+  }
+
+  export type MessageUncheckedUpdateManyWithoutSenderNestedInput = {
+    create?: XOR<MessageCreateWithoutSenderInput, MessageUncheckedCreateWithoutSenderInput> | MessageCreateWithoutSenderInput[] | MessageUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutSenderInput | MessageCreateOrConnectWithoutSenderInput[]
+    upsert?: MessageUpsertWithWhereUniqueWithoutSenderInput | MessageUpsertWithWhereUniqueWithoutSenderInput[]
+    createMany?: MessageCreateManySenderInputEnvelope
+    set?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    disconnect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    delete?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    update?: MessageUpdateWithWhereUniqueWithoutSenderInput | MessageUpdateWithWhereUniqueWithoutSenderInput[]
+    updateMany?: MessageUpdateManyWithWhereWithoutSenderInput | MessageUpdateManyWithWhereWithoutSenderInput[]
+    deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
+  }
+
+  export type ConversationUncheckedUpdateManyWithoutBuyerNestedInput = {
+    create?: XOR<ConversationCreateWithoutBuyerInput, ConversationUncheckedCreateWithoutBuyerInput> | ConversationCreateWithoutBuyerInput[] | ConversationUncheckedCreateWithoutBuyerInput[]
+    connectOrCreate?: ConversationCreateOrConnectWithoutBuyerInput | ConversationCreateOrConnectWithoutBuyerInput[]
+    upsert?: ConversationUpsertWithWhereUniqueWithoutBuyerInput | ConversationUpsertWithWhereUniqueWithoutBuyerInput[]
+    createMany?: ConversationCreateManyBuyerInputEnvelope
+    set?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+    disconnect?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+    delete?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+    connect?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+    update?: ConversationUpdateWithWhereUniqueWithoutBuyerInput | ConversationUpdateWithWhereUniqueWithoutBuyerInput[]
+    updateMany?: ConversationUpdateManyWithWhereWithoutBuyerInput | ConversationUpdateManyWithWhereWithoutBuyerInput[]
+    deleteMany?: ConversationScalarWhereInput | ConversationScalarWhereInput[]
+  }
+
+  export type UserPresenceUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserPresenceCreateWithoutUserInput, UserPresenceUncheckedCreateWithoutUserInput> | UserPresenceCreateWithoutUserInput[] | UserPresenceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserPresenceCreateOrConnectWithoutUserInput | UserPresenceCreateOrConnectWithoutUserInput[]
+    upsert?: UserPresenceUpsertWithWhereUniqueWithoutUserInput | UserPresenceUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserPresenceCreateManyUserInputEnvelope
+    set?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+    disconnect?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+    delete?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+    connect?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+    update?: UserPresenceUpdateWithWhereUniqueWithoutUserInput | UserPresenceUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserPresenceUpdateManyWithWhereWithoutUserInput | UserPresenceUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserPresenceScalarWhereInput | UserPresenceScalarWhereInput[]
+  }
+
+  export type AgreementUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AgreementCreateWithoutUserInput, AgreementUncheckedCreateWithoutUserInput> | AgreementCreateWithoutUserInput[] | AgreementUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AgreementCreateOrConnectWithoutUserInput | AgreementCreateOrConnectWithoutUserInput[]
+    upsert?: AgreementUpsertWithWhereUniqueWithoutUserInput | AgreementUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AgreementCreateManyUserInputEnvelope
+    set?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+    disconnect?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+    delete?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+    connect?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+    update?: AgreementUpdateWithWhereUniqueWithoutUserInput | AgreementUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AgreementUpdateManyWithWhereWithoutUserInput | AgreementUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AgreementScalarWhereInput | AgreementScalarWhereInput[]
+  }
+
+  export type StoreCreatedaysInput = {
+    set: string[]
+  }
+
+  export type UserCreateNestedOneWithoutStoresInput = {
+    create?: XOR<UserCreateWithoutStoresInput, UserUncheckedCreateWithoutStoresInput>
+    connectOrCreate?: UserCreateOrConnectWithoutStoresInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type StoreImageCreateNestedManyWithoutStoreInput = {
+    create?: XOR<StoreImageCreateWithoutStoreInput, StoreImageUncheckedCreateWithoutStoreInput> | StoreImageCreateWithoutStoreInput[] | StoreImageUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: StoreImageCreateOrConnectWithoutStoreInput | StoreImageCreateOrConnectWithoutStoreInput[]
+    createMany?: StoreImageCreateManyStoreInputEnvelope
+    connect?: StoreImageWhereUniqueInput | StoreImageWhereUniqueInput[]
+  }
+
+  export type StoreLikeCreateNestedManyWithoutStoreInput = {
+    create?: XOR<StoreLikeCreateWithoutStoreInput, StoreLikeUncheckedCreateWithoutStoreInput> | StoreLikeCreateWithoutStoreInput[] | StoreLikeUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: StoreLikeCreateOrConnectWithoutStoreInput | StoreLikeCreateOrConnectWithoutStoreInput[]
+    createMany?: StoreLikeCreateManyStoreInputEnvelope
+    connect?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+  }
+
+  export type ConversationCreateNestedManyWithoutStoreInput = {
+    create?: XOR<ConversationCreateWithoutStoreInput, ConversationUncheckedCreateWithoutStoreInput> | ConversationCreateWithoutStoreInput[] | ConversationUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: ConversationCreateOrConnectWithoutStoreInput | ConversationCreateOrConnectWithoutStoreInput[]
+    createMany?: ConversationCreateManyStoreInputEnvelope
+    connect?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+  }
+
+  export type AgreementCreateNestedManyWithoutStoreInput = {
+    create?: XOR<AgreementCreateWithoutStoreInput, AgreementUncheckedCreateWithoutStoreInput> | AgreementCreateWithoutStoreInput[] | AgreementUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: AgreementCreateOrConnectWithoutStoreInput | AgreementCreateOrConnectWithoutStoreInput[]
+    createMany?: AgreementCreateManyStoreInputEnvelope
+    connect?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+  }
+
+  export type StoreImageUncheckedCreateNestedManyWithoutStoreInput = {
+    create?: XOR<StoreImageCreateWithoutStoreInput, StoreImageUncheckedCreateWithoutStoreInput> | StoreImageCreateWithoutStoreInput[] | StoreImageUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: StoreImageCreateOrConnectWithoutStoreInput | StoreImageCreateOrConnectWithoutStoreInput[]
+    createMany?: StoreImageCreateManyStoreInputEnvelope
+    connect?: StoreImageWhereUniqueInput | StoreImageWhereUniqueInput[]
+  }
+
+  export type StoreLikeUncheckedCreateNestedManyWithoutStoreInput = {
+    create?: XOR<StoreLikeCreateWithoutStoreInput, StoreLikeUncheckedCreateWithoutStoreInput> | StoreLikeCreateWithoutStoreInput[] | StoreLikeUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: StoreLikeCreateOrConnectWithoutStoreInput | StoreLikeCreateOrConnectWithoutStoreInput[]
+    createMany?: StoreLikeCreateManyStoreInputEnvelope
+    connect?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+  }
+
+  export type ConversationUncheckedCreateNestedManyWithoutStoreInput = {
+    create?: XOR<ConversationCreateWithoutStoreInput, ConversationUncheckedCreateWithoutStoreInput> | ConversationCreateWithoutStoreInput[] | ConversationUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: ConversationCreateOrConnectWithoutStoreInput | ConversationCreateOrConnectWithoutStoreInput[]
+    createMany?: ConversationCreateManyStoreInputEnvelope
+    connect?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+  }
+
+  export type AgreementUncheckedCreateNestedManyWithoutStoreInput = {
+    create?: XOR<AgreementCreateWithoutStoreInput, AgreementUncheckedCreateWithoutStoreInput> | AgreementCreateWithoutStoreInput[] | AgreementUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: AgreementCreateOrConnectWithoutStoreInput | AgreementCreateOrConnectWithoutStoreInput[]
+    createMany?: AgreementCreateManyStoreInputEnvelope
+    connect?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+  }
+
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type EnumShareModeFieldUpdateOperationsInput = {
+    set?: $Enums.ShareMode
+  }
+
+  export type StoreUpdatedaysInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type UserUpdateOneRequiredWithoutStoresNestedInput = {
+    create?: XOR<UserCreateWithoutStoresInput, UserUncheckedCreateWithoutStoresInput>
+    connectOrCreate?: UserCreateOrConnectWithoutStoresInput
+    upsert?: UserUpsertWithoutStoresInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutStoresInput, UserUpdateWithoutStoresInput>, UserUncheckedUpdateWithoutStoresInput>
+  }
+
+  export type StoreImageUpdateManyWithoutStoreNestedInput = {
+    create?: XOR<StoreImageCreateWithoutStoreInput, StoreImageUncheckedCreateWithoutStoreInput> | StoreImageCreateWithoutStoreInput[] | StoreImageUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: StoreImageCreateOrConnectWithoutStoreInput | StoreImageCreateOrConnectWithoutStoreInput[]
+    upsert?: StoreImageUpsertWithWhereUniqueWithoutStoreInput | StoreImageUpsertWithWhereUniqueWithoutStoreInput[]
+    createMany?: StoreImageCreateManyStoreInputEnvelope
+    set?: StoreImageWhereUniqueInput | StoreImageWhereUniqueInput[]
+    disconnect?: StoreImageWhereUniqueInput | StoreImageWhereUniqueInput[]
+    delete?: StoreImageWhereUniqueInput | StoreImageWhereUniqueInput[]
+    connect?: StoreImageWhereUniqueInput | StoreImageWhereUniqueInput[]
+    update?: StoreImageUpdateWithWhereUniqueWithoutStoreInput | StoreImageUpdateWithWhereUniqueWithoutStoreInput[]
+    updateMany?: StoreImageUpdateManyWithWhereWithoutStoreInput | StoreImageUpdateManyWithWhereWithoutStoreInput[]
+    deleteMany?: StoreImageScalarWhereInput | StoreImageScalarWhereInput[]
+  }
+
+  export type StoreLikeUpdateManyWithoutStoreNestedInput = {
+    create?: XOR<StoreLikeCreateWithoutStoreInput, StoreLikeUncheckedCreateWithoutStoreInput> | StoreLikeCreateWithoutStoreInput[] | StoreLikeUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: StoreLikeCreateOrConnectWithoutStoreInput | StoreLikeCreateOrConnectWithoutStoreInput[]
+    upsert?: StoreLikeUpsertWithWhereUniqueWithoutStoreInput | StoreLikeUpsertWithWhereUniqueWithoutStoreInput[]
+    createMany?: StoreLikeCreateManyStoreInputEnvelope
+    set?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+    disconnect?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+    delete?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+    connect?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+    update?: StoreLikeUpdateWithWhereUniqueWithoutStoreInput | StoreLikeUpdateWithWhereUniqueWithoutStoreInput[]
+    updateMany?: StoreLikeUpdateManyWithWhereWithoutStoreInput | StoreLikeUpdateManyWithWhereWithoutStoreInput[]
+    deleteMany?: StoreLikeScalarWhereInput | StoreLikeScalarWhereInput[]
+  }
+
+  export type ConversationUpdateManyWithoutStoreNestedInput = {
+    create?: XOR<ConversationCreateWithoutStoreInput, ConversationUncheckedCreateWithoutStoreInput> | ConversationCreateWithoutStoreInput[] | ConversationUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: ConversationCreateOrConnectWithoutStoreInput | ConversationCreateOrConnectWithoutStoreInput[]
+    upsert?: ConversationUpsertWithWhereUniqueWithoutStoreInput | ConversationUpsertWithWhereUniqueWithoutStoreInput[]
+    createMany?: ConversationCreateManyStoreInputEnvelope
+    set?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+    disconnect?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+    delete?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+    connect?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+    update?: ConversationUpdateWithWhereUniqueWithoutStoreInput | ConversationUpdateWithWhereUniqueWithoutStoreInput[]
+    updateMany?: ConversationUpdateManyWithWhereWithoutStoreInput | ConversationUpdateManyWithWhereWithoutStoreInput[]
+    deleteMany?: ConversationScalarWhereInput | ConversationScalarWhereInput[]
+  }
+
+  export type AgreementUpdateManyWithoutStoreNestedInput = {
+    create?: XOR<AgreementCreateWithoutStoreInput, AgreementUncheckedCreateWithoutStoreInput> | AgreementCreateWithoutStoreInput[] | AgreementUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: AgreementCreateOrConnectWithoutStoreInput | AgreementCreateOrConnectWithoutStoreInput[]
+    upsert?: AgreementUpsertWithWhereUniqueWithoutStoreInput | AgreementUpsertWithWhereUniqueWithoutStoreInput[]
+    createMany?: AgreementCreateManyStoreInputEnvelope
+    set?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+    disconnect?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+    delete?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+    connect?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+    update?: AgreementUpdateWithWhereUniqueWithoutStoreInput | AgreementUpdateWithWhereUniqueWithoutStoreInput[]
+    updateMany?: AgreementUpdateManyWithWhereWithoutStoreInput | AgreementUpdateManyWithWhereWithoutStoreInput[]
+    deleteMany?: AgreementScalarWhereInput | AgreementScalarWhereInput[]
+  }
+
+  export type StoreImageUncheckedUpdateManyWithoutStoreNestedInput = {
+    create?: XOR<StoreImageCreateWithoutStoreInput, StoreImageUncheckedCreateWithoutStoreInput> | StoreImageCreateWithoutStoreInput[] | StoreImageUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: StoreImageCreateOrConnectWithoutStoreInput | StoreImageCreateOrConnectWithoutStoreInput[]
+    upsert?: StoreImageUpsertWithWhereUniqueWithoutStoreInput | StoreImageUpsertWithWhereUniqueWithoutStoreInput[]
+    createMany?: StoreImageCreateManyStoreInputEnvelope
+    set?: StoreImageWhereUniqueInput | StoreImageWhereUniqueInput[]
+    disconnect?: StoreImageWhereUniqueInput | StoreImageWhereUniqueInput[]
+    delete?: StoreImageWhereUniqueInput | StoreImageWhereUniqueInput[]
+    connect?: StoreImageWhereUniqueInput | StoreImageWhereUniqueInput[]
+    update?: StoreImageUpdateWithWhereUniqueWithoutStoreInput | StoreImageUpdateWithWhereUniqueWithoutStoreInput[]
+    updateMany?: StoreImageUpdateManyWithWhereWithoutStoreInput | StoreImageUpdateManyWithWhereWithoutStoreInput[]
+    deleteMany?: StoreImageScalarWhereInput | StoreImageScalarWhereInput[]
+  }
+
+  export type StoreLikeUncheckedUpdateManyWithoutStoreNestedInput = {
+    create?: XOR<StoreLikeCreateWithoutStoreInput, StoreLikeUncheckedCreateWithoutStoreInput> | StoreLikeCreateWithoutStoreInput[] | StoreLikeUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: StoreLikeCreateOrConnectWithoutStoreInput | StoreLikeCreateOrConnectWithoutStoreInput[]
+    upsert?: StoreLikeUpsertWithWhereUniqueWithoutStoreInput | StoreLikeUpsertWithWhereUniqueWithoutStoreInput[]
+    createMany?: StoreLikeCreateManyStoreInputEnvelope
+    set?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+    disconnect?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+    delete?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+    connect?: StoreLikeWhereUniqueInput | StoreLikeWhereUniqueInput[]
+    update?: StoreLikeUpdateWithWhereUniqueWithoutStoreInput | StoreLikeUpdateWithWhereUniqueWithoutStoreInput[]
+    updateMany?: StoreLikeUpdateManyWithWhereWithoutStoreInput | StoreLikeUpdateManyWithWhereWithoutStoreInput[]
+    deleteMany?: StoreLikeScalarWhereInput | StoreLikeScalarWhereInput[]
+  }
+
+  export type ConversationUncheckedUpdateManyWithoutStoreNestedInput = {
+    create?: XOR<ConversationCreateWithoutStoreInput, ConversationUncheckedCreateWithoutStoreInput> | ConversationCreateWithoutStoreInput[] | ConversationUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: ConversationCreateOrConnectWithoutStoreInput | ConversationCreateOrConnectWithoutStoreInput[]
+    upsert?: ConversationUpsertWithWhereUniqueWithoutStoreInput | ConversationUpsertWithWhereUniqueWithoutStoreInput[]
+    createMany?: ConversationCreateManyStoreInputEnvelope
+    set?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+    disconnect?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+    delete?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+    connect?: ConversationWhereUniqueInput | ConversationWhereUniqueInput[]
+    update?: ConversationUpdateWithWhereUniqueWithoutStoreInput | ConversationUpdateWithWhereUniqueWithoutStoreInput[]
+    updateMany?: ConversationUpdateManyWithWhereWithoutStoreInput | ConversationUpdateManyWithWhereWithoutStoreInput[]
+    deleteMany?: ConversationScalarWhereInput | ConversationScalarWhereInput[]
+  }
+
+  export type AgreementUncheckedUpdateManyWithoutStoreNestedInput = {
+    create?: XOR<AgreementCreateWithoutStoreInput, AgreementUncheckedCreateWithoutStoreInput> | AgreementCreateWithoutStoreInput[] | AgreementUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: AgreementCreateOrConnectWithoutStoreInput | AgreementCreateOrConnectWithoutStoreInput[]
+    upsert?: AgreementUpsertWithWhereUniqueWithoutStoreInput | AgreementUpsertWithWhereUniqueWithoutStoreInput[]
+    createMany?: AgreementCreateManyStoreInputEnvelope
+    set?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+    disconnect?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+    delete?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+    connect?: AgreementWhereUniqueInput | AgreementWhereUniqueInput[]
+    update?: AgreementUpdateWithWhereUniqueWithoutStoreInput | AgreementUpdateWithWhereUniqueWithoutStoreInput[]
+    updateMany?: AgreementUpdateManyWithWhereWithoutStoreInput | AgreementUpdateManyWithWhereWithoutStoreInput[]
+    deleteMany?: AgreementScalarWhereInput | AgreementScalarWhereInput[]
+  }
+
+  export type StoreCreateNestedOneWithoutImagesInput = {
+    create?: XOR<StoreCreateWithoutImagesInput, StoreUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: StoreCreateOrConnectWithoutImagesInput
+    connect?: StoreWhereUniqueInput
+  }
+
+  export type StoreUpdateOneRequiredWithoutImagesNestedInput = {
+    create?: XOR<StoreCreateWithoutImagesInput, StoreUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: StoreCreateOrConnectWithoutImagesInput
+    upsert?: StoreUpsertWithoutImagesInput
+    connect?: StoreWhereUniqueInput
+    update?: XOR<XOR<StoreUpdateToOneWithWhereWithoutImagesInput, StoreUpdateWithoutImagesInput>, StoreUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type UserCreateNestedOneWithoutLikedStoresInput = {
+    create?: XOR<UserCreateWithoutLikedStoresInput, UserUncheckedCreateWithoutLikedStoresInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLikedStoresInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type StoreCreateNestedOneWithoutLikesInput = {
+    create?: XOR<StoreCreateWithoutLikesInput, StoreUncheckedCreateWithoutLikesInput>
+    connectOrCreate?: StoreCreateOrConnectWithoutLikesInput
+    connect?: StoreWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutLikedStoresNestedInput = {
+    create?: XOR<UserCreateWithoutLikedStoresInput, UserUncheckedCreateWithoutLikedStoresInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLikedStoresInput
+    upsert?: UserUpsertWithoutLikedStoresInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutLikedStoresInput, UserUpdateWithoutLikedStoresInput>, UserUncheckedUpdateWithoutLikedStoresInput>
+  }
+
+  export type StoreUpdateOneRequiredWithoutLikesNestedInput = {
+    create?: XOR<StoreCreateWithoutLikesInput, StoreUncheckedCreateWithoutLikesInput>
+    connectOrCreate?: StoreCreateOrConnectWithoutLikesInput
+    upsert?: StoreUpsertWithoutLikesInput
+    connect?: StoreWhereUniqueInput
+    update?: XOR<XOR<StoreUpdateToOneWithWhereWithoutLikesInput, StoreUpdateWithoutLikesInput>, StoreUncheckedUpdateWithoutLikesInput>
+  }
+
+  export type StoreCreateNestedOneWithoutStoreInput = {
+    create?: XOR<StoreCreateWithoutStoreInput, StoreUncheckedCreateWithoutStoreInput>
+    connectOrCreate?: StoreCreateOrConnectWithoutStoreInput
+    connect?: StoreWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutBuyerInput = {
+    create?: XOR<UserCreateWithoutBuyerInput, UserUncheckedCreateWithoutBuyerInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBuyerInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type MessageCreateNestedManyWithoutConversationInput = {
+    create?: XOR<MessageCreateWithoutConversationInput, MessageUncheckedCreateWithoutConversationInput> | MessageCreateWithoutConversationInput[] | MessageUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutConversationInput | MessageCreateOrConnectWithoutConversationInput[]
+    createMany?: MessageCreateManyConversationInputEnvelope
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+  }
+
+  export type NotificationCreateNestedManyWithoutConversationInput = {
+    create?: XOR<NotificationCreateWithoutConversationInput, NotificationUncheckedCreateWithoutConversationInput> | NotificationCreateWithoutConversationInput[] | NotificationUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: NotificationCreateOrConnectWithoutConversationInput | NotificationCreateOrConnectWithoutConversationInput[]
+    createMany?: NotificationCreateManyConversationInputEnvelope
+    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+  }
+
+  export type UserPresenceCreateNestedManyWithoutConversationInput = {
+    create?: XOR<UserPresenceCreateWithoutConversationInput, UserPresenceUncheckedCreateWithoutConversationInput> | UserPresenceCreateWithoutConversationInput[] | UserPresenceUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: UserPresenceCreateOrConnectWithoutConversationInput | UserPresenceCreateOrConnectWithoutConversationInput[]
+    createMany?: UserPresenceCreateManyConversationInputEnvelope
+    connect?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+  }
+
+  export type MessageUncheckedCreateNestedManyWithoutConversationInput = {
+    create?: XOR<MessageCreateWithoutConversationInput, MessageUncheckedCreateWithoutConversationInput> | MessageCreateWithoutConversationInput[] | MessageUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutConversationInput | MessageCreateOrConnectWithoutConversationInput[]
+    createMany?: MessageCreateManyConversationInputEnvelope
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+  }
+
+  export type NotificationUncheckedCreateNestedManyWithoutConversationInput = {
+    create?: XOR<NotificationCreateWithoutConversationInput, NotificationUncheckedCreateWithoutConversationInput> | NotificationCreateWithoutConversationInput[] | NotificationUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: NotificationCreateOrConnectWithoutConversationInput | NotificationCreateOrConnectWithoutConversationInput[]
+    createMany?: NotificationCreateManyConversationInputEnvelope
+    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+  }
+
+  export type UserPresenceUncheckedCreateNestedManyWithoutConversationInput = {
+    create?: XOR<UserPresenceCreateWithoutConversationInput, UserPresenceUncheckedCreateWithoutConversationInput> | UserPresenceCreateWithoutConversationInput[] | UserPresenceUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: UserPresenceCreateOrConnectWithoutConversationInput | UserPresenceCreateOrConnectWithoutConversationInput[]
+    createMany?: UserPresenceCreateManyConversationInputEnvelope
+    connect?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+  }
+
+  export type StoreUpdateOneRequiredWithoutStoreNestedInput = {
+    create?: XOR<StoreCreateWithoutStoreInput, StoreUncheckedCreateWithoutStoreInput>
+    connectOrCreate?: StoreCreateOrConnectWithoutStoreInput
+    upsert?: StoreUpsertWithoutStoreInput
+    connect?: StoreWhereUniqueInput
+    update?: XOR<XOR<StoreUpdateToOneWithWhereWithoutStoreInput, StoreUpdateWithoutStoreInput>, StoreUncheckedUpdateWithoutStoreInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutBuyerNestedInput = {
+    create?: XOR<UserCreateWithoutBuyerInput, UserUncheckedCreateWithoutBuyerInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBuyerInput
+    upsert?: UserUpsertWithoutBuyerInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBuyerInput, UserUpdateWithoutBuyerInput>, UserUncheckedUpdateWithoutBuyerInput>
+  }
+
+  export type MessageUpdateManyWithoutConversationNestedInput = {
+    create?: XOR<MessageCreateWithoutConversationInput, MessageUncheckedCreateWithoutConversationInput> | MessageCreateWithoutConversationInput[] | MessageUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutConversationInput | MessageCreateOrConnectWithoutConversationInput[]
+    upsert?: MessageUpsertWithWhereUniqueWithoutConversationInput | MessageUpsertWithWhereUniqueWithoutConversationInput[]
+    createMany?: MessageCreateManyConversationInputEnvelope
+    set?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    disconnect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    delete?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    update?: MessageUpdateWithWhereUniqueWithoutConversationInput | MessageUpdateWithWhereUniqueWithoutConversationInput[]
+    updateMany?: MessageUpdateManyWithWhereWithoutConversationInput | MessageUpdateManyWithWhereWithoutConversationInput[]
+    deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
+  }
+
+  export type NotificationUpdateManyWithoutConversationNestedInput = {
+    create?: XOR<NotificationCreateWithoutConversationInput, NotificationUncheckedCreateWithoutConversationInput> | NotificationCreateWithoutConversationInput[] | NotificationUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: NotificationCreateOrConnectWithoutConversationInput | NotificationCreateOrConnectWithoutConversationInput[]
+    upsert?: NotificationUpsertWithWhereUniqueWithoutConversationInput | NotificationUpsertWithWhereUniqueWithoutConversationInput[]
+    createMany?: NotificationCreateManyConversationInputEnvelope
+    set?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    disconnect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    delete?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    update?: NotificationUpdateWithWhereUniqueWithoutConversationInput | NotificationUpdateWithWhereUniqueWithoutConversationInput[]
+    updateMany?: NotificationUpdateManyWithWhereWithoutConversationInput | NotificationUpdateManyWithWhereWithoutConversationInput[]
+    deleteMany?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
+  }
+
+  export type UserPresenceUpdateManyWithoutConversationNestedInput = {
+    create?: XOR<UserPresenceCreateWithoutConversationInput, UserPresenceUncheckedCreateWithoutConversationInput> | UserPresenceCreateWithoutConversationInput[] | UserPresenceUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: UserPresenceCreateOrConnectWithoutConversationInput | UserPresenceCreateOrConnectWithoutConversationInput[]
+    upsert?: UserPresenceUpsertWithWhereUniqueWithoutConversationInput | UserPresenceUpsertWithWhereUniqueWithoutConversationInput[]
+    createMany?: UserPresenceCreateManyConversationInputEnvelope
+    set?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+    disconnect?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+    delete?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+    connect?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+    update?: UserPresenceUpdateWithWhereUniqueWithoutConversationInput | UserPresenceUpdateWithWhereUniqueWithoutConversationInput[]
+    updateMany?: UserPresenceUpdateManyWithWhereWithoutConversationInput | UserPresenceUpdateManyWithWhereWithoutConversationInput[]
+    deleteMany?: UserPresenceScalarWhereInput | UserPresenceScalarWhereInput[]
+  }
+
+  export type MessageUncheckedUpdateManyWithoutConversationNestedInput = {
+    create?: XOR<MessageCreateWithoutConversationInput, MessageUncheckedCreateWithoutConversationInput> | MessageCreateWithoutConversationInput[] | MessageUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutConversationInput | MessageCreateOrConnectWithoutConversationInput[]
+    upsert?: MessageUpsertWithWhereUniqueWithoutConversationInput | MessageUpsertWithWhereUniqueWithoutConversationInput[]
+    createMany?: MessageCreateManyConversationInputEnvelope
+    set?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    disconnect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    delete?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    update?: MessageUpdateWithWhereUniqueWithoutConversationInput | MessageUpdateWithWhereUniqueWithoutConversationInput[]
+    updateMany?: MessageUpdateManyWithWhereWithoutConversationInput | MessageUpdateManyWithWhereWithoutConversationInput[]
+    deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
+  }
+
+  export type NotificationUncheckedUpdateManyWithoutConversationNestedInput = {
+    create?: XOR<NotificationCreateWithoutConversationInput, NotificationUncheckedCreateWithoutConversationInput> | NotificationCreateWithoutConversationInput[] | NotificationUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: NotificationCreateOrConnectWithoutConversationInput | NotificationCreateOrConnectWithoutConversationInput[]
+    upsert?: NotificationUpsertWithWhereUniqueWithoutConversationInput | NotificationUpsertWithWhereUniqueWithoutConversationInput[]
+    createMany?: NotificationCreateManyConversationInputEnvelope
+    set?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    disconnect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    delete?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    update?: NotificationUpdateWithWhereUniqueWithoutConversationInput | NotificationUpdateWithWhereUniqueWithoutConversationInput[]
+    updateMany?: NotificationUpdateManyWithWhereWithoutConversationInput | NotificationUpdateManyWithWhereWithoutConversationInput[]
+    deleteMany?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
+  }
+
+  export type UserPresenceUncheckedUpdateManyWithoutConversationNestedInput = {
+    create?: XOR<UserPresenceCreateWithoutConversationInput, UserPresenceUncheckedCreateWithoutConversationInput> | UserPresenceCreateWithoutConversationInput[] | UserPresenceUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: UserPresenceCreateOrConnectWithoutConversationInput | UserPresenceCreateOrConnectWithoutConversationInput[]
+    upsert?: UserPresenceUpsertWithWhereUniqueWithoutConversationInput | UserPresenceUpsertWithWhereUniqueWithoutConversationInput[]
+    createMany?: UserPresenceCreateManyConversationInputEnvelope
+    set?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+    disconnect?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+    delete?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+    connect?: UserPresenceWhereUniqueInput | UserPresenceWhereUniqueInput[]
+    update?: UserPresenceUpdateWithWhereUniqueWithoutConversationInput | UserPresenceUpdateWithWhereUniqueWithoutConversationInput[]
+    updateMany?: UserPresenceUpdateManyWithWhereWithoutConversationInput | UserPresenceUpdateManyWithWhereWithoutConversationInput[]
+    deleteMany?: UserPresenceScalarWhereInput | UserPresenceScalarWhereInput[]
+  }
+
+  export type ConversationCreateNestedOneWithoutMessagesInput = {
+    create?: XOR<ConversationCreateWithoutMessagesInput, ConversationUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: ConversationCreateOrConnectWithoutMessagesInput
+    connect?: ConversationWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutMessagesInput = {
+    create?: XOR<UserCreateWithoutMessagesInput, UserUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMessagesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ConversationUpdateOneRequiredWithoutMessagesNestedInput = {
+    create?: XOR<ConversationCreateWithoutMessagesInput, ConversationUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: ConversationCreateOrConnectWithoutMessagesInput
+    upsert?: ConversationUpsertWithoutMessagesInput
+    connect?: ConversationWhereUniqueInput
+    update?: XOR<XOR<ConversationUpdateToOneWithWhereWithoutMessagesInput, ConversationUpdateWithoutMessagesInput>, ConversationUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutMessagesNestedInput = {
+    create?: XOR<UserCreateWithoutMessagesInput, UserUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMessagesInput
+    upsert?: UserUpsertWithoutMessagesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutMessagesInput, UserUpdateWithoutMessagesInput>, UserUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type UserCreateNestedOneWithoutNotificationInput = {
+    create?: XOR<UserCreateWithoutNotificationInput, UserUncheckedCreateWithoutNotificationInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNotificationInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ConversationCreateNestedOneWithoutNotificationInput = {
+    create?: XOR<ConversationCreateWithoutNotificationInput, ConversationUncheckedCreateWithoutNotificationInput>
+    connectOrCreate?: ConversationCreateOrConnectWithoutNotificationInput
+    connect?: ConversationWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutNotificationNestedInput = {
+    create?: XOR<UserCreateWithoutNotificationInput, UserUncheckedCreateWithoutNotificationInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNotificationInput
+    upsert?: UserUpsertWithoutNotificationInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutNotificationInput, UserUpdateWithoutNotificationInput>, UserUncheckedUpdateWithoutNotificationInput>
+  }
+
+  export type ConversationUpdateOneRequiredWithoutNotificationNestedInput = {
+    create?: XOR<ConversationCreateWithoutNotificationInput, ConversationUncheckedCreateWithoutNotificationInput>
+    connectOrCreate?: ConversationCreateOrConnectWithoutNotificationInput
+    upsert?: ConversationUpsertWithoutNotificationInput
+    connect?: ConversationWhereUniqueInput
+    update?: XOR<XOR<ConversationUpdateToOneWithWhereWithoutNotificationInput, ConversationUpdateWithoutNotificationInput>, ConversationUncheckedUpdateWithoutNotificationInput>
+  }
+
+  export type UserCreateNestedOneWithoutUserPresenceInput = {
+    create?: XOR<UserCreateWithoutUserPresenceInput, UserUncheckedCreateWithoutUserPresenceInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUserPresenceInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ConversationCreateNestedOneWithoutUserPresenceInput = {
+    create?: XOR<ConversationCreateWithoutUserPresenceInput, ConversationUncheckedCreateWithoutUserPresenceInput>
+    connectOrCreate?: ConversationCreateOrConnectWithoutUserPresenceInput
+    connect?: ConversationWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutUserPresenceNestedInput = {
+    create?: XOR<UserCreateWithoutUserPresenceInput, UserUncheckedCreateWithoutUserPresenceInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUserPresenceInput
+    upsert?: UserUpsertWithoutUserPresenceInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUserPresenceInput, UserUpdateWithoutUserPresenceInput>, UserUncheckedUpdateWithoutUserPresenceInput>
+  }
+
+  export type ConversationUpdateOneWithoutUserPresenceNestedInput = {
+    create?: XOR<ConversationCreateWithoutUserPresenceInput, ConversationUncheckedCreateWithoutUserPresenceInput>
+    connectOrCreate?: ConversationCreateOrConnectWithoutUserPresenceInput
+    upsert?: ConversationUpsertWithoutUserPresenceInput
+    disconnect?: ConversationWhereInput | boolean
+    delete?: ConversationWhereInput | boolean
+    connect?: ConversationWhereUniqueInput
+    update?: XOR<XOR<ConversationUpdateToOneWithWhereWithoutUserPresenceInput, ConversationUpdateWithoutUserPresenceInput>, ConversationUncheckedUpdateWithoutUserPresenceInput>
+  }
+
+  export type AgreementCreatedaysInput = {
+    set: string[]
+  }
+
+  export type UserCreateNestedOneWithoutAgreementInput = {
+    create?: XOR<UserCreateWithoutAgreementInput, UserUncheckedCreateWithoutAgreementInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAgreementInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type StoreCreateNestedOneWithoutAgreementInput = {
+    create?: XOR<StoreCreateWithoutAgreementInput, StoreUncheckedCreateWithoutAgreementInput>
+    connectOrCreate?: StoreCreateOrConnectWithoutAgreementInput
+    connect?: StoreWhereUniqueInput
+  }
+
+  export type AgreementUpdatedaysInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type UserUpdateOneRequiredWithoutAgreementNestedInput = {
+    create?: XOR<UserCreateWithoutAgreementInput, UserUncheckedCreateWithoutAgreementInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAgreementInput
+    upsert?: UserUpsertWithoutAgreementInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAgreementInput, UserUpdateWithoutAgreementInput>, UserUncheckedUpdateWithoutAgreementInput>
+  }
+
+  export type StoreUpdateOneRequiredWithoutAgreementNestedInput = {
+    create?: XOR<StoreCreateWithoutAgreementInput, StoreUncheckedCreateWithoutAgreementInput>
+    connectOrCreate?: StoreCreateOrConnectWithoutAgreementInput
+    upsert?: StoreUpsertWithoutAgreementInput
+    connect?: StoreWhereUniqueInput
+    update?: XOR<XOR<StoreUpdateToOneWithWhereWithoutAgreementInput, StoreUpdateWithoutAgreementInput>, StoreUncheckedUpdateWithoutAgreementInput>
+  }
+
+  export type NestedStringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnumShareModeFilter<$PrismaModel = never> = {
+    equals?: $Enums.ShareMode | EnumShareModeFieldRefInput<$PrismaModel>
+    in?: $Enums.ShareMode[] | ListEnumShareModeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ShareMode[] | ListEnumShareModeFieldRefInput<$PrismaModel>
+    not?: NestedEnumShareModeFilter<$PrismaModel> | $Enums.ShareMode
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedEnumShareModeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ShareMode | EnumShareModeFieldRefInput<$PrismaModel>
+    in?: $Enums.ShareMode[] | ListEnumShareModeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ShareMode[] | ListEnumShareModeFieldRefInput<$PrismaModel>
+    not?: NestedEnumShareModeWithAggregatesFilter<$PrismaModel> | $Enums.ShareMode
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumShareModeFilter<$PrismaModel>
+    _max?: NestedEnumShareModeFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type StoreCreateWithoutOwnerInput = {
+    id?: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude?: number | null
+    longitude?: number | null
+    bannerImageUrl?: string | null
+    priceInr: number
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: StoreCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: StoreImageCreateNestedManyWithoutStoreInput
+    likes?: StoreLikeCreateNestedManyWithoutStoreInput
+    store?: ConversationCreateNestedManyWithoutStoreInput
+    Agreement?: AgreementCreateNestedManyWithoutStoreInput
+  }
+
+  export type StoreUncheckedCreateWithoutOwnerInput = {
+    id?: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude?: number | null
+    longitude?: number | null
+    bannerImageUrl?: string | null
+    priceInr: number
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: StoreCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: StoreImageUncheckedCreateNestedManyWithoutStoreInput
+    likes?: StoreLikeUncheckedCreateNestedManyWithoutStoreInput
+    store?: ConversationUncheckedCreateNestedManyWithoutStoreInput
+    Agreement?: AgreementUncheckedCreateNestedManyWithoutStoreInput
+  }
+
+  export type StoreCreateOrConnectWithoutOwnerInput = {
+    where: StoreWhereUniqueInput
+    create: XOR<StoreCreateWithoutOwnerInput, StoreUncheckedCreateWithoutOwnerInput>
+  }
+
+  export type StoreCreateManyOwnerInputEnvelope = {
+    data: StoreCreateManyOwnerInput | StoreCreateManyOwnerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type StoreLikeCreateWithoutUserInput = {
+    id?: string
+    createdAt?: Date | string
+    store: StoreCreateNestedOneWithoutLikesInput
+  }
+
+  export type StoreLikeUncheckedCreateWithoutUserInput = {
+    id?: string
+    storeId: string
+    createdAt?: Date | string
+  }
+
+  export type StoreLikeCreateOrConnectWithoutUserInput = {
+    where: StoreLikeWhereUniqueInput
+    create: XOR<StoreLikeCreateWithoutUserInput, StoreLikeUncheckedCreateWithoutUserInput>
+  }
+
+  export type StoreLikeCreateManyUserInputEnvelope = {
+    data: StoreLikeCreateManyUserInput | StoreLikeCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type NotificationCreateWithoutUserInput = {
+    id?: string
+    message: string
+    isRead?: boolean
+    createdAt?: Date | string
+    conversation: ConversationCreateNestedOneWithoutNotificationInput
+  }
+
+  export type NotificationUncheckedCreateWithoutUserInput = {
+    id?: string
+    conversationId: string
+    message: string
+    isRead?: boolean
+    createdAt?: Date | string
+  }
+
+  export type NotificationCreateOrConnectWithoutUserInput = {
+    where: NotificationWhereUniqueInput
+    create: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput>
+  }
+
+  export type NotificationCreateManyUserInputEnvelope = {
+    data: NotificationCreateManyUserInput | NotificationCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MessageCreateWithoutSenderInput = {
+    id?: string
+    text: string
+    seen?: boolean
+    createdAt?: Date | string
+    conversation: ConversationCreateNestedOneWithoutMessagesInput
+  }
+
+  export type MessageUncheckedCreateWithoutSenderInput = {
+    id?: string
+    conversationId: string
+    text: string
+    seen?: boolean
+    createdAt?: Date | string
+  }
+
+  export type MessageCreateOrConnectWithoutSenderInput = {
+    where: MessageWhereUniqueInput
+    create: XOR<MessageCreateWithoutSenderInput, MessageUncheckedCreateWithoutSenderInput>
+  }
+
+  export type MessageCreateManySenderInputEnvelope = {
+    data: MessageCreateManySenderInput | MessageCreateManySenderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ConversationCreateWithoutBuyerInput = {
+    id?: string
+    createdAt?: Date | string
+    lastMessageAt?: Date | string
+    store: StoreCreateNestedOneWithoutStoreInput
+    messages?: MessageCreateNestedManyWithoutConversationInput
+    notification?: NotificationCreateNestedManyWithoutConversationInput
+    UserPresence?: UserPresenceCreateNestedManyWithoutConversationInput
+  }
+
+  export type ConversationUncheckedCreateWithoutBuyerInput = {
+    id?: string
+    storeId: string
+    createdAt?: Date | string
+    lastMessageAt?: Date | string
+    messages?: MessageUncheckedCreateNestedManyWithoutConversationInput
+    notification?: NotificationUncheckedCreateNestedManyWithoutConversationInput
+    UserPresence?: UserPresenceUncheckedCreateNestedManyWithoutConversationInput
+  }
+
+  export type ConversationCreateOrConnectWithoutBuyerInput = {
+    where: ConversationWhereUniqueInput
+    create: XOR<ConversationCreateWithoutBuyerInput, ConversationUncheckedCreateWithoutBuyerInput>
+  }
+
+  export type ConversationCreateManyBuyerInputEnvelope = {
+    data: ConversationCreateManyBuyerInput | ConversationCreateManyBuyerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserPresenceCreateWithoutUserInput = {
+    updatedAt?: Date | string
+    conversation?: ConversationCreateNestedOneWithoutUserPresenceInput
+  }
+
+  export type UserPresenceUncheckedCreateWithoutUserInput = {
+    conversationId?: string | null
+    updatedAt?: Date | string
+  }
+
+  export type UserPresenceCreateOrConnectWithoutUserInput = {
+    where: UserPresenceWhereUniqueInput
+    create: XOR<UserPresenceCreateWithoutUserInput, UserPresenceUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserPresenceCreateManyUserInputEnvelope = {
+    data: UserPresenceCreateManyUserInput | UserPresenceCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AgreementCreateWithoutUserInput = {
+    id: string
+    ownerName: string
+    tenantName: string
+    price: string
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: AgreementCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    bussinessType: string
+    store: StoreCreateNestedOneWithoutAgreementInput
+  }
+
+  export type AgreementUncheckedCreateWithoutUserInput = {
+    id: string
+    storeid: string
+    ownerName: string
+    tenantName: string
+    price: string
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: AgreementCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    bussinessType: string
+  }
+
+  export type AgreementCreateOrConnectWithoutUserInput = {
+    where: AgreementWhereUniqueInput
+    create: XOR<AgreementCreateWithoutUserInput, AgreementUncheckedCreateWithoutUserInput>
+  }
+
+  export type AgreementCreateManyUserInputEnvelope = {
+    data: AgreementCreateManyUserInput | AgreementCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type StoreUpsertWithWhereUniqueWithoutOwnerInput = {
+    where: StoreWhereUniqueInput
+    update: XOR<StoreUpdateWithoutOwnerInput, StoreUncheckedUpdateWithoutOwnerInput>
+    create: XOR<StoreCreateWithoutOwnerInput, StoreUncheckedCreateWithoutOwnerInput>
+  }
+
+  export type StoreUpdateWithWhereUniqueWithoutOwnerInput = {
+    where: StoreWhereUniqueInput
+    data: XOR<StoreUpdateWithoutOwnerInput, StoreUncheckedUpdateWithoutOwnerInput>
+  }
+
+  export type StoreUpdateManyWithWhereWithoutOwnerInput = {
+    where: StoreScalarWhereInput
+    data: XOR<StoreUpdateManyMutationInput, StoreUncheckedUpdateManyWithoutOwnerInput>
+  }
+
+  export type StoreScalarWhereInput = {
+    AND?: StoreScalarWhereInput | StoreScalarWhereInput[]
+    OR?: StoreScalarWhereInput[]
+    NOT?: StoreScalarWhereInput | StoreScalarWhereInput[]
+    id?: StringFilter<"Store"> | string
+    ownerId?: StringFilter<"Store"> | string
+    title?: StringFilter<"Store"> | string
+    desc?: StringFilter<"Store"> | string
+    peopleDesc?: StringFilter<"Store"> | string
+    flatno?: StringFilter<"Store"> | string
+    streetAddress?: StringFilter<"Store"> | string
+    NearbyLandMark?: StringFilter<"Store"> | string
+    areaLocality?: StringFilter<"Store"> | string
+    storeSize?: StringFilter<"Store"> | string
+    businessType?: StringFilter<"Store"> | string
+    country?: StringFilter<"Store"> | string
+    state?: StringFilter<"Store"> | string
+    city?: StringFilter<"Store"> | string
+    pin?: StringFilter<"Store"> | string
+    latitude?: FloatNullableFilter<"Store"> | number | null
+    longitude?: FloatNullableFilter<"Store"> | number | null
+    bannerImageUrl?: StringNullableFilter<"Store"> | string | null
+    priceInr?: IntFilter<"Store"> | number
+    shareMode?: EnumShareModeFilter<"Store"> | $Enums.ShareMode
+    startTime?: StringNullableFilter<"Store"> | string | null
+    endTime?: StringNullableFilter<"Store"> | string | null
+    days?: StringNullableListFilter<"Store">
+    sqft?: IntNullableFilter<"Store"> | number | null
+    dayOrNight?: StringNullableFilter<"Store"> | string | null
+    createdAt?: DateTimeFilter<"Store"> | Date | string
+    updatedAt?: DateTimeFilter<"Store"> | Date | string
+  }
+
+  export type StoreLikeUpsertWithWhereUniqueWithoutUserInput = {
+    where: StoreLikeWhereUniqueInput
+    update: XOR<StoreLikeUpdateWithoutUserInput, StoreLikeUncheckedUpdateWithoutUserInput>
+    create: XOR<StoreLikeCreateWithoutUserInput, StoreLikeUncheckedCreateWithoutUserInput>
+  }
+
+  export type StoreLikeUpdateWithWhereUniqueWithoutUserInput = {
+    where: StoreLikeWhereUniqueInput
+    data: XOR<StoreLikeUpdateWithoutUserInput, StoreLikeUncheckedUpdateWithoutUserInput>
+  }
+
+  export type StoreLikeUpdateManyWithWhereWithoutUserInput = {
+    where: StoreLikeScalarWhereInput
+    data: XOR<StoreLikeUpdateManyMutationInput, StoreLikeUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type StoreLikeScalarWhereInput = {
+    AND?: StoreLikeScalarWhereInput | StoreLikeScalarWhereInput[]
+    OR?: StoreLikeScalarWhereInput[]
+    NOT?: StoreLikeScalarWhereInput | StoreLikeScalarWhereInput[]
+    id?: StringFilter<"StoreLike"> | string
+    userId?: StringFilter<"StoreLike"> | string
+    storeId?: StringFilter<"StoreLike"> | string
+    createdAt?: DateTimeFilter<"StoreLike"> | Date | string
+  }
+
+  export type NotificationUpsertWithWhereUniqueWithoutUserInput = {
+    where: NotificationWhereUniqueInput
+    update: XOR<NotificationUpdateWithoutUserInput, NotificationUncheckedUpdateWithoutUserInput>
+    create: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput>
+  }
+
+  export type NotificationUpdateWithWhereUniqueWithoutUserInput = {
+    where: NotificationWhereUniqueInput
+    data: XOR<NotificationUpdateWithoutUserInput, NotificationUncheckedUpdateWithoutUserInput>
+  }
+
+  export type NotificationUpdateManyWithWhereWithoutUserInput = {
+    where: NotificationScalarWhereInput
+    data: XOR<NotificationUpdateManyMutationInput, NotificationUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type NotificationScalarWhereInput = {
+    AND?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
+    OR?: NotificationScalarWhereInput[]
+    NOT?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
+    id?: StringFilter<"Notification"> | string
+    userId?: StringFilter<"Notification"> | string
+    conversationId?: StringFilter<"Notification"> | string
+    message?: StringFilter<"Notification"> | string
+    isRead?: BoolFilter<"Notification"> | boolean
+    createdAt?: DateTimeFilter<"Notification"> | Date | string
+  }
+
+  export type MessageUpsertWithWhereUniqueWithoutSenderInput = {
+    where: MessageWhereUniqueInput
+    update: XOR<MessageUpdateWithoutSenderInput, MessageUncheckedUpdateWithoutSenderInput>
+    create: XOR<MessageCreateWithoutSenderInput, MessageUncheckedCreateWithoutSenderInput>
+  }
+
+  export type MessageUpdateWithWhereUniqueWithoutSenderInput = {
+    where: MessageWhereUniqueInput
+    data: XOR<MessageUpdateWithoutSenderInput, MessageUncheckedUpdateWithoutSenderInput>
+  }
+
+  export type MessageUpdateManyWithWhereWithoutSenderInput = {
+    where: MessageScalarWhereInput
+    data: XOR<MessageUpdateManyMutationInput, MessageUncheckedUpdateManyWithoutSenderInput>
+  }
+
+  export type MessageScalarWhereInput = {
+    AND?: MessageScalarWhereInput | MessageScalarWhereInput[]
+    OR?: MessageScalarWhereInput[]
+    NOT?: MessageScalarWhereInput | MessageScalarWhereInput[]
+    id?: StringFilter<"Message"> | string
+    conversationId?: StringFilter<"Message"> | string
+    senderId?: StringFilter<"Message"> | string
+    text?: StringFilter<"Message"> | string
+    seen?: BoolFilter<"Message"> | boolean
+    createdAt?: DateTimeFilter<"Message"> | Date | string
+  }
+
+  export type ConversationUpsertWithWhereUniqueWithoutBuyerInput = {
+    where: ConversationWhereUniqueInput
+    update: XOR<ConversationUpdateWithoutBuyerInput, ConversationUncheckedUpdateWithoutBuyerInput>
+    create: XOR<ConversationCreateWithoutBuyerInput, ConversationUncheckedCreateWithoutBuyerInput>
+  }
+
+  export type ConversationUpdateWithWhereUniqueWithoutBuyerInput = {
+    where: ConversationWhereUniqueInput
+    data: XOR<ConversationUpdateWithoutBuyerInput, ConversationUncheckedUpdateWithoutBuyerInput>
+  }
+
+  export type ConversationUpdateManyWithWhereWithoutBuyerInput = {
+    where: ConversationScalarWhereInput
+    data: XOR<ConversationUpdateManyMutationInput, ConversationUncheckedUpdateManyWithoutBuyerInput>
+  }
+
+  export type ConversationScalarWhereInput = {
+    AND?: ConversationScalarWhereInput | ConversationScalarWhereInput[]
+    OR?: ConversationScalarWhereInput[]
+    NOT?: ConversationScalarWhereInput | ConversationScalarWhereInput[]
+    id?: StringFilter<"Conversation"> | string
+    storeId?: StringFilter<"Conversation"> | string
+    buyerId?: StringFilter<"Conversation"> | string
+    createdAt?: DateTimeFilter<"Conversation"> | Date | string
+    lastMessageAt?: DateTimeFilter<"Conversation"> | Date | string
+  }
+
+  export type UserPresenceUpsertWithWhereUniqueWithoutUserInput = {
+    where: UserPresenceWhereUniqueInput
+    update: XOR<UserPresenceUpdateWithoutUserInput, UserPresenceUncheckedUpdateWithoutUserInput>
+    create: XOR<UserPresenceCreateWithoutUserInput, UserPresenceUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserPresenceUpdateWithWhereUniqueWithoutUserInput = {
+    where: UserPresenceWhereUniqueInput
+    data: XOR<UserPresenceUpdateWithoutUserInput, UserPresenceUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserPresenceUpdateManyWithWhereWithoutUserInput = {
+    where: UserPresenceScalarWhereInput
+    data: XOR<UserPresenceUpdateManyMutationInput, UserPresenceUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type UserPresenceScalarWhereInput = {
+    AND?: UserPresenceScalarWhereInput | UserPresenceScalarWhereInput[]
+    OR?: UserPresenceScalarWhereInput[]
+    NOT?: UserPresenceScalarWhereInput | UserPresenceScalarWhereInput[]
+    userId?: StringFilter<"UserPresence"> | string
+    conversationId?: StringNullableFilter<"UserPresence"> | string | null
+    updatedAt?: DateTimeFilter<"UserPresence"> | Date | string
+  }
+
+  export type AgreementUpsertWithWhereUniqueWithoutUserInput = {
+    where: AgreementWhereUniqueInput
+    update: XOR<AgreementUpdateWithoutUserInput, AgreementUncheckedUpdateWithoutUserInput>
+    create: XOR<AgreementCreateWithoutUserInput, AgreementUncheckedCreateWithoutUserInput>
+  }
+
+  export type AgreementUpdateWithWhereUniqueWithoutUserInput = {
+    where: AgreementWhereUniqueInput
+    data: XOR<AgreementUpdateWithoutUserInput, AgreementUncheckedUpdateWithoutUserInput>
+  }
+
+  export type AgreementUpdateManyWithWhereWithoutUserInput = {
+    where: AgreementScalarWhereInput
+    data: XOR<AgreementUpdateManyMutationInput, AgreementUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type AgreementScalarWhereInput = {
+    AND?: AgreementScalarWhereInput | AgreementScalarWhereInput[]
+    OR?: AgreementScalarWhereInput[]
+    NOT?: AgreementScalarWhereInput | AgreementScalarWhereInput[]
+    id?: StringFilter<"Agreement"> | string
+    userid?: StringFilter<"Agreement"> | string
+    storeid?: StringFilter<"Agreement"> | string
+    ownerName?: StringFilter<"Agreement"> | string
+    tenantName?: StringFilter<"Agreement"> | string
+    price?: StringFilter<"Agreement"> | string
+    shareMode?: EnumShareModeFilter<"Agreement"> | $Enums.ShareMode
+    startTime?: StringNullableFilter<"Agreement"> | string | null
+    endTime?: StringNullableFilter<"Agreement"> | string | null
+    days?: StringNullableListFilter<"Agreement">
+    sqft?: IntNullableFilter<"Agreement"> | number | null
+    dayOrNight?: StringNullableFilter<"Agreement"> | string | null
+    flatno?: StringFilter<"Agreement"> | string
+    streetAddress?: StringFilter<"Agreement"> | string
+    NearbyLandMark?: StringFilter<"Agreement"> | string
+    areaLocality?: StringFilter<"Agreement"> | string
+    country?: StringFilter<"Agreement"> | string
+    state?: StringFilter<"Agreement"> | string
+    city?: StringFilter<"Agreement"> | string
+    pin?: StringFilter<"Agreement"> | string
+    bussinessType?: StringFilter<"Agreement"> | string
+  }
+
+  export type UserCreateWithoutStoresInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+    phone?: string | null
+    phoneVerified?: boolean
+    createdAt?: Date | string
+    userBussinessType?: string | null
+    likedStores?: StoreLikeCreateNestedManyWithoutUserInput
+    notification?: NotificationCreateNestedManyWithoutUserInput
+    messages?: MessageCreateNestedManyWithoutSenderInput
+    buyer?: ConversationCreateNestedManyWithoutBuyerInput
+    UserPresence?: UserPresenceCreateNestedManyWithoutUserInput
+    Agreement?: AgreementCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutStoresInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+    phone?: string | null
+    phoneVerified?: boolean
+    createdAt?: Date | string
+    userBussinessType?: string | null
+    likedStores?: StoreLikeUncheckedCreateNestedManyWithoutUserInput
+    notification?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    messages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    buyer?: ConversationUncheckedCreateNestedManyWithoutBuyerInput
+    UserPresence?: UserPresenceUncheckedCreateNestedManyWithoutUserInput
+    Agreement?: AgreementUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutStoresInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutStoresInput, UserUncheckedCreateWithoutStoresInput>
+  }
+
+  export type StoreImageCreateWithoutStoreInput = {
+    id?: string
+    url: string
+    order?: number
+    createdAt?: Date | string
+  }
+
+  export type StoreImageUncheckedCreateWithoutStoreInput = {
+    id?: string
+    url: string
+    order?: number
+    createdAt?: Date | string
+  }
+
+  export type StoreImageCreateOrConnectWithoutStoreInput = {
+    where: StoreImageWhereUniqueInput
+    create: XOR<StoreImageCreateWithoutStoreInput, StoreImageUncheckedCreateWithoutStoreInput>
+  }
+
+  export type StoreImageCreateManyStoreInputEnvelope = {
+    data: StoreImageCreateManyStoreInput | StoreImageCreateManyStoreInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type StoreLikeCreateWithoutStoreInput = {
+    id?: string
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutLikedStoresInput
+  }
+
+  export type StoreLikeUncheckedCreateWithoutStoreInput = {
+    id?: string
+    userId: string
+    createdAt?: Date | string
+  }
+
+  export type StoreLikeCreateOrConnectWithoutStoreInput = {
+    where: StoreLikeWhereUniqueInput
+    create: XOR<StoreLikeCreateWithoutStoreInput, StoreLikeUncheckedCreateWithoutStoreInput>
+  }
+
+  export type StoreLikeCreateManyStoreInputEnvelope = {
+    data: StoreLikeCreateManyStoreInput | StoreLikeCreateManyStoreInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ConversationCreateWithoutStoreInput = {
+    id?: string
+    createdAt?: Date | string
+    lastMessageAt?: Date | string
+    buyer: UserCreateNestedOneWithoutBuyerInput
+    messages?: MessageCreateNestedManyWithoutConversationInput
+    notification?: NotificationCreateNestedManyWithoutConversationInput
+    UserPresence?: UserPresenceCreateNestedManyWithoutConversationInput
+  }
+
+  export type ConversationUncheckedCreateWithoutStoreInput = {
+    id?: string
+    buyerId: string
+    createdAt?: Date | string
+    lastMessageAt?: Date | string
+    messages?: MessageUncheckedCreateNestedManyWithoutConversationInput
+    notification?: NotificationUncheckedCreateNestedManyWithoutConversationInput
+    UserPresence?: UserPresenceUncheckedCreateNestedManyWithoutConversationInput
+  }
+
+  export type ConversationCreateOrConnectWithoutStoreInput = {
+    where: ConversationWhereUniqueInput
+    create: XOR<ConversationCreateWithoutStoreInput, ConversationUncheckedCreateWithoutStoreInput>
+  }
+
+  export type ConversationCreateManyStoreInputEnvelope = {
+    data: ConversationCreateManyStoreInput | ConversationCreateManyStoreInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AgreementCreateWithoutStoreInput = {
+    id: string
+    ownerName: string
+    tenantName: string
+    price: string
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: AgreementCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    bussinessType: string
+    user: UserCreateNestedOneWithoutAgreementInput
+  }
+
+  export type AgreementUncheckedCreateWithoutStoreInput = {
+    id: string
+    userid: string
+    ownerName: string
+    tenantName: string
+    price: string
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: AgreementCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    bussinessType: string
+  }
+
+  export type AgreementCreateOrConnectWithoutStoreInput = {
+    where: AgreementWhereUniqueInput
+    create: XOR<AgreementCreateWithoutStoreInput, AgreementUncheckedCreateWithoutStoreInput>
+  }
+
+  export type AgreementCreateManyStoreInputEnvelope = {
+    data: AgreementCreateManyStoreInput | AgreementCreateManyStoreInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutStoresInput = {
+    update: XOR<UserUpdateWithoutStoresInput, UserUncheckedUpdateWithoutStoresInput>
+    create: XOR<UserCreateWithoutStoresInput, UserUncheckedCreateWithoutStoresInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutStoresInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutStoresInput, UserUncheckedUpdateWithoutStoresInput>
+  }
+
+  export type UserUpdateWithoutStoresInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userBussinessType?: NullableStringFieldUpdateOperationsInput | string | null
+    likedStores?: StoreLikeUpdateManyWithoutUserNestedInput
+    notification?: NotificationUpdateManyWithoutUserNestedInput
+    messages?: MessageUpdateManyWithoutSenderNestedInput
+    buyer?: ConversationUpdateManyWithoutBuyerNestedInput
+    UserPresence?: UserPresenceUpdateManyWithoutUserNestedInput
+    Agreement?: AgreementUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutStoresInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userBussinessType?: NullableStringFieldUpdateOperationsInput | string | null
+    likedStores?: StoreLikeUncheckedUpdateManyWithoutUserNestedInput
+    notification?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    messages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    buyer?: ConversationUncheckedUpdateManyWithoutBuyerNestedInput
+    UserPresence?: UserPresenceUncheckedUpdateManyWithoutUserNestedInput
+    Agreement?: AgreementUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type StoreImageUpsertWithWhereUniqueWithoutStoreInput = {
+    where: StoreImageWhereUniqueInput
+    update: XOR<StoreImageUpdateWithoutStoreInput, StoreImageUncheckedUpdateWithoutStoreInput>
+    create: XOR<StoreImageCreateWithoutStoreInput, StoreImageUncheckedCreateWithoutStoreInput>
+  }
+
+  export type StoreImageUpdateWithWhereUniqueWithoutStoreInput = {
+    where: StoreImageWhereUniqueInput
+    data: XOR<StoreImageUpdateWithoutStoreInput, StoreImageUncheckedUpdateWithoutStoreInput>
+  }
+
+  export type StoreImageUpdateManyWithWhereWithoutStoreInput = {
+    where: StoreImageScalarWhereInput
+    data: XOR<StoreImageUpdateManyMutationInput, StoreImageUncheckedUpdateManyWithoutStoreInput>
+  }
+
+  export type StoreImageScalarWhereInput = {
+    AND?: StoreImageScalarWhereInput | StoreImageScalarWhereInput[]
+    OR?: StoreImageScalarWhereInput[]
+    NOT?: StoreImageScalarWhereInput | StoreImageScalarWhereInput[]
+    id?: StringFilter<"StoreImage"> | string
+    storeId?: StringFilter<"StoreImage"> | string
+    url?: StringFilter<"StoreImage"> | string
+    order?: IntFilter<"StoreImage"> | number
+    createdAt?: DateTimeFilter<"StoreImage"> | Date | string
+  }
+
+  export type StoreLikeUpsertWithWhereUniqueWithoutStoreInput = {
+    where: StoreLikeWhereUniqueInput
+    update: XOR<StoreLikeUpdateWithoutStoreInput, StoreLikeUncheckedUpdateWithoutStoreInput>
+    create: XOR<StoreLikeCreateWithoutStoreInput, StoreLikeUncheckedCreateWithoutStoreInput>
+  }
+
+  export type StoreLikeUpdateWithWhereUniqueWithoutStoreInput = {
+    where: StoreLikeWhereUniqueInput
+    data: XOR<StoreLikeUpdateWithoutStoreInput, StoreLikeUncheckedUpdateWithoutStoreInput>
+  }
+
+  export type StoreLikeUpdateManyWithWhereWithoutStoreInput = {
+    where: StoreLikeScalarWhereInput
+    data: XOR<StoreLikeUpdateManyMutationInput, StoreLikeUncheckedUpdateManyWithoutStoreInput>
+  }
+
+  export type ConversationUpsertWithWhereUniqueWithoutStoreInput = {
+    where: ConversationWhereUniqueInput
+    update: XOR<ConversationUpdateWithoutStoreInput, ConversationUncheckedUpdateWithoutStoreInput>
+    create: XOR<ConversationCreateWithoutStoreInput, ConversationUncheckedCreateWithoutStoreInput>
+  }
+
+  export type ConversationUpdateWithWhereUniqueWithoutStoreInput = {
+    where: ConversationWhereUniqueInput
+    data: XOR<ConversationUpdateWithoutStoreInput, ConversationUncheckedUpdateWithoutStoreInput>
+  }
+
+  export type ConversationUpdateManyWithWhereWithoutStoreInput = {
+    where: ConversationScalarWhereInput
+    data: XOR<ConversationUpdateManyMutationInput, ConversationUncheckedUpdateManyWithoutStoreInput>
+  }
+
+  export type AgreementUpsertWithWhereUniqueWithoutStoreInput = {
+    where: AgreementWhereUniqueInput
+    update: XOR<AgreementUpdateWithoutStoreInput, AgreementUncheckedUpdateWithoutStoreInput>
+    create: XOR<AgreementCreateWithoutStoreInput, AgreementUncheckedCreateWithoutStoreInput>
+  }
+
+  export type AgreementUpdateWithWhereUniqueWithoutStoreInput = {
+    where: AgreementWhereUniqueInput
+    data: XOR<AgreementUpdateWithoutStoreInput, AgreementUncheckedUpdateWithoutStoreInput>
+  }
+
+  export type AgreementUpdateManyWithWhereWithoutStoreInput = {
+    where: AgreementScalarWhereInput
+    data: XOR<AgreementUpdateManyMutationInput, AgreementUncheckedUpdateManyWithoutStoreInput>
+  }
+
+  export type StoreCreateWithoutImagesInput = {
+    id?: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude?: number | null
+    longitude?: number | null
+    bannerImageUrl?: string | null
+    priceInr: number
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: StoreCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    owner: UserCreateNestedOneWithoutStoresInput
+    likes?: StoreLikeCreateNestedManyWithoutStoreInput
+    store?: ConversationCreateNestedManyWithoutStoreInput
+    Agreement?: AgreementCreateNestedManyWithoutStoreInput
+  }
+
+  export type StoreUncheckedCreateWithoutImagesInput = {
+    id?: string
+    ownerId: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude?: number | null
+    longitude?: number | null
+    bannerImageUrl?: string | null
+    priceInr: number
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: StoreCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    likes?: StoreLikeUncheckedCreateNestedManyWithoutStoreInput
+    store?: ConversationUncheckedCreateNestedManyWithoutStoreInput
+    Agreement?: AgreementUncheckedCreateNestedManyWithoutStoreInput
+  }
+
+  export type StoreCreateOrConnectWithoutImagesInput = {
+    where: StoreWhereUniqueInput
+    create: XOR<StoreCreateWithoutImagesInput, StoreUncheckedCreateWithoutImagesInput>
+  }
+
+  export type StoreUpsertWithoutImagesInput = {
+    update: XOR<StoreUpdateWithoutImagesInput, StoreUncheckedUpdateWithoutImagesInput>
+    create: XOR<StoreCreateWithoutImagesInput, StoreUncheckedCreateWithoutImagesInput>
+    where?: StoreWhereInput
+  }
+
+  export type StoreUpdateToOneWithWhereWithoutImagesInput = {
+    where?: StoreWhereInput
+    data: XOR<StoreUpdateWithoutImagesInput, StoreUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type StoreUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: StoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: UserUpdateOneRequiredWithoutStoresNestedInput
+    likes?: StoreLikeUpdateManyWithoutStoreNestedInput
+    store?: ConversationUpdateManyWithoutStoreNestedInput
+    Agreement?: AgreementUpdateManyWithoutStoreNestedInput
+  }
+
+  export type StoreUncheckedUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: StoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    likes?: StoreLikeUncheckedUpdateManyWithoutStoreNestedInput
+    store?: ConversationUncheckedUpdateManyWithoutStoreNestedInput
+    Agreement?: AgreementUncheckedUpdateManyWithoutStoreNestedInput
+  }
+
+  export type UserCreateWithoutLikedStoresInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+    phone?: string | null
+    phoneVerified?: boolean
+    createdAt?: Date | string
+    userBussinessType?: string | null
+    stores?: StoreCreateNestedManyWithoutOwnerInput
+    notification?: NotificationCreateNestedManyWithoutUserInput
+    messages?: MessageCreateNestedManyWithoutSenderInput
+    buyer?: ConversationCreateNestedManyWithoutBuyerInput
+    UserPresence?: UserPresenceCreateNestedManyWithoutUserInput
+    Agreement?: AgreementCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutLikedStoresInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+    phone?: string | null
+    phoneVerified?: boolean
+    createdAt?: Date | string
+    userBussinessType?: string | null
+    stores?: StoreUncheckedCreateNestedManyWithoutOwnerInput
+    notification?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    messages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    buyer?: ConversationUncheckedCreateNestedManyWithoutBuyerInput
+    UserPresence?: UserPresenceUncheckedCreateNestedManyWithoutUserInput
+    Agreement?: AgreementUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutLikedStoresInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutLikedStoresInput, UserUncheckedCreateWithoutLikedStoresInput>
+  }
+
+  export type StoreCreateWithoutLikesInput = {
+    id?: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude?: number | null
+    longitude?: number | null
+    bannerImageUrl?: string | null
+    priceInr: number
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: StoreCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    owner: UserCreateNestedOneWithoutStoresInput
+    images?: StoreImageCreateNestedManyWithoutStoreInput
+    store?: ConversationCreateNestedManyWithoutStoreInput
+    Agreement?: AgreementCreateNestedManyWithoutStoreInput
+  }
+
+  export type StoreUncheckedCreateWithoutLikesInput = {
+    id?: string
+    ownerId: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude?: number | null
+    longitude?: number | null
+    bannerImageUrl?: string | null
+    priceInr: number
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: StoreCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: StoreImageUncheckedCreateNestedManyWithoutStoreInput
+    store?: ConversationUncheckedCreateNestedManyWithoutStoreInput
+    Agreement?: AgreementUncheckedCreateNestedManyWithoutStoreInput
+  }
+
+  export type StoreCreateOrConnectWithoutLikesInput = {
+    where: StoreWhereUniqueInput
+    create: XOR<StoreCreateWithoutLikesInput, StoreUncheckedCreateWithoutLikesInput>
+  }
+
+  export type UserUpsertWithoutLikedStoresInput = {
+    update: XOR<UserUpdateWithoutLikedStoresInput, UserUncheckedUpdateWithoutLikedStoresInput>
+    create: XOR<UserCreateWithoutLikedStoresInput, UserUncheckedCreateWithoutLikedStoresInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutLikedStoresInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutLikedStoresInput, UserUncheckedUpdateWithoutLikedStoresInput>
+  }
+
+  export type UserUpdateWithoutLikedStoresInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userBussinessType?: NullableStringFieldUpdateOperationsInput | string | null
+    stores?: StoreUpdateManyWithoutOwnerNestedInput
+    notification?: NotificationUpdateManyWithoutUserNestedInput
+    messages?: MessageUpdateManyWithoutSenderNestedInput
+    buyer?: ConversationUpdateManyWithoutBuyerNestedInput
+    UserPresence?: UserPresenceUpdateManyWithoutUserNestedInput
+    Agreement?: AgreementUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutLikedStoresInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userBussinessType?: NullableStringFieldUpdateOperationsInput | string | null
+    stores?: StoreUncheckedUpdateManyWithoutOwnerNestedInput
+    notification?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    messages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    buyer?: ConversationUncheckedUpdateManyWithoutBuyerNestedInput
+    UserPresence?: UserPresenceUncheckedUpdateManyWithoutUserNestedInput
+    Agreement?: AgreementUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type StoreUpsertWithoutLikesInput = {
+    update: XOR<StoreUpdateWithoutLikesInput, StoreUncheckedUpdateWithoutLikesInput>
+    create: XOR<StoreCreateWithoutLikesInput, StoreUncheckedCreateWithoutLikesInput>
+    where?: StoreWhereInput
+  }
+
+  export type StoreUpdateToOneWithWhereWithoutLikesInput = {
+    where?: StoreWhereInput
+    data: XOR<StoreUpdateWithoutLikesInput, StoreUncheckedUpdateWithoutLikesInput>
+  }
+
+  export type StoreUpdateWithoutLikesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: StoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: UserUpdateOneRequiredWithoutStoresNestedInput
+    images?: StoreImageUpdateManyWithoutStoreNestedInput
+    store?: ConversationUpdateManyWithoutStoreNestedInput
+    Agreement?: AgreementUpdateManyWithoutStoreNestedInput
+  }
+
+  export type StoreUncheckedUpdateWithoutLikesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: StoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: StoreImageUncheckedUpdateManyWithoutStoreNestedInput
+    store?: ConversationUncheckedUpdateManyWithoutStoreNestedInput
+    Agreement?: AgreementUncheckedUpdateManyWithoutStoreNestedInput
+  }
+
+  export type StoreCreateWithoutStoreInput = {
+    id?: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude?: number | null
+    longitude?: number | null
+    bannerImageUrl?: string | null
+    priceInr: number
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: StoreCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    owner: UserCreateNestedOneWithoutStoresInput
+    images?: StoreImageCreateNestedManyWithoutStoreInput
+    likes?: StoreLikeCreateNestedManyWithoutStoreInput
+    Agreement?: AgreementCreateNestedManyWithoutStoreInput
+  }
+
+  export type StoreUncheckedCreateWithoutStoreInput = {
+    id?: string
+    ownerId: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude?: number | null
+    longitude?: number | null
+    bannerImageUrl?: string | null
+    priceInr: number
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: StoreCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: StoreImageUncheckedCreateNestedManyWithoutStoreInput
+    likes?: StoreLikeUncheckedCreateNestedManyWithoutStoreInput
+    Agreement?: AgreementUncheckedCreateNestedManyWithoutStoreInput
+  }
+
+  export type StoreCreateOrConnectWithoutStoreInput = {
+    where: StoreWhereUniqueInput
+    create: XOR<StoreCreateWithoutStoreInput, StoreUncheckedCreateWithoutStoreInput>
+  }
+
+  export type UserCreateWithoutBuyerInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+    phone?: string | null
+    phoneVerified?: boolean
+    createdAt?: Date | string
+    userBussinessType?: string | null
+    stores?: StoreCreateNestedManyWithoutOwnerInput
+    likedStores?: StoreLikeCreateNestedManyWithoutUserInput
+    notification?: NotificationCreateNestedManyWithoutUserInput
+    messages?: MessageCreateNestedManyWithoutSenderInput
+    UserPresence?: UserPresenceCreateNestedManyWithoutUserInput
+    Agreement?: AgreementCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutBuyerInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+    phone?: string | null
+    phoneVerified?: boolean
+    createdAt?: Date | string
+    userBussinessType?: string | null
+    stores?: StoreUncheckedCreateNestedManyWithoutOwnerInput
+    likedStores?: StoreLikeUncheckedCreateNestedManyWithoutUserInput
+    notification?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    messages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    UserPresence?: UserPresenceUncheckedCreateNestedManyWithoutUserInput
+    Agreement?: AgreementUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutBuyerInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutBuyerInput, UserUncheckedCreateWithoutBuyerInput>
+  }
+
+  export type MessageCreateWithoutConversationInput = {
+    id?: string
+    text: string
+    seen?: boolean
+    createdAt?: Date | string
+    sender: UserCreateNestedOneWithoutMessagesInput
+  }
+
+  export type MessageUncheckedCreateWithoutConversationInput = {
+    id?: string
+    senderId: string
+    text: string
+    seen?: boolean
+    createdAt?: Date | string
+  }
+
+  export type MessageCreateOrConnectWithoutConversationInput = {
+    where: MessageWhereUniqueInput
+    create: XOR<MessageCreateWithoutConversationInput, MessageUncheckedCreateWithoutConversationInput>
+  }
+
+  export type MessageCreateManyConversationInputEnvelope = {
+    data: MessageCreateManyConversationInput | MessageCreateManyConversationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type NotificationCreateWithoutConversationInput = {
+    id?: string
+    message: string
+    isRead?: boolean
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutNotificationInput
+  }
+
+  export type NotificationUncheckedCreateWithoutConversationInput = {
+    id?: string
+    userId: string
+    message: string
+    isRead?: boolean
+    createdAt?: Date | string
+  }
+
+  export type NotificationCreateOrConnectWithoutConversationInput = {
+    where: NotificationWhereUniqueInput
+    create: XOR<NotificationCreateWithoutConversationInput, NotificationUncheckedCreateWithoutConversationInput>
+  }
+
+  export type NotificationCreateManyConversationInputEnvelope = {
+    data: NotificationCreateManyConversationInput | NotificationCreateManyConversationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserPresenceCreateWithoutConversationInput = {
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutUserPresenceInput
+  }
+
+  export type UserPresenceUncheckedCreateWithoutConversationInput = {
+    userId: string
+    updatedAt?: Date | string
+  }
+
+  export type UserPresenceCreateOrConnectWithoutConversationInput = {
+    where: UserPresenceWhereUniqueInput
+    create: XOR<UserPresenceCreateWithoutConversationInput, UserPresenceUncheckedCreateWithoutConversationInput>
+  }
+
+  export type UserPresenceCreateManyConversationInputEnvelope = {
+    data: UserPresenceCreateManyConversationInput | UserPresenceCreateManyConversationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type StoreUpsertWithoutStoreInput = {
+    update: XOR<StoreUpdateWithoutStoreInput, StoreUncheckedUpdateWithoutStoreInput>
+    create: XOR<StoreCreateWithoutStoreInput, StoreUncheckedCreateWithoutStoreInput>
+    where?: StoreWhereInput
+  }
+
+  export type StoreUpdateToOneWithWhereWithoutStoreInput = {
+    where?: StoreWhereInput
+    data: XOR<StoreUpdateWithoutStoreInput, StoreUncheckedUpdateWithoutStoreInput>
+  }
+
+  export type StoreUpdateWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: StoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: UserUpdateOneRequiredWithoutStoresNestedInput
+    images?: StoreImageUpdateManyWithoutStoreNestedInput
+    likes?: StoreLikeUpdateManyWithoutStoreNestedInput
+    Agreement?: AgreementUpdateManyWithoutStoreNestedInput
+  }
+
+  export type StoreUncheckedUpdateWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: StoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: StoreImageUncheckedUpdateManyWithoutStoreNestedInput
+    likes?: StoreLikeUncheckedUpdateManyWithoutStoreNestedInput
+    Agreement?: AgreementUncheckedUpdateManyWithoutStoreNestedInput
+  }
+
+  export type UserUpsertWithoutBuyerInput = {
+    update: XOR<UserUpdateWithoutBuyerInput, UserUncheckedUpdateWithoutBuyerInput>
+    create: XOR<UserCreateWithoutBuyerInput, UserUncheckedCreateWithoutBuyerInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutBuyerInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutBuyerInput, UserUncheckedUpdateWithoutBuyerInput>
+  }
+
+  export type UserUpdateWithoutBuyerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userBussinessType?: NullableStringFieldUpdateOperationsInput | string | null
+    stores?: StoreUpdateManyWithoutOwnerNestedInput
+    likedStores?: StoreLikeUpdateManyWithoutUserNestedInput
+    notification?: NotificationUpdateManyWithoutUserNestedInput
+    messages?: MessageUpdateManyWithoutSenderNestedInput
+    UserPresence?: UserPresenceUpdateManyWithoutUserNestedInput
+    Agreement?: AgreementUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutBuyerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userBussinessType?: NullableStringFieldUpdateOperationsInput | string | null
+    stores?: StoreUncheckedUpdateManyWithoutOwnerNestedInput
+    likedStores?: StoreLikeUncheckedUpdateManyWithoutUserNestedInput
+    notification?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    messages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    UserPresence?: UserPresenceUncheckedUpdateManyWithoutUserNestedInput
+    Agreement?: AgreementUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type MessageUpsertWithWhereUniqueWithoutConversationInput = {
+    where: MessageWhereUniqueInput
+    update: XOR<MessageUpdateWithoutConversationInput, MessageUncheckedUpdateWithoutConversationInput>
+    create: XOR<MessageCreateWithoutConversationInput, MessageUncheckedCreateWithoutConversationInput>
+  }
+
+  export type MessageUpdateWithWhereUniqueWithoutConversationInput = {
+    where: MessageWhereUniqueInput
+    data: XOR<MessageUpdateWithoutConversationInput, MessageUncheckedUpdateWithoutConversationInput>
+  }
+
+  export type MessageUpdateManyWithWhereWithoutConversationInput = {
+    where: MessageScalarWhereInput
+    data: XOR<MessageUpdateManyMutationInput, MessageUncheckedUpdateManyWithoutConversationInput>
+  }
+
+  export type NotificationUpsertWithWhereUniqueWithoutConversationInput = {
+    where: NotificationWhereUniqueInput
+    update: XOR<NotificationUpdateWithoutConversationInput, NotificationUncheckedUpdateWithoutConversationInput>
+    create: XOR<NotificationCreateWithoutConversationInput, NotificationUncheckedCreateWithoutConversationInput>
+  }
+
+  export type NotificationUpdateWithWhereUniqueWithoutConversationInput = {
+    where: NotificationWhereUniqueInput
+    data: XOR<NotificationUpdateWithoutConversationInput, NotificationUncheckedUpdateWithoutConversationInput>
+  }
+
+  export type NotificationUpdateManyWithWhereWithoutConversationInput = {
+    where: NotificationScalarWhereInput
+    data: XOR<NotificationUpdateManyMutationInput, NotificationUncheckedUpdateManyWithoutConversationInput>
+  }
+
+  export type UserPresenceUpsertWithWhereUniqueWithoutConversationInput = {
+    where: UserPresenceWhereUniqueInput
+    update: XOR<UserPresenceUpdateWithoutConversationInput, UserPresenceUncheckedUpdateWithoutConversationInput>
+    create: XOR<UserPresenceCreateWithoutConversationInput, UserPresenceUncheckedCreateWithoutConversationInput>
+  }
+
+  export type UserPresenceUpdateWithWhereUniqueWithoutConversationInput = {
+    where: UserPresenceWhereUniqueInput
+    data: XOR<UserPresenceUpdateWithoutConversationInput, UserPresenceUncheckedUpdateWithoutConversationInput>
+  }
+
+  export type UserPresenceUpdateManyWithWhereWithoutConversationInput = {
+    where: UserPresenceScalarWhereInput
+    data: XOR<UserPresenceUpdateManyMutationInput, UserPresenceUncheckedUpdateManyWithoutConversationInput>
+  }
+
+  export type ConversationCreateWithoutMessagesInput = {
+    id?: string
+    createdAt?: Date | string
+    lastMessageAt?: Date | string
+    store: StoreCreateNestedOneWithoutStoreInput
+    buyer: UserCreateNestedOneWithoutBuyerInput
+    notification?: NotificationCreateNestedManyWithoutConversationInput
+    UserPresence?: UserPresenceCreateNestedManyWithoutConversationInput
+  }
+
+  export type ConversationUncheckedCreateWithoutMessagesInput = {
+    id?: string
+    storeId: string
+    buyerId: string
+    createdAt?: Date | string
+    lastMessageAt?: Date | string
+    notification?: NotificationUncheckedCreateNestedManyWithoutConversationInput
+    UserPresence?: UserPresenceUncheckedCreateNestedManyWithoutConversationInput
+  }
+
+  export type ConversationCreateOrConnectWithoutMessagesInput = {
+    where: ConversationWhereUniqueInput
+    create: XOR<ConversationCreateWithoutMessagesInput, ConversationUncheckedCreateWithoutMessagesInput>
+  }
+
+  export type UserCreateWithoutMessagesInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+    phone?: string | null
+    phoneVerified?: boolean
+    createdAt?: Date | string
+    userBussinessType?: string | null
+    stores?: StoreCreateNestedManyWithoutOwnerInput
+    likedStores?: StoreLikeCreateNestedManyWithoutUserInput
+    notification?: NotificationCreateNestedManyWithoutUserInput
+    buyer?: ConversationCreateNestedManyWithoutBuyerInput
+    UserPresence?: UserPresenceCreateNestedManyWithoutUserInput
+    Agreement?: AgreementCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutMessagesInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+    phone?: string | null
+    phoneVerified?: boolean
+    createdAt?: Date | string
+    userBussinessType?: string | null
+    stores?: StoreUncheckedCreateNestedManyWithoutOwnerInput
+    likedStores?: StoreLikeUncheckedCreateNestedManyWithoutUserInput
+    notification?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    buyer?: ConversationUncheckedCreateNestedManyWithoutBuyerInput
+    UserPresence?: UserPresenceUncheckedCreateNestedManyWithoutUserInput
+    Agreement?: AgreementUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutMessagesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutMessagesInput, UserUncheckedCreateWithoutMessagesInput>
+  }
+
+  export type ConversationUpsertWithoutMessagesInput = {
+    update: XOR<ConversationUpdateWithoutMessagesInput, ConversationUncheckedUpdateWithoutMessagesInput>
+    create: XOR<ConversationCreateWithoutMessagesInput, ConversationUncheckedCreateWithoutMessagesInput>
+    where?: ConversationWhereInput
+  }
+
+  export type ConversationUpdateToOneWithWhereWithoutMessagesInput = {
+    where?: ConversationWhereInput
+    data: XOR<ConversationUpdateWithoutMessagesInput, ConversationUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type ConversationUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastMessageAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    store?: StoreUpdateOneRequiredWithoutStoreNestedInput
+    buyer?: UserUpdateOneRequiredWithoutBuyerNestedInput
+    notification?: NotificationUpdateManyWithoutConversationNestedInput
+    UserPresence?: UserPresenceUpdateManyWithoutConversationNestedInput
+  }
+
+  export type ConversationUncheckedUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastMessageAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    notification?: NotificationUncheckedUpdateManyWithoutConversationNestedInput
+    UserPresence?: UserPresenceUncheckedUpdateManyWithoutConversationNestedInput
+  }
+
+  export type UserUpsertWithoutMessagesInput = {
+    update: XOR<UserUpdateWithoutMessagesInput, UserUncheckedUpdateWithoutMessagesInput>
+    create: XOR<UserCreateWithoutMessagesInput, UserUncheckedCreateWithoutMessagesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutMessagesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutMessagesInput, UserUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type UserUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userBussinessType?: NullableStringFieldUpdateOperationsInput | string | null
+    stores?: StoreUpdateManyWithoutOwnerNestedInput
+    likedStores?: StoreLikeUpdateManyWithoutUserNestedInput
+    notification?: NotificationUpdateManyWithoutUserNestedInput
+    buyer?: ConversationUpdateManyWithoutBuyerNestedInput
+    UserPresence?: UserPresenceUpdateManyWithoutUserNestedInput
+    Agreement?: AgreementUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userBussinessType?: NullableStringFieldUpdateOperationsInput | string | null
+    stores?: StoreUncheckedUpdateManyWithoutOwnerNestedInput
+    likedStores?: StoreLikeUncheckedUpdateManyWithoutUserNestedInput
+    notification?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    buyer?: ConversationUncheckedUpdateManyWithoutBuyerNestedInput
+    UserPresence?: UserPresenceUncheckedUpdateManyWithoutUserNestedInput
+    Agreement?: AgreementUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutNotificationInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+    phone?: string | null
+    phoneVerified?: boolean
+    createdAt?: Date | string
+    userBussinessType?: string | null
+    stores?: StoreCreateNestedManyWithoutOwnerInput
+    likedStores?: StoreLikeCreateNestedManyWithoutUserInput
+    messages?: MessageCreateNestedManyWithoutSenderInput
+    buyer?: ConversationCreateNestedManyWithoutBuyerInput
+    UserPresence?: UserPresenceCreateNestedManyWithoutUserInput
+    Agreement?: AgreementCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutNotificationInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+    phone?: string | null
+    phoneVerified?: boolean
+    createdAt?: Date | string
+    userBussinessType?: string | null
+    stores?: StoreUncheckedCreateNestedManyWithoutOwnerInput
+    likedStores?: StoreLikeUncheckedCreateNestedManyWithoutUserInput
+    messages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    buyer?: ConversationUncheckedCreateNestedManyWithoutBuyerInput
+    UserPresence?: UserPresenceUncheckedCreateNestedManyWithoutUserInput
+    Agreement?: AgreementUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutNotificationInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutNotificationInput, UserUncheckedCreateWithoutNotificationInput>
+  }
+
+  export type ConversationCreateWithoutNotificationInput = {
+    id?: string
+    createdAt?: Date | string
+    lastMessageAt?: Date | string
+    store: StoreCreateNestedOneWithoutStoreInput
+    buyer: UserCreateNestedOneWithoutBuyerInput
+    messages?: MessageCreateNestedManyWithoutConversationInput
+    UserPresence?: UserPresenceCreateNestedManyWithoutConversationInput
+  }
+
+  export type ConversationUncheckedCreateWithoutNotificationInput = {
+    id?: string
+    storeId: string
+    buyerId: string
+    createdAt?: Date | string
+    lastMessageAt?: Date | string
+    messages?: MessageUncheckedCreateNestedManyWithoutConversationInput
+    UserPresence?: UserPresenceUncheckedCreateNestedManyWithoutConversationInput
+  }
+
+  export type ConversationCreateOrConnectWithoutNotificationInput = {
+    where: ConversationWhereUniqueInput
+    create: XOR<ConversationCreateWithoutNotificationInput, ConversationUncheckedCreateWithoutNotificationInput>
+  }
+
+  export type UserUpsertWithoutNotificationInput = {
+    update: XOR<UserUpdateWithoutNotificationInput, UserUncheckedUpdateWithoutNotificationInput>
+    create: XOR<UserCreateWithoutNotificationInput, UserUncheckedCreateWithoutNotificationInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutNotificationInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutNotificationInput, UserUncheckedUpdateWithoutNotificationInput>
+  }
+
+  export type UserUpdateWithoutNotificationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userBussinessType?: NullableStringFieldUpdateOperationsInput | string | null
+    stores?: StoreUpdateManyWithoutOwnerNestedInput
+    likedStores?: StoreLikeUpdateManyWithoutUserNestedInput
+    messages?: MessageUpdateManyWithoutSenderNestedInput
+    buyer?: ConversationUpdateManyWithoutBuyerNestedInput
+    UserPresence?: UserPresenceUpdateManyWithoutUserNestedInput
+    Agreement?: AgreementUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutNotificationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userBussinessType?: NullableStringFieldUpdateOperationsInput | string | null
+    stores?: StoreUncheckedUpdateManyWithoutOwnerNestedInput
+    likedStores?: StoreLikeUncheckedUpdateManyWithoutUserNestedInput
+    messages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    buyer?: ConversationUncheckedUpdateManyWithoutBuyerNestedInput
+    UserPresence?: UserPresenceUncheckedUpdateManyWithoutUserNestedInput
+    Agreement?: AgreementUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type ConversationUpsertWithoutNotificationInput = {
+    update: XOR<ConversationUpdateWithoutNotificationInput, ConversationUncheckedUpdateWithoutNotificationInput>
+    create: XOR<ConversationCreateWithoutNotificationInput, ConversationUncheckedCreateWithoutNotificationInput>
+    where?: ConversationWhereInput
+  }
+
+  export type ConversationUpdateToOneWithWhereWithoutNotificationInput = {
+    where?: ConversationWhereInput
+    data: XOR<ConversationUpdateWithoutNotificationInput, ConversationUncheckedUpdateWithoutNotificationInput>
+  }
+
+  export type ConversationUpdateWithoutNotificationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastMessageAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    store?: StoreUpdateOneRequiredWithoutStoreNestedInput
+    buyer?: UserUpdateOneRequiredWithoutBuyerNestedInput
+    messages?: MessageUpdateManyWithoutConversationNestedInput
+    UserPresence?: UserPresenceUpdateManyWithoutConversationNestedInput
+  }
+
+  export type ConversationUncheckedUpdateWithoutNotificationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastMessageAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageUncheckedUpdateManyWithoutConversationNestedInput
+    UserPresence?: UserPresenceUncheckedUpdateManyWithoutConversationNestedInput
+  }
+
+  export type UserCreateWithoutUserPresenceInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+    phone?: string | null
+    phoneVerified?: boolean
+    createdAt?: Date | string
+    userBussinessType?: string | null
+    stores?: StoreCreateNestedManyWithoutOwnerInput
+    likedStores?: StoreLikeCreateNestedManyWithoutUserInput
+    notification?: NotificationCreateNestedManyWithoutUserInput
+    messages?: MessageCreateNestedManyWithoutSenderInput
+    buyer?: ConversationCreateNestedManyWithoutBuyerInput
+    Agreement?: AgreementCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutUserPresenceInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+    phone?: string | null
+    phoneVerified?: boolean
+    createdAt?: Date | string
+    userBussinessType?: string | null
+    stores?: StoreUncheckedCreateNestedManyWithoutOwnerInput
+    likedStores?: StoreLikeUncheckedCreateNestedManyWithoutUserInput
+    notification?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    messages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    buyer?: ConversationUncheckedCreateNestedManyWithoutBuyerInput
+    Agreement?: AgreementUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutUserPresenceInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutUserPresenceInput, UserUncheckedCreateWithoutUserPresenceInput>
+  }
+
+  export type ConversationCreateWithoutUserPresenceInput = {
+    id?: string
+    createdAt?: Date | string
+    lastMessageAt?: Date | string
+    store: StoreCreateNestedOneWithoutStoreInput
+    buyer: UserCreateNestedOneWithoutBuyerInput
+    messages?: MessageCreateNestedManyWithoutConversationInput
+    notification?: NotificationCreateNestedManyWithoutConversationInput
+  }
+
+  export type ConversationUncheckedCreateWithoutUserPresenceInput = {
+    id?: string
+    storeId: string
+    buyerId: string
+    createdAt?: Date | string
+    lastMessageAt?: Date | string
+    messages?: MessageUncheckedCreateNestedManyWithoutConversationInput
+    notification?: NotificationUncheckedCreateNestedManyWithoutConversationInput
+  }
+
+  export type ConversationCreateOrConnectWithoutUserPresenceInput = {
+    where: ConversationWhereUniqueInput
+    create: XOR<ConversationCreateWithoutUserPresenceInput, ConversationUncheckedCreateWithoutUserPresenceInput>
+  }
+
+  export type UserUpsertWithoutUserPresenceInput = {
+    update: XOR<UserUpdateWithoutUserPresenceInput, UserUncheckedUpdateWithoutUserPresenceInput>
+    create: XOR<UserCreateWithoutUserPresenceInput, UserUncheckedCreateWithoutUserPresenceInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutUserPresenceInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutUserPresenceInput, UserUncheckedUpdateWithoutUserPresenceInput>
+  }
+
+  export type UserUpdateWithoutUserPresenceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userBussinessType?: NullableStringFieldUpdateOperationsInput | string | null
+    stores?: StoreUpdateManyWithoutOwnerNestedInput
+    likedStores?: StoreLikeUpdateManyWithoutUserNestedInput
+    notification?: NotificationUpdateManyWithoutUserNestedInput
+    messages?: MessageUpdateManyWithoutSenderNestedInput
+    buyer?: ConversationUpdateManyWithoutBuyerNestedInput
+    Agreement?: AgreementUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutUserPresenceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userBussinessType?: NullableStringFieldUpdateOperationsInput | string | null
+    stores?: StoreUncheckedUpdateManyWithoutOwnerNestedInput
+    likedStores?: StoreLikeUncheckedUpdateManyWithoutUserNestedInput
+    notification?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    messages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    buyer?: ConversationUncheckedUpdateManyWithoutBuyerNestedInput
+    Agreement?: AgreementUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type ConversationUpsertWithoutUserPresenceInput = {
+    update: XOR<ConversationUpdateWithoutUserPresenceInput, ConversationUncheckedUpdateWithoutUserPresenceInput>
+    create: XOR<ConversationCreateWithoutUserPresenceInput, ConversationUncheckedCreateWithoutUserPresenceInput>
+    where?: ConversationWhereInput
+  }
+
+  export type ConversationUpdateToOneWithWhereWithoutUserPresenceInput = {
+    where?: ConversationWhereInput
+    data: XOR<ConversationUpdateWithoutUserPresenceInput, ConversationUncheckedUpdateWithoutUserPresenceInput>
+  }
+
+  export type ConversationUpdateWithoutUserPresenceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastMessageAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    store?: StoreUpdateOneRequiredWithoutStoreNestedInput
+    buyer?: UserUpdateOneRequiredWithoutBuyerNestedInput
+    messages?: MessageUpdateManyWithoutConversationNestedInput
+    notification?: NotificationUpdateManyWithoutConversationNestedInput
+  }
+
+  export type ConversationUncheckedUpdateWithoutUserPresenceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastMessageAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageUncheckedUpdateManyWithoutConversationNestedInput
+    notification?: NotificationUncheckedUpdateManyWithoutConversationNestedInput
+  }
+
+  export type UserCreateWithoutAgreementInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+    phone?: string | null
+    phoneVerified?: boolean
+    createdAt?: Date | string
+    userBussinessType?: string | null
+    stores?: StoreCreateNestedManyWithoutOwnerInput
+    likedStores?: StoreLikeCreateNestedManyWithoutUserInput
+    notification?: NotificationCreateNestedManyWithoutUserInput
+    messages?: MessageCreateNestedManyWithoutSenderInput
+    buyer?: ConversationCreateNestedManyWithoutBuyerInput
+    UserPresence?: UserPresenceCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutAgreementInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+    phone?: string | null
+    phoneVerified?: boolean
+    createdAt?: Date | string
+    userBussinessType?: string | null
+    stores?: StoreUncheckedCreateNestedManyWithoutOwnerInput
+    likedStores?: StoreLikeUncheckedCreateNestedManyWithoutUserInput
+    notification?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    messages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    buyer?: ConversationUncheckedCreateNestedManyWithoutBuyerInput
+    UserPresence?: UserPresenceUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutAgreementInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutAgreementInput, UserUncheckedCreateWithoutAgreementInput>
+  }
+
+  export type StoreCreateWithoutAgreementInput = {
+    id?: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude?: number | null
+    longitude?: number | null
+    bannerImageUrl?: string | null
+    priceInr: number
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: StoreCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    owner: UserCreateNestedOneWithoutStoresInput
+    images?: StoreImageCreateNestedManyWithoutStoreInput
+    likes?: StoreLikeCreateNestedManyWithoutStoreInput
+    store?: ConversationCreateNestedManyWithoutStoreInput
+  }
+
+  export type StoreUncheckedCreateWithoutAgreementInput = {
+    id?: string
+    ownerId: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude?: number | null
+    longitude?: number | null
+    bannerImageUrl?: string | null
+    priceInr: number
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: StoreCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: StoreImageUncheckedCreateNestedManyWithoutStoreInput
+    likes?: StoreLikeUncheckedCreateNestedManyWithoutStoreInput
+    store?: ConversationUncheckedCreateNestedManyWithoutStoreInput
+  }
+
+  export type StoreCreateOrConnectWithoutAgreementInput = {
+    where: StoreWhereUniqueInput
+    create: XOR<StoreCreateWithoutAgreementInput, StoreUncheckedCreateWithoutAgreementInput>
+  }
+
+  export type UserUpsertWithoutAgreementInput = {
+    update: XOR<UserUpdateWithoutAgreementInput, UserUncheckedUpdateWithoutAgreementInput>
+    create: XOR<UserCreateWithoutAgreementInput, UserUncheckedCreateWithoutAgreementInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutAgreementInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutAgreementInput, UserUncheckedUpdateWithoutAgreementInput>
+  }
+
+  export type UserUpdateWithoutAgreementInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userBussinessType?: NullableStringFieldUpdateOperationsInput | string | null
+    stores?: StoreUpdateManyWithoutOwnerNestedInput
+    likedStores?: StoreLikeUpdateManyWithoutUserNestedInput
+    notification?: NotificationUpdateManyWithoutUserNestedInput
+    messages?: MessageUpdateManyWithoutSenderNestedInput
+    buyer?: ConversationUpdateManyWithoutBuyerNestedInput
+    UserPresence?: UserPresenceUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutAgreementInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userBussinessType?: NullableStringFieldUpdateOperationsInput | string | null
+    stores?: StoreUncheckedUpdateManyWithoutOwnerNestedInput
+    likedStores?: StoreLikeUncheckedUpdateManyWithoutUserNestedInput
+    notification?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    messages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    buyer?: ConversationUncheckedUpdateManyWithoutBuyerNestedInput
+    UserPresence?: UserPresenceUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type StoreUpsertWithoutAgreementInput = {
+    update: XOR<StoreUpdateWithoutAgreementInput, StoreUncheckedUpdateWithoutAgreementInput>
+    create: XOR<StoreCreateWithoutAgreementInput, StoreUncheckedCreateWithoutAgreementInput>
+    where?: StoreWhereInput
+  }
+
+  export type StoreUpdateToOneWithWhereWithoutAgreementInput = {
+    where?: StoreWhereInput
+    data: XOR<StoreUpdateWithoutAgreementInput, StoreUncheckedUpdateWithoutAgreementInput>
+  }
+
+  export type StoreUpdateWithoutAgreementInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: StoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: UserUpdateOneRequiredWithoutStoresNestedInput
+    images?: StoreImageUpdateManyWithoutStoreNestedInput
+    likes?: StoreLikeUpdateManyWithoutStoreNestedInput
+    store?: ConversationUpdateManyWithoutStoreNestedInput
+  }
+
+  export type StoreUncheckedUpdateWithoutAgreementInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: StoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: StoreImageUncheckedUpdateManyWithoutStoreNestedInput
+    likes?: StoreLikeUncheckedUpdateManyWithoutStoreNestedInput
+    store?: ConversationUncheckedUpdateManyWithoutStoreNestedInput
+  }
+
+  export type StoreCreateManyOwnerInput = {
+    id?: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude?: number | null
+    longitude?: number | null
+    bannerImageUrl?: string | null
+    priceInr: number
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: StoreCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StoreLikeCreateManyUserInput = {
+    id?: string
+    storeId: string
+    createdAt?: Date | string
+  }
+
+  export type NotificationCreateManyUserInput = {
+    id?: string
+    conversationId: string
+    message: string
+    isRead?: boolean
+    createdAt?: Date | string
+  }
+
+  export type MessageCreateManySenderInput = {
+    id?: string
+    conversationId: string
+    text: string
+    seen?: boolean
+    createdAt?: Date | string
+  }
+
+  export type ConversationCreateManyBuyerInput = {
+    id?: string
+    storeId: string
+    createdAt?: Date | string
+    lastMessageAt?: Date | string
+  }
+
+  export type UserPresenceCreateManyUserInput = {
+    conversationId?: string | null
+    updatedAt?: Date | string
+  }
+
+  export type AgreementCreateManyUserInput = {
+    id: string
+    storeid: string
+    ownerName: string
+    tenantName: string
+    price: string
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: AgreementCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    bussinessType: string
+  }
+
+  export type StoreUpdateWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: StoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: StoreImageUpdateManyWithoutStoreNestedInput
+    likes?: StoreLikeUpdateManyWithoutStoreNestedInput
+    store?: ConversationUpdateManyWithoutStoreNestedInput
+    Agreement?: AgreementUpdateManyWithoutStoreNestedInput
+  }
+
+  export type StoreUncheckedUpdateWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: StoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: StoreImageUncheckedUpdateManyWithoutStoreNestedInput
+    likes?: StoreLikeUncheckedUpdateManyWithoutStoreNestedInput
+    store?: ConversationUncheckedUpdateManyWithoutStoreNestedInput
+    Agreement?: AgreementUncheckedUpdateManyWithoutStoreNestedInput
+  }
+
+  export type StoreUncheckedUpdateManyWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: StoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StoreLikeUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    store?: StoreUpdateOneRequiredWithoutLikesNestedInput
+  }
+
+  export type StoreLikeUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StoreLikeUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    conversation?: ConversationUpdateOneRequiredWithoutNotificationNestedInput
+  }
+
+  export type NotificationUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    conversationId?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    conversationId?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageUpdateWithoutSenderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    seen?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    conversation?: ConversationUpdateOneRequiredWithoutMessagesNestedInput
+  }
+
+  export type MessageUncheckedUpdateWithoutSenderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    conversationId?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    seen?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageUncheckedUpdateManyWithoutSenderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    conversationId?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    seen?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ConversationUpdateWithoutBuyerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastMessageAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    store?: StoreUpdateOneRequiredWithoutStoreNestedInput
+    messages?: MessageUpdateManyWithoutConversationNestedInput
+    notification?: NotificationUpdateManyWithoutConversationNestedInput
+    UserPresence?: UserPresenceUpdateManyWithoutConversationNestedInput
+  }
+
+  export type ConversationUncheckedUpdateWithoutBuyerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastMessageAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageUncheckedUpdateManyWithoutConversationNestedInput
+    notification?: NotificationUncheckedUpdateManyWithoutConversationNestedInput
+    UserPresence?: UserPresenceUncheckedUpdateManyWithoutConversationNestedInput
+  }
+
+  export type ConversationUncheckedUpdateManyWithoutBuyerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastMessageAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserPresenceUpdateWithoutUserInput = {
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    conversation?: ConversationUpdateOneWithoutUserPresenceNestedInput
+  }
+
+  export type UserPresenceUncheckedUpdateWithoutUserInput = {
+    conversationId?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserPresenceUncheckedUpdateManyWithoutUserInput = {
+    conversationId?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AgreementUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerName?: StringFieldUpdateOperationsInput | string
+    tenantName?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: AgreementUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    bussinessType?: StringFieldUpdateOperationsInput | string
+    store?: StoreUpdateOneRequiredWithoutAgreementNestedInput
+  }
+
+  export type AgreementUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeid?: StringFieldUpdateOperationsInput | string
+    ownerName?: StringFieldUpdateOperationsInput | string
+    tenantName?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: AgreementUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    bussinessType?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AgreementUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeid?: StringFieldUpdateOperationsInput | string
+    ownerName?: StringFieldUpdateOperationsInput | string
+    tenantName?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: AgreementUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    bussinessType?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StoreImageCreateManyStoreInput = {
+    id?: string
+    url: string
+    order?: number
+    createdAt?: Date | string
+  }
+
+  export type StoreLikeCreateManyStoreInput = {
+    id?: string
+    userId: string
+    createdAt?: Date | string
+  }
+
+  export type ConversationCreateManyStoreInput = {
+    id?: string
+    buyerId: string
+    createdAt?: Date | string
+    lastMessageAt?: Date | string
+  }
+
+  export type AgreementCreateManyStoreInput = {
+    id: string
+    userid: string
+    ownerName: string
+    tenantName: string
+    price: string
+    shareMode: $Enums.ShareMode
+    startTime?: string | null
+    endTime?: string | null
+    days?: AgreementCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    bussinessType: string
+  }
+
+  export type StoreImageUpdateWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StoreImageUncheckedUpdateWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StoreImageUncheckedUpdateManyWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StoreLikeUpdateWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutLikedStoresNestedInput
+  }
+
+  export type StoreLikeUncheckedUpdateWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StoreLikeUncheckedUpdateManyWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ConversationUpdateWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastMessageAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    buyer?: UserUpdateOneRequiredWithoutBuyerNestedInput
+    messages?: MessageUpdateManyWithoutConversationNestedInput
+    notification?: NotificationUpdateManyWithoutConversationNestedInput
+    UserPresence?: UserPresenceUpdateManyWithoutConversationNestedInput
+  }
+
+  export type ConversationUncheckedUpdateWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastMessageAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageUncheckedUpdateManyWithoutConversationNestedInput
+    notification?: NotificationUncheckedUpdateManyWithoutConversationNestedInput
+    UserPresence?: UserPresenceUncheckedUpdateManyWithoutConversationNestedInput
+  }
+
+  export type ConversationUncheckedUpdateManyWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastMessageAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AgreementUpdateWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerName?: StringFieldUpdateOperationsInput | string
+    tenantName?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: AgreementUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    bussinessType?: StringFieldUpdateOperationsInput | string
+    user?: UserUpdateOneRequiredWithoutAgreementNestedInput
+  }
+
+  export type AgreementUncheckedUpdateWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userid?: StringFieldUpdateOperationsInput | string
+    ownerName?: StringFieldUpdateOperationsInput | string
+    tenantName?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: AgreementUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    bussinessType?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AgreementUncheckedUpdateManyWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userid?: StringFieldUpdateOperationsInput | string
+    ownerName?: StringFieldUpdateOperationsInput | string
+    tenantName?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    shareMode?: EnumShareModeFieldUpdateOperationsInput | $Enums.ShareMode
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: AgreementUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    bussinessType?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type MessageCreateManyConversationInput = {
+    id?: string
+    senderId: string
+    text: string
+    seen?: boolean
+    createdAt?: Date | string
+  }
+
+  export type NotificationCreateManyConversationInput = {
+    id?: string
+    userId: string
+    message: string
+    isRead?: boolean
+    createdAt?: Date | string
+  }
+
+  export type UserPresenceCreateManyConversationInput = {
+    userId: string
+    updatedAt?: Date | string
+  }
+
+  export type MessageUpdateWithoutConversationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    seen?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sender?: UserUpdateOneRequiredWithoutMessagesNestedInput
+  }
+
+  export type MessageUncheckedUpdateWithoutConversationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    seen?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageUncheckedUpdateManyWithoutConversationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    seen?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationUpdateWithoutConversationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutNotificationNestedInput
+  }
+
+  export type NotificationUncheckedUpdateWithoutConversationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationUncheckedUpdateManyWithoutConversationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserPresenceUpdateWithoutConversationInput = {
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutUserPresenceNestedInput
+  }
+
+  export type UserPresenceUncheckedUpdateWithoutConversationInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserPresenceUncheckedUpdateManyWithoutConversationInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+
+
+  /**
+   * Batch Payload for updateMany & deleteMany & createMany
+   */
+
+  export type BatchPayload = {
+    count: number
+  }
+
+  /**
+   * DMMF
+   */
+  export const dmmf: runtime.BaseDMMF
+}
