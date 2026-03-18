@@ -35,7 +35,7 @@ const EditButton = () => {
         size="lg"
       >
         <Edit className="w-4 h-4 mr-2" />
-        Edit Store
+        <span className="hidden lg:flex">Edit Store</span>
       </Button>
     </div>
   );

@@ -14,10 +14,11 @@ const PhoneAnyalitic = () => {
         <Button
           onClick={() => setOpen(true)}
           variant="secondary"
-          className="px-5 py-3 rounded-full shadow-lg flex items-center gap-2"
+          className="px-5 py-3 rounded-full  flex items-center gap-2"
         >
           <FaChartLine />
-          Analytics
+
+          <span className="hidden lg:flex">Analytics</span>
         </Button>
       </div>
 

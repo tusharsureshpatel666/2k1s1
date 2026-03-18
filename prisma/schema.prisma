@@ -46,6 +46,8 @@ model User {
   buyer    Conversation[]
   UserPresence UserPresence[]
   Agreement Agreement[]
+
+  
 }
 
 model Otp {
@@ -258,4 +260,11 @@ model StoreAnlyalic {
 }
 
 
+model BusinessTypeCache {
+  id           String   @id @default(cuid())  
+  
+  businessType String   @unique
+  places       Json
+  createdAt    DateTime @default(now())
+}
 

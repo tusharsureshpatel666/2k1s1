@@ -23,6 +23,10 @@ import LocationMap from "./components/MapShower";
 import Editbutton from "./components/Editbutton";
 import Storeanyltic from "./components/Storeanyltic";
 import PhoneAnyalitic from "./components/phoneAnyaltic";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ChartBar } from "lucide-react";
+import { FaChartArea } from "react-icons/fa";
 
 interface StorePageProps {
   params: {
@@ -90,7 +94,11 @@ export default async function StorePage({ params }: StorePageProps) {
           <ShareStore paramsId={storeId} />
           <LoveStore storeId={storeId.id} initialLiked={initialLiked} />
           {isOwner && <DeleteStoreButton storeId={store?.id} />}
-          <Storeanyltic />
+          <Link href={`/storealso/${storeId.id}`} className="hidden md:flex">
+            <Button className="rounded-full" variant={"outline"}>
+              <FaChartArea /> Analytics
+            </Button>
+          </Link>
         </div>
       </div>
 
@@ -209,21 +217,17 @@ export default async function StorePage({ params }: StorePageProps) {
       <div
         className="
   lg:hidden
-  fixed bottom-9 left-0 right-0
-  border-t bg-background
+  fixed bottom-12 left-0 right-0
+  border-t border-gray-200 dark:border-gray-800
+  bg-white dark:bg-black
   px-4 py-3
-  z-1
-  flex items-center justify-between
+  z-20
 "
       >
-        <div
-          className="w-full bg-white dark:bg-black
-  py-2 px-3 sm:py-3 sm:px-4
-  flex items-center justify-between gap-2 "
-        >
-          {/* Left Section */}
-          <div className="flex justify-center  gap-1">
-            <span className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white leading-none">
+        <div className="flex items-center justify-between gap-3">
+          {/* Price */}
+          <div className="flex items-end gap-1">
+            <span className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
               ₹{store?.priceInr}
             </span>
             <span className="text-xs sm:text-sm text-gray-500 mb-[2px]">
@@ -231,15 +235,24 @@ export default async function StorePage({ params }: StorePageProps) {
             </span>
           </div>
 
-          {/* Right Section */}
-          <div className="flex items-center gap-2">
+          {/* Buttons */}
+          <div className="flex items-center gap-2 flex-shrink-0">
             {isOwner ? (
               <Editbutton />
             ) : (
               <ChatPartnerButton storeId={store?.id} />
             )}
 
-            {!isOwner && <PhoneAnyalitic />}
+            {!isOwner && (
+              <Link
+                href={`/storealso/${storeId.id}`}
+               
+              >
+                <Button className="rounded-full" variant={"outline"}>
+                  <FaChartArea /> 
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

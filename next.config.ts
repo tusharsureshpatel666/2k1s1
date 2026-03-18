@@ -3,7 +3,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["res.cloudinary.com", "lh3.googleusercontent.com"], // allow Cloudinary images
+    qualities: [100, 75, 70],
+    domains: [
+      "res.cloudinary.com",
+      "lh3.googleusercontent.com",
+      "maps.googleapis.com",
+      "maps.gstatic.com",
+    ], // allow Cloudinary images
   },
   productionBrowserSourceMaps: false,
 

@@ -239,3 +239,11 @@ model StoreAnlyalic {
   compitation   String
   FootStep      String
 }
+
+model BusinessTypeCache {
+  id String @id @default(cuid())
+
+  businessType String   @unique
+  places       Json
+  createdAt    DateTime @default(now())
+}

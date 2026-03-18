@@ -121,7 +121,7 @@ export default function LocationMap({
         </h2>
       </div>
 
-      <div className="mt-4 px-4 pb-6 relative w-full">
+      <div className="mt-4 px-1 md:px-4 pb-6 relative w-full">
         {/* 🚗 Get Directions Button */}
         <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10">
           <button

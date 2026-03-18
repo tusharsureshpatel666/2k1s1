@@ -25,7 +25,7 @@ export default async function DashboardLayout({
     <div className="">
       <DashNav />
 
-      <div className="max-w-7xl px-5 py-4 min-h-[90vh]  flex justify-center  mx-auto ">
+      <div className="max-w-7xl px-3 md:px-4  py-4 min-h-[90vh]  flex justify-center  mx-auto ">
         <Providers>{children}</Providers>
       </div>
       <MainMobileFooter />

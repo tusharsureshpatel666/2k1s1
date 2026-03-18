@@ -18,7 +18,7 @@ export async function GET(req: Request) {
       where: { id: session.user.id },
       select: {
         
-        userBussinessType: true,
+        userBussinessType:true
       },
     });
 

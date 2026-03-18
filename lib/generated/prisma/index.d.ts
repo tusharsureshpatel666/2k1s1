@@ -68,6 +68,11 @@ export type Agreement = $Result.DefaultSelection<Prisma.$AgreementPayload>
  * 
  */
 export type StoreAnlyalic = $Result.DefaultSelection<Prisma.$StoreAnlyalicPayload>
+/**
+ * Model BusinessTypeCache
+ * 
+ */
+export type BusinessTypeCache = $Result.DefaultSelection<Prisma.$BusinessTypeCachePayload>
 
 /**
  * Enums
@@ -320,6 +325,16 @@ export class PrismaClient<
     * ```
     */
   get storeAnlyalic(): Prisma.StoreAnlyalicDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.businessTypeCache`: Exposes CRUD operations for the **BusinessTypeCache** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BusinessTypeCaches
+    * const businessTypeCaches = await prisma.businessTypeCache.findMany()
+    * ```
+    */
+  get businessTypeCache(): Prisma.BusinessTypeCacheDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -764,7 +779,8 @@ export namespace Prisma {
     Notification: 'Notification',
     UserPresence: 'UserPresence',
     Agreement: 'Agreement',
-    StoreAnlyalic: 'StoreAnlyalic'
+    StoreAnlyalic: 'StoreAnlyalic',
+    BusinessTypeCache: 'BusinessTypeCache'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -780,7 +796,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "otp" | "store" | "storeImage" | "storeLike" | "conversation" | "message" | "notification" | "userPresence" | "agreement" | "storeAnlyalic"
+      modelProps: "user" | "otp" | "store" | "storeImage" | "storeLike" | "conversation" | "message" | "notification" | "userPresence" | "agreement" | "storeAnlyalic" | "businessTypeCache"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1598,6 +1614,80 @@ export namespace Prisma {
           }
         }
       }
+      BusinessTypeCache: {
+        payload: Prisma.$BusinessTypeCachePayload<ExtArgs>
+        fields: Prisma.BusinessTypeCacheFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BusinessTypeCacheFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BusinessTypeCachePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BusinessTypeCacheFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BusinessTypeCachePayload>
+          }
+          findFirst: {
+            args: Prisma.BusinessTypeCacheFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BusinessTypeCachePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BusinessTypeCacheFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BusinessTypeCachePayload>
+          }
+          findMany: {
+            args: Prisma.BusinessTypeCacheFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BusinessTypeCachePayload>[]
+          }
+          create: {
+            args: Prisma.BusinessTypeCacheCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BusinessTypeCachePayload>
+          }
+          createMany: {
+            args: Prisma.BusinessTypeCacheCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BusinessTypeCacheCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BusinessTypeCachePayload>[]
+          }
+          delete: {
+            args: Prisma.BusinessTypeCacheDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BusinessTypeCachePayload>
+          }
+          update: {
+            args: Prisma.BusinessTypeCacheUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BusinessTypeCachePayload>
+          }
+          deleteMany: {
+            args: Prisma.BusinessTypeCacheDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BusinessTypeCacheUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BusinessTypeCacheUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BusinessTypeCachePayload>[]
+          }
+          upsert: {
+            args: Prisma.BusinessTypeCacheUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BusinessTypeCachePayload>
+          }
+          aggregate: {
+            args: Prisma.BusinessTypeCacheAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBusinessTypeCache>
+          }
+          groupBy: {
+            args: Prisma.BusinessTypeCacheGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BusinessTypeCacheGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BusinessTypeCacheCountArgs<ExtArgs>
+            result: $Utils.Optional<BusinessTypeCacheCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1717,6 +1807,7 @@ export namespace Prisma {
     userPresence?: UserPresenceOmit
     agreement?: AgreementOmit
     storeAnlyalic?: StoreAnlyalicOmit
+    businessTypeCache?: BusinessTypeCacheOmit
   }
 
   /* Types for Logging */
@@ -14668,6 +14759,989 @@ export namespace Prisma {
 
 
   /**
+   * Model BusinessTypeCache
+   */
+
+  export type AggregateBusinessTypeCache = {
+    _count: BusinessTypeCacheCountAggregateOutputType | null
+    _min: BusinessTypeCacheMinAggregateOutputType | null
+    _max: BusinessTypeCacheMaxAggregateOutputType | null
+  }
+
+  export type BusinessTypeCacheMinAggregateOutputType = {
+    id: string | null
+    businessType: string | null
+    createdAt: Date | null
+  }
+
+  export type BusinessTypeCacheMaxAggregateOutputType = {
+    id: string | null
+    businessType: string | null
+    createdAt: Date | null
+  }
+
+  export type BusinessTypeCacheCountAggregateOutputType = {
+    id: number
+    businessType: number
+    places: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type BusinessTypeCacheMinAggregateInputType = {
+    id?: true
+    businessType?: true
+    createdAt?: true
+  }
+
+  export type BusinessTypeCacheMaxAggregateInputType = {
+    id?: true
+    businessType?: true
+    createdAt?: true
+  }
+
+  export type BusinessTypeCacheCountAggregateInputType = {
+    id?: true
+    businessType?: true
+    places?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type BusinessTypeCacheAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BusinessTypeCache to aggregate.
+     */
+    where?: BusinessTypeCacheWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BusinessTypeCaches to fetch.
+     */
+    orderBy?: BusinessTypeCacheOrderByWithRelationInput | BusinessTypeCacheOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BusinessTypeCacheWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BusinessTypeCaches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BusinessTypeCaches.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BusinessTypeCaches
+    **/
+    _count?: true | BusinessTypeCacheCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BusinessTypeCacheMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BusinessTypeCacheMaxAggregateInputType
+  }
+
+  export type GetBusinessTypeCacheAggregateType<T extends BusinessTypeCacheAggregateArgs> = {
+        [P in keyof T & keyof AggregateBusinessTypeCache]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBusinessTypeCache[P]>
+      : GetScalarType<T[P], AggregateBusinessTypeCache[P]>
+  }
+
+
+
+
+  export type BusinessTypeCacheGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BusinessTypeCacheWhereInput
+    orderBy?: BusinessTypeCacheOrderByWithAggregationInput | BusinessTypeCacheOrderByWithAggregationInput[]
+    by: BusinessTypeCacheScalarFieldEnum[] | BusinessTypeCacheScalarFieldEnum
+    having?: BusinessTypeCacheScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BusinessTypeCacheCountAggregateInputType | true
+    _min?: BusinessTypeCacheMinAggregateInputType
+    _max?: BusinessTypeCacheMaxAggregateInputType
+  }
+
+  export type BusinessTypeCacheGroupByOutputType = {
+    id: string
+    businessType: string
+    places: JsonValue
+    createdAt: Date
+    _count: BusinessTypeCacheCountAggregateOutputType | null
+    _min: BusinessTypeCacheMinAggregateOutputType | null
+    _max: BusinessTypeCacheMaxAggregateOutputType | null
+  }
+
+  type GetBusinessTypeCacheGroupByPayload<T extends BusinessTypeCacheGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BusinessTypeCacheGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BusinessTypeCacheGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BusinessTypeCacheGroupByOutputType[P]>
+            : GetScalarType<T[P], BusinessTypeCacheGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BusinessTypeCacheSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    businessType?: boolean
+    places?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["businessTypeCache"]>
+
+  export type BusinessTypeCacheSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    businessType?: boolean
+    places?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["businessTypeCache"]>
+
+  export type BusinessTypeCacheSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    businessType?: boolean
+    places?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["businessTypeCache"]>
+
+  export type BusinessTypeCacheSelectScalar = {
+    id?: boolean
+    businessType?: boolean
+    places?: boolean
+    createdAt?: boolean
+  }
+
+  export type BusinessTypeCacheOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "businessType" | "places" | "createdAt", ExtArgs["result"]["businessTypeCache"]>
+
+  export type $BusinessTypeCachePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BusinessTypeCache"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      businessType: string
+      places: Prisma.JsonValue
+      createdAt: Date
+    }, ExtArgs["result"]["businessTypeCache"]>
+    composites: {}
+  }
+
+  type BusinessTypeCacheGetPayload<S extends boolean | null | undefined | BusinessTypeCacheDefaultArgs> = $Result.GetResult<Prisma.$BusinessTypeCachePayload, S>
+
+  type BusinessTypeCacheCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BusinessTypeCacheFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BusinessTypeCacheCountAggregateInputType | true
+    }
+
+  export interface BusinessTypeCacheDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BusinessTypeCache'], meta: { name: 'BusinessTypeCache' } }
+    /**
+     * Find zero or one BusinessTypeCache that matches the filter.
+     * @param {BusinessTypeCacheFindUniqueArgs} args - Arguments to find a BusinessTypeCache
+     * @example
+     * // Get one BusinessTypeCache
+     * const businessTypeCache = await prisma.businessTypeCache.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BusinessTypeCacheFindUniqueArgs>(args: SelectSubset<T, BusinessTypeCacheFindUniqueArgs<ExtArgs>>): Prisma__BusinessTypeCacheClient<$Result.GetResult<Prisma.$BusinessTypeCachePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BusinessTypeCache that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BusinessTypeCacheFindUniqueOrThrowArgs} args - Arguments to find a BusinessTypeCache
+     * @example
+     * // Get one BusinessTypeCache
+     * const businessTypeCache = await prisma.businessTypeCache.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BusinessTypeCacheFindUniqueOrThrowArgs>(args: SelectSubset<T, BusinessTypeCacheFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BusinessTypeCacheClient<$Result.GetResult<Prisma.$BusinessTypeCachePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BusinessTypeCache that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusinessTypeCacheFindFirstArgs} args - Arguments to find a BusinessTypeCache
+     * @example
+     * // Get one BusinessTypeCache
+     * const businessTypeCache = await prisma.businessTypeCache.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BusinessTypeCacheFindFirstArgs>(args?: SelectSubset<T, BusinessTypeCacheFindFirstArgs<ExtArgs>>): Prisma__BusinessTypeCacheClient<$Result.GetResult<Prisma.$BusinessTypeCachePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BusinessTypeCache that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusinessTypeCacheFindFirstOrThrowArgs} args - Arguments to find a BusinessTypeCache
+     * @example
+     * // Get one BusinessTypeCache
+     * const businessTypeCache = await prisma.businessTypeCache.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BusinessTypeCacheFindFirstOrThrowArgs>(args?: SelectSubset<T, BusinessTypeCacheFindFirstOrThrowArgs<ExtArgs>>): Prisma__BusinessTypeCacheClient<$Result.GetResult<Prisma.$BusinessTypeCachePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BusinessTypeCaches that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusinessTypeCacheFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BusinessTypeCaches
+     * const businessTypeCaches = await prisma.businessTypeCache.findMany()
+     * 
+     * // Get first 10 BusinessTypeCaches
+     * const businessTypeCaches = await prisma.businessTypeCache.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const businessTypeCacheWithIdOnly = await prisma.businessTypeCache.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BusinessTypeCacheFindManyArgs>(args?: SelectSubset<T, BusinessTypeCacheFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BusinessTypeCachePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BusinessTypeCache.
+     * @param {BusinessTypeCacheCreateArgs} args - Arguments to create a BusinessTypeCache.
+     * @example
+     * // Create one BusinessTypeCache
+     * const BusinessTypeCache = await prisma.businessTypeCache.create({
+     *   data: {
+     *     // ... data to create a BusinessTypeCache
+     *   }
+     * })
+     * 
+     */
+    create<T extends BusinessTypeCacheCreateArgs>(args: SelectSubset<T, BusinessTypeCacheCreateArgs<ExtArgs>>): Prisma__BusinessTypeCacheClient<$Result.GetResult<Prisma.$BusinessTypeCachePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BusinessTypeCaches.
+     * @param {BusinessTypeCacheCreateManyArgs} args - Arguments to create many BusinessTypeCaches.
+     * @example
+     * // Create many BusinessTypeCaches
+     * const businessTypeCache = await prisma.businessTypeCache.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BusinessTypeCacheCreateManyArgs>(args?: SelectSubset<T, BusinessTypeCacheCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BusinessTypeCaches and returns the data saved in the database.
+     * @param {BusinessTypeCacheCreateManyAndReturnArgs} args - Arguments to create many BusinessTypeCaches.
+     * @example
+     * // Create many BusinessTypeCaches
+     * const businessTypeCache = await prisma.businessTypeCache.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BusinessTypeCaches and only return the `id`
+     * const businessTypeCacheWithIdOnly = await prisma.businessTypeCache.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BusinessTypeCacheCreateManyAndReturnArgs>(args?: SelectSubset<T, BusinessTypeCacheCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BusinessTypeCachePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BusinessTypeCache.
+     * @param {BusinessTypeCacheDeleteArgs} args - Arguments to delete one BusinessTypeCache.
+     * @example
+     * // Delete one BusinessTypeCache
+     * const BusinessTypeCache = await prisma.businessTypeCache.delete({
+     *   where: {
+     *     // ... filter to delete one BusinessTypeCache
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BusinessTypeCacheDeleteArgs>(args: SelectSubset<T, BusinessTypeCacheDeleteArgs<ExtArgs>>): Prisma__BusinessTypeCacheClient<$Result.GetResult<Prisma.$BusinessTypeCachePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BusinessTypeCache.
+     * @param {BusinessTypeCacheUpdateArgs} args - Arguments to update one BusinessTypeCache.
+     * @example
+     * // Update one BusinessTypeCache
+     * const businessTypeCache = await prisma.businessTypeCache.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BusinessTypeCacheUpdateArgs>(args: SelectSubset<T, BusinessTypeCacheUpdateArgs<ExtArgs>>): Prisma__BusinessTypeCacheClient<$Result.GetResult<Prisma.$BusinessTypeCachePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BusinessTypeCaches.
+     * @param {BusinessTypeCacheDeleteManyArgs} args - Arguments to filter BusinessTypeCaches to delete.
+     * @example
+     * // Delete a few BusinessTypeCaches
+     * const { count } = await prisma.businessTypeCache.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BusinessTypeCacheDeleteManyArgs>(args?: SelectSubset<T, BusinessTypeCacheDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BusinessTypeCaches.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusinessTypeCacheUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BusinessTypeCaches
+     * const businessTypeCache = await prisma.businessTypeCache.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BusinessTypeCacheUpdateManyArgs>(args: SelectSubset<T, BusinessTypeCacheUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BusinessTypeCaches and returns the data updated in the database.
+     * @param {BusinessTypeCacheUpdateManyAndReturnArgs} args - Arguments to update many BusinessTypeCaches.
+     * @example
+     * // Update many BusinessTypeCaches
+     * const businessTypeCache = await prisma.businessTypeCache.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BusinessTypeCaches and only return the `id`
+     * const businessTypeCacheWithIdOnly = await prisma.businessTypeCache.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BusinessTypeCacheUpdateManyAndReturnArgs>(args: SelectSubset<T, BusinessTypeCacheUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BusinessTypeCachePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BusinessTypeCache.
+     * @param {BusinessTypeCacheUpsertArgs} args - Arguments to update or create a BusinessTypeCache.
+     * @example
+     * // Update or create a BusinessTypeCache
+     * const businessTypeCache = await prisma.businessTypeCache.upsert({
+     *   create: {
+     *     // ... data to create a BusinessTypeCache
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BusinessTypeCache we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BusinessTypeCacheUpsertArgs>(args: SelectSubset<T, BusinessTypeCacheUpsertArgs<ExtArgs>>): Prisma__BusinessTypeCacheClient<$Result.GetResult<Prisma.$BusinessTypeCachePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BusinessTypeCaches.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusinessTypeCacheCountArgs} args - Arguments to filter BusinessTypeCaches to count.
+     * @example
+     * // Count the number of BusinessTypeCaches
+     * const count = await prisma.businessTypeCache.count({
+     *   where: {
+     *     // ... the filter for the BusinessTypeCaches we want to count
+     *   }
+     * })
+    **/
+    count<T extends BusinessTypeCacheCountArgs>(
+      args?: Subset<T, BusinessTypeCacheCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BusinessTypeCacheCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BusinessTypeCache.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusinessTypeCacheAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BusinessTypeCacheAggregateArgs>(args: Subset<T, BusinessTypeCacheAggregateArgs>): Prisma.PrismaPromise<GetBusinessTypeCacheAggregateType<T>>
+
+    /**
+     * Group by BusinessTypeCache.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusinessTypeCacheGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BusinessTypeCacheGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BusinessTypeCacheGroupByArgs['orderBy'] }
+        : { orderBy?: BusinessTypeCacheGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BusinessTypeCacheGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBusinessTypeCacheGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BusinessTypeCache model
+   */
+  readonly fields: BusinessTypeCacheFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BusinessTypeCache.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BusinessTypeCacheClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BusinessTypeCache model
+   */
+  interface BusinessTypeCacheFieldRefs {
+    readonly id: FieldRef<"BusinessTypeCache", 'String'>
+    readonly businessType: FieldRef<"BusinessTypeCache", 'String'>
+    readonly places: FieldRef<"BusinessTypeCache", 'Json'>
+    readonly createdAt: FieldRef<"BusinessTypeCache", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BusinessTypeCache findUnique
+   */
+  export type BusinessTypeCacheFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusinessTypeCache
+     */
+    select?: BusinessTypeCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BusinessTypeCache
+     */
+    omit?: BusinessTypeCacheOmit<ExtArgs> | null
+    /**
+     * Filter, which BusinessTypeCache to fetch.
+     */
+    where: BusinessTypeCacheWhereUniqueInput
+  }
+
+  /**
+   * BusinessTypeCache findUniqueOrThrow
+   */
+  export type BusinessTypeCacheFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusinessTypeCache
+     */
+    select?: BusinessTypeCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BusinessTypeCache
+     */
+    omit?: BusinessTypeCacheOmit<ExtArgs> | null
+    /**
+     * Filter, which BusinessTypeCache to fetch.
+     */
+    where: BusinessTypeCacheWhereUniqueInput
+  }
+
+  /**
+   * BusinessTypeCache findFirst
+   */
+  export type BusinessTypeCacheFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusinessTypeCache
+     */
+    select?: BusinessTypeCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BusinessTypeCache
+     */
+    omit?: BusinessTypeCacheOmit<ExtArgs> | null
+    /**
+     * Filter, which BusinessTypeCache to fetch.
+     */
+    where?: BusinessTypeCacheWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BusinessTypeCaches to fetch.
+     */
+    orderBy?: BusinessTypeCacheOrderByWithRelationInput | BusinessTypeCacheOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BusinessTypeCaches.
+     */
+    cursor?: BusinessTypeCacheWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BusinessTypeCaches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BusinessTypeCaches.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BusinessTypeCaches.
+     */
+    distinct?: BusinessTypeCacheScalarFieldEnum | BusinessTypeCacheScalarFieldEnum[]
+  }
+
+  /**
+   * BusinessTypeCache findFirstOrThrow
+   */
+  export type BusinessTypeCacheFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusinessTypeCache
+     */
+    select?: BusinessTypeCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BusinessTypeCache
+     */
+    omit?: BusinessTypeCacheOmit<ExtArgs> | null
+    /**
+     * Filter, which BusinessTypeCache to fetch.
+     */
+    where?: BusinessTypeCacheWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BusinessTypeCaches to fetch.
+     */
+    orderBy?: BusinessTypeCacheOrderByWithRelationInput | BusinessTypeCacheOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BusinessTypeCaches.
+     */
+    cursor?: BusinessTypeCacheWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BusinessTypeCaches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BusinessTypeCaches.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BusinessTypeCaches.
+     */
+    distinct?: BusinessTypeCacheScalarFieldEnum | BusinessTypeCacheScalarFieldEnum[]
+  }
+
+  /**
+   * BusinessTypeCache findMany
+   */
+  export type BusinessTypeCacheFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusinessTypeCache
+     */
+    select?: BusinessTypeCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BusinessTypeCache
+     */
+    omit?: BusinessTypeCacheOmit<ExtArgs> | null
+    /**
+     * Filter, which BusinessTypeCaches to fetch.
+     */
+    where?: BusinessTypeCacheWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BusinessTypeCaches to fetch.
+     */
+    orderBy?: BusinessTypeCacheOrderByWithRelationInput | BusinessTypeCacheOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BusinessTypeCaches.
+     */
+    cursor?: BusinessTypeCacheWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BusinessTypeCaches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BusinessTypeCaches.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BusinessTypeCaches.
+     */
+    distinct?: BusinessTypeCacheScalarFieldEnum | BusinessTypeCacheScalarFieldEnum[]
+  }
+
+  /**
+   * BusinessTypeCache create
+   */
+  export type BusinessTypeCacheCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusinessTypeCache
+     */
+    select?: BusinessTypeCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BusinessTypeCache
+     */
+    omit?: BusinessTypeCacheOmit<ExtArgs> | null
+    /**
+     * The data needed to create a BusinessTypeCache.
+     */
+    data: XOR<BusinessTypeCacheCreateInput, BusinessTypeCacheUncheckedCreateInput>
+  }
+
+  /**
+   * BusinessTypeCache createMany
+   */
+  export type BusinessTypeCacheCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BusinessTypeCaches.
+     */
+    data: BusinessTypeCacheCreateManyInput | BusinessTypeCacheCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BusinessTypeCache createManyAndReturn
+   */
+  export type BusinessTypeCacheCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusinessTypeCache
+     */
+    select?: BusinessTypeCacheSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BusinessTypeCache
+     */
+    omit?: BusinessTypeCacheOmit<ExtArgs> | null
+    /**
+     * The data used to create many BusinessTypeCaches.
+     */
+    data: BusinessTypeCacheCreateManyInput | BusinessTypeCacheCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BusinessTypeCache update
+   */
+  export type BusinessTypeCacheUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusinessTypeCache
+     */
+    select?: BusinessTypeCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BusinessTypeCache
+     */
+    omit?: BusinessTypeCacheOmit<ExtArgs> | null
+    /**
+     * The data needed to update a BusinessTypeCache.
+     */
+    data: XOR<BusinessTypeCacheUpdateInput, BusinessTypeCacheUncheckedUpdateInput>
+    /**
+     * Choose, which BusinessTypeCache to update.
+     */
+    where: BusinessTypeCacheWhereUniqueInput
+  }
+
+  /**
+   * BusinessTypeCache updateMany
+   */
+  export type BusinessTypeCacheUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BusinessTypeCaches.
+     */
+    data: XOR<BusinessTypeCacheUpdateManyMutationInput, BusinessTypeCacheUncheckedUpdateManyInput>
+    /**
+     * Filter which BusinessTypeCaches to update
+     */
+    where?: BusinessTypeCacheWhereInput
+    /**
+     * Limit how many BusinessTypeCaches to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BusinessTypeCache updateManyAndReturn
+   */
+  export type BusinessTypeCacheUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusinessTypeCache
+     */
+    select?: BusinessTypeCacheSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BusinessTypeCache
+     */
+    omit?: BusinessTypeCacheOmit<ExtArgs> | null
+    /**
+     * The data used to update BusinessTypeCaches.
+     */
+    data: XOR<BusinessTypeCacheUpdateManyMutationInput, BusinessTypeCacheUncheckedUpdateManyInput>
+    /**
+     * Filter which BusinessTypeCaches to update
+     */
+    where?: BusinessTypeCacheWhereInput
+    /**
+     * Limit how many BusinessTypeCaches to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BusinessTypeCache upsert
+   */
+  export type BusinessTypeCacheUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusinessTypeCache
+     */
+    select?: BusinessTypeCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BusinessTypeCache
+     */
+    omit?: BusinessTypeCacheOmit<ExtArgs> | null
+    /**
+     * The filter to search for the BusinessTypeCache to update in case it exists.
+     */
+    where: BusinessTypeCacheWhereUniqueInput
+    /**
+     * In case the BusinessTypeCache found by the `where` argument doesn't exist, create a new BusinessTypeCache with this data.
+     */
+    create: XOR<BusinessTypeCacheCreateInput, BusinessTypeCacheUncheckedCreateInput>
+    /**
+     * In case the BusinessTypeCache was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BusinessTypeCacheUpdateInput, BusinessTypeCacheUncheckedUpdateInput>
+  }
+
+  /**
+   * BusinessTypeCache delete
+   */
+  export type BusinessTypeCacheDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusinessTypeCache
+     */
+    select?: BusinessTypeCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BusinessTypeCache
+     */
+    omit?: BusinessTypeCacheOmit<ExtArgs> | null
+    /**
+     * Filter which BusinessTypeCache to delete.
+     */
+    where: BusinessTypeCacheWhereUniqueInput
+  }
+
+  /**
+   * BusinessTypeCache deleteMany
+   */
+  export type BusinessTypeCacheDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BusinessTypeCaches to delete
+     */
+    where?: BusinessTypeCacheWhereInput
+    /**
+     * Limit how many BusinessTypeCaches to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BusinessTypeCache without action
+   */
+  export type BusinessTypeCacheDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusinessTypeCache
+     */
+    select?: BusinessTypeCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BusinessTypeCache
+     */
+    omit?: BusinessTypeCacheOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -14845,12 +15919,29 @@ export namespace Prisma {
   export type StoreAnlyalicScalarFieldEnum = (typeof StoreAnlyalicScalarFieldEnum)[keyof typeof StoreAnlyalicScalarFieldEnum]
 
 
+  export const BusinessTypeCacheScalarFieldEnum: {
+    id: 'id',
+    businessType: 'businessType',
+    places: 'places',
+    createdAt: 'createdAt'
+  };
+
+  export type BusinessTypeCacheScalarFieldEnum = (typeof BusinessTypeCacheScalarFieldEnum)[keyof typeof BusinessTypeCacheScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const JsonNullValueInput: {
+    JsonNull: typeof JsonNull
+  };
+
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
   export const QueryMode: {
@@ -14867,6 +15958,15 @@ export namespace Prisma {
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   /**
@@ -14948,6 +16048,20 @@ export namespace Prisma {
    * Reference to a field of type 'ShareMode[]'
    */
   export type ListEnumShareModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ShareMode[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'QueryMode'
+   */
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
   /**
    * Deep Input Types
@@ -15831,6 +16945,53 @@ export namespace Prisma {
     audience?: StringWithAggregatesFilter<"StoreAnlyalic"> | string
     compitation?: StringWithAggregatesFilter<"StoreAnlyalic"> | string
     FootStep?: StringWithAggregatesFilter<"StoreAnlyalic"> | string
+  }
+
+  export type BusinessTypeCacheWhereInput = {
+    AND?: BusinessTypeCacheWhereInput | BusinessTypeCacheWhereInput[]
+    OR?: BusinessTypeCacheWhereInput[]
+    NOT?: BusinessTypeCacheWhereInput | BusinessTypeCacheWhereInput[]
+    id?: StringFilter<"BusinessTypeCache"> | string
+    businessType?: StringFilter<"BusinessTypeCache"> | string
+    places?: JsonFilter<"BusinessTypeCache">
+    createdAt?: DateTimeFilter<"BusinessTypeCache"> | Date | string
+  }
+
+  export type BusinessTypeCacheOrderByWithRelationInput = {
+    id?: SortOrder
+    businessType?: SortOrder
+    places?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type BusinessTypeCacheWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    businessType?: string
+    AND?: BusinessTypeCacheWhereInput | BusinessTypeCacheWhereInput[]
+    OR?: BusinessTypeCacheWhereInput[]
+    NOT?: BusinessTypeCacheWhereInput | BusinessTypeCacheWhereInput[]
+    places?: JsonFilter<"BusinessTypeCache">
+    createdAt?: DateTimeFilter<"BusinessTypeCache"> | Date | string
+  }, "id" | "businessType">
+
+  export type BusinessTypeCacheOrderByWithAggregationInput = {
+    id?: SortOrder
+    businessType?: SortOrder
+    places?: SortOrder
+    createdAt?: SortOrder
+    _count?: BusinessTypeCacheCountOrderByAggregateInput
+    _max?: BusinessTypeCacheMaxOrderByAggregateInput
+    _min?: BusinessTypeCacheMinOrderByAggregateInput
+  }
+
+  export type BusinessTypeCacheScalarWhereWithAggregatesInput = {
+    AND?: BusinessTypeCacheScalarWhereWithAggregatesInput | BusinessTypeCacheScalarWhereWithAggregatesInput[]
+    OR?: BusinessTypeCacheScalarWhereWithAggregatesInput[]
+    NOT?: BusinessTypeCacheScalarWhereWithAggregatesInput | BusinessTypeCacheScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"BusinessTypeCache"> | string
+    businessType?: StringWithAggregatesFilter<"BusinessTypeCache"> | string
+    places?: JsonWithAggregatesFilter<"BusinessTypeCache">
+    createdAt?: DateTimeWithAggregatesFilter<"BusinessTypeCache"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -16792,6 +17953,55 @@ export namespace Prisma {
     FootStep?: StringFieldUpdateOperationsInput | string
   }
 
+  export type BusinessTypeCacheCreateInput = {
+    id?: string
+    businessType: string
+    places: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type BusinessTypeCacheUncheckedCreateInput = {
+    id?: string
+    businessType: string
+    places: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type BusinessTypeCacheUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    places?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BusinessTypeCacheUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    places?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BusinessTypeCacheCreateManyInput = {
+    id?: string
+    businessType: string
+    places: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type BusinessTypeCacheUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    places?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BusinessTypeCacheUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    places?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -17534,6 +18744,74 @@ export namespace Prisma {
     audience?: SortOrder
     compitation?: SortOrder
     FootStep?: SortOrder
+  }
+  export type JsonFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type BusinessTypeCacheCountOrderByAggregateInput = {
+    id?: SortOrder
+    businessType?: SortOrder
+    places?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type BusinessTypeCacheMaxOrderByAggregateInput = {
+    id?: SortOrder
+    businessType?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type BusinessTypeCacheMinOrderByAggregateInput = {
+    id?: SortOrder
+    businessType?: SortOrder
+    createdAt?: SortOrder
+  }
+  export type JsonWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedJsonFilter<$PrismaModel>
+    _max?: NestedJsonFilter<$PrismaModel>
   }
 
   export type StoreCreateNestedManyWithoutOwnerInput = {
@@ -18591,6 +19869,29 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+  export type NestedJsonFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
   export type StoreCreateWithoutOwnerInput = {

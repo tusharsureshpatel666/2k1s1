@@ -32,9 +32,9 @@ const UserBussiness = () => {
         // Call API to get user data
         const res = await axios.get("/api/getuserId");
         const user = res.data;
-
+        console.log(user)   
         // Show modal if userBussinessType is empty
-        if (!user?.userBussinessType) {
+        if (!user.userBussinessType) {
           setOpen(true);
         }
       } catch (error) {
@@ -49,7 +49,7 @@ const UserBussiness = () => {
     <div className="p-6">
       {open && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
-          <div className="bg-white p-6 rounded-xl max-w-[600px] w-full shadow-lg">
+          <div className="bg-white dark:bg-black text-black dark:text-white p-6 rounded-xl max-w-[600px] w-full shadow-lg">
             <h2 className="text-xl font-semibold mb-4 text-center">
               What Kind of Business You Open
             </h2>

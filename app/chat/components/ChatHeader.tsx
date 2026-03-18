@@ -61,7 +61,13 @@ export default function ChatHeader({
       </Link>
       <div className="flex items-center gap-4">
         <Avatar className="h-10 w-10">
-          <Image src={header.image} alt={header.name} width={40} height={40} className="rounded-full" />
+          <Image
+            src={header.image}
+            alt={header.name}
+            width={40}
+            height={40}
+            className="rounded-full"
+          />
           <AvatarFallback>
             {header.name?.charAt(0).toUpperCase()}
           </AvatarFallback>
@@ -75,11 +81,14 @@ export default function ChatHeader({
       </div>
       <div className="flex gap-3">
         <Button variant={"secondary"} className="rounded-full">
-          <Phone className="w-5 h-5" /> Call
+          <Phone className="w-5 h-5" />
+          <span className="hidden sm:inline ">Call</span>
         </Button>
+
         <Link href={`/dashboard/agreement/${conversationId}`}>
           <Button className="rounded-full">
-            <MdAttachMoney /> Rent Now
+            <MdAttachMoney className="w-5 h-5" />
+            <span className="hidden sm:inline">Rent Now</span>
           </Button>
         </Link>
       </div>
