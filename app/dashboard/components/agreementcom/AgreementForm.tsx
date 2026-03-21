@@ -59,8 +59,10 @@ const AgreementForm = () => {
 
   return (
     <div className="w-full">
-      {step === 1 && <Terms agree={terms} setAgree={setTerms} />}
-      {step === 2 && <RentAgreement id={params.id}/>}
+      <div className="mb-[100px]">
+        {step === 1 && <Terms agree={terms} setAgree={setTerms} />}
+        {step === 2 && <RentAgreement id={params.id} />}
+      </div>
 
       <FormNavigation
         step={step}

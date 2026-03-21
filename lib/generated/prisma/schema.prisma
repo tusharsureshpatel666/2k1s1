@@ -247,3 +247,12 @@ model BusinessTypeCache {
   places       Json
   createdAt    DateTime @default(now())
 }
+
+model Tour {
+  id       String @id @default(uuid())
+  storeId  String
+  fullname String
+  email    String
+  phone    String
+  message  String
+}

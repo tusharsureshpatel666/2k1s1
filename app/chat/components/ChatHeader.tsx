@@ -7,7 +7,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ChatHeaderSkeleton } from "@/app/loader/ChatHeaderLoader";
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
-import { FaBackward } from "react-icons/fa";
+import { FaBackward, FaPaperPlane } from "react-icons/fa";
 import Link from "next/link";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { AvatarFallback } from "@radix-ui/react-avatar";
@@ -19,6 +19,7 @@ export default function ChatHeader({
   conversationId: string;
 }) {
   const [header, setHeader] = useState<{
+    id: string
     name: string;
     image: string;
   } | null>(null);
@@ -35,6 +36,7 @@ export default function ChatHeader({
           `/api/conversation/chatheader/${conversationId}`,
         );
         setHeader(res.data);
+        console.log(res)
       } catch (error) {
         console.error("Header fetch error:", error);
       } finally {
@@ -85,10 +87,16 @@ export default function ChatHeader({
           <span className="hidden sm:inline ">Call</span>
         </Button>
 
-        <Link href={`/dashboard/agreement/${conversationId}`}>
+        {/* <Link href={`/dashboard/agreement/${conversationId}`}>
           <Button className="rounded-full">
             <MdAttachMoney className="w-5 h-5" />
             <span className="hidden sm:inline">Rent Now</span>
+          </Button>
+        </Link> */}
+        <Link href={`/dashboard/tour/${header.id}`}>
+          <Button className="rounded-full">
+            <FaPaperPlane className="w-5 h-5" />
+            <span className="hidden sm:inline ">Take Tour</span>
           </Button>
         </Link>
       </div>

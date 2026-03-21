@@ -26,6 +26,7 @@ export async function GET(
       },
       store: {
         select: {
+          
           id: true,
           title: true,
           bannerImageUrl: true,
@@ -51,11 +52,13 @@ export async function GET(
   // 🔑 header logic
   const header = isOwner
     ? {
+        id: conversation.store.id,
         name: conversation.store.title,
         image:
           conversation.store.bannerImageUrl || "/store-banner-fallback.png",
       }
     : {
+        id: conversation.store.id,
         name: conversation.store.owner.name,
         image: conversation.store.owner.image || "/avatar.avif",
       };

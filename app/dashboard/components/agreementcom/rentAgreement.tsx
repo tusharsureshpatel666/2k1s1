@@ -30,9 +30,7 @@ const RentAgreement = ({ id }) => {
       </div>
 
       <div className="max-w-6xl mx-auto space-y-6 leading-7">
-        <h2 className="text-2xl font-semibold text-center">
-          STORE SHARING RENTAL AGREEMENT
-        </h2>
+       
 
         <p>
           This Rental Agreement is made on the date of{" "}

@@ -13,7 +13,7 @@ const StorealsoSidebar = () => {
   const path = useParams()
   const id = path.id
   return (
-    <div className="h-screen w-[260px] bg-white dark:bg-[#0f0f0f] border-r border-gray-200 dark:border-gray-800 flex flex-col justify-between text-black dark:text-white">
+    <div className="h-screen hidden lg:flex w-[260px] bg-white dark:bg-[#0f0f0f] border-r border-gray-200 dark:border-gray-800 flex flex-col justify-between text-black dark:text-white">
       {/* Top */}
       <div>
         {/* Logo */}
@@ -30,8 +30,8 @@ const StorealsoSidebar = () => {
               pathname.startsWith(`/storealso/${id}`) ? active : normal
             }`}
           >
-            <LucideTarget size={18} />
-            Audience
+            <PieChart size={18} />
+            Analytics
           </Link>
 
           <Link
@@ -40,8 +40,8 @@ const StorealsoSidebar = () => {
               pathname.startsWith("/storealso/audience") ? active : normal
             }`}
           >
-            <PieChart size={18} />
-            Analytics
+            <LucideTarget size={18} />
+            Audience
           </Link>
 
           <Link
@@ -67,9 +67,6 @@ const StorealsoSidebar = () => {
       </div>
 
       {/* Bottom user */}
-      <div className="p-4 border-gray-200 dark:border-gray-800">
-        <Userbtn />
-      </div>
     </div>
   );
 };
