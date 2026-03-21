@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 const CouponPage = () => {
   const [copied, setCopied] = useState(false);
 
-  const couponCode = "FREE2K1S";
+  const couponCode = "FREEAllPuts";
 
   const handleCopy = () => {
     navigator.clipboard.writeText(couponCode);

@@ -1,0 +1,72 @@
+"use client";
+import { Bell, Home, LucideTarget, Package, PieChart } from "lucide-react";
+import Link from "next/link";
+import { useParams, usePathname } from "next/navigation";
+import React from "react";
+import { FaBackward, FaForward } from "react-icons/fa";
+
+const MobileNav = () => {
+  const pathname = usePathname();
+  const { id } = useParams();
+
+  const isActive = (path) => {
+    if (path === "analytics") return pathname.startsWith(`/storealso/${id}`);
+    if (path === "audience") return pathname.startsWith(`/storealso/audience`);
+    if (path === "notifications") return pathname === "/notifications";
+    if (path === "inventory") return pathname === "/inventory";
+  };
+
+  const base =
+    "flex flex-col items-center justify-center gap-1 text-[11px] transition-all duration-200 px-3 py-1 rounded-lg";
+
+  const active = "text-blue-600 dark:text-blue-400 scale-105";
+
+  const normal =
+    "text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white";
+
+  return (
+    <nav
+      className="fixed bottom-0 left-0 w-full 
+      bg-white/80 dark:bg-gray-900/80 
+      backdrop-blur-md border-t border-gray-200 dark:border-gray-900 
+      flex justify-around items-center 
+      py-4 lg:hidden z-50"
+    >
+      <Link
+        href={`/dashboard`}
+        className={`${base} ${isActive("home") ? active : normal}`}
+      >
+        <FaBackward size={20} />
+      </Link>
+      <Link
+        href={`/storealso/${id}`}
+        className={`${base} ${isActive("analytics") ? active : normal}`}
+      >
+        <PieChart size={20} />
+      </Link>
+
+      <Link
+        href={`/storealso/audience/${id}`}
+        className={`${base} ${isActive("audience") ? active : normal}`}
+      >
+        <LucideTarget size={20} />
+      </Link>
+
+      <Link
+        href="/notifications"
+        className={`${base} ${isActive("notifications") ? active : normal}`}
+      >
+        <Bell size={20} />
+      </Link>
+
+      <Link
+        href="/inventory"
+        className={`${base} ${isActive("inventory") ? active : normal}`}
+      >
+        <Package size={20} />
+      </Link>
+    </nav>
+  );
+};
+
+export default MobileNav;

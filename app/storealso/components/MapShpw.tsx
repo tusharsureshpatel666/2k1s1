@@ -78,7 +78,7 @@ export const MapShowerAlso = ({ lat, log }: Maplat) => {
 
   return (
     <>
-      <h1 className="text-2xl px-5 py-5">Map Data</h1>
+  
 
       <div className="px-6 py-6">
         <div className="w-full rounded-3xl sticky overflow-hidden shadow-lg">

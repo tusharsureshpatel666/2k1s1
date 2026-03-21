@@ -30,13 +30,13 @@ const Navbar = () => {
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/logo.svg"
-            width={40}
+            width={90}
             loading="lazy"
-            height={40}
+            height={90}
             alt="logo"
           />
           <h2 className="text-xl font-semibold text-black dark:text-white">
-            2k1s
+            AllPuts
           </h2>
         </Link>
 
@@ -129,7 +129,7 @@ const Navbar = () => {
                   </Button>
                 </Link>
                 <Link href="/dashboard">
-                  <Button className="w-full rounded-full">Get 2k1s Free</Button>
+                  <Button className="w-full rounded-full">Get AllPuts Free</Button>
                 </Link>
               </div>
             </div>

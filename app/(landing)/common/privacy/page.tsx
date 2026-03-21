@@ -4,11 +4,11 @@ import Privacypage from "./privacy";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | 2k1s",
+  title: "Privacy Policy | AllPuts",
   description:
-    "Read the Privacy Policy of 2k1s to understand how we collect, use, and protect your data when using our store sharing platform in India.",
+    "Read the Privacy Policy of AllPuts to understand how we collect, use, and protect your data when using our store sharing platform in India.",
   alternates: {
-    canonical: "https://www.2k1s.com/privacy",
+    canonical: "https://www.AllPuts.com/privacy",
   },
   robots: {
     index: true,

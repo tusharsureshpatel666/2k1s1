@@ -19,7 +19,7 @@ const StorealsoSidebar = () => {
         {/* Logo */}
         <Link href="/dashboard" className="flex items-center gap-2 px-6 py-6">
           <Image src="/logo.svg" width={36} height={36} alt="logo" />
-          <h2 className="text-lg font-semibold">2k1s</h2>
+          <h2 className="text-lg font-semibold">AllPuts</h2>
         </Link>
 
         {/* Menu */}

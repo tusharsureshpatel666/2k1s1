@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <h2 className="text-xl font-semibold text-black dark:text-white">
-              2k1s
+              AllPuts
             </h2>
             <p className="mt-2 max-w-xs text-sm text-gray-600 dark:text-gray-400">
               Discover trusted store partners or list your business and grow
@@ -22,7 +22,7 @@ const Footer = () => {
           {/* Social Icons */}
           <div className="flex gap-4">
             <Link
-              href="https://www.instagram.com/2k1s.official/"
+              href="https://www.instagram.com/AllPuts.official/"
               aria-label="Instagram"
               className="rounded-full border border-gray-300 p-2 text-gray-600 transition hover:bg-gray-100 hover:text-black dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
             >
@@ -30,7 +30,7 @@ const Footer = () => {
             </Link>
 
             <Link
-              href="https://x.com/2k1s_offical"
+              href="https://x.com/AllPuts_offical"
               aria-label="Twitter"
               className="rounded-full border border-gray-300 p-2 text-gray-600 transition hover:bg-gray-100 hover:text-black dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
             >
@@ -49,7 +49,7 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="mt-8 border-t border-gray-200 pt-4 text-center text-xs text-gray-500 dark:border-gray-800 dark:text-gray-400">
-          © {new Date().getFullYear()} 2k1s. All rights reserved.
+          © {new Date().getFullYear()} AllPuts. All rights reserved.
         </div>
       </div>
     </footer>

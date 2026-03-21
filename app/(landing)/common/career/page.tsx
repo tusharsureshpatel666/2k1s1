@@ -4,26 +4,26 @@ import FrontendDeveloperJob from "./carrer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Careers at 2k1s | Join Our Store Sharing Startup",
+  title: "Careers at AllPuts | Join Our Store Sharing Startup",
   description:
-    "Explore career opportunities at 2k1s. Join our mission to revolutionize commercial store space sharing and help small businesses reduce rental costs across India.",
+    "Explore career opportunities at AllPuts. Join our mission to revolutionize commercial store space sharing and help small businesses reduce rental costs across India.",
   keywords: [
-    "2k1s careers",
-    "2k1s jobs",
+    "AllPuts careers",
+    "AllPuts jobs",
     "startup jobs India",
     "commercial real estate startup jobs",
     "retail tech jobs",
-    "join 2k1s team",
+    "join AllPuts team",
   ],
   alternates: {
-    canonical: "https://www.2k1s.com/careers",
+    canonical: "https://www.AllPuts.com/careers",
   },
   openGraph: {
-    title: "Careers at 2k1s",
+    title: "Careers at AllPuts",
     description:
-      "Join 2k1s and help build the future of commercial store space sharing in India.",
-    url: "https://www.2k1s.com/careers",
-    siteName: "2k1s",
+      "Join AllPuts and help build the future of commercial store space sharing in India.",
+    url: "https://www.AllPuts.com/careers",
+    siteName: "AllPuts",
     type: "website",
   },
   robots: {

@@ -22,7 +22,7 @@ const Storepage = () => {
     
   }, [id])
   return (
-    <div className="flex w-full gap-2">
+    <div className="flex flex-col w-full gap-2 px-6 py-5">
       {/* <div className="max-w-6xl w-full">
         {store?.latitude && store?.longitude && (
           <MapShowerAlso
@@ -31,12 +31,24 @@ const Storepage = () => {
           />
         )}
       </div> */}
-      <StoreListAlso
+      {/* <StoreListAlso
         lat={Number(store.latitude)}
         log={Number(store.longitude)}
-      />
-    </div>
+      /> */}
 
+      <h1 className="text-xl md:text-2xl">Store Analytics</h1>
+
+      <div className="w-full">
+        {store?.latitude && store?.longitude && (
+          <MapShowerAlso
+            lat={Number(store.latitude)}
+            log={Number(store.longitude)}
+          />
+        )}
+
+      
+      </div>
+    </div>
   );
 }
 

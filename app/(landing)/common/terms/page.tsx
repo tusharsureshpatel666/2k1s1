@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import TermsPage from "./terms";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions | 2k1s",
+  title: "Terms & Conditions | AllPuts",
   description:
-    "Read the Terms and Conditions of 2k1s, a platform for sharing commercial store space across India.",
+    "Read the Terms and Conditions of AllPuts, a platform for sharing commercial store space across India.",
   alternates: {
-    canonical: "https://www.2k1s.com/terms",
+    canonical: "https://www.AllPuts.com/terms",
   },
   robots: {
     index: true,

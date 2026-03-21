@@ -23,7 +23,7 @@ export default function FrontendDeveloperJob() {
       <div className="space-y-2 text-gray-700 dark:text-gray-300">
         <p>
           We are looking for a skilled Frontend Developer to help build modern,
-          scalable, and user-friendly web applications at <strong>2k1s</strong>.
+          scalable, and user-friendly web applications at <strong>AllPuts</strong>.
         </p>
 
         <div>

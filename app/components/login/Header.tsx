@@ -15,9 +15,9 @@ const Navbar = () => {
       "
     >
       <Link href={"/"} className="flex items-center gap-2">
-        <Image src="/logo.svg" width={40} height={40} alt="logo" />
+        <Image src="/logo.svg" width={90} height={90} alt="logo" />
         <h2 className="text-xl font-semibold dark:text-white text-black">
-          2k1s
+          AllPuts
         </h2>
       </Link>
       <Link href={"/common/privacy"}>
