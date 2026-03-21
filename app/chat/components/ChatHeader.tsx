@@ -76,8 +76,10 @@ export default function ChatHeader({
         </Avatar>
 
         <div>
-          <p className="font-medium text-black dark:text-white">
-            {header.name}
+          <p className="font-xs text-black dark:text-white">
+            {header.name.split(" ").length > 5
+              ? header.name.split(" ").slice(0, 5).join(" ") + "..."
+              : header.name}
           </p>
         </div>
       </div>

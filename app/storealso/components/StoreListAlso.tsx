@@ -6,12 +6,15 @@ const StoreListAlso = ({ lat, log }) => {
   const [types, setTypes] = useState([]);
   const [places, setPlaces] = useState({});
 
+
+
   // 🔹 Get types from backend
   useEffect(() => {
     const handleList = async () => {
       try {
         const res = await axios.post("/api/storealsonearmarket");
         setTypes(res.data.places || []);
+
       } catch (err) {
         console.error("Error fetching types:", err);
       }
@@ -43,6 +46,7 @@ const StoreListAlso = ({ lat, log }) => {
         console.error("Error fetching places:", err);
       }
     };
+   
 
     fetchNearby();
   }, [lat, log, types]);

@@ -2,6 +2,7 @@
 
 import { Circle, GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { useEffect, useMemo, useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const containerStyle = {
   width: "100%",
@@ -63,7 +64,17 @@ export const MapShowerAlso = ({ lat, log }: Maplat) => {
   
  
 
-  if (!isLoaded) return <p className="px-6">Loading map...</p>;
+  if (!isLoaded) {
+    return (
+      <div className="px-6 py-6">
+        <Skeleton className="h-[40px] w-[200px] mb-4 rounded-xl" />
+
+        <div className="w-full rounded-3xl overflow-hidden shadow-lg">
+          <Skeleton className="w-full h-[800px] rounded-3xl" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>

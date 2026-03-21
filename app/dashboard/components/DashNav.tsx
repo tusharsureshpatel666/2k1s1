@@ -1,6 +1,5 @@
 "use client";
-import Userbtn from "@/app/components/login/userbtn";
-import NotificationBell from "@/app/components/unseen";
+
 import { Button } from "@/components/ui/button";
 import { pusherClient } from "@/lib/pusher/client";
 import axios from "axios";
@@ -9,6 +8,8 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import NotificationBell from "../addstore/components/TourNotification";
+import Userbtn from "@/app/components/login/userbtn";
 
 const DashNav = () => {
   const [count, setCount] = useState(0);
@@ -98,6 +99,7 @@ const DashNav = () => {
           </Button>
         </Link>
         {/* <NotificationBell /> */}
+        <NotificationBell/>
 
         <Userbtn />
       </div>

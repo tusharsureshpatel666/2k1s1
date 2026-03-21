@@ -46,6 +46,7 @@ model User {
   buyer    Conversation[]
   UserPresence UserPresence[]
   Agreement Agreement[]
+  TourNotification TourNotification[]
 
   
 }
@@ -208,6 +209,18 @@ model Notification {
   @@index([userId])
   @@index([conversationId])
 }
+model TourNotification {
+  id        String   @id @default(cuid())
+  userId    String
+  message   String
+  read      Boolean  @default(false)
+  userImage String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user      User     @relation(fields: [userId], references: [id])
+}
 
 model UserPresence {
   userId         String @id
@@ -270,6 +283,7 @@ model BusinessTypeCache {
 
 model Tour{
   id String @id @default(uuid())
+  userId String
   storeId String
   fullname String 
   email String
