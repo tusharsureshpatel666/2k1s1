@@ -28,13 +28,9 @@ const Navbar = () => {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <Image
-            src="/logo.svg"
-            width={90}
-            loading="lazy"
-            height={90}
-            alt="logo"
-          />
+           <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24">
+                    <Image src="/logo.svg" alt="logo" fill className="object-contain" />
+                  </div>
           <h2 className="text-xl font-semibold text-black dark:text-white">
             AllPuts
           </h2>

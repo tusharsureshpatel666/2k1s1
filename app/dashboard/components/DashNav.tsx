@@ -58,8 +58,10 @@ const DashNav = () => {
          
       "
     >
-      <Link href="/dashboard" className="flex items-center gap-2">
-        <Image src="/logo.svg" width={90} height={90} alt="logo" />
+      <Link href="/dashboard" className="flex items-center ">
+        <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24">
+                 <Image src="/logo.svg" alt="logo" fill className="object-contain" />
+               </div>
         <h2 className="text-xl font-semibold dark:text-white text-black">
           AllPuts
         </h2>
@@ -78,7 +80,7 @@ const DashNav = () => {
         </Link> */}
 
         {/* Button 2 — Share Your Store */}
-        <Link href="/dashboard/addstore">
+        <Link href="/dashboard/addstore" className="hidden md:flex">
           <Button className="rounded-md lg:rounded-full cursor-pointer font-semibold flex items-center gap-2">
             <Plus className="w-5 h-5" />
             <span className="hidden lg:inline">List Your Store</span>
