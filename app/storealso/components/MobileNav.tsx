@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import React from "react";
 import { FaBackward, FaForward } from "react-icons/fa";
+import { IoFootsteps } from "react-icons/io5";
 
 const MobileNav = () => {
   const pathname = usePathname();
@@ -12,7 +13,7 @@ const MobileNav = () => {
   const isActive = (path) => {
     if (path === "analytics") return pathname.startsWith(`/storealso/${id}`);
     if (path === "audience") return pathname.startsWith(`/storealso/audience`);
-    if (path === "notifications") return pathname === "/notifications";
+    if (path === "footfall") return pathname.startsWith(`/storealso/footfall`);
     if (path === "inventory") return pathname === "/inventory";
   };
 
@@ -53,18 +54,13 @@ const MobileNav = () => {
       </Link>
 
       <Link
-        href="/notifications"
-        className={`${base} ${isActive("notifications") ? active : normal}`}
+        href={`/storealso/footfall/${id}`}
+        className={`${base} ${isActive("footfall") ? active : normal}`}
       >
-        <Bell size={20} />
+       <IoFootsteps size={18} />
       </Link>
 
-      <Link
-        href="/inventory"
-        className={`${base} ${isActive("inventory") ? active : normal}`}
-      >
-        <Package size={20} />
-      </Link>
+    
     </nav>
   );
 };

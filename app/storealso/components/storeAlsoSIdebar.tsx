@@ -4,70 +4,107 @@ import Image from "next/image";
 import Link from "next/link";
 import { Bell, PieChart, Package, LucideTarget } from "lucide-react";
 import { useParams, usePathname } from "next/navigation";
+import { IoFootsteps } from "react-icons/io5";
+import { FaBackward } from "react-icons/fa";
+
 
 const StorealsoSidebar = () => {
   const pathname = usePathname();
+  const { id } = useParams();
 
-  const active = "bg-gray-200 dark:bg-gray-800 font-medium";
-  const normal = "hover:bg-gray-100 dark:hover:bg-gray-800";
-  const path = useParams()
-  const id = path.id
+  const isActive = (path) => pathname.startsWith(path);
+
   return (
-    <div className="h-screen hidden lg:flex w-[260px] bg-white dark:bg-[#0f0f0f] border-r border-gray-200 dark:border-gray-800 flex flex-col justify-between text-black dark:text-white">
-      {/* Top */}
+    <aside className="hidden lg:flex flex-col justify-between w-[260px] h-screen sticky top-0 bg-white dark:bg-[#0f0f0f] border-r border-gray-200 dark:border-gray-800">
+      {/* 🔹 TOP */}
       <div>
         {/* Logo */}
-        <Link href="/dashboard" className="flex items-center gap-2 px-6 py-6">
+        <Link
+          href="/dashboard"
+          className="flex items-center gap-3 px-6 py-6 border-b border-gray-200 dark:border-gray-800"
+        >
           <Image src="/logo.svg" width={36} height={36} alt="logo" />
-          <h2 className="text-lg font-semibold">AllPuts</h2>
+          <h2 className="text-lg font-semibold tracking-tight">AllPuts</h2>
         </Link>
 
         {/* Menu */}
-        <nav className="flex flex-col gap-2 px-2">
+        <nav className="flex flex-col gap-1 px-3 py-4">
+          {/* 🔸 Item */}
           <Link
             href={`/storealso/${id}`}
-            className={`flex items-center gap-3 px-4 py-2 rounded-lg transition ${
-              pathname.startsWith(`/storealso/${id}`) ? active : normal
+            className={`group flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all relative ${
+              isActive(`/storealso/${id}`)
+                ? "bg-gray-100 dark:bg-gray-800 font-semibold"
+                : "hover:bg-gray-100 dark:hover:bg-gray-800"
             }`}
           >
-            <PieChart size={18} />
-            Analytics
+            {/* Active Indicator */}
+            {isActive(`/storealso/${id}`) && (
+              <span className="absolute left-0 top-1/2 -translate-y-1/2 h-5 w-1 bg-black dark:bg-white rounded-r-full"></span>
+            )}
+
+            <PieChart
+              size={18}
+              className="opacity-80 group-hover:opacity-100"
+            />
+            <span>Analytics</span>
           </Link>
 
           <Link
             href={`/storealso/audience/${id}`}
-            className={`flex items-center gap-3 px-4 py-2 rounded-lg transition ${
-              pathname.startsWith("/storealso/audience") ? active : normal
+            className={`group flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all relative ${
+              isActive("/storealso/audience")
+                ? "bg-gray-100 dark:bg-gray-800 font-semibold"
+                : "hover:bg-gray-100 dark:hover:bg-gray-800"
             }`}
           >
+            {isActive("/storealso/audience") && (
+              <span className="absolute left-0 top-1/2 -translate-y-1/2 h-5 w-1 bg-black dark:bg-white rounded-r-full"></span>
+            )}
+
             <LucideTarget size={18} />
-            Audience
+            <span>Audience</span>
           </Link>
 
           <Link
-            href="/notifications"
-            className={`flex items-center gap-3 px-4 py-2 rounded-lg transition ${
-              pathname === "/notifications" ? active : normal
+            href={`/storealso/footfall/${id}`}
+            className={`group flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all relative ${
+              isActive("/storealso/footfall")
+                ? "bg-gray-100 dark:bg-gray-800 font-semibold"
+                : "hover:bg-gray-100 dark:hover:bg-gray-800"
             }`}
           >
-            <Bell size={18} />
-            Notifications
+            {isActive("/storealso/footfall") && (
+              <span className="absolute left-0 top-1/2 -translate-y-1/2 h-5 w-1 bg-black dark:bg-white rounded-r-full"></span>
+            )}
+
+            <IoFootsteps size={18} />
+            <span>Footfall</span>
           </Link>
 
           <Link
-            href="/inventory"
-            className={`flex items-center gap-3 px-4 py-2 rounded-lg transition ${
-              pathname === "/inventory" ? active : normal
+            href={`/dashboard`}
+             className={`group flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all relative ${
+              isActive("/adsfajlds")
+                ? "bg-gray-100 dark:bg-gray-800 font-semibold"
+                : "hover:bg-gray-100 dark:hover:bg-gray-800"
             }`}
+          
           >
-            <Package size={18} />
-            Inventory
+            <FaBackward size={20} /> Back
           </Link>
         </nav>
       </div>
 
-      {/* Bottom user */}
-    </div>
+      {/* 🔹 BOTTOM USER */}
+      <div className="px-4 py-4 border-t border-gray-200 dark:border-gray-800">
+        <div className="flex items-center justify-between">
+          <Userbtn />
+
+          {/* Logout Button */}
+        </div>
+      </div>
+    </aside>
   );
 };
 
