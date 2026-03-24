@@ -80,7 +80,7 @@ export const MapShowerAlso = ({ lat, log }: Maplat) => {
     <>
   
 
-      <div className="px-6 py-6">
+      <div className="lg:px-6 py-6">
         <div className="w-full rounded-3xl sticky overflow-hidden shadow-lg">
           <GoogleMap
             mapContainerStyle={containerStyle}
