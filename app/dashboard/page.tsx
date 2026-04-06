@@ -27,7 +27,7 @@ export default function Dashboard() {
             }`}
         >
           <Store className="w-5 h-5" />
-          <span className="text-sm mt-1">Partner Stores</span>
+          <span className=" text-xs lg:text-sm mt-1">Partner Stores</span>
         </button>
 
         {/* Business Tab */}
@@ -41,7 +41,7 @@ export default function Dashboard() {
             }`}
         >
           <Search className="w-5 h-5" />
-          <span className="text-sm mt-1">Search Partner</span>
+          <span className="text-xs lg:text-sm  mt-1">Search Partner</span>
         </button>
       </div>
 
