@@ -25,7 +25,7 @@ export default function TermsPage() {
         </p>
 
         <p className="text-gray-700 dark:text-gray-500 mb-4">
-          By using <strong>AllPuts</strong>, you agree to the following terms and
+          By using <strong>Splitat</strong>, you agree to the following terms and
           conditions.
         </p>
 
@@ -64,7 +64,7 @@ export default function TermsPage() {
           5. Contact
         </h3>
         <p className="text-gray-700 dark:text-gray-500">
-          Email: <strong>AllPutsgo.com</strong>
+          Email: <strong>Splitatgo.com</strong>
         </p>
       </motion.div>
     </div>

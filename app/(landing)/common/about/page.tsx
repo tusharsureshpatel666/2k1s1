@@ -3,11 +3,11 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About AllPuts | Share Commercial Store Space in India",
+  title: "About Splitat | Share Commercial Store Space in India",
   description:
-    "Learn about AllPuts, a platform helping small businesses share commercial store space and reduce rental costs across India.",
+    "Learn about Splitat, a platform helping small businesses share commercial store space and reduce rental costs across India.",
   alternates: {
-    canonical: "https://www.AllPuts.com/about",
+    canonical: "https://www.Splitat.com/about",
   },
 };
 
@@ -42,9 +42,9 @@ export default function AboutPage() {
         </h1>
 
         <p className="max-w-3xl text-base leading-relaxed text-gray-600">
-          AllPuts is a platform designed to help shop owners and small businesses
+          Splitat is a platform designed to help shop owners and small businesses
           explore shared commercial space arrangements to reduce rental
-          pressure. AllPuts acts only as a facilitation and discovery platform. We
+          pressure. Splitat acts only as a facilitation and discovery platform. We
           do not own, lease, manage, or control any commercial property listed
           on the platform.
         </p>

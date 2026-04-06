@@ -4,11 +4,11 @@ import Privacypage from "./privacy";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | AllPuts",
+  title: "Privacy Policy | Splitat",
   description:
-    "Read the Privacy Policy of AllPuts to understand how we collect, use, and protect your data when using our store sharing platform in India.",
+    "Read the Privacy Policy of Splitat to understand how we collect, use, and protect your data when using our store sharing platform in India.",
   alternates: {
-    canonical: "https://www.AllPuts.com/privacy",
+    canonical: "https://www.Splitat.com/privacy",
   },
   robots: {
     index: true,

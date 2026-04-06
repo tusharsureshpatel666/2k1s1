@@ -42,6 +42,8 @@ const typeDefs = `#graphql
   type Query {
     stores: [Store!]!
     store(id: ID!): Store
+    
+
   }
 `;
 
@@ -56,6 +58,7 @@ const resolvers = {
         where: { id: args.id },
       });
     },
+   
   },
 };
 

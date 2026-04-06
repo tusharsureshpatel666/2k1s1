@@ -29,6 +29,16 @@ export type Otp = $Result.DefaultSelection<Prisma.$OtpPayload>
  */
 export type Store = $Result.DefaultSelection<Prisma.$StorePayload>
 /**
+ * Model CommunityStore
+ * 
+ */
+export type CommunityStore = $Result.DefaultSelection<Prisma.$CommunityStorePayload>
+/**
+ * Model CommunityImage
+ * 
+ */
+export type CommunityImage = $Result.DefaultSelection<Prisma.$CommunityImagePayload>
+/**
  * Model StoreImage
  * 
  */
@@ -255,6 +265,26 @@ export class PrismaClient<
     * ```
     */
   get store(): Prisma.StoreDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.communityStore`: Exposes CRUD operations for the **CommunityStore** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CommunityStores
+    * const communityStores = await prisma.communityStore.findMany()
+    * ```
+    */
+  get communityStore(): Prisma.CommunityStoreDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.communityImage`: Exposes CRUD operations for the **CommunityImage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CommunityImages
+    * const communityImages = await prisma.communityImage.findMany()
+    * ```
+    */
+  get communityImage(): Prisma.CommunityImageDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.storeImage`: Exposes CRUD operations for the **StoreImage** model.
@@ -802,6 +832,8 @@ export namespace Prisma {
     User: 'User',
     Otp: 'Otp',
     Store: 'Store',
+    CommunityStore: 'CommunityStore',
+    CommunityImage: 'CommunityImage',
     StoreImage: 'StoreImage',
     StoreLike: 'StoreLike',
     Conversation: 'Conversation',
@@ -828,7 +860,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "otp" | "store" | "storeImage" | "storeLike" | "conversation" | "message" | "notification" | "tourNotification" | "userPresence" | "agreement" | "storeAnlyalic" | "businessTypeCache" | "tour"
+      modelProps: "user" | "otp" | "store" | "communityStore" | "communityImage" | "storeImage" | "storeLike" | "conversation" | "message" | "notification" | "tourNotification" | "userPresence" | "agreement" | "storeAnlyalic" | "businessTypeCache" | "tour"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1051,6 +1083,154 @@ export namespace Prisma {
           count: {
             args: Prisma.StoreCountArgs<ExtArgs>
             result: $Utils.Optional<StoreCountAggregateOutputType> | number
+          }
+        }
+      }
+      CommunityStore: {
+        payload: Prisma.$CommunityStorePayload<ExtArgs>
+        fields: Prisma.CommunityStoreFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CommunityStoreFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityStorePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CommunityStoreFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityStorePayload>
+          }
+          findFirst: {
+            args: Prisma.CommunityStoreFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityStorePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CommunityStoreFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityStorePayload>
+          }
+          findMany: {
+            args: Prisma.CommunityStoreFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityStorePayload>[]
+          }
+          create: {
+            args: Prisma.CommunityStoreCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityStorePayload>
+          }
+          createMany: {
+            args: Prisma.CommunityStoreCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CommunityStoreCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityStorePayload>[]
+          }
+          delete: {
+            args: Prisma.CommunityStoreDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityStorePayload>
+          }
+          update: {
+            args: Prisma.CommunityStoreUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityStorePayload>
+          }
+          deleteMany: {
+            args: Prisma.CommunityStoreDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CommunityStoreUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CommunityStoreUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityStorePayload>[]
+          }
+          upsert: {
+            args: Prisma.CommunityStoreUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityStorePayload>
+          }
+          aggregate: {
+            args: Prisma.CommunityStoreAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCommunityStore>
+          }
+          groupBy: {
+            args: Prisma.CommunityStoreGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CommunityStoreGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CommunityStoreCountArgs<ExtArgs>
+            result: $Utils.Optional<CommunityStoreCountAggregateOutputType> | number
+          }
+        }
+      }
+      CommunityImage: {
+        payload: Prisma.$CommunityImagePayload<ExtArgs>
+        fields: Prisma.CommunityImageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CommunityImageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityImagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CommunityImageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityImagePayload>
+          }
+          findFirst: {
+            args: Prisma.CommunityImageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityImagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CommunityImageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityImagePayload>
+          }
+          findMany: {
+            args: Prisma.CommunityImageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityImagePayload>[]
+          }
+          create: {
+            args: Prisma.CommunityImageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityImagePayload>
+          }
+          createMany: {
+            args: Prisma.CommunityImageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CommunityImageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityImagePayload>[]
+          }
+          delete: {
+            args: Prisma.CommunityImageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityImagePayload>
+          }
+          update: {
+            args: Prisma.CommunityImageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityImagePayload>
+          }
+          deleteMany: {
+            args: Prisma.CommunityImageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CommunityImageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CommunityImageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityImagePayload>[]
+          }
+          upsert: {
+            args: Prisma.CommunityImageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunityImagePayload>
+          }
+          aggregate: {
+            args: Prisma.CommunityImageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCommunityImage>
+          }
+          groupBy: {
+            args: Prisma.CommunityImageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CommunityImageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CommunityImageCountArgs<ExtArgs>
+            result: $Utils.Optional<CommunityImageCountAggregateOutputType> | number
           }
         }
       }
@@ -1979,6 +2159,8 @@ export namespace Prisma {
     user?: UserOmit
     otp?: OtpOmit
     store?: StoreOmit
+    communityStore?: CommunityStoreOmit
+    communityImage?: CommunityImageOmit
     storeImage?: StoreImageOmit
     storeLike?: StoreLikeOmit
     conversation?: ConversationOmit
@@ -2214,6 +2396,37 @@ export namespace Prisma {
    */
   export type StoreCountOutputTypeCountAgreementArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AgreementWhereInput
+  }
+
+
+  /**
+   * Count Type CommunityStoreCountOutputType
+   */
+
+  export type CommunityStoreCountOutputType = {
+    images: number
+  }
+
+  export type CommunityStoreCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    images?: boolean | CommunityStoreCountOutputTypeCountImagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CommunityStoreCountOutputType without action
+   */
+  export type CommunityStoreCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityStoreCountOutputType
+     */
+    select?: CommunityStoreCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CommunityStoreCountOutputType without action
+   */
+  export type CommunityStoreCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommunityImageWhereInput
   }
 
 
@@ -6082,6 +6295,2493 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: StoreInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CommunityStore
+   */
+
+  export type AggregateCommunityStore = {
+    _count: CommunityStoreCountAggregateOutputType | null
+    _avg: CommunityStoreAvgAggregateOutputType | null
+    _sum: CommunityStoreSumAggregateOutputType | null
+    _min: CommunityStoreMinAggregateOutputType | null
+    _max: CommunityStoreMaxAggregateOutputType | null
+  }
+
+  export type CommunityStoreAvgAggregateOutputType = {
+    latitude: number | null
+    longitude: number | null
+    priceInr: number | null
+    sqft: number | null
+  }
+
+  export type CommunityStoreSumAggregateOutputType = {
+    latitude: number | null
+    longitude: number | null
+    priceInr: number | null
+    sqft: number | null
+  }
+
+  export type CommunityStoreMinAggregateOutputType = {
+    id: string | null
+    ownerId: string | null
+    title: string | null
+    desc: string | null
+    peopleDesc: string | null
+    flatno: string | null
+    streetAddress: string | null
+    NearbyLandMark: string | null
+    areaLocality: string | null
+    storeSize: string | null
+    businessType: string | null
+    country: string | null
+    state: string | null
+    city: string | null
+    pin: string | null
+    latitude: number | null
+    longitude: number | null
+    bannerImageUrl: string | null
+    priceInr: number | null
+    startTime: string | null
+    endTime: string | null
+    sqft: number | null
+    dayOrNight: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CommunityStoreMaxAggregateOutputType = {
+    id: string | null
+    ownerId: string | null
+    title: string | null
+    desc: string | null
+    peopleDesc: string | null
+    flatno: string | null
+    streetAddress: string | null
+    NearbyLandMark: string | null
+    areaLocality: string | null
+    storeSize: string | null
+    businessType: string | null
+    country: string | null
+    state: string | null
+    city: string | null
+    pin: string | null
+    latitude: number | null
+    longitude: number | null
+    bannerImageUrl: string | null
+    priceInr: number | null
+    startTime: string | null
+    endTime: string | null
+    sqft: number | null
+    dayOrNight: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CommunityStoreCountAggregateOutputType = {
+    id: number
+    ownerId: number
+    title: number
+    desc: number
+    peopleDesc: number
+    flatno: number
+    streetAddress: number
+    NearbyLandMark: number
+    areaLocality: number
+    storeSize: number
+    businessType: number
+    country: number
+    state: number
+    city: number
+    pin: number
+    latitude: number
+    longitude: number
+    bannerImageUrl: number
+    priceInr: number
+    startTime: number
+    endTime: number
+    days: number
+    sqft: number
+    dayOrNight: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CommunityStoreAvgAggregateInputType = {
+    latitude?: true
+    longitude?: true
+    priceInr?: true
+    sqft?: true
+  }
+
+  export type CommunityStoreSumAggregateInputType = {
+    latitude?: true
+    longitude?: true
+    priceInr?: true
+    sqft?: true
+  }
+
+  export type CommunityStoreMinAggregateInputType = {
+    id?: true
+    ownerId?: true
+    title?: true
+    desc?: true
+    peopleDesc?: true
+    flatno?: true
+    streetAddress?: true
+    NearbyLandMark?: true
+    areaLocality?: true
+    storeSize?: true
+    businessType?: true
+    country?: true
+    state?: true
+    city?: true
+    pin?: true
+    latitude?: true
+    longitude?: true
+    bannerImageUrl?: true
+    priceInr?: true
+    startTime?: true
+    endTime?: true
+    sqft?: true
+    dayOrNight?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CommunityStoreMaxAggregateInputType = {
+    id?: true
+    ownerId?: true
+    title?: true
+    desc?: true
+    peopleDesc?: true
+    flatno?: true
+    streetAddress?: true
+    NearbyLandMark?: true
+    areaLocality?: true
+    storeSize?: true
+    businessType?: true
+    country?: true
+    state?: true
+    city?: true
+    pin?: true
+    latitude?: true
+    longitude?: true
+    bannerImageUrl?: true
+    priceInr?: true
+    startTime?: true
+    endTime?: true
+    sqft?: true
+    dayOrNight?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CommunityStoreCountAggregateInputType = {
+    id?: true
+    ownerId?: true
+    title?: true
+    desc?: true
+    peopleDesc?: true
+    flatno?: true
+    streetAddress?: true
+    NearbyLandMark?: true
+    areaLocality?: true
+    storeSize?: true
+    businessType?: true
+    country?: true
+    state?: true
+    city?: true
+    pin?: true
+    latitude?: true
+    longitude?: true
+    bannerImageUrl?: true
+    priceInr?: true
+    startTime?: true
+    endTime?: true
+    days?: true
+    sqft?: true
+    dayOrNight?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CommunityStoreAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CommunityStore to aggregate.
+     */
+    where?: CommunityStoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommunityStores to fetch.
+     */
+    orderBy?: CommunityStoreOrderByWithRelationInput | CommunityStoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CommunityStoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommunityStores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommunityStores.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CommunityStores
+    **/
+    _count?: true | CommunityStoreCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CommunityStoreAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CommunityStoreSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CommunityStoreMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CommunityStoreMaxAggregateInputType
+  }
+
+  export type GetCommunityStoreAggregateType<T extends CommunityStoreAggregateArgs> = {
+        [P in keyof T & keyof AggregateCommunityStore]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCommunityStore[P]>
+      : GetScalarType<T[P], AggregateCommunityStore[P]>
+  }
+
+
+
+
+  export type CommunityStoreGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommunityStoreWhereInput
+    orderBy?: CommunityStoreOrderByWithAggregationInput | CommunityStoreOrderByWithAggregationInput[]
+    by: CommunityStoreScalarFieldEnum[] | CommunityStoreScalarFieldEnum
+    having?: CommunityStoreScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CommunityStoreCountAggregateInputType | true
+    _avg?: CommunityStoreAvgAggregateInputType
+    _sum?: CommunityStoreSumAggregateInputType
+    _min?: CommunityStoreMinAggregateInputType
+    _max?: CommunityStoreMaxAggregateInputType
+  }
+
+  export type CommunityStoreGroupByOutputType = {
+    id: string
+    ownerId: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude: number | null
+    longitude: number | null
+    bannerImageUrl: string | null
+    priceInr: number
+    startTime: string | null
+    endTime: string | null
+    days: string[]
+    sqft: number | null
+    dayOrNight: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: CommunityStoreCountAggregateOutputType | null
+    _avg: CommunityStoreAvgAggregateOutputType | null
+    _sum: CommunityStoreSumAggregateOutputType | null
+    _min: CommunityStoreMinAggregateOutputType | null
+    _max: CommunityStoreMaxAggregateOutputType | null
+  }
+
+  type GetCommunityStoreGroupByPayload<T extends CommunityStoreGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CommunityStoreGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CommunityStoreGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CommunityStoreGroupByOutputType[P]>
+            : GetScalarType<T[P], CommunityStoreGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CommunityStoreSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ownerId?: boolean
+    title?: boolean
+    desc?: boolean
+    peopleDesc?: boolean
+    flatno?: boolean
+    streetAddress?: boolean
+    NearbyLandMark?: boolean
+    areaLocality?: boolean
+    storeSize?: boolean
+    businessType?: boolean
+    country?: boolean
+    state?: boolean
+    city?: boolean
+    pin?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    bannerImageUrl?: boolean
+    priceInr?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    days?: boolean
+    sqft?: boolean
+    dayOrNight?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    images?: boolean | CommunityStore$imagesArgs<ExtArgs>
+    _count?: boolean | CommunityStoreCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["communityStore"]>
+
+  export type CommunityStoreSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ownerId?: boolean
+    title?: boolean
+    desc?: boolean
+    peopleDesc?: boolean
+    flatno?: boolean
+    streetAddress?: boolean
+    NearbyLandMark?: boolean
+    areaLocality?: boolean
+    storeSize?: boolean
+    businessType?: boolean
+    country?: boolean
+    state?: boolean
+    city?: boolean
+    pin?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    bannerImageUrl?: boolean
+    priceInr?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    days?: boolean
+    sqft?: boolean
+    dayOrNight?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["communityStore"]>
+
+  export type CommunityStoreSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ownerId?: boolean
+    title?: boolean
+    desc?: boolean
+    peopleDesc?: boolean
+    flatno?: boolean
+    streetAddress?: boolean
+    NearbyLandMark?: boolean
+    areaLocality?: boolean
+    storeSize?: boolean
+    businessType?: boolean
+    country?: boolean
+    state?: boolean
+    city?: boolean
+    pin?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    bannerImageUrl?: boolean
+    priceInr?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    days?: boolean
+    sqft?: boolean
+    dayOrNight?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["communityStore"]>
+
+  export type CommunityStoreSelectScalar = {
+    id?: boolean
+    ownerId?: boolean
+    title?: boolean
+    desc?: boolean
+    peopleDesc?: boolean
+    flatno?: boolean
+    streetAddress?: boolean
+    NearbyLandMark?: boolean
+    areaLocality?: boolean
+    storeSize?: boolean
+    businessType?: boolean
+    country?: boolean
+    state?: boolean
+    city?: boolean
+    pin?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    bannerImageUrl?: boolean
+    priceInr?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    days?: boolean
+    sqft?: boolean
+    dayOrNight?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CommunityStoreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "title" | "desc" | "peopleDesc" | "flatno" | "streetAddress" | "NearbyLandMark" | "areaLocality" | "storeSize" | "businessType" | "country" | "state" | "city" | "pin" | "latitude" | "longitude" | "bannerImageUrl" | "priceInr" | "startTime" | "endTime" | "days" | "sqft" | "dayOrNight" | "createdAt" | "updatedAt", ExtArgs["result"]["communityStore"]>
+  export type CommunityStoreInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    images?: boolean | CommunityStore$imagesArgs<ExtArgs>
+    _count?: boolean | CommunityStoreCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CommunityStoreIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CommunityStoreIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $CommunityStorePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CommunityStore"
+    objects: {
+      images: Prisma.$CommunityImagePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      ownerId: string
+      title: string
+      desc: string
+      peopleDesc: string
+      flatno: string
+      streetAddress: string
+      NearbyLandMark: string
+      areaLocality: string
+      storeSize: string
+      businessType: string
+      country: string
+      state: string
+      city: string
+      pin: string
+      latitude: number | null
+      longitude: number | null
+      bannerImageUrl: string | null
+      priceInr: number
+      startTime: string | null
+      endTime: string | null
+      days: string[]
+      sqft: number | null
+      dayOrNight: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["communityStore"]>
+    composites: {}
+  }
+
+  type CommunityStoreGetPayload<S extends boolean | null | undefined | CommunityStoreDefaultArgs> = $Result.GetResult<Prisma.$CommunityStorePayload, S>
+
+  type CommunityStoreCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CommunityStoreFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CommunityStoreCountAggregateInputType | true
+    }
+
+  export interface CommunityStoreDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CommunityStore'], meta: { name: 'CommunityStore' } }
+    /**
+     * Find zero or one CommunityStore that matches the filter.
+     * @param {CommunityStoreFindUniqueArgs} args - Arguments to find a CommunityStore
+     * @example
+     * // Get one CommunityStore
+     * const communityStore = await prisma.communityStore.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CommunityStoreFindUniqueArgs>(args: SelectSubset<T, CommunityStoreFindUniqueArgs<ExtArgs>>): Prisma__CommunityStoreClient<$Result.GetResult<Prisma.$CommunityStorePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CommunityStore that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CommunityStoreFindUniqueOrThrowArgs} args - Arguments to find a CommunityStore
+     * @example
+     * // Get one CommunityStore
+     * const communityStore = await prisma.communityStore.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CommunityStoreFindUniqueOrThrowArgs>(args: SelectSubset<T, CommunityStoreFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CommunityStoreClient<$Result.GetResult<Prisma.$CommunityStorePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CommunityStore that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunityStoreFindFirstArgs} args - Arguments to find a CommunityStore
+     * @example
+     * // Get one CommunityStore
+     * const communityStore = await prisma.communityStore.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CommunityStoreFindFirstArgs>(args?: SelectSubset<T, CommunityStoreFindFirstArgs<ExtArgs>>): Prisma__CommunityStoreClient<$Result.GetResult<Prisma.$CommunityStorePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CommunityStore that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunityStoreFindFirstOrThrowArgs} args - Arguments to find a CommunityStore
+     * @example
+     * // Get one CommunityStore
+     * const communityStore = await prisma.communityStore.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CommunityStoreFindFirstOrThrowArgs>(args?: SelectSubset<T, CommunityStoreFindFirstOrThrowArgs<ExtArgs>>): Prisma__CommunityStoreClient<$Result.GetResult<Prisma.$CommunityStorePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CommunityStores that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunityStoreFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CommunityStores
+     * const communityStores = await prisma.communityStore.findMany()
+     * 
+     * // Get first 10 CommunityStores
+     * const communityStores = await prisma.communityStore.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const communityStoreWithIdOnly = await prisma.communityStore.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CommunityStoreFindManyArgs>(args?: SelectSubset<T, CommunityStoreFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommunityStorePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CommunityStore.
+     * @param {CommunityStoreCreateArgs} args - Arguments to create a CommunityStore.
+     * @example
+     * // Create one CommunityStore
+     * const CommunityStore = await prisma.communityStore.create({
+     *   data: {
+     *     // ... data to create a CommunityStore
+     *   }
+     * })
+     * 
+     */
+    create<T extends CommunityStoreCreateArgs>(args: SelectSubset<T, CommunityStoreCreateArgs<ExtArgs>>): Prisma__CommunityStoreClient<$Result.GetResult<Prisma.$CommunityStorePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CommunityStores.
+     * @param {CommunityStoreCreateManyArgs} args - Arguments to create many CommunityStores.
+     * @example
+     * // Create many CommunityStores
+     * const communityStore = await prisma.communityStore.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CommunityStoreCreateManyArgs>(args?: SelectSubset<T, CommunityStoreCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CommunityStores and returns the data saved in the database.
+     * @param {CommunityStoreCreateManyAndReturnArgs} args - Arguments to create many CommunityStores.
+     * @example
+     * // Create many CommunityStores
+     * const communityStore = await prisma.communityStore.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CommunityStores and only return the `id`
+     * const communityStoreWithIdOnly = await prisma.communityStore.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CommunityStoreCreateManyAndReturnArgs>(args?: SelectSubset<T, CommunityStoreCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommunityStorePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CommunityStore.
+     * @param {CommunityStoreDeleteArgs} args - Arguments to delete one CommunityStore.
+     * @example
+     * // Delete one CommunityStore
+     * const CommunityStore = await prisma.communityStore.delete({
+     *   where: {
+     *     // ... filter to delete one CommunityStore
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CommunityStoreDeleteArgs>(args: SelectSubset<T, CommunityStoreDeleteArgs<ExtArgs>>): Prisma__CommunityStoreClient<$Result.GetResult<Prisma.$CommunityStorePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CommunityStore.
+     * @param {CommunityStoreUpdateArgs} args - Arguments to update one CommunityStore.
+     * @example
+     * // Update one CommunityStore
+     * const communityStore = await prisma.communityStore.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CommunityStoreUpdateArgs>(args: SelectSubset<T, CommunityStoreUpdateArgs<ExtArgs>>): Prisma__CommunityStoreClient<$Result.GetResult<Prisma.$CommunityStorePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CommunityStores.
+     * @param {CommunityStoreDeleteManyArgs} args - Arguments to filter CommunityStores to delete.
+     * @example
+     * // Delete a few CommunityStores
+     * const { count } = await prisma.communityStore.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CommunityStoreDeleteManyArgs>(args?: SelectSubset<T, CommunityStoreDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CommunityStores.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunityStoreUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CommunityStores
+     * const communityStore = await prisma.communityStore.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CommunityStoreUpdateManyArgs>(args: SelectSubset<T, CommunityStoreUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CommunityStores and returns the data updated in the database.
+     * @param {CommunityStoreUpdateManyAndReturnArgs} args - Arguments to update many CommunityStores.
+     * @example
+     * // Update many CommunityStores
+     * const communityStore = await prisma.communityStore.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CommunityStores and only return the `id`
+     * const communityStoreWithIdOnly = await prisma.communityStore.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CommunityStoreUpdateManyAndReturnArgs>(args: SelectSubset<T, CommunityStoreUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommunityStorePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CommunityStore.
+     * @param {CommunityStoreUpsertArgs} args - Arguments to update or create a CommunityStore.
+     * @example
+     * // Update or create a CommunityStore
+     * const communityStore = await prisma.communityStore.upsert({
+     *   create: {
+     *     // ... data to create a CommunityStore
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CommunityStore we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CommunityStoreUpsertArgs>(args: SelectSubset<T, CommunityStoreUpsertArgs<ExtArgs>>): Prisma__CommunityStoreClient<$Result.GetResult<Prisma.$CommunityStorePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CommunityStores.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunityStoreCountArgs} args - Arguments to filter CommunityStores to count.
+     * @example
+     * // Count the number of CommunityStores
+     * const count = await prisma.communityStore.count({
+     *   where: {
+     *     // ... the filter for the CommunityStores we want to count
+     *   }
+     * })
+    **/
+    count<T extends CommunityStoreCountArgs>(
+      args?: Subset<T, CommunityStoreCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CommunityStoreCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CommunityStore.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunityStoreAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CommunityStoreAggregateArgs>(args: Subset<T, CommunityStoreAggregateArgs>): Prisma.PrismaPromise<GetCommunityStoreAggregateType<T>>
+
+    /**
+     * Group by CommunityStore.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunityStoreGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CommunityStoreGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CommunityStoreGroupByArgs['orderBy'] }
+        : { orderBy?: CommunityStoreGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CommunityStoreGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommunityStoreGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CommunityStore model
+   */
+  readonly fields: CommunityStoreFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CommunityStore.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CommunityStoreClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    images<T extends CommunityStore$imagesArgs<ExtArgs> = {}>(args?: Subset<T, CommunityStore$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommunityImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CommunityStore model
+   */
+  interface CommunityStoreFieldRefs {
+    readonly id: FieldRef<"CommunityStore", 'String'>
+    readonly ownerId: FieldRef<"CommunityStore", 'String'>
+    readonly title: FieldRef<"CommunityStore", 'String'>
+    readonly desc: FieldRef<"CommunityStore", 'String'>
+    readonly peopleDesc: FieldRef<"CommunityStore", 'String'>
+    readonly flatno: FieldRef<"CommunityStore", 'String'>
+    readonly streetAddress: FieldRef<"CommunityStore", 'String'>
+    readonly NearbyLandMark: FieldRef<"CommunityStore", 'String'>
+    readonly areaLocality: FieldRef<"CommunityStore", 'String'>
+    readonly storeSize: FieldRef<"CommunityStore", 'String'>
+    readonly businessType: FieldRef<"CommunityStore", 'String'>
+    readonly country: FieldRef<"CommunityStore", 'String'>
+    readonly state: FieldRef<"CommunityStore", 'String'>
+    readonly city: FieldRef<"CommunityStore", 'String'>
+    readonly pin: FieldRef<"CommunityStore", 'String'>
+    readonly latitude: FieldRef<"CommunityStore", 'Float'>
+    readonly longitude: FieldRef<"CommunityStore", 'Float'>
+    readonly bannerImageUrl: FieldRef<"CommunityStore", 'String'>
+    readonly priceInr: FieldRef<"CommunityStore", 'Int'>
+    readonly startTime: FieldRef<"CommunityStore", 'String'>
+    readonly endTime: FieldRef<"CommunityStore", 'String'>
+    readonly days: FieldRef<"CommunityStore", 'String[]'>
+    readonly sqft: FieldRef<"CommunityStore", 'Int'>
+    readonly dayOrNight: FieldRef<"CommunityStore", 'String'>
+    readonly createdAt: FieldRef<"CommunityStore", 'DateTime'>
+    readonly updatedAt: FieldRef<"CommunityStore", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CommunityStore findUnique
+   */
+  export type CommunityStoreFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityStore
+     */
+    select?: CommunityStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityStore
+     */
+    omit?: CommunityStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which CommunityStore to fetch.
+     */
+    where: CommunityStoreWhereUniqueInput
+  }
+
+  /**
+   * CommunityStore findUniqueOrThrow
+   */
+  export type CommunityStoreFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityStore
+     */
+    select?: CommunityStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityStore
+     */
+    omit?: CommunityStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which CommunityStore to fetch.
+     */
+    where: CommunityStoreWhereUniqueInput
+  }
+
+  /**
+   * CommunityStore findFirst
+   */
+  export type CommunityStoreFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityStore
+     */
+    select?: CommunityStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityStore
+     */
+    omit?: CommunityStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which CommunityStore to fetch.
+     */
+    where?: CommunityStoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommunityStores to fetch.
+     */
+    orderBy?: CommunityStoreOrderByWithRelationInput | CommunityStoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CommunityStores.
+     */
+    cursor?: CommunityStoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommunityStores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommunityStores.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CommunityStores.
+     */
+    distinct?: CommunityStoreScalarFieldEnum | CommunityStoreScalarFieldEnum[]
+  }
+
+  /**
+   * CommunityStore findFirstOrThrow
+   */
+  export type CommunityStoreFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityStore
+     */
+    select?: CommunityStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityStore
+     */
+    omit?: CommunityStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which CommunityStore to fetch.
+     */
+    where?: CommunityStoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommunityStores to fetch.
+     */
+    orderBy?: CommunityStoreOrderByWithRelationInput | CommunityStoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CommunityStores.
+     */
+    cursor?: CommunityStoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommunityStores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommunityStores.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CommunityStores.
+     */
+    distinct?: CommunityStoreScalarFieldEnum | CommunityStoreScalarFieldEnum[]
+  }
+
+  /**
+   * CommunityStore findMany
+   */
+  export type CommunityStoreFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityStore
+     */
+    select?: CommunityStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityStore
+     */
+    omit?: CommunityStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which CommunityStores to fetch.
+     */
+    where?: CommunityStoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommunityStores to fetch.
+     */
+    orderBy?: CommunityStoreOrderByWithRelationInput | CommunityStoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CommunityStores.
+     */
+    cursor?: CommunityStoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommunityStores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommunityStores.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CommunityStores.
+     */
+    distinct?: CommunityStoreScalarFieldEnum | CommunityStoreScalarFieldEnum[]
+  }
+
+  /**
+   * CommunityStore create
+   */
+  export type CommunityStoreCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityStore
+     */
+    select?: CommunityStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityStore
+     */
+    omit?: CommunityStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityStoreInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CommunityStore.
+     */
+    data: XOR<CommunityStoreCreateInput, CommunityStoreUncheckedCreateInput>
+  }
+
+  /**
+   * CommunityStore createMany
+   */
+  export type CommunityStoreCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CommunityStores.
+     */
+    data: CommunityStoreCreateManyInput | CommunityStoreCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CommunityStore createManyAndReturn
+   */
+  export type CommunityStoreCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityStore
+     */
+    select?: CommunityStoreSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityStore
+     */
+    omit?: CommunityStoreOmit<ExtArgs> | null
+    /**
+     * The data used to create many CommunityStores.
+     */
+    data: CommunityStoreCreateManyInput | CommunityStoreCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CommunityStore update
+   */
+  export type CommunityStoreUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityStore
+     */
+    select?: CommunityStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityStore
+     */
+    omit?: CommunityStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityStoreInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CommunityStore.
+     */
+    data: XOR<CommunityStoreUpdateInput, CommunityStoreUncheckedUpdateInput>
+    /**
+     * Choose, which CommunityStore to update.
+     */
+    where: CommunityStoreWhereUniqueInput
+  }
+
+  /**
+   * CommunityStore updateMany
+   */
+  export type CommunityStoreUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CommunityStores.
+     */
+    data: XOR<CommunityStoreUpdateManyMutationInput, CommunityStoreUncheckedUpdateManyInput>
+    /**
+     * Filter which CommunityStores to update
+     */
+    where?: CommunityStoreWhereInput
+    /**
+     * Limit how many CommunityStores to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CommunityStore updateManyAndReturn
+   */
+  export type CommunityStoreUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityStore
+     */
+    select?: CommunityStoreSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityStore
+     */
+    omit?: CommunityStoreOmit<ExtArgs> | null
+    /**
+     * The data used to update CommunityStores.
+     */
+    data: XOR<CommunityStoreUpdateManyMutationInput, CommunityStoreUncheckedUpdateManyInput>
+    /**
+     * Filter which CommunityStores to update
+     */
+    where?: CommunityStoreWhereInput
+    /**
+     * Limit how many CommunityStores to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CommunityStore upsert
+   */
+  export type CommunityStoreUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityStore
+     */
+    select?: CommunityStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityStore
+     */
+    omit?: CommunityStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityStoreInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CommunityStore to update in case it exists.
+     */
+    where: CommunityStoreWhereUniqueInput
+    /**
+     * In case the CommunityStore found by the `where` argument doesn't exist, create a new CommunityStore with this data.
+     */
+    create: XOR<CommunityStoreCreateInput, CommunityStoreUncheckedCreateInput>
+    /**
+     * In case the CommunityStore was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CommunityStoreUpdateInput, CommunityStoreUncheckedUpdateInput>
+  }
+
+  /**
+   * CommunityStore delete
+   */
+  export type CommunityStoreDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityStore
+     */
+    select?: CommunityStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityStore
+     */
+    omit?: CommunityStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityStoreInclude<ExtArgs> | null
+    /**
+     * Filter which CommunityStore to delete.
+     */
+    where: CommunityStoreWhereUniqueInput
+  }
+
+  /**
+   * CommunityStore deleteMany
+   */
+  export type CommunityStoreDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CommunityStores to delete
+     */
+    where?: CommunityStoreWhereInput
+    /**
+     * Limit how many CommunityStores to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CommunityStore.images
+   */
+  export type CommunityStore$imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityImage
+     */
+    select?: CommunityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityImage
+     */
+    omit?: CommunityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityImageInclude<ExtArgs> | null
+    where?: CommunityImageWhereInput
+    orderBy?: CommunityImageOrderByWithRelationInput | CommunityImageOrderByWithRelationInput[]
+    cursor?: CommunityImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CommunityImageScalarFieldEnum | CommunityImageScalarFieldEnum[]
+  }
+
+  /**
+   * CommunityStore without action
+   */
+  export type CommunityStoreDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityStore
+     */
+    select?: CommunityStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityStore
+     */
+    omit?: CommunityStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityStoreInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CommunityImage
+   */
+
+  export type AggregateCommunityImage = {
+    _count: CommunityImageCountAggregateOutputType | null
+    _avg: CommunityImageAvgAggregateOutputType | null
+    _sum: CommunityImageSumAggregateOutputType | null
+    _min: CommunityImageMinAggregateOutputType | null
+    _max: CommunityImageMaxAggregateOutputType | null
+  }
+
+  export type CommunityImageAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type CommunityImageSumAggregateOutputType = {
+    order: number | null
+  }
+
+  export type CommunityImageMinAggregateOutputType = {
+    id: string | null
+    storeId: string | null
+    url: string | null
+    order: number | null
+    createdAt: Date | null
+  }
+
+  export type CommunityImageMaxAggregateOutputType = {
+    id: string | null
+    storeId: string | null
+    url: string | null
+    order: number | null
+    createdAt: Date | null
+  }
+
+  export type CommunityImageCountAggregateOutputType = {
+    id: number
+    storeId: number
+    url: number
+    order: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type CommunityImageAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type CommunityImageSumAggregateInputType = {
+    order?: true
+  }
+
+  export type CommunityImageMinAggregateInputType = {
+    id?: true
+    storeId?: true
+    url?: true
+    order?: true
+    createdAt?: true
+  }
+
+  export type CommunityImageMaxAggregateInputType = {
+    id?: true
+    storeId?: true
+    url?: true
+    order?: true
+    createdAt?: true
+  }
+
+  export type CommunityImageCountAggregateInputType = {
+    id?: true
+    storeId?: true
+    url?: true
+    order?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type CommunityImageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CommunityImage to aggregate.
+     */
+    where?: CommunityImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommunityImages to fetch.
+     */
+    orderBy?: CommunityImageOrderByWithRelationInput | CommunityImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CommunityImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommunityImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommunityImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CommunityImages
+    **/
+    _count?: true | CommunityImageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CommunityImageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CommunityImageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CommunityImageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CommunityImageMaxAggregateInputType
+  }
+
+  export type GetCommunityImageAggregateType<T extends CommunityImageAggregateArgs> = {
+        [P in keyof T & keyof AggregateCommunityImage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCommunityImage[P]>
+      : GetScalarType<T[P], AggregateCommunityImage[P]>
+  }
+
+
+
+
+  export type CommunityImageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommunityImageWhereInput
+    orderBy?: CommunityImageOrderByWithAggregationInput | CommunityImageOrderByWithAggregationInput[]
+    by: CommunityImageScalarFieldEnum[] | CommunityImageScalarFieldEnum
+    having?: CommunityImageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CommunityImageCountAggregateInputType | true
+    _avg?: CommunityImageAvgAggregateInputType
+    _sum?: CommunityImageSumAggregateInputType
+    _min?: CommunityImageMinAggregateInputType
+    _max?: CommunityImageMaxAggregateInputType
+  }
+
+  export type CommunityImageGroupByOutputType = {
+    id: string
+    storeId: string
+    url: string
+    order: number
+    createdAt: Date
+    _count: CommunityImageCountAggregateOutputType | null
+    _avg: CommunityImageAvgAggregateOutputType | null
+    _sum: CommunityImageSumAggregateOutputType | null
+    _min: CommunityImageMinAggregateOutputType | null
+    _max: CommunityImageMaxAggregateOutputType | null
+  }
+
+  type GetCommunityImageGroupByPayload<T extends CommunityImageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CommunityImageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CommunityImageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CommunityImageGroupByOutputType[P]>
+            : GetScalarType<T[P], CommunityImageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CommunityImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    storeId?: boolean
+    url?: boolean
+    order?: boolean
+    createdAt?: boolean
+    communitystore?: boolean | CommunityStoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["communityImage"]>
+
+  export type CommunityImageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    storeId?: boolean
+    url?: boolean
+    order?: boolean
+    createdAt?: boolean
+    communitystore?: boolean | CommunityStoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["communityImage"]>
+
+  export type CommunityImageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    storeId?: boolean
+    url?: boolean
+    order?: boolean
+    createdAt?: boolean
+    communitystore?: boolean | CommunityStoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["communityImage"]>
+
+  export type CommunityImageSelectScalar = {
+    id?: boolean
+    storeId?: boolean
+    url?: boolean
+    order?: boolean
+    createdAt?: boolean
+  }
+
+  export type CommunityImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "storeId" | "url" | "order" | "createdAt", ExtArgs["result"]["communityImage"]>
+  export type CommunityImageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    communitystore?: boolean | CommunityStoreDefaultArgs<ExtArgs>
+  }
+  export type CommunityImageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    communitystore?: boolean | CommunityStoreDefaultArgs<ExtArgs>
+  }
+  export type CommunityImageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    communitystore?: boolean | CommunityStoreDefaultArgs<ExtArgs>
+  }
+
+  export type $CommunityImagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CommunityImage"
+    objects: {
+      communitystore: Prisma.$CommunityStorePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      storeId: string
+      url: string
+      order: number
+      createdAt: Date
+    }, ExtArgs["result"]["communityImage"]>
+    composites: {}
+  }
+
+  type CommunityImageGetPayload<S extends boolean | null | undefined | CommunityImageDefaultArgs> = $Result.GetResult<Prisma.$CommunityImagePayload, S>
+
+  type CommunityImageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CommunityImageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CommunityImageCountAggregateInputType | true
+    }
+
+  export interface CommunityImageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CommunityImage'], meta: { name: 'CommunityImage' } }
+    /**
+     * Find zero or one CommunityImage that matches the filter.
+     * @param {CommunityImageFindUniqueArgs} args - Arguments to find a CommunityImage
+     * @example
+     * // Get one CommunityImage
+     * const communityImage = await prisma.communityImage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CommunityImageFindUniqueArgs>(args: SelectSubset<T, CommunityImageFindUniqueArgs<ExtArgs>>): Prisma__CommunityImageClient<$Result.GetResult<Prisma.$CommunityImagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CommunityImage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CommunityImageFindUniqueOrThrowArgs} args - Arguments to find a CommunityImage
+     * @example
+     * // Get one CommunityImage
+     * const communityImage = await prisma.communityImage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CommunityImageFindUniqueOrThrowArgs>(args: SelectSubset<T, CommunityImageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CommunityImageClient<$Result.GetResult<Prisma.$CommunityImagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CommunityImage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunityImageFindFirstArgs} args - Arguments to find a CommunityImage
+     * @example
+     * // Get one CommunityImage
+     * const communityImage = await prisma.communityImage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CommunityImageFindFirstArgs>(args?: SelectSubset<T, CommunityImageFindFirstArgs<ExtArgs>>): Prisma__CommunityImageClient<$Result.GetResult<Prisma.$CommunityImagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CommunityImage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunityImageFindFirstOrThrowArgs} args - Arguments to find a CommunityImage
+     * @example
+     * // Get one CommunityImage
+     * const communityImage = await prisma.communityImage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CommunityImageFindFirstOrThrowArgs>(args?: SelectSubset<T, CommunityImageFindFirstOrThrowArgs<ExtArgs>>): Prisma__CommunityImageClient<$Result.GetResult<Prisma.$CommunityImagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CommunityImages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunityImageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CommunityImages
+     * const communityImages = await prisma.communityImage.findMany()
+     * 
+     * // Get first 10 CommunityImages
+     * const communityImages = await prisma.communityImage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const communityImageWithIdOnly = await prisma.communityImage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CommunityImageFindManyArgs>(args?: SelectSubset<T, CommunityImageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommunityImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CommunityImage.
+     * @param {CommunityImageCreateArgs} args - Arguments to create a CommunityImage.
+     * @example
+     * // Create one CommunityImage
+     * const CommunityImage = await prisma.communityImage.create({
+     *   data: {
+     *     // ... data to create a CommunityImage
+     *   }
+     * })
+     * 
+     */
+    create<T extends CommunityImageCreateArgs>(args: SelectSubset<T, CommunityImageCreateArgs<ExtArgs>>): Prisma__CommunityImageClient<$Result.GetResult<Prisma.$CommunityImagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CommunityImages.
+     * @param {CommunityImageCreateManyArgs} args - Arguments to create many CommunityImages.
+     * @example
+     * // Create many CommunityImages
+     * const communityImage = await prisma.communityImage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CommunityImageCreateManyArgs>(args?: SelectSubset<T, CommunityImageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CommunityImages and returns the data saved in the database.
+     * @param {CommunityImageCreateManyAndReturnArgs} args - Arguments to create many CommunityImages.
+     * @example
+     * // Create many CommunityImages
+     * const communityImage = await prisma.communityImage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CommunityImages and only return the `id`
+     * const communityImageWithIdOnly = await prisma.communityImage.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CommunityImageCreateManyAndReturnArgs>(args?: SelectSubset<T, CommunityImageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommunityImagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CommunityImage.
+     * @param {CommunityImageDeleteArgs} args - Arguments to delete one CommunityImage.
+     * @example
+     * // Delete one CommunityImage
+     * const CommunityImage = await prisma.communityImage.delete({
+     *   where: {
+     *     // ... filter to delete one CommunityImage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CommunityImageDeleteArgs>(args: SelectSubset<T, CommunityImageDeleteArgs<ExtArgs>>): Prisma__CommunityImageClient<$Result.GetResult<Prisma.$CommunityImagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CommunityImage.
+     * @param {CommunityImageUpdateArgs} args - Arguments to update one CommunityImage.
+     * @example
+     * // Update one CommunityImage
+     * const communityImage = await prisma.communityImage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CommunityImageUpdateArgs>(args: SelectSubset<T, CommunityImageUpdateArgs<ExtArgs>>): Prisma__CommunityImageClient<$Result.GetResult<Prisma.$CommunityImagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CommunityImages.
+     * @param {CommunityImageDeleteManyArgs} args - Arguments to filter CommunityImages to delete.
+     * @example
+     * // Delete a few CommunityImages
+     * const { count } = await prisma.communityImage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CommunityImageDeleteManyArgs>(args?: SelectSubset<T, CommunityImageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CommunityImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunityImageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CommunityImages
+     * const communityImage = await prisma.communityImage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CommunityImageUpdateManyArgs>(args: SelectSubset<T, CommunityImageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CommunityImages and returns the data updated in the database.
+     * @param {CommunityImageUpdateManyAndReturnArgs} args - Arguments to update many CommunityImages.
+     * @example
+     * // Update many CommunityImages
+     * const communityImage = await prisma.communityImage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CommunityImages and only return the `id`
+     * const communityImageWithIdOnly = await prisma.communityImage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CommunityImageUpdateManyAndReturnArgs>(args: SelectSubset<T, CommunityImageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommunityImagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CommunityImage.
+     * @param {CommunityImageUpsertArgs} args - Arguments to update or create a CommunityImage.
+     * @example
+     * // Update or create a CommunityImage
+     * const communityImage = await prisma.communityImage.upsert({
+     *   create: {
+     *     // ... data to create a CommunityImage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CommunityImage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CommunityImageUpsertArgs>(args: SelectSubset<T, CommunityImageUpsertArgs<ExtArgs>>): Prisma__CommunityImageClient<$Result.GetResult<Prisma.$CommunityImagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CommunityImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunityImageCountArgs} args - Arguments to filter CommunityImages to count.
+     * @example
+     * // Count the number of CommunityImages
+     * const count = await prisma.communityImage.count({
+     *   where: {
+     *     // ... the filter for the CommunityImages we want to count
+     *   }
+     * })
+    **/
+    count<T extends CommunityImageCountArgs>(
+      args?: Subset<T, CommunityImageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CommunityImageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CommunityImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunityImageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CommunityImageAggregateArgs>(args: Subset<T, CommunityImageAggregateArgs>): Prisma.PrismaPromise<GetCommunityImageAggregateType<T>>
+
+    /**
+     * Group by CommunityImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunityImageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CommunityImageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CommunityImageGroupByArgs['orderBy'] }
+        : { orderBy?: CommunityImageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CommunityImageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommunityImageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CommunityImage model
+   */
+  readonly fields: CommunityImageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CommunityImage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CommunityImageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    communitystore<T extends CommunityStoreDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CommunityStoreDefaultArgs<ExtArgs>>): Prisma__CommunityStoreClient<$Result.GetResult<Prisma.$CommunityStorePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CommunityImage model
+   */
+  interface CommunityImageFieldRefs {
+    readonly id: FieldRef<"CommunityImage", 'String'>
+    readonly storeId: FieldRef<"CommunityImage", 'String'>
+    readonly url: FieldRef<"CommunityImage", 'String'>
+    readonly order: FieldRef<"CommunityImage", 'Int'>
+    readonly createdAt: FieldRef<"CommunityImage", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CommunityImage findUnique
+   */
+  export type CommunityImageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityImage
+     */
+    select?: CommunityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityImage
+     */
+    omit?: CommunityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityImageInclude<ExtArgs> | null
+    /**
+     * Filter, which CommunityImage to fetch.
+     */
+    where: CommunityImageWhereUniqueInput
+  }
+
+  /**
+   * CommunityImage findUniqueOrThrow
+   */
+  export type CommunityImageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityImage
+     */
+    select?: CommunityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityImage
+     */
+    omit?: CommunityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityImageInclude<ExtArgs> | null
+    /**
+     * Filter, which CommunityImage to fetch.
+     */
+    where: CommunityImageWhereUniqueInput
+  }
+
+  /**
+   * CommunityImage findFirst
+   */
+  export type CommunityImageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityImage
+     */
+    select?: CommunityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityImage
+     */
+    omit?: CommunityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityImageInclude<ExtArgs> | null
+    /**
+     * Filter, which CommunityImage to fetch.
+     */
+    where?: CommunityImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommunityImages to fetch.
+     */
+    orderBy?: CommunityImageOrderByWithRelationInput | CommunityImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CommunityImages.
+     */
+    cursor?: CommunityImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommunityImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommunityImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CommunityImages.
+     */
+    distinct?: CommunityImageScalarFieldEnum | CommunityImageScalarFieldEnum[]
+  }
+
+  /**
+   * CommunityImage findFirstOrThrow
+   */
+  export type CommunityImageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityImage
+     */
+    select?: CommunityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityImage
+     */
+    omit?: CommunityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityImageInclude<ExtArgs> | null
+    /**
+     * Filter, which CommunityImage to fetch.
+     */
+    where?: CommunityImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommunityImages to fetch.
+     */
+    orderBy?: CommunityImageOrderByWithRelationInput | CommunityImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CommunityImages.
+     */
+    cursor?: CommunityImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommunityImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommunityImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CommunityImages.
+     */
+    distinct?: CommunityImageScalarFieldEnum | CommunityImageScalarFieldEnum[]
+  }
+
+  /**
+   * CommunityImage findMany
+   */
+  export type CommunityImageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityImage
+     */
+    select?: CommunityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityImage
+     */
+    omit?: CommunityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityImageInclude<ExtArgs> | null
+    /**
+     * Filter, which CommunityImages to fetch.
+     */
+    where?: CommunityImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommunityImages to fetch.
+     */
+    orderBy?: CommunityImageOrderByWithRelationInput | CommunityImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CommunityImages.
+     */
+    cursor?: CommunityImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommunityImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommunityImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CommunityImages.
+     */
+    distinct?: CommunityImageScalarFieldEnum | CommunityImageScalarFieldEnum[]
+  }
+
+  /**
+   * CommunityImage create
+   */
+  export type CommunityImageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityImage
+     */
+    select?: CommunityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityImage
+     */
+    omit?: CommunityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityImageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CommunityImage.
+     */
+    data: XOR<CommunityImageCreateInput, CommunityImageUncheckedCreateInput>
+  }
+
+  /**
+   * CommunityImage createMany
+   */
+  export type CommunityImageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CommunityImages.
+     */
+    data: CommunityImageCreateManyInput | CommunityImageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CommunityImage createManyAndReturn
+   */
+  export type CommunityImageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityImage
+     */
+    select?: CommunityImageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityImage
+     */
+    omit?: CommunityImageOmit<ExtArgs> | null
+    /**
+     * The data used to create many CommunityImages.
+     */
+    data: CommunityImageCreateManyInput | CommunityImageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityImageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CommunityImage update
+   */
+  export type CommunityImageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityImage
+     */
+    select?: CommunityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityImage
+     */
+    omit?: CommunityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityImageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CommunityImage.
+     */
+    data: XOR<CommunityImageUpdateInput, CommunityImageUncheckedUpdateInput>
+    /**
+     * Choose, which CommunityImage to update.
+     */
+    where: CommunityImageWhereUniqueInput
+  }
+
+  /**
+   * CommunityImage updateMany
+   */
+  export type CommunityImageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CommunityImages.
+     */
+    data: XOR<CommunityImageUpdateManyMutationInput, CommunityImageUncheckedUpdateManyInput>
+    /**
+     * Filter which CommunityImages to update
+     */
+    where?: CommunityImageWhereInput
+    /**
+     * Limit how many CommunityImages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CommunityImage updateManyAndReturn
+   */
+  export type CommunityImageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityImage
+     */
+    select?: CommunityImageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityImage
+     */
+    omit?: CommunityImageOmit<ExtArgs> | null
+    /**
+     * The data used to update CommunityImages.
+     */
+    data: XOR<CommunityImageUpdateManyMutationInput, CommunityImageUncheckedUpdateManyInput>
+    /**
+     * Filter which CommunityImages to update
+     */
+    where?: CommunityImageWhereInput
+    /**
+     * Limit how many CommunityImages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityImageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CommunityImage upsert
+   */
+  export type CommunityImageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityImage
+     */
+    select?: CommunityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityImage
+     */
+    omit?: CommunityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityImageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CommunityImage to update in case it exists.
+     */
+    where: CommunityImageWhereUniqueInput
+    /**
+     * In case the CommunityImage found by the `where` argument doesn't exist, create a new CommunityImage with this data.
+     */
+    create: XOR<CommunityImageCreateInput, CommunityImageUncheckedCreateInput>
+    /**
+     * In case the CommunityImage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CommunityImageUpdateInput, CommunityImageUncheckedUpdateInput>
+  }
+
+  /**
+   * CommunityImage delete
+   */
+  export type CommunityImageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityImage
+     */
+    select?: CommunityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityImage
+     */
+    omit?: CommunityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityImageInclude<ExtArgs> | null
+    /**
+     * Filter which CommunityImage to delete.
+     */
+    where: CommunityImageWhereUniqueInput
+  }
+
+  /**
+   * CommunityImage deleteMany
+   */
+  export type CommunityImageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CommunityImages to delete
+     */
+    where?: CommunityImageWhereInput
+    /**
+     * Limit how many CommunityImages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CommunityImage without action
+   */
+  export type CommunityImageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommunityImage
+     */
+    select?: CommunityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommunityImage
+     */
+    omit?: CommunityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunityImageInclude<ExtArgs> | null
   }
 
 
@@ -18147,6 +20847,49 @@ export namespace Prisma {
   export type StoreScalarFieldEnum = (typeof StoreScalarFieldEnum)[keyof typeof StoreScalarFieldEnum]
 
 
+  export const CommunityStoreScalarFieldEnum: {
+    id: 'id',
+    ownerId: 'ownerId',
+    title: 'title',
+    desc: 'desc',
+    peopleDesc: 'peopleDesc',
+    flatno: 'flatno',
+    streetAddress: 'streetAddress',
+    NearbyLandMark: 'NearbyLandMark',
+    areaLocality: 'areaLocality',
+    storeSize: 'storeSize',
+    businessType: 'businessType',
+    country: 'country',
+    state: 'state',
+    city: 'city',
+    pin: 'pin',
+    latitude: 'latitude',
+    longitude: 'longitude',
+    bannerImageUrl: 'bannerImageUrl',
+    priceInr: 'priceInr',
+    startTime: 'startTime',
+    endTime: 'endTime',
+    days: 'days',
+    sqft: 'sqft',
+    dayOrNight: 'dayOrNight',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CommunityStoreScalarFieldEnum = (typeof CommunityStoreScalarFieldEnum)[keyof typeof CommunityStoreScalarFieldEnum]
+
+
+  export const CommunityImageScalarFieldEnum: {
+    id: 'id',
+    storeId: 'storeId',
+    url: 'url',
+    order: 'order',
+    createdAt: 'createdAt'
+  };
+
+  export type CommunityImageScalarFieldEnum = (typeof CommunityImageScalarFieldEnum)[keyof typeof CommunityImageScalarFieldEnum]
+
+
   export const StoreImageScalarFieldEnum: {
     id: 'id',
     storeId: 'storeId',
@@ -18748,6 +21491,225 @@ export namespace Prisma {
     dayOrNight?: StringNullableWithAggregatesFilter<"Store"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Store"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Store"> | Date | string
+  }
+
+  export type CommunityStoreWhereInput = {
+    AND?: CommunityStoreWhereInput | CommunityStoreWhereInput[]
+    OR?: CommunityStoreWhereInput[]
+    NOT?: CommunityStoreWhereInput | CommunityStoreWhereInput[]
+    id?: StringFilter<"CommunityStore"> | string
+    ownerId?: StringFilter<"CommunityStore"> | string
+    title?: StringFilter<"CommunityStore"> | string
+    desc?: StringFilter<"CommunityStore"> | string
+    peopleDesc?: StringFilter<"CommunityStore"> | string
+    flatno?: StringFilter<"CommunityStore"> | string
+    streetAddress?: StringFilter<"CommunityStore"> | string
+    NearbyLandMark?: StringFilter<"CommunityStore"> | string
+    areaLocality?: StringFilter<"CommunityStore"> | string
+    storeSize?: StringFilter<"CommunityStore"> | string
+    businessType?: StringFilter<"CommunityStore"> | string
+    country?: StringFilter<"CommunityStore"> | string
+    state?: StringFilter<"CommunityStore"> | string
+    city?: StringFilter<"CommunityStore"> | string
+    pin?: StringFilter<"CommunityStore"> | string
+    latitude?: FloatNullableFilter<"CommunityStore"> | number | null
+    longitude?: FloatNullableFilter<"CommunityStore"> | number | null
+    bannerImageUrl?: StringNullableFilter<"CommunityStore"> | string | null
+    priceInr?: IntFilter<"CommunityStore"> | number
+    startTime?: StringNullableFilter<"CommunityStore"> | string | null
+    endTime?: StringNullableFilter<"CommunityStore"> | string | null
+    days?: StringNullableListFilter<"CommunityStore">
+    sqft?: IntNullableFilter<"CommunityStore"> | number | null
+    dayOrNight?: StringNullableFilter<"CommunityStore"> | string | null
+    createdAt?: DateTimeFilter<"CommunityStore"> | Date | string
+    updatedAt?: DateTimeFilter<"CommunityStore"> | Date | string
+    images?: CommunityImageListRelationFilter
+  }
+
+  export type CommunityStoreOrderByWithRelationInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    title?: SortOrder
+    desc?: SortOrder
+    peopleDesc?: SortOrder
+    flatno?: SortOrder
+    streetAddress?: SortOrder
+    NearbyLandMark?: SortOrder
+    areaLocality?: SortOrder
+    storeSize?: SortOrder
+    businessType?: SortOrder
+    country?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    pin?: SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
+    bannerImageUrl?: SortOrderInput | SortOrder
+    priceInr?: SortOrder
+    startTime?: SortOrderInput | SortOrder
+    endTime?: SortOrderInput | SortOrder
+    days?: SortOrder
+    sqft?: SortOrderInput | SortOrder
+    dayOrNight?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    images?: CommunityImageOrderByRelationAggregateInput
+  }
+
+  export type CommunityStoreWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CommunityStoreWhereInput | CommunityStoreWhereInput[]
+    OR?: CommunityStoreWhereInput[]
+    NOT?: CommunityStoreWhereInput | CommunityStoreWhereInput[]
+    ownerId?: StringFilter<"CommunityStore"> | string
+    title?: StringFilter<"CommunityStore"> | string
+    desc?: StringFilter<"CommunityStore"> | string
+    peopleDesc?: StringFilter<"CommunityStore"> | string
+    flatno?: StringFilter<"CommunityStore"> | string
+    streetAddress?: StringFilter<"CommunityStore"> | string
+    NearbyLandMark?: StringFilter<"CommunityStore"> | string
+    areaLocality?: StringFilter<"CommunityStore"> | string
+    storeSize?: StringFilter<"CommunityStore"> | string
+    businessType?: StringFilter<"CommunityStore"> | string
+    country?: StringFilter<"CommunityStore"> | string
+    state?: StringFilter<"CommunityStore"> | string
+    city?: StringFilter<"CommunityStore"> | string
+    pin?: StringFilter<"CommunityStore"> | string
+    latitude?: FloatNullableFilter<"CommunityStore"> | number | null
+    longitude?: FloatNullableFilter<"CommunityStore"> | number | null
+    bannerImageUrl?: StringNullableFilter<"CommunityStore"> | string | null
+    priceInr?: IntFilter<"CommunityStore"> | number
+    startTime?: StringNullableFilter<"CommunityStore"> | string | null
+    endTime?: StringNullableFilter<"CommunityStore"> | string | null
+    days?: StringNullableListFilter<"CommunityStore">
+    sqft?: IntNullableFilter<"CommunityStore"> | number | null
+    dayOrNight?: StringNullableFilter<"CommunityStore"> | string | null
+    createdAt?: DateTimeFilter<"CommunityStore"> | Date | string
+    updatedAt?: DateTimeFilter<"CommunityStore"> | Date | string
+    images?: CommunityImageListRelationFilter
+  }, "id">
+
+  export type CommunityStoreOrderByWithAggregationInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    title?: SortOrder
+    desc?: SortOrder
+    peopleDesc?: SortOrder
+    flatno?: SortOrder
+    streetAddress?: SortOrder
+    NearbyLandMark?: SortOrder
+    areaLocality?: SortOrder
+    storeSize?: SortOrder
+    businessType?: SortOrder
+    country?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    pin?: SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
+    bannerImageUrl?: SortOrderInput | SortOrder
+    priceInr?: SortOrder
+    startTime?: SortOrderInput | SortOrder
+    endTime?: SortOrderInput | SortOrder
+    days?: SortOrder
+    sqft?: SortOrderInput | SortOrder
+    dayOrNight?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CommunityStoreCountOrderByAggregateInput
+    _avg?: CommunityStoreAvgOrderByAggregateInput
+    _max?: CommunityStoreMaxOrderByAggregateInput
+    _min?: CommunityStoreMinOrderByAggregateInput
+    _sum?: CommunityStoreSumOrderByAggregateInput
+  }
+
+  export type CommunityStoreScalarWhereWithAggregatesInput = {
+    AND?: CommunityStoreScalarWhereWithAggregatesInput | CommunityStoreScalarWhereWithAggregatesInput[]
+    OR?: CommunityStoreScalarWhereWithAggregatesInput[]
+    NOT?: CommunityStoreScalarWhereWithAggregatesInput | CommunityStoreScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CommunityStore"> | string
+    ownerId?: StringWithAggregatesFilter<"CommunityStore"> | string
+    title?: StringWithAggregatesFilter<"CommunityStore"> | string
+    desc?: StringWithAggregatesFilter<"CommunityStore"> | string
+    peopleDesc?: StringWithAggregatesFilter<"CommunityStore"> | string
+    flatno?: StringWithAggregatesFilter<"CommunityStore"> | string
+    streetAddress?: StringWithAggregatesFilter<"CommunityStore"> | string
+    NearbyLandMark?: StringWithAggregatesFilter<"CommunityStore"> | string
+    areaLocality?: StringWithAggregatesFilter<"CommunityStore"> | string
+    storeSize?: StringWithAggregatesFilter<"CommunityStore"> | string
+    businessType?: StringWithAggregatesFilter<"CommunityStore"> | string
+    country?: StringWithAggregatesFilter<"CommunityStore"> | string
+    state?: StringWithAggregatesFilter<"CommunityStore"> | string
+    city?: StringWithAggregatesFilter<"CommunityStore"> | string
+    pin?: StringWithAggregatesFilter<"CommunityStore"> | string
+    latitude?: FloatNullableWithAggregatesFilter<"CommunityStore"> | number | null
+    longitude?: FloatNullableWithAggregatesFilter<"CommunityStore"> | number | null
+    bannerImageUrl?: StringNullableWithAggregatesFilter<"CommunityStore"> | string | null
+    priceInr?: IntWithAggregatesFilter<"CommunityStore"> | number
+    startTime?: StringNullableWithAggregatesFilter<"CommunityStore"> | string | null
+    endTime?: StringNullableWithAggregatesFilter<"CommunityStore"> | string | null
+    days?: StringNullableListFilter<"CommunityStore">
+    sqft?: IntNullableWithAggregatesFilter<"CommunityStore"> | number | null
+    dayOrNight?: StringNullableWithAggregatesFilter<"CommunityStore"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"CommunityStore"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"CommunityStore"> | Date | string
+  }
+
+  export type CommunityImageWhereInput = {
+    AND?: CommunityImageWhereInput | CommunityImageWhereInput[]
+    OR?: CommunityImageWhereInput[]
+    NOT?: CommunityImageWhereInput | CommunityImageWhereInput[]
+    id?: StringFilter<"CommunityImage"> | string
+    storeId?: StringFilter<"CommunityImage"> | string
+    url?: StringFilter<"CommunityImage"> | string
+    order?: IntFilter<"CommunityImage"> | number
+    createdAt?: DateTimeFilter<"CommunityImage"> | Date | string
+    communitystore?: XOR<CommunityStoreScalarRelationFilter, CommunityStoreWhereInput>
+  }
+
+  export type CommunityImageOrderByWithRelationInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    url?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    communitystore?: CommunityStoreOrderByWithRelationInput
+  }
+
+  export type CommunityImageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CommunityImageWhereInput | CommunityImageWhereInput[]
+    OR?: CommunityImageWhereInput[]
+    NOT?: CommunityImageWhereInput | CommunityImageWhereInput[]
+    storeId?: StringFilter<"CommunityImage"> | string
+    url?: StringFilter<"CommunityImage"> | string
+    order?: IntFilter<"CommunityImage"> | number
+    createdAt?: DateTimeFilter<"CommunityImage"> | Date | string
+    communitystore?: XOR<CommunityStoreScalarRelationFilter, CommunityStoreWhereInput>
+  }, "id">
+
+  export type CommunityImageOrderByWithAggregationInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    url?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    _count?: CommunityImageCountOrderByAggregateInput
+    _avg?: CommunityImageAvgOrderByAggregateInput
+    _max?: CommunityImageMaxOrderByAggregateInput
+    _min?: CommunityImageMinOrderByAggregateInput
+    _sum?: CommunityImageSumOrderByAggregateInput
+  }
+
+  export type CommunityImageScalarWhereWithAggregatesInput = {
+    AND?: CommunityImageScalarWhereWithAggregatesInput | CommunityImageScalarWhereWithAggregatesInput[]
+    OR?: CommunityImageScalarWhereWithAggregatesInput[]
+    NOT?: CommunityImageScalarWhereWithAggregatesInput | CommunityImageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CommunityImage"> | string
+    storeId?: StringWithAggregatesFilter<"CommunityImage"> | string
+    url?: StringWithAggregatesFilter<"CommunityImage"> | string
+    order?: IntWithAggregatesFilter<"CommunityImage"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"CommunityImage"> | Date | string
   }
 
   export type StoreImageWhereInput = {
@@ -19872,6 +22834,268 @@ export namespace Prisma {
     dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommunityStoreCreateInput = {
+    id?: string
+    ownerId: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude?: number | null
+    longitude?: number | null
+    bannerImageUrl?: string | null
+    priceInr: number
+    startTime?: string | null
+    endTime?: string | null
+    days?: CommunityStoreCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: CommunityImageCreateNestedManyWithoutCommunitystoreInput
+  }
+
+  export type CommunityStoreUncheckedCreateInput = {
+    id?: string
+    ownerId: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude?: number | null
+    longitude?: number | null
+    bannerImageUrl?: string | null
+    priceInr: number
+    startTime?: string | null
+    endTime?: string | null
+    days?: CommunityStoreCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: CommunityImageUncheckedCreateNestedManyWithoutCommunitystoreInput
+  }
+
+  export type CommunityStoreUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: CommunityStoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: CommunityImageUpdateManyWithoutCommunitystoreNestedInput
+  }
+
+  export type CommunityStoreUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: CommunityStoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: CommunityImageUncheckedUpdateManyWithoutCommunitystoreNestedInput
+  }
+
+  export type CommunityStoreCreateManyInput = {
+    id?: string
+    ownerId: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude?: number | null
+    longitude?: number | null
+    bannerImageUrl?: string | null
+    priceInr: number
+    startTime?: string | null
+    endTime?: string | null
+    days?: CommunityStoreCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CommunityStoreUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: CommunityStoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommunityStoreUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: CommunityStoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommunityImageCreateInput = {
+    id?: string
+    url: string
+    order?: number
+    createdAt?: Date | string
+    communitystore: CommunityStoreCreateNestedOneWithoutImagesInput
+  }
+
+  export type CommunityImageUncheckedCreateInput = {
+    id?: string
+    storeId: string
+    url: string
+    order?: number
+    createdAt?: Date | string
+  }
+
+  export type CommunityImageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    communitystore?: CommunityStoreUpdateOneRequiredWithoutImagesNestedInput
+  }
+
+  export type CommunityImageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommunityImageCreateManyInput = {
+    id?: string
+    storeId: string
+    url: string
+    order?: number
+    createdAt?: Date | string
+  }
+
+  export type CommunityImageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommunityImageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StoreImageCreateInput = {
@@ -21104,6 +24328,152 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
+  export type CommunityImageListRelationFilter = {
+    every?: CommunityImageWhereInput
+    some?: CommunityImageWhereInput
+    none?: CommunityImageWhereInput
+  }
+
+  export type CommunityImageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CommunityStoreCountOrderByAggregateInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    title?: SortOrder
+    desc?: SortOrder
+    peopleDesc?: SortOrder
+    flatno?: SortOrder
+    streetAddress?: SortOrder
+    NearbyLandMark?: SortOrder
+    areaLocality?: SortOrder
+    storeSize?: SortOrder
+    businessType?: SortOrder
+    country?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    pin?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    bannerImageUrl?: SortOrder
+    priceInr?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    days?: SortOrder
+    sqft?: SortOrder
+    dayOrNight?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CommunityStoreAvgOrderByAggregateInput = {
+    latitude?: SortOrder
+    longitude?: SortOrder
+    priceInr?: SortOrder
+    sqft?: SortOrder
+  }
+
+  export type CommunityStoreMaxOrderByAggregateInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    title?: SortOrder
+    desc?: SortOrder
+    peopleDesc?: SortOrder
+    flatno?: SortOrder
+    streetAddress?: SortOrder
+    NearbyLandMark?: SortOrder
+    areaLocality?: SortOrder
+    storeSize?: SortOrder
+    businessType?: SortOrder
+    country?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    pin?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    bannerImageUrl?: SortOrder
+    priceInr?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    sqft?: SortOrder
+    dayOrNight?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CommunityStoreMinOrderByAggregateInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    title?: SortOrder
+    desc?: SortOrder
+    peopleDesc?: SortOrder
+    flatno?: SortOrder
+    streetAddress?: SortOrder
+    NearbyLandMark?: SortOrder
+    areaLocality?: SortOrder
+    storeSize?: SortOrder
+    businessType?: SortOrder
+    country?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    pin?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    bannerImageUrl?: SortOrder
+    priceInr?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    sqft?: SortOrder
+    dayOrNight?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CommunityStoreSumOrderByAggregateInput = {
+    latitude?: SortOrder
+    longitude?: SortOrder
+    priceInr?: SortOrder
+    sqft?: SortOrder
+  }
+
+  export type CommunityStoreScalarRelationFilter = {
+    is?: CommunityStoreWhereInput
+    isNot?: CommunityStoreWhereInput
+  }
+
+  export type CommunityImageCountOrderByAggregateInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    url?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CommunityImageAvgOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type CommunityImageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    url?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CommunityImageMinOrderByAggregateInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    url?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CommunityImageSumOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
   export type StoreScalarRelationFilter = {
     is?: StoreWhereInput
     isNot?: StoreWhereInput
@@ -22086,6 +25456,71 @@ export namespace Prisma {
     update?: AgreementUpdateWithWhereUniqueWithoutStoreInput | AgreementUpdateWithWhereUniqueWithoutStoreInput[]
     updateMany?: AgreementUpdateManyWithWhereWithoutStoreInput | AgreementUpdateManyWithWhereWithoutStoreInput[]
     deleteMany?: AgreementScalarWhereInput | AgreementScalarWhereInput[]
+  }
+
+  export type CommunityStoreCreatedaysInput = {
+    set: string[]
+  }
+
+  export type CommunityImageCreateNestedManyWithoutCommunitystoreInput = {
+    create?: XOR<CommunityImageCreateWithoutCommunitystoreInput, CommunityImageUncheckedCreateWithoutCommunitystoreInput> | CommunityImageCreateWithoutCommunitystoreInput[] | CommunityImageUncheckedCreateWithoutCommunitystoreInput[]
+    connectOrCreate?: CommunityImageCreateOrConnectWithoutCommunitystoreInput | CommunityImageCreateOrConnectWithoutCommunitystoreInput[]
+    createMany?: CommunityImageCreateManyCommunitystoreInputEnvelope
+    connect?: CommunityImageWhereUniqueInput | CommunityImageWhereUniqueInput[]
+  }
+
+  export type CommunityImageUncheckedCreateNestedManyWithoutCommunitystoreInput = {
+    create?: XOR<CommunityImageCreateWithoutCommunitystoreInput, CommunityImageUncheckedCreateWithoutCommunitystoreInput> | CommunityImageCreateWithoutCommunitystoreInput[] | CommunityImageUncheckedCreateWithoutCommunitystoreInput[]
+    connectOrCreate?: CommunityImageCreateOrConnectWithoutCommunitystoreInput | CommunityImageCreateOrConnectWithoutCommunitystoreInput[]
+    createMany?: CommunityImageCreateManyCommunitystoreInputEnvelope
+    connect?: CommunityImageWhereUniqueInput | CommunityImageWhereUniqueInput[]
+  }
+
+  export type CommunityStoreUpdatedaysInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type CommunityImageUpdateManyWithoutCommunitystoreNestedInput = {
+    create?: XOR<CommunityImageCreateWithoutCommunitystoreInput, CommunityImageUncheckedCreateWithoutCommunitystoreInput> | CommunityImageCreateWithoutCommunitystoreInput[] | CommunityImageUncheckedCreateWithoutCommunitystoreInput[]
+    connectOrCreate?: CommunityImageCreateOrConnectWithoutCommunitystoreInput | CommunityImageCreateOrConnectWithoutCommunitystoreInput[]
+    upsert?: CommunityImageUpsertWithWhereUniqueWithoutCommunitystoreInput | CommunityImageUpsertWithWhereUniqueWithoutCommunitystoreInput[]
+    createMany?: CommunityImageCreateManyCommunitystoreInputEnvelope
+    set?: CommunityImageWhereUniqueInput | CommunityImageWhereUniqueInput[]
+    disconnect?: CommunityImageWhereUniqueInput | CommunityImageWhereUniqueInput[]
+    delete?: CommunityImageWhereUniqueInput | CommunityImageWhereUniqueInput[]
+    connect?: CommunityImageWhereUniqueInput | CommunityImageWhereUniqueInput[]
+    update?: CommunityImageUpdateWithWhereUniqueWithoutCommunitystoreInput | CommunityImageUpdateWithWhereUniqueWithoutCommunitystoreInput[]
+    updateMany?: CommunityImageUpdateManyWithWhereWithoutCommunitystoreInput | CommunityImageUpdateManyWithWhereWithoutCommunitystoreInput[]
+    deleteMany?: CommunityImageScalarWhereInput | CommunityImageScalarWhereInput[]
+  }
+
+  export type CommunityImageUncheckedUpdateManyWithoutCommunitystoreNestedInput = {
+    create?: XOR<CommunityImageCreateWithoutCommunitystoreInput, CommunityImageUncheckedCreateWithoutCommunitystoreInput> | CommunityImageCreateWithoutCommunitystoreInput[] | CommunityImageUncheckedCreateWithoutCommunitystoreInput[]
+    connectOrCreate?: CommunityImageCreateOrConnectWithoutCommunitystoreInput | CommunityImageCreateOrConnectWithoutCommunitystoreInput[]
+    upsert?: CommunityImageUpsertWithWhereUniqueWithoutCommunitystoreInput | CommunityImageUpsertWithWhereUniqueWithoutCommunitystoreInput[]
+    createMany?: CommunityImageCreateManyCommunitystoreInputEnvelope
+    set?: CommunityImageWhereUniqueInput | CommunityImageWhereUniqueInput[]
+    disconnect?: CommunityImageWhereUniqueInput | CommunityImageWhereUniqueInput[]
+    delete?: CommunityImageWhereUniqueInput | CommunityImageWhereUniqueInput[]
+    connect?: CommunityImageWhereUniqueInput | CommunityImageWhereUniqueInput[]
+    update?: CommunityImageUpdateWithWhereUniqueWithoutCommunitystoreInput | CommunityImageUpdateWithWhereUniqueWithoutCommunitystoreInput[]
+    updateMany?: CommunityImageUpdateManyWithWhereWithoutCommunitystoreInput | CommunityImageUpdateManyWithWhereWithoutCommunitystoreInput[]
+    deleteMany?: CommunityImageScalarWhereInput | CommunityImageScalarWhereInput[]
+  }
+
+  export type CommunityStoreCreateNestedOneWithoutImagesInput = {
+    create?: XOR<CommunityStoreCreateWithoutImagesInput, CommunityStoreUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: CommunityStoreCreateOrConnectWithoutImagesInput
+    connect?: CommunityStoreWhereUniqueInput
+  }
+
+  export type CommunityStoreUpdateOneRequiredWithoutImagesNestedInput = {
+    create?: XOR<CommunityStoreCreateWithoutImagesInput, CommunityStoreUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: CommunityStoreCreateOrConnectWithoutImagesInput
+    upsert?: CommunityStoreUpsertWithoutImagesInput
+    connect?: CommunityStoreWhereUniqueInput
+    update?: XOR<XOR<CommunityStoreUpdateToOneWithWhereWithoutImagesInput, CommunityStoreUpdateWithoutImagesInput>, CommunityStoreUncheckedUpdateWithoutImagesInput>
   }
 
   export type StoreCreateNestedOneWithoutImagesInput = {
@@ -23485,6 +26920,189 @@ export namespace Prisma {
   export type AgreementUpdateManyWithWhereWithoutStoreInput = {
     where: AgreementScalarWhereInput
     data: XOR<AgreementUpdateManyMutationInput, AgreementUncheckedUpdateManyWithoutStoreInput>
+  }
+
+  export type CommunityImageCreateWithoutCommunitystoreInput = {
+    id?: string
+    url: string
+    order?: number
+    createdAt?: Date | string
+  }
+
+  export type CommunityImageUncheckedCreateWithoutCommunitystoreInput = {
+    id?: string
+    url: string
+    order?: number
+    createdAt?: Date | string
+  }
+
+  export type CommunityImageCreateOrConnectWithoutCommunitystoreInput = {
+    where: CommunityImageWhereUniqueInput
+    create: XOR<CommunityImageCreateWithoutCommunitystoreInput, CommunityImageUncheckedCreateWithoutCommunitystoreInput>
+  }
+
+  export type CommunityImageCreateManyCommunitystoreInputEnvelope = {
+    data: CommunityImageCreateManyCommunitystoreInput | CommunityImageCreateManyCommunitystoreInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CommunityImageUpsertWithWhereUniqueWithoutCommunitystoreInput = {
+    where: CommunityImageWhereUniqueInput
+    update: XOR<CommunityImageUpdateWithoutCommunitystoreInput, CommunityImageUncheckedUpdateWithoutCommunitystoreInput>
+    create: XOR<CommunityImageCreateWithoutCommunitystoreInput, CommunityImageUncheckedCreateWithoutCommunitystoreInput>
+  }
+
+  export type CommunityImageUpdateWithWhereUniqueWithoutCommunitystoreInput = {
+    where: CommunityImageWhereUniqueInput
+    data: XOR<CommunityImageUpdateWithoutCommunitystoreInput, CommunityImageUncheckedUpdateWithoutCommunitystoreInput>
+  }
+
+  export type CommunityImageUpdateManyWithWhereWithoutCommunitystoreInput = {
+    where: CommunityImageScalarWhereInput
+    data: XOR<CommunityImageUpdateManyMutationInput, CommunityImageUncheckedUpdateManyWithoutCommunitystoreInput>
+  }
+
+  export type CommunityImageScalarWhereInput = {
+    AND?: CommunityImageScalarWhereInput | CommunityImageScalarWhereInput[]
+    OR?: CommunityImageScalarWhereInput[]
+    NOT?: CommunityImageScalarWhereInput | CommunityImageScalarWhereInput[]
+    id?: StringFilter<"CommunityImage"> | string
+    storeId?: StringFilter<"CommunityImage"> | string
+    url?: StringFilter<"CommunityImage"> | string
+    order?: IntFilter<"CommunityImage"> | number
+    createdAt?: DateTimeFilter<"CommunityImage"> | Date | string
+  }
+
+  export type CommunityStoreCreateWithoutImagesInput = {
+    id?: string
+    ownerId: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude?: number | null
+    longitude?: number | null
+    bannerImageUrl?: string | null
+    priceInr: number
+    startTime?: string | null
+    endTime?: string | null
+    days?: CommunityStoreCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CommunityStoreUncheckedCreateWithoutImagesInput = {
+    id?: string
+    ownerId: string
+    title: string
+    desc: string
+    peopleDesc: string
+    flatno: string
+    streetAddress: string
+    NearbyLandMark: string
+    areaLocality: string
+    storeSize: string
+    businessType: string
+    country: string
+    state: string
+    city: string
+    pin: string
+    latitude?: number | null
+    longitude?: number | null
+    bannerImageUrl?: string | null
+    priceInr: number
+    startTime?: string | null
+    endTime?: string | null
+    days?: CommunityStoreCreatedaysInput | string[]
+    sqft?: number | null
+    dayOrNight?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CommunityStoreCreateOrConnectWithoutImagesInput = {
+    where: CommunityStoreWhereUniqueInput
+    create: XOR<CommunityStoreCreateWithoutImagesInput, CommunityStoreUncheckedCreateWithoutImagesInput>
+  }
+
+  export type CommunityStoreUpsertWithoutImagesInput = {
+    update: XOR<CommunityStoreUpdateWithoutImagesInput, CommunityStoreUncheckedUpdateWithoutImagesInput>
+    create: XOR<CommunityStoreCreateWithoutImagesInput, CommunityStoreUncheckedCreateWithoutImagesInput>
+    where?: CommunityStoreWhereInput
+  }
+
+  export type CommunityStoreUpdateToOneWithWhereWithoutImagesInput = {
+    where?: CommunityStoreWhereInput
+    data: XOR<CommunityStoreUpdateWithoutImagesInput, CommunityStoreUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type CommunityStoreUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: CommunityStoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommunityStoreUncheckedUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    peopleDesc?: StringFieldUpdateOperationsInput | string
+    flatno?: StringFieldUpdateOperationsInput | string
+    streetAddress?: StringFieldUpdateOperationsInput | string
+    NearbyLandMark?: StringFieldUpdateOperationsInput | string
+    areaLocality?: StringFieldUpdateOperationsInput | string
+    storeSize?: StringFieldUpdateOperationsInput | string
+    businessType?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    pin?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInr?: IntFieldUpdateOperationsInput | number
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: CommunityStoreUpdatedaysInput | string[]
+    sqft?: NullableIntFieldUpdateOperationsInput | number | null
+    dayOrNight?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StoreCreateWithoutImagesInput = {
@@ -25553,6 +29171,34 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     pin?: StringFieldUpdateOperationsInput | string
     bussinessType?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CommunityImageCreateManyCommunitystoreInput = {
+    id?: string
+    url: string
+    order?: number
+    createdAt?: Date | string
+  }
+
+  export type CommunityImageUpdateWithoutCommunitystoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommunityImageUncheckedUpdateWithoutCommunitystoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommunityImageUncheckedUpdateManyWithoutCommunitystoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MessageCreateManyConversationInput = {

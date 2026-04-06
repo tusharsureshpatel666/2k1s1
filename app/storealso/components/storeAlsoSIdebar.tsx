@@ -24,7 +24,7 @@ const StorealsoSidebar = () => {
           className="flex items-center gap-3 px-6 py-6 border-b border-gray-200 dark:border-gray-800"
         >
               <Image src="/logo.svg" alt="logo" width={50} height={50} />
-          <h2 className="text-lg font-semibold tracking-tight">AllPuts</h2>
+          <h2 className="text-lg font-semibold tracking-tight">Splitat</h2>
         </Link>
 
         {/* Menu */}

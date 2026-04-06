@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/dashboard", "/login", "/api"],
       },
     ],
-    sitemap: "https://AllPuts.com/sitemap.xml",
+    sitemap: "https://Splitat.com/sitemap.xml",
   };
 }

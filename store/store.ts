@@ -65,6 +65,13 @@ export const useStoreStep = create<StoreStep>((set) => ({
   prevStep: () => set((state) => ({ sStep: state.sStep - 1 })),
   resetStep: () => set({ sStep: 0 }),
 }));
+export const ComuseStoreStep = create<StoreStep>((set) => ({
+  sStep: 1,
+  setSStep: (sStep) => set({ sStep }),
+  nextSStep: () => set((state) => ({ sStep: state.sStep + 1 })),
+  prevStep: () => set((state) => ({ sStep: state.sStep - 1 })),
+  resetStep: () => set({ sStep: 0 }),
+}));
 
 export const useParticStore = create<ParticState>((set) => ({
   share: { mode: "" },
@@ -79,7 +86,19 @@ export const useParticStore = create<ParticState>((set) => ({
       share: { ...state.share, ...data },
     })),
 }));
+export const CommunityuseParticStore = create<ParticState>((set) => ({
+  share: { mode: "" },
 
+  setMode: (mode) =>
+    set({
+      share: { mode }, // reset old data when mode changes
+    }),
+
+  updateShare: (data) =>
+    set((state) => ({
+      share: { ...state.share, ...data },
+    })),
+}));
 export const useSearchState = create<SearchStep>((set) => ({
   sStep: 1,
   setSStep: (sStep) => set({ sStep }),

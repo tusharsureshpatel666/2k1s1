@@ -114,7 +114,7 @@ export default async function StorePage({ params }: StorePageProps) {
 
       {/* ================= HEADER ================= */}
       <Heading
-        title={`${store?.storeSize?.replace(/store/i, "size")} in ${store?.city}`}
+        title={`${store?.storeSize?.replace(/store/i, "size")} Store in ${store?.city}`}
         className="mb-2"
       />
       <span className="text-sm text-gray-500"></span>

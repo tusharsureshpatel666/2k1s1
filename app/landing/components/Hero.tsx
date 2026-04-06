@@ -21,7 +21,7 @@ export default function Hero() {
 
           {/* Heading */}
           <h1 className="text-2xl font-semibold leading-snug text-black dark:text-gray-50 sm:text-5xl">
-            Connect with Store Partners with AllPuts
+            Connect with Store Partners with Splitat
           </h1>
 
           {/* CTA */}
@@ -46,7 +46,7 @@ export default function Hero() {
           </div>
 
           <p className="text-sm text-gray-500">
-            * AllPuts connects users with verified store partners and enables
+            * Splitat connects users with verified store partners and enables
             businesses to list, manage, and grow their stores efficiently.
           </p>
         </div>

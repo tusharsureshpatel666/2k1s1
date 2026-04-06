@@ -59,7 +59,7 @@ export default function Privacypage() {
           4. Contact Us
         </h3>
         <p className="text-gray-700 dark:text-gray-500">
-          Email: <strong>AllPutsmail@gmail.com</strong>
+          Email: <strong>Splitatmail@gmail.com</strong>
         </p>
       </motion.div>
     </div>

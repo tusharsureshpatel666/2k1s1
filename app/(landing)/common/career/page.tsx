@@ -4,26 +4,26 @@ import FrontendDeveloperJob from "./carrer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Careers at AllPuts | Join Our Store Sharing Startup",
+  title: "Careers at Splitat | Join Our Store Sharing Startup",
   description:
-    "Explore career opportunities at AllPuts. Join our mission to revolutionize commercial store space sharing and help small businesses reduce rental costs across India.",
+    "Explore career opportunities at Splitat. Join our mission to revolutionize commercial store space sharing and help small businesses reduce rental costs across India.",
   keywords: [
-    "AllPuts careers",
-    "AllPuts jobs",
+    "Splitat careers",
+    "Splitat jobs",
     "startup jobs India",
     "commercial real estate startup jobs",
     "retail tech jobs",
-    "join AllPuts team",
+    "join Splitat team",
   ],
   alternates: {
-    canonical: "https://www.AllPuts.com/careers",
+    canonical: "https://www.Splitat.com/careers",
   },
   openGraph: {
-    title: "Careers at AllPuts",
+    title: "Careers at Splitat",
     description:
-      "Join AllPuts and help build the future of commercial store space sharing in India.",
-    url: "https://www.AllPuts.com/careers",
-    siteName: "AllPuts",
+      "Join Splitat and help build the future of commercial store space sharing in India.",
+    url: "https://www.Splitat.com/careers",
+    siteName: "Splitat",
     type: "website",
   },
   robots: {

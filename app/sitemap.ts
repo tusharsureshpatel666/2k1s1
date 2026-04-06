@@ -14,7 +14,7 @@ function slugify(text: string) {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://www.AllPuts.com";
+  const baseUrl = "https://www.Splitat.com";
 
   const stores = await prisma.store.findMany({
     select: {

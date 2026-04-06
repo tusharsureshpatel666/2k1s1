@@ -30,7 +30,7 @@ const Navbar = () => {
         <Link href="/" className="flex items-center gap-2">
               <Image src="/logo.svg" alt="logo" width={50} height={50} />
           <h2 className="text-xl font-semibold text-black dark:text-white">
-            AllPuts
+            Splitat
           </h2>
         </Link>
 
@@ -123,7 +123,7 @@ const Navbar = () => {
                   </Button>
                 </Link>
                 <Link href="/dashboard">
-                  <Button className="w-full rounded-full">Get AllPuts Free</Button>
+                  <Button className="w-full rounded-full">Get Splitat Free</Button>
                 </Link>
               </div>
             </div>

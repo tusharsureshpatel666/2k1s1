@@ -16,13 +16,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.AllPuts.com"),
+  metadataBase: new URL("https://www.Splitat.com"),
   title: {
-    default: "AllPuts — Share Commercial Store Space & Reduce Rent",
-    template: "%s | AllPuts",
+    default: "Splitat — Share Commercial Store Space & Reduce Rent",
+    template: "%s | Splitat",
   },
   description:
-    "AllPuts helps small business owners share commercial store space. Share your shop by hours, days, or weekends and split rent easily. Reduce costs and grow your business.",
+    "Splitat helps small business owners share commercial store space. Share your shop by hours, days, or weekends and split rent easily. Reduce costs and grow your business.",
   keywords: [
     "share shop space",
     "commercial space sharing",
@@ -35,17 +35,17 @@ export const metadata: Metadata = {
     "store sharing startup",
     "reduce shop rent",
   ],
-  authors: [{ name: "AllPuts" }],
-  creator: "AllPuts",
+  authors: [{ name: "Splitat" }],
+  creator: "Splitat",
   verification: {
     google: "k3mc_VAMfjXYGpdMTLbCc9jcRS94IcNLaFb_dsgOwKs",
   },
   openGraph: {
-    title: "AllPuts — Share Your Shop Space & Split Rent",
+    title: "Splitat — Share Your Shop Space & Split Rent",
     description:
       "Share your commercial store space by time or day. Help small businesses reduce rent by sharing retail space.",
-    url: "https://www.AllPuts.com",
-    siteName: "AllPuts",
+    url: "https://www.Splitat.com",
+    siteName: "Splitat",
     images: [
       {
         url: "/og.png",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Share Your Shop Space & Reduce Rent | AllPuts",
+    title: "Share Your Shop Space & Reduce Rent | Splitat",
     description:
       "Platform for small businesses to share retail store space and split rent.",
     images: ["/og.png"],

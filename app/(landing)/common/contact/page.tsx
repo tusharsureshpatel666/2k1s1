@@ -2,18 +2,18 @@ import type { Metadata } from "next";
 import ContactPage from "./Contact";
 
 export const metadata: Metadata = {
-  title: "Contact AllPuts | Store Sharing Platform in India",
+  title: "Contact Splitat | Store Sharing Platform in India",
   description:
-    "Get in touch with AllPuts. Contact us for support, partnerships, business inquiries, or questions about sharing commercial store space in India.",
+    "Get in touch with Splitat. Contact us for support, partnerships, business inquiries, or questions about sharing commercial store space in India.",
   keywords: [
-    "contact AllPuts",
-    "AllPuts support",
+    "contact Splitat",
+    "Splitat support",
     "store sharing contact",
     "commercial space sharing India",
     "retail space platform contact",
   ],
   alternates: {
-    canonical: "https://www.AllPuts.com/contact",
+    canonical: "https://www.Splitat.com/contact",
   },
   robots: {
     index: true,

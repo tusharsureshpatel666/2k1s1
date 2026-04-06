@@ -109,6 +109,59 @@ model Store {
   Agreement Agreement[]
 }
 
+model CommunityStore {
+  id String @id @default(uuid())
+
+  ownerId String
+
+  title      String
+  desc       String
+  peopleDesc String
+
+  flatno         String
+  streetAddress  String
+  NearbyLandMark String
+  areaLocality   String
+
+  storeSize    String
+  businessType String
+
+  country String
+  state   String
+  city    String
+  pin     String
+
+  latitude  Float?
+  longitude Float?
+
+  bannerImageUrl String?
+  images         CommunityImage[]
+
+  priceInr Int
+
+  // shareMode removed for now (can be added later)
+
+  startTime  String?
+  endTime    String?
+  days       String[]
+  sqft       Int?
+  dayOrNight String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CommunityImage {
+  id             String         @id @default(cuid())
+  storeId        String
+  communitystore CommunityStore @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  url            String
+  order          Int            @default(0)
+  createdAt      DateTime       @default(now())
+
+  @@index([storeId])
+}
+
 // ==========================
 // STORE IMAGE
 // ==========================

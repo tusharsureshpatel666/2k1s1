@@ -63,7 +63,7 @@ const DashNav = () => {
                  <Image src="/logo.svg" alt="logo" width={50} height={50} />
               
         <h2 className="text-xl font-semibold dark:text-white text-black">
-          AllPuts
+          Splitat
         </h2>
       </Link>
 
