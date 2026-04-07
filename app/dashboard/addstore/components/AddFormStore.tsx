@@ -72,7 +72,7 @@ const AddFormStore = () => {
       state !== "" &&
       flat !== "" &&
       street !== "" &&
-      city !== "") ||
+      city !== "" && pin!== "") ||
     (sStep === 4 &&
       bannerImage !== null &&
       otherImages.filter(Boolean).length === 4) ||

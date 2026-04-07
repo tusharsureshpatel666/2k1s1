@@ -6,13 +6,11 @@ import React, { useEffect, useState } from "react";
 import { MobileImageSlider } from "../../store/[id]/components/MobileNav";
 import { DesktopImageGrid } from "../../store/[id]/components/Desktopgrid";
 import { Button } from "@/components/ui/button";
-import { FaChartArea } from "react-icons/fa";
 import CommunityShareStore from "../components/CommunityStoreShare";
 import Heading from "../../components/heading";
 import { Skeleton } from "@/components/ui/skeleton";
 import People from "../../store/[id]/components/people";
 import LocationMap from "../../store/[id]/components/MapShower";
-import Communitybtn from "../components/Communitybtn";
 import { Search } from "lucide-react";
 import Link from "next/link";
 
@@ -22,7 +20,7 @@ const CommunityStore = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const handelSubmit = async () => {
+    const fetchData = async () => {
       try {
         const res = await axios.get("/api/getCommunityStore", {
           params: { id },
@@ -34,23 +32,21 @@ const CommunityStore = () => {
         setLoading(false);
       }
     };
-    if (id) handelSubmit();
+
+    if (id) fetchData();
   }, [id]);
 
   // 🔹 Skeleton Loader
   if (loading) {
     return (
-      <div className="w-full space-y-4">
-        {/* Header */}
+      <div className="w-full space-y-4 px-2 md:px-0">
         <div className="flex pb-5 gap-4 justify-between items-center">
           <Skeleton className="h-6 w-1/2" />
           <Skeleton className="h-10 w-10 rounded-full" />
         </div>
 
-        {/* Mobile Image */}
         <Skeleton className="w-full h-[250px] rounded-xl" />
 
-        {/* Desktop Grid */}
         <div className="hidden md:grid grid-cols-3 gap-4">
           <Skeleton className="col-span-2 h-[300px] rounded-xl" />
           <div className="grid gap-4">
@@ -59,7 +55,6 @@ const CommunityStore = () => {
           </div>
         </div>
 
-        {/* Text */}
         <Skeleton className="h-5 w-1/3" />
         <Skeleton className="h-4 w-1/4" />
       </div>
@@ -72,104 +67,107 @@ const CommunityStore = () => {
   ].filter(Boolean);
 
   return (
-    <div className="max-w-7xl w-full space-y-6  md:mt-2 mb-[150px] lg:mb-0   lg:px-0">
-      <div className="flex  gap-4 flex-row sm:items-center items-center justify-between">
-        <h1 className="text-xl font-semibold break-words leading-tight">
+    <div className="max-w-7xl mx-auto w-full space-y-6 pb-24 lg:pb-0 px-2 md:px-4 lg:px-0">
+      {/* 🔹 Header */}
+      <div className="flex gap-4 justify-between items-center">
+        <h1 className="text-lg md:text-xl font-semibold break-words">
           {data?.title}
         </h1>
 
-        <div className="flex gap-2">
-          <CommunityShareStore paramsId={data?.id} />
-          {/* <Button className="rounded-full" variant="outline">
-            <FaChartArea /> Analytics
-          </Button> */}
-        </div>
+        <CommunityShareStore paramsId={data?.id} />
       </div>
 
-      {/* Mobile Slider */}
-      <MobileImageSlider images={allImages} />
+      {/* 🔹 Mobile Slider */}
+      <div className="block md:hidden">
+        <MobileImageSlider images={allImages} />
+      </div>
 
-      {/* Desktop View */}
+      {/* 🔹 Desktop Grid */}
       <div className="hidden md:block">
         <DesktopImageGrid
           banner={data?.bannerImageUrl || ""}
           images={data?.images?.map((img) => img.url) || []}
         />
+      </div>
 
-        <Heading
-          title={`${data?.storeSize?.replace(/store/i, "size")} in ${data?.city}`}
-          className="mb-2 mt-4"
-        />
+      {/* 🔹 Heading (VISIBLE ON ALL SCREENS) */}
+      <Heading
+        title={`${data?.storeSize?.replace(/store/i, "size")} in ${data?.city}`}
+        className="mt-2"
+      />
 
-        <span className="text-sm text-gray-500"></span>
+      {/* 🔹 Main Content */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+        {/* ✅ People Section */}
+        <People description={data?.peopleDesc} />
 
-        <div className="grid grid-cols-1 mt-5 lg:grid-cols-2 gap-8">
-          <People description={data?.peopleDesc} />
-          <div className="hidden lg:block">
-            <div
-              className="sticky top-24 border border-gray-200 dark:border-gray-700 
-                  bg-white dark:bg-black
-                  rounded-2xl shadow-sm p-6 space-y-5 "
-            >
-              {/* Discount + Price */}
-              <div className="space-y-1">
-                <div className="flex items-end gap-1">
-                  <span className="text-3xl font-bold text-gray-900 dark:text-white leading-none">
-                    ₹{data?.priceInr}
-                  </span>
-                  <span className="text-sm text-gray-500 mb-1">/month</span>
-                </div>
-
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Inclusive of all taxes
-                </p>
+        {/* ✅ Sidebar (Desktop only) */}
+        <div className="hidden lg:block">
+          <div className="sticky top-24 border border-gray-200 dark:border-gray-700 bg-white dark:bg-black rounded-2xl shadow-sm p-6 space-y-5">
+            {/* Price */}
+            <div>
+              <div className="flex items-end gap-1">
+                <span className="text-3xl font-bold">₹{data?.priceInr}</span>
+                <span className="text-sm text-gray-500 mb-1">/month</span>
               </div>
 
-              {/* Divider */}
-              <div className="border-t border-gray-200 dark:border-gray-700"></div>
-
-              {/* Offers Section */}
-              <div className="space-y-3">
-                <h3 className="text-sm font-semibold text-orange-600">
-                  Save Extra with 3 offers
-                </h3>
-
-                <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-xl text-sm text-gray-700 dark:text-gray-300">
-                  <span className="font-medium text-black dark:text-white">
-                    Cashback:
-                  </span>{" "}
-                  Get 5% back with select bank cards.
-                </div>
-
-                <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-xl text-sm text-gray-700 dark:text-gray-300">
-                  <span className="font-medium text-black dark:text-white">
-                    Bank Offer:
-                  </span>{" "}
-                  7.5% Instant Discount on EMI transactions.
-                </div>
-              </div>
-
-              {/* CTA Button */}
-              {/* {isOwner ? (
-                <Editbutton id={store?.id} />
-              ) : (
-                <ChatPartnerButton storeId={store?.id} />
-              )} */}
-              <Link href={`/dashboard/communitystore/findpartner/${id}`}>
-                <Button className="w-full py-3 rounded-2xl items-center px-5">
-                  <Search className="w-5 h-5 mr-2"/> Search For Partner
-                </Button>
-              </Link>
+              <p className="text-sm text-gray-500">Inclusive of all taxes</p>
             </div>
+
+            <div className="border-t"></div>
+
+            {/* Offers */}
+            <div className="space-y-3">
+              <h3 className="text-sm font-semibold text-orange-600">
+                Save Extra with offers
+              </h3>
+
+              <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-xl text-sm">
+                Cashback: Get 5% back with select cards.
+              </div>
+
+              <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-xl text-sm">
+                Bank Offer: 7.5% discount on EMI.
+              </div>
+            </div>
+
+            {/* CTA */}
+            <Link href={`/dashboard/communitystore/findpartner/${id}`}>
+              <Button className="w-full py-3 rounded-2xl">
+                <Search className="w-5 h-5 mr-2" />
+                Search For Partner
+              </Button>
+            </Link>
           </div>
         </div>
+      </div>
 
+      {/* 🔹 Map (VISIBLE ON ALL SCREENS) */}
+      <div className="mt-6">
         <LocationMap
           lat={data?.latitude}
           lng={data?.longitude}
           city={data?.city}
-          state={data.state}
+          state={data?.state}
         />
+      </div>
+
+      {/* 🔹 Mobile Bottom Bar */}
+      <div className="lg:hidden fixed bottom-12 left-0 right-0 border-t bg-white dark:bg-black px-4 py-3 z-20">
+        <div className="flex items-center justify-between">
+          {/* Price */}
+          <div className="flex items-end gap-1">
+            <span className="text-xl font-bold">₹{data?.priceInr}</span>
+            <span className="text-xs text-gray-500">/month</span>
+          </div>
+
+          {/* CTA */}
+          <Link href={`/dashboard/communitystore/findpartner/${id}`}>
+            <Button className="rounded-2xl px-4 py-2">
+              <Search className="w-5 h-5" />
+            </Button>
+          </Link>
+        </div>
       </div>
     </div>
   );

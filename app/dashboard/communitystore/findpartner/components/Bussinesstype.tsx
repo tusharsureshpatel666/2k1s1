@@ -18,10 +18,10 @@ const StepBTitle = ({ btitle, setbTitle }: Props) => {
         type="text"
         value={btitle}
         onChange={(e) => setbTitle(e.target.value)}
-        placeholder="Store name"
+        placeholder="Bussiness Type"
         className="
           w-full max-w-xl
-          text-6xl font-semibold text-center
+          md:text-4xl text-2xl  lg:text-6xl font-semibold text-center
           bg-transparent
           border-none outline-none
           caret-black dark:caret-white

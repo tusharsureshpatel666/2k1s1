@@ -1,172 +1,248 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Heading from "@/app/dashboard/components/heading";
-import { Input } from "@/components/ui/input";
-import CountrySelect from "./country";
+import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
+import { Loader, Loader2, MapPin } from "lucide-react";
+import { IoNavigateCircle } from "react-icons/io5";
 
 type Props = {
-  flatNo: string;
   setFlatNo: (v: string) => void;
-  street: string;
   setStreet: (v: string) => void;
-  nearby: string;
   setNearby: (v: string) => void;
-  district: string;
   setDistrict: (v: string) => void;
-  city: string;
   setCity: (v: string) => void;
-  country: string;
   setCountry: (v: string) => void;
-  state: string;
   Sstate: (v: string) => void;
-  pin: string;
   setPin: (v: string) => void;
 };
 
-const LocationPicker = ({
-  flatNo,
+export default function LocationPicker({
   setFlatNo,
-  street,
   setStreet,
-  nearby,
   setNearby,
-  district,
   setDistrict,
-  city,
   setCity,
-  country,
   setCountry,
-  state,
   Sstate,
-  pin,
   setPin,
-}: Props) => {
+}: Props) {
   const [loading, setLoading] = useState(false);
+  const [address, setAddress] = useState("");
+  const [location, setLocation] = useState<{ lat: number; lng: number } | null>(
+    null,
+  );
 
-  // 🟢 Get Current Location
-  const getCurrentLocation = () => {
-    if (!navigator.geolocation) {
-      alert("Geolocation is not supported by your browser");
+  const [results, setResults] = useState<any[]>([]);
+  const [open, setOpen] = useState(false);
+
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const mapRef = useRef<google.maps.Map | null>(null);
+
+  const autocompleteService =
+    useRef<google.maps.places.AutocompleteService | null>(null);
+  const placesService = useRef<google.maps.places.PlacesService | null>(null);
+
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
+    libraries: ["places"],
+  });
+
+  const DefaultLocation = { lat: 19.1, lng: 72.85 };
+
+  // Init services
+  useEffect(() => {
+    if (!isLoaded || !window.google) return;
+
+    autocompleteService.current =
+      new window.google.maps.places.AutocompleteService();
+
+    placesService.current = new window.google.maps.places.PlacesService(
+      document.createElement("div"),
+    );
+  }, [isLoaded]);
+
+  // Close dropdown
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        wrapperRef.current &&
+        !wrapperRef.current.contains(e.target as Node)
+      ) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Parse address
+  const parseAddressComponents = (components: any) => {
+    if (!components) return;
+
+    const get = (types: string[]) =>
+      components.find((c: any) => types.every((t) => c.types.includes(t)))
+        ?.long_name || "";
+
+    setFlatNo(get(["subpremise"]));
+    setStreet(get(["route"]));
+    setNearby("");
+    setDistrict(get(["sublocality_level_1"]) || get(["neighborhood"]));
+    setCity(get(["locality"]) || get(["administrative_area_level_2"]));
+    Sstate(get(["administrative_area_level_1"]));
+    setPin(get(["postal_code"]));
+    setCountry(get(["country"]));
+  };
+
+  // Typing
+  const handleChange = (value: string) => {
+    setAddress(value);
+
+    if (!value || !autocompleteService.current) {
+      setResults([]);
       return;
     }
+
+    autocompleteService.current.getPlacePredictions(
+      {
+        input: value,
+        componentRestrictions: { country: "in" },
+      },
+      (predictions) => {
+        setResults(predictions || []);
+        setOpen(true);
+      },
+    );
+  };
+
+  // Select place
+  const handleSelect = (placeId: string, description: string) => {
+    setAddress(description);
+    setOpen(false);
+
+    placesService.current?.getDetails({ placeId }, (place) => {
+      if (!place?.geometry?.location) return;
+
+      const lat = place.geometry.location.lat();
+      const lng = place.geometry.location.lng();
+
+      const loc = { lat, lng };
+      setLocation(loc);
+
+      mapRef.current?.panTo(loc);
+      parseAddressComponents(place.address_components);
+    });
+  };
+
+  // Current location
+  const getCurrentAddress = () => {
+    if (!navigator.geolocation) return alert("Geolocation not supported");
 
     setLoading(true);
 
     navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
+      (pos) => {
+        const lat = pos.coords.latitude;
+        const lng = pos.coords.longitude;
+        const latlng = { lat, lng };
 
-        reverseGeocode(latitude, longitude);
+        const geocoder = new window.google.maps.Geocoder();
+        geocoder.geocode({ location: latlng }, (res) => {
+          if (res?.[0]) {
+            setAddress(res[0].formatted_address);
+            setLocation(latlng);
+            mapRef.current?.panTo(latlng);
+            parseAddressComponents(res[0].address_components);
+          }
+          setLoading(false);
+        });
       },
-      (error) => {
-        console.error(error);
-        alert("Unable to retrieve location. Please allow permission.");
+      () => {
+        alert("Permission denied");
         setLoading(false);
       },
     );
   };
 
-  // 🟢 Reverse Geocoding (OpenStreetMap - FREE)
-  const reverseGeocode = async (lat: number, lng: number) => {
-    try {
-      const res = await fetch(
-        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`,
-      );
-
-      const data = await res.json();
-
-      if (data && data.address) {
-        const address = data.address;
-        console.log(address);
-
-        setStreet(address.road || "");
-        setDistrict(address.suburb || address.village || "");
-        setCity(address.city || address.town || address.village || "");
-        Sstate(address.state || "");
-        setPin(address.postcode || "");
-      }
-    } catch (error) {
-      console.error("Reverse geocoding failed:", error);
-      alert("Failed to fetch address");
-    } finally {
-      setLoading(false);
-    }
-  };
+  if (!isLoaded) {
+    return (
+      <div className="flex justify-center py-10">
+        <Loader2 className="animate-spin w-6 h-6 text-blue-600" />
+      </div>
+    );
+  }
 
   return (
-    <div className="flex justify-center items-center w-full px-0 lg:px-4">
-      <div className="w-full max-w-2xl space-y-6">
+    <div className="w-full max-w-5xl mx-auto px-3 sm:px-4">
+      <div className="text-center mb-4">
         <Heading
-          title="Confirm your address"
-          description="Your address is only shared with guests after they've made a reservation."
+          title="Where’s your place located?"
+          description="Your address is only shared with guests after booking."
         />
+      </div>
 
-        {/* 📍 Current Location Button */}
-        <button
-          type="button"
-          onClick={getCurrentLocation}
-          className="bg-blue-600 w-full text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition"
+      <div className="w-full h-[70vh] relative rounded-xl overflow-hidden border">
+        {/* Search */}
+        <div
+          ref={wrapperRef}
+          className="absolute top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-xl z-50"
         >
-          {loading ? "Detecting location..." : "Use Current Location"}
-        </button>
+          <div className="flex items-center bg-white text-black rounded-full shadow px-6 py-5">
+            <MapPin className="mr-3 text-gray-500 w-4 h-4" />
+            <input
+              value={address}
+              onChange={(e) => handleChange(e.target.value)}
+              onFocus={() => setOpen(true)}
+              placeholder="Enter your address"
+              className="w-full outline-none text-sm"
+            />
+          </div>
 
-        <CountrySelect value={country} onChange={setCountry} />
+          {open && (
+            <div className="mt-2 bg-white rounded-xl shadow max-h-60 overflow-y-auto">
+              <button
+                onClick={getCurrentAddress}
+                className="flex items-center gap-2 px-4 py-3 cursor-pointer hover:bg-gray-100 text-blue-600 w-full"
+              >
+                {loading ? (
+                  <Loader className="animate-spin w-5 h-5" />
+                ) : (
+                  <IoNavigateCircle className="w-5 h-5" />
+                )}
+                Use Current Location
+              </button>
 
-        <div className="rounded-2xl space-y-3">
-          <Input
-            value={flatNo}
-            onChange={(e) => setFlatNo(e.target.value)}
-            placeholder="Flat, house, etc. (if applicable)"
-            className="h-15 px-5 rounded-xl"
-          />
-
-          <Input
-            value={street}
-            onChange={(e) => setStreet(e.target.value)}
-            placeholder="Street address"
-            className="h-15 px-5 rounded-xl"
-          />
-
-          <Input
-            value={nearby}
-            onChange={(e) => setNearby(e.target.value)}
-            placeholder="Nearby landmark (if applicable)"
-            className="h-15 px-5 rounded-xl"
-          />
-
-          <Input
-            value={district}
-            onChange={(e) => setDistrict(e.target.value)}
-            placeholder="District/locality"
-            className="h-15 px-5 rounded-xl"
-          />
-
-          <Input
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            placeholder="City/town"
-            className="h-15 px-5 rounded-xl"
-          />
-
-          <Input
-            value={state}
-            onChange={(e) => Sstate(e.target.value)}
-            placeholder="State/union territory"
-            className="h-15 px-5 rounded-xl"
-          />
-
-          <Input
-            value={pin}
-            onChange={(e) => setPin(e.target.value)}
-            placeholder="PIN code"
-            className="h-15 px-5 rounded-xl"
-          />
+              {results.map((item) => (
+                <button
+                  key={item.place_id}
+                  onClick={() => handleSelect(item.place_id, item.description)}
+                  className="flex items-center gap-2 px-4 py-3 w-full text-black text-sm cursor-pointer hover:bg-gray-100"
+                >
+                  <MapPin className="w-4 h-4 text-gray-500" />
+                  {item.description}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
+
+        {/* Map */}
+        <GoogleMap
+          center={location || DefaultLocation}
+          zoom={16}
+          mapContainerStyle={{ width: "100%", height: "100%" }}
+          options={{
+            disableDefaultUI: true,
+            draggable: false, // ❌ disables drag
+          }}
+          onLoad={(map) => (mapRef.current = map)}
+        >
+          {/* Marker only when location exists */}
+          {location && <Marker position={location} />}
+        </GoogleMap>
       </div>
     </div>
   );
-};
-
-export default LocationPicker;
+}

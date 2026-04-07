@@ -4829,6 +4829,7 @@ export namespace Prisma {
     streetAddress: string | null
     NearbyLandMark: string | null
     areaLocality: string | null
+    fullAddress: string | null
     storeSize: string | null
     businessType: string | null
     country: string | null
@@ -4858,6 +4859,7 @@ export namespace Prisma {
     streetAddress: string | null
     NearbyLandMark: string | null
     areaLocality: string | null
+    fullAddress: string | null
     storeSize: string | null
     businessType: string | null
     country: string | null
@@ -4887,6 +4889,7 @@ export namespace Prisma {
     streetAddress: number
     NearbyLandMark: number
     areaLocality: number
+    fullAddress: number
     storeSize: number
     businessType: number
     country: number
@@ -4933,6 +4936,7 @@ export namespace Prisma {
     streetAddress?: true
     NearbyLandMark?: true
     areaLocality?: true
+    fullAddress?: true
     storeSize?: true
     businessType?: true
     country?: true
@@ -4962,6 +4966,7 @@ export namespace Prisma {
     streetAddress?: true
     NearbyLandMark?: true
     areaLocality?: true
+    fullAddress?: true
     storeSize?: true
     businessType?: true
     country?: true
@@ -4991,6 +4996,7 @@ export namespace Prisma {
     streetAddress?: true
     NearbyLandMark?: true
     areaLocality?: true
+    fullAddress?: true
     storeSize?: true
     businessType?: true
     country?: true
@@ -5104,16 +5110,17 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
-    flatno: string
-    streetAddress: string
-    NearbyLandMark: string
-    areaLocality: string
+    flatno: string | null
+    streetAddress: string | null
+    NearbyLandMark: string | null
+    areaLocality: string | null
+    fullAddress: string
     storeSize: string
     businessType: string
-    country: string
-    state: string
-    city: string
-    pin: string
+    country: string | null
+    state: string | null
+    city: string | null
+    pin: string | null
     latitude: number | null
     longitude: number | null
     bannerImageUrl: string | null
@@ -5157,6 +5164,7 @@ export namespace Prisma {
     streetAddress?: boolean
     NearbyLandMark?: boolean
     areaLocality?: boolean
+    fullAddress?: boolean
     storeSize?: boolean
     businessType?: boolean
     country?: boolean
@@ -5193,6 +5201,7 @@ export namespace Prisma {
     streetAddress?: boolean
     NearbyLandMark?: boolean
     areaLocality?: boolean
+    fullAddress?: boolean
     storeSize?: boolean
     businessType?: boolean
     country?: boolean
@@ -5224,6 +5233,7 @@ export namespace Prisma {
     streetAddress?: boolean
     NearbyLandMark?: boolean
     areaLocality?: boolean
+    fullAddress?: boolean
     storeSize?: boolean
     businessType?: boolean
     country?: boolean
@@ -5255,6 +5265,7 @@ export namespace Prisma {
     streetAddress?: boolean
     NearbyLandMark?: boolean
     areaLocality?: boolean
+    fullAddress?: boolean
     storeSize?: boolean
     businessType?: boolean
     country?: boolean
@@ -5275,7 +5286,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type StoreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "title" | "desc" | "peopleDesc" | "flatno" | "streetAddress" | "NearbyLandMark" | "areaLocality" | "storeSize" | "businessType" | "country" | "state" | "city" | "pin" | "latitude" | "longitude" | "bannerImageUrl" | "priceInr" | "shareMode" | "startTime" | "endTime" | "days" | "sqft" | "dayOrNight" | "createdAt" | "updatedAt", ExtArgs["result"]["store"]>
+  export type StoreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "title" | "desc" | "peopleDesc" | "flatno" | "streetAddress" | "NearbyLandMark" | "areaLocality" | "fullAddress" | "storeSize" | "businessType" | "country" | "state" | "city" | "pin" | "latitude" | "longitude" | "bannerImageUrl" | "priceInr" | "shareMode" | "startTime" | "endTime" | "days" | "sqft" | "dayOrNight" | "createdAt" | "updatedAt", ExtArgs["result"]["store"]>
   export type StoreInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | UserDefaultArgs<ExtArgs>
     images?: boolean | Store$imagesArgs<ExtArgs>
@@ -5306,16 +5317,17 @@ export namespace Prisma {
       title: string
       desc: string
       peopleDesc: string
-      flatno: string
-      streetAddress: string
-      NearbyLandMark: string
-      areaLocality: string
+      flatno: string | null
+      streetAddress: string | null
+      NearbyLandMark: string | null
+      areaLocality: string | null
+      fullAddress: string
       storeSize: string
       businessType: string
-      country: string
-      state: string
-      city: string
-      pin: string
+      country: string | null
+      state: string | null
+      city: string | null
+      pin: string | null
       latitude: number | null
       longitude: number | null
       bannerImageUrl: string | null
@@ -5765,6 +5777,7 @@ export namespace Prisma {
     readonly streetAddress: FieldRef<"Store", 'String'>
     readonly NearbyLandMark: FieldRef<"Store", 'String'>
     readonly areaLocality: FieldRef<"Store", 'String'>
+    readonly fullAddress: FieldRef<"Store", 'String'>
     readonly storeSize: FieldRef<"Store", 'String'>
     readonly businessType: FieldRef<"Store", 'String'>
     readonly country: FieldRef<"Store", 'String'>
@@ -20824,6 +20837,7 @@ export namespace Prisma {
     streetAddress: 'streetAddress',
     NearbyLandMark: 'NearbyLandMark',
     areaLocality: 'areaLocality',
+    fullAddress: 'fullAddress',
     storeSize: 'storeSize',
     businessType: 'businessType',
     country: 'country',
@@ -21323,16 +21337,17 @@ export namespace Prisma {
     title?: StringFilter<"Store"> | string
     desc?: StringFilter<"Store"> | string
     peopleDesc?: StringFilter<"Store"> | string
-    flatno?: StringFilter<"Store"> | string
-    streetAddress?: StringFilter<"Store"> | string
-    NearbyLandMark?: StringFilter<"Store"> | string
-    areaLocality?: StringFilter<"Store"> | string
+    flatno?: StringNullableFilter<"Store"> | string | null
+    streetAddress?: StringNullableFilter<"Store"> | string | null
+    NearbyLandMark?: StringNullableFilter<"Store"> | string | null
+    areaLocality?: StringNullableFilter<"Store"> | string | null
+    fullAddress?: StringFilter<"Store"> | string
     storeSize?: StringFilter<"Store"> | string
     businessType?: StringFilter<"Store"> | string
-    country?: StringFilter<"Store"> | string
-    state?: StringFilter<"Store"> | string
-    city?: StringFilter<"Store"> | string
-    pin?: StringFilter<"Store"> | string
+    country?: StringNullableFilter<"Store"> | string | null
+    state?: StringNullableFilter<"Store"> | string | null
+    city?: StringNullableFilter<"Store"> | string | null
+    pin?: StringNullableFilter<"Store"> | string | null
     latitude?: FloatNullableFilter<"Store"> | number | null
     longitude?: FloatNullableFilter<"Store"> | number | null
     bannerImageUrl?: StringNullableFilter<"Store"> | string | null
@@ -21358,16 +21373,17 @@ export namespace Prisma {
     title?: SortOrder
     desc?: SortOrder
     peopleDesc?: SortOrder
-    flatno?: SortOrder
-    streetAddress?: SortOrder
-    NearbyLandMark?: SortOrder
-    areaLocality?: SortOrder
+    flatno?: SortOrderInput | SortOrder
+    streetAddress?: SortOrderInput | SortOrder
+    NearbyLandMark?: SortOrderInput | SortOrder
+    areaLocality?: SortOrderInput | SortOrder
+    fullAddress?: SortOrder
     storeSize?: SortOrder
     businessType?: SortOrder
-    country?: SortOrder
-    state?: SortOrder
-    city?: SortOrder
-    pin?: SortOrder
+    country?: SortOrderInput | SortOrder
+    state?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    pin?: SortOrderInput | SortOrder
     latitude?: SortOrderInput | SortOrder
     longitude?: SortOrderInput | SortOrder
     bannerImageUrl?: SortOrderInput | SortOrder
@@ -21396,16 +21412,17 @@ export namespace Prisma {
     title?: StringFilter<"Store"> | string
     desc?: StringFilter<"Store"> | string
     peopleDesc?: StringFilter<"Store"> | string
-    flatno?: StringFilter<"Store"> | string
-    streetAddress?: StringFilter<"Store"> | string
-    NearbyLandMark?: StringFilter<"Store"> | string
-    areaLocality?: StringFilter<"Store"> | string
+    flatno?: StringNullableFilter<"Store"> | string | null
+    streetAddress?: StringNullableFilter<"Store"> | string | null
+    NearbyLandMark?: StringNullableFilter<"Store"> | string | null
+    areaLocality?: StringNullableFilter<"Store"> | string | null
+    fullAddress?: StringFilter<"Store"> | string
     storeSize?: StringFilter<"Store"> | string
     businessType?: StringFilter<"Store"> | string
-    country?: StringFilter<"Store"> | string
-    state?: StringFilter<"Store"> | string
-    city?: StringFilter<"Store"> | string
-    pin?: StringFilter<"Store"> | string
+    country?: StringNullableFilter<"Store"> | string | null
+    state?: StringNullableFilter<"Store"> | string | null
+    city?: StringNullableFilter<"Store"> | string | null
+    pin?: StringNullableFilter<"Store"> | string | null
     latitude?: FloatNullableFilter<"Store"> | number | null
     longitude?: FloatNullableFilter<"Store"> | number | null
     bannerImageUrl?: StringNullableFilter<"Store"> | string | null
@@ -21431,16 +21448,17 @@ export namespace Prisma {
     title?: SortOrder
     desc?: SortOrder
     peopleDesc?: SortOrder
-    flatno?: SortOrder
-    streetAddress?: SortOrder
-    NearbyLandMark?: SortOrder
-    areaLocality?: SortOrder
+    flatno?: SortOrderInput | SortOrder
+    streetAddress?: SortOrderInput | SortOrder
+    NearbyLandMark?: SortOrderInput | SortOrder
+    areaLocality?: SortOrderInput | SortOrder
+    fullAddress?: SortOrder
     storeSize?: SortOrder
     businessType?: SortOrder
-    country?: SortOrder
-    state?: SortOrder
-    city?: SortOrder
-    pin?: SortOrder
+    country?: SortOrderInput | SortOrder
+    state?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    pin?: SortOrderInput | SortOrder
     latitude?: SortOrderInput | SortOrder
     longitude?: SortOrderInput | SortOrder
     bannerImageUrl?: SortOrderInput | SortOrder
@@ -21469,16 +21487,17 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"Store"> | string
     desc?: StringWithAggregatesFilter<"Store"> | string
     peopleDesc?: StringWithAggregatesFilter<"Store"> | string
-    flatno?: StringWithAggregatesFilter<"Store"> | string
-    streetAddress?: StringWithAggregatesFilter<"Store"> | string
-    NearbyLandMark?: StringWithAggregatesFilter<"Store"> | string
-    areaLocality?: StringWithAggregatesFilter<"Store"> | string
+    flatno?: StringNullableWithAggregatesFilter<"Store"> | string | null
+    streetAddress?: StringNullableWithAggregatesFilter<"Store"> | string | null
+    NearbyLandMark?: StringNullableWithAggregatesFilter<"Store"> | string | null
+    areaLocality?: StringNullableWithAggregatesFilter<"Store"> | string | null
+    fullAddress?: StringWithAggregatesFilter<"Store"> | string
     storeSize?: StringWithAggregatesFilter<"Store"> | string
     businessType?: StringWithAggregatesFilter<"Store"> | string
-    country?: StringWithAggregatesFilter<"Store"> | string
-    state?: StringWithAggregatesFilter<"Store"> | string
-    city?: StringWithAggregatesFilter<"Store"> | string
-    pin?: StringWithAggregatesFilter<"Store"> | string
+    country?: StringNullableWithAggregatesFilter<"Store"> | string | null
+    state?: StringNullableWithAggregatesFilter<"Store"> | string | null
+    city?: StringNullableWithAggregatesFilter<"Store"> | string | null
+    pin?: StringNullableWithAggregatesFilter<"Store"> | string | null
     latitude?: FloatNullableWithAggregatesFilter<"Store"> | number | null
     longitude?: FloatNullableWithAggregatesFilter<"Store"> | number | null
     bannerImageUrl?: StringNullableWithAggregatesFilter<"Store"> | string | null
@@ -22616,16 +22635,17 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
-    flatno: string
-    streetAddress: string
-    NearbyLandMark: string
-    areaLocality: string
+    flatno?: string | null
+    streetAddress?: string | null
+    NearbyLandMark?: string | null
+    areaLocality?: string | null
+    fullAddress: string
     storeSize: string
     businessType: string
-    country: string
-    state: string
-    city: string
-    pin: string
+    country?: string | null
+    state?: string | null
+    city?: string | null
+    pin?: string | null
     latitude?: number | null
     longitude?: number | null
     bannerImageUrl?: string | null
@@ -22651,16 +22671,17 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
-    flatno: string
-    streetAddress: string
-    NearbyLandMark: string
-    areaLocality: string
+    flatno?: string | null
+    streetAddress?: string | null
+    NearbyLandMark?: string | null
+    areaLocality?: string | null
+    fullAddress: string
     storeSize: string
     businessType: string
-    country: string
-    state: string
-    city: string
-    pin: string
+    country?: string | null
+    state?: string | null
+    city?: string | null
+    pin?: string | null
     latitude?: number | null
     longitude?: number | null
     bannerImageUrl?: string | null
@@ -22684,16 +22705,17 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
-    flatno?: StringFieldUpdateOperationsInput | string
-    streetAddress?: StringFieldUpdateOperationsInput | string
-    NearbyLandMark?: StringFieldUpdateOperationsInput | string
-    areaLocality?: StringFieldUpdateOperationsInput | string
+    flatno?: NullableStringFieldUpdateOperationsInput | string | null
+    streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
+    areaLocality?: NullableStringFieldUpdateOperationsInput | string | null
+    fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    state?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    pin?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22719,16 +22741,17 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
-    flatno?: StringFieldUpdateOperationsInput | string
-    streetAddress?: StringFieldUpdateOperationsInput | string
-    NearbyLandMark?: StringFieldUpdateOperationsInput | string
-    areaLocality?: StringFieldUpdateOperationsInput | string
+    flatno?: NullableStringFieldUpdateOperationsInput | string | null
+    streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
+    areaLocality?: NullableStringFieldUpdateOperationsInput | string | null
+    fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    state?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    pin?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22753,16 +22776,17 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
-    flatno: string
-    streetAddress: string
-    NearbyLandMark: string
-    areaLocality: string
+    flatno?: string | null
+    streetAddress?: string | null
+    NearbyLandMark?: string | null
+    areaLocality?: string | null
+    fullAddress: string
     storeSize: string
     businessType: string
-    country: string
-    state: string
-    city: string
-    pin: string
+    country?: string | null
+    state?: string | null
+    city?: string | null
+    pin?: string | null
     latitude?: number | null
     longitude?: number | null
     bannerImageUrl?: string | null
@@ -22782,16 +22806,17 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
-    flatno?: StringFieldUpdateOperationsInput | string
-    streetAddress?: StringFieldUpdateOperationsInput | string
-    NearbyLandMark?: StringFieldUpdateOperationsInput | string
-    areaLocality?: StringFieldUpdateOperationsInput | string
+    flatno?: NullableStringFieldUpdateOperationsInput | string | null
+    streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
+    areaLocality?: NullableStringFieldUpdateOperationsInput | string | null
+    fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    state?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    pin?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22812,16 +22837,17 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
-    flatno?: StringFieldUpdateOperationsInput | string
-    streetAddress?: StringFieldUpdateOperationsInput | string
-    NearbyLandMark?: StringFieldUpdateOperationsInput | string
-    areaLocality?: StringFieldUpdateOperationsInput | string
+    flatno?: NullableStringFieldUpdateOperationsInput | string | null
+    streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
+    areaLocality?: NullableStringFieldUpdateOperationsInput | string | null
+    fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    state?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    pin?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -24178,6 +24204,7 @@ export namespace Prisma {
     streetAddress?: SortOrder
     NearbyLandMark?: SortOrder
     areaLocality?: SortOrder
+    fullAddress?: SortOrder
     storeSize?: SortOrder
     businessType?: SortOrder
     country?: SortOrder
@@ -24215,6 +24242,7 @@ export namespace Prisma {
     streetAddress?: SortOrder
     NearbyLandMark?: SortOrder
     areaLocality?: SortOrder
+    fullAddress?: SortOrder
     storeSize?: SortOrder
     businessType?: SortOrder
     country?: SortOrder
@@ -24244,6 +24272,7 @@ export namespace Prisma {
     streetAddress?: SortOrder
     NearbyLandMark?: SortOrder
     areaLocality?: SortOrder
+    fullAddress?: SortOrder
     storeSize?: SortOrder
     businessType?: SortOrder
     country?: SortOrder
@@ -26093,16 +26122,17 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
-    flatno: string
-    streetAddress: string
-    NearbyLandMark: string
-    areaLocality: string
+    flatno?: string | null
+    streetAddress?: string | null
+    NearbyLandMark?: string | null
+    areaLocality?: string | null
+    fullAddress: string
     storeSize: string
     businessType: string
-    country: string
-    state: string
-    city: string
-    pin: string
+    country?: string | null
+    state?: string | null
+    city?: string | null
+    pin?: string | null
     latitude?: number | null
     longitude?: number | null
     bannerImageUrl?: string | null
@@ -26126,16 +26156,17 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
-    flatno: string
-    streetAddress: string
-    NearbyLandMark: string
-    areaLocality: string
+    flatno?: string | null
+    streetAddress?: string | null
+    NearbyLandMark?: string | null
+    areaLocality?: string | null
+    fullAddress: string
     storeSize: string
     businessType: string
-    country: string
-    state: string
-    city: string
-    pin: string
+    country?: string | null
+    state?: string | null
+    city?: string | null
+    pin?: string | null
     latitude?: number | null
     longitude?: number | null
     bannerImageUrl?: string | null
@@ -26397,16 +26428,17 @@ export namespace Prisma {
     title?: StringFilter<"Store"> | string
     desc?: StringFilter<"Store"> | string
     peopleDesc?: StringFilter<"Store"> | string
-    flatno?: StringFilter<"Store"> | string
-    streetAddress?: StringFilter<"Store"> | string
-    NearbyLandMark?: StringFilter<"Store"> | string
-    areaLocality?: StringFilter<"Store"> | string
+    flatno?: StringNullableFilter<"Store"> | string | null
+    streetAddress?: StringNullableFilter<"Store"> | string | null
+    NearbyLandMark?: StringNullableFilter<"Store"> | string | null
+    areaLocality?: StringNullableFilter<"Store"> | string | null
+    fullAddress?: StringFilter<"Store"> | string
     storeSize?: StringFilter<"Store"> | string
     businessType?: StringFilter<"Store"> | string
-    country?: StringFilter<"Store"> | string
-    state?: StringFilter<"Store"> | string
-    city?: StringFilter<"Store"> | string
-    pin?: StringFilter<"Store"> | string
+    country?: StringNullableFilter<"Store"> | string | null
+    state?: StringNullableFilter<"Store"> | string | null
+    city?: StringNullableFilter<"Store"> | string | null
+    pin?: StringNullableFilter<"Store"> | string | null
     latitude?: FloatNullableFilter<"Store"> | number | null
     longitude?: FloatNullableFilter<"Store"> | number | null
     bannerImageUrl?: StringNullableFilter<"Store"> | string | null
@@ -27110,16 +27142,17 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
-    flatno: string
-    streetAddress: string
-    NearbyLandMark: string
-    areaLocality: string
+    flatno?: string | null
+    streetAddress?: string | null
+    NearbyLandMark?: string | null
+    areaLocality?: string | null
+    fullAddress: string
     storeSize: string
     businessType: string
-    country: string
-    state: string
-    city: string
-    pin: string
+    country?: string | null
+    state?: string | null
+    city?: string | null
+    pin?: string | null
     latitude?: number | null
     longitude?: number | null
     bannerImageUrl?: string | null
@@ -27144,16 +27177,17 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
-    flatno: string
-    streetAddress: string
-    NearbyLandMark: string
-    areaLocality: string
+    flatno?: string | null
+    streetAddress?: string | null
+    NearbyLandMark?: string | null
+    areaLocality?: string | null
+    fullAddress: string
     storeSize: string
     businessType: string
-    country: string
-    state: string
-    city: string
-    pin: string
+    country?: string | null
+    state?: string | null
+    city?: string | null
+    pin?: string | null
     latitude?: number | null
     longitude?: number | null
     bannerImageUrl?: string | null
@@ -27192,16 +27226,17 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
-    flatno?: StringFieldUpdateOperationsInput | string
-    streetAddress?: StringFieldUpdateOperationsInput | string
-    NearbyLandMark?: StringFieldUpdateOperationsInput | string
-    areaLocality?: StringFieldUpdateOperationsInput | string
+    flatno?: NullableStringFieldUpdateOperationsInput | string | null
+    streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
+    areaLocality?: NullableStringFieldUpdateOperationsInput | string | null
+    fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    state?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    pin?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27226,16 +27261,17 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
-    flatno?: StringFieldUpdateOperationsInput | string
-    streetAddress?: StringFieldUpdateOperationsInput | string
-    NearbyLandMark?: StringFieldUpdateOperationsInput | string
-    areaLocality?: StringFieldUpdateOperationsInput | string
+    flatno?: NullableStringFieldUpdateOperationsInput | string | null
+    streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
+    areaLocality?: NullableStringFieldUpdateOperationsInput | string | null
+    fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    state?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    pin?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27299,16 +27335,17 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
-    flatno: string
-    streetAddress: string
-    NearbyLandMark: string
-    areaLocality: string
+    flatno?: string | null
+    streetAddress?: string | null
+    NearbyLandMark?: string | null
+    areaLocality?: string | null
+    fullAddress: string
     storeSize: string
     businessType: string
-    country: string
-    state: string
-    city: string
-    pin: string
+    country?: string | null
+    state?: string | null
+    city?: string | null
+    pin?: string | null
     latitude?: number | null
     longitude?: number | null
     bannerImageUrl?: string | null
@@ -27333,16 +27370,17 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
-    flatno: string
-    streetAddress: string
-    NearbyLandMark: string
-    areaLocality: string
+    flatno?: string | null
+    streetAddress?: string | null
+    NearbyLandMark?: string | null
+    areaLocality?: string | null
+    fullAddress: string
     storeSize: string
     businessType: string
-    country: string
-    state: string
-    city: string
-    pin: string
+    country?: string | null
+    state?: string | null
+    city?: string | null
+    pin?: string | null
     latitude?: number | null
     longitude?: number | null
     bannerImageUrl?: string | null
@@ -27428,16 +27466,17 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
-    flatno?: StringFieldUpdateOperationsInput | string
-    streetAddress?: StringFieldUpdateOperationsInput | string
-    NearbyLandMark?: StringFieldUpdateOperationsInput | string
-    areaLocality?: StringFieldUpdateOperationsInput | string
+    flatno?: NullableStringFieldUpdateOperationsInput | string | null
+    streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
+    areaLocality?: NullableStringFieldUpdateOperationsInput | string | null
+    fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    state?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    pin?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27462,16 +27501,17 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
-    flatno?: StringFieldUpdateOperationsInput | string
-    streetAddress?: StringFieldUpdateOperationsInput | string
-    NearbyLandMark?: StringFieldUpdateOperationsInput | string
-    areaLocality?: StringFieldUpdateOperationsInput | string
+    flatno?: NullableStringFieldUpdateOperationsInput | string | null
+    streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
+    areaLocality?: NullableStringFieldUpdateOperationsInput | string | null
+    fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    state?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    pin?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27494,16 +27534,17 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
-    flatno: string
-    streetAddress: string
-    NearbyLandMark: string
-    areaLocality: string
+    flatno?: string | null
+    streetAddress?: string | null
+    NearbyLandMark?: string | null
+    areaLocality?: string | null
+    fullAddress: string
     storeSize: string
     businessType: string
-    country: string
-    state: string
-    city: string
-    pin: string
+    country?: string | null
+    state?: string | null
+    city?: string | null
+    pin?: string | null
     latitude?: number | null
     longitude?: number | null
     bannerImageUrl?: string | null
@@ -27528,16 +27569,17 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
-    flatno: string
-    streetAddress: string
-    NearbyLandMark: string
-    areaLocality: string
+    flatno?: string | null
+    streetAddress?: string | null
+    NearbyLandMark?: string | null
+    areaLocality?: string | null
+    fullAddress: string
     storeSize: string
     businessType: string
-    country: string
-    state: string
-    city: string
-    pin: string
+    country?: string | null
+    state?: string | null
+    city?: string | null
+    pin?: string | null
     latitude?: number | null
     longitude?: number | null
     bannerImageUrl?: string | null
@@ -27689,16 +27731,17 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
-    flatno?: StringFieldUpdateOperationsInput | string
-    streetAddress?: StringFieldUpdateOperationsInput | string
-    NearbyLandMark?: StringFieldUpdateOperationsInput | string
-    areaLocality?: StringFieldUpdateOperationsInput | string
+    flatno?: NullableStringFieldUpdateOperationsInput | string | null
+    streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
+    areaLocality?: NullableStringFieldUpdateOperationsInput | string | null
+    fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    state?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    pin?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27723,16 +27766,17 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
-    flatno?: StringFieldUpdateOperationsInput | string
-    streetAddress?: StringFieldUpdateOperationsInput | string
-    NearbyLandMark?: StringFieldUpdateOperationsInput | string
-    areaLocality?: StringFieldUpdateOperationsInput | string
+    flatno?: NullableStringFieldUpdateOperationsInput | string | null
+    streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
+    areaLocality?: NullableStringFieldUpdateOperationsInput | string | null
+    fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    state?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    pin?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28411,16 +28455,17 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
-    flatno: string
-    streetAddress: string
-    NearbyLandMark: string
-    areaLocality: string
+    flatno?: string | null
+    streetAddress?: string | null
+    NearbyLandMark?: string | null
+    areaLocality?: string | null
+    fullAddress: string
     storeSize: string
     businessType: string
-    country: string
-    state: string
-    city: string
-    pin: string
+    country?: string | null
+    state?: string | null
+    city?: string | null
+    pin?: string | null
     latitude?: number | null
     longitude?: number | null
     bannerImageUrl?: string | null
@@ -28445,16 +28490,17 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
-    flatno: string
-    streetAddress: string
-    NearbyLandMark: string
-    areaLocality: string
+    flatno?: string | null
+    streetAddress?: string | null
+    NearbyLandMark?: string | null
+    areaLocality?: string | null
+    fullAddress: string
     storeSize: string
     businessType: string
-    country: string
-    state: string
-    city: string
-    pin: string
+    country?: string | null
+    state?: string | null
+    city?: string | null
+    pin?: string | null
     latitude?: number | null
     longitude?: number | null
     bannerImageUrl?: string | null
@@ -28540,16 +28586,17 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
-    flatno?: StringFieldUpdateOperationsInput | string
-    streetAddress?: StringFieldUpdateOperationsInput | string
-    NearbyLandMark?: StringFieldUpdateOperationsInput | string
-    areaLocality?: StringFieldUpdateOperationsInput | string
+    flatno?: NullableStringFieldUpdateOperationsInput | string | null
+    streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
+    areaLocality?: NullableStringFieldUpdateOperationsInput | string | null
+    fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    state?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    pin?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28574,16 +28621,17 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
-    flatno?: StringFieldUpdateOperationsInput | string
-    streetAddress?: StringFieldUpdateOperationsInput | string
-    NearbyLandMark?: StringFieldUpdateOperationsInput | string
-    areaLocality?: StringFieldUpdateOperationsInput | string
+    flatno?: NullableStringFieldUpdateOperationsInput | string | null
+    streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
+    areaLocality?: NullableStringFieldUpdateOperationsInput | string | null
+    fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    state?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    pin?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28606,16 +28654,17 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
-    flatno: string
-    streetAddress: string
-    NearbyLandMark: string
-    areaLocality: string
+    flatno?: string | null
+    streetAddress?: string | null
+    NearbyLandMark?: string | null
+    areaLocality?: string | null
+    fullAddress: string
     storeSize: string
     businessType: string
-    country: string
-    state: string
-    city: string
-    pin: string
+    country?: string | null
+    state?: string | null
+    city?: string | null
+    pin?: string | null
     latitude?: number | null
     longitude?: number | null
     bannerImageUrl?: string | null
@@ -28701,16 +28750,17 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
-    flatno?: StringFieldUpdateOperationsInput | string
-    streetAddress?: StringFieldUpdateOperationsInput | string
-    NearbyLandMark?: StringFieldUpdateOperationsInput | string
-    areaLocality?: StringFieldUpdateOperationsInput | string
+    flatno?: NullableStringFieldUpdateOperationsInput | string | null
+    streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
+    areaLocality?: NullableStringFieldUpdateOperationsInput | string | null
+    fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    state?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    pin?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28734,16 +28784,17 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
-    flatno?: StringFieldUpdateOperationsInput | string
-    streetAddress?: StringFieldUpdateOperationsInput | string
-    NearbyLandMark?: StringFieldUpdateOperationsInput | string
-    areaLocality?: StringFieldUpdateOperationsInput | string
+    flatno?: NullableStringFieldUpdateOperationsInput | string | null
+    streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
+    areaLocality?: NullableStringFieldUpdateOperationsInput | string | null
+    fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    state?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    pin?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28767,16 +28818,17 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
-    flatno?: StringFieldUpdateOperationsInput | string
-    streetAddress?: StringFieldUpdateOperationsInput | string
-    NearbyLandMark?: StringFieldUpdateOperationsInput | string
-    areaLocality?: StringFieldUpdateOperationsInput | string
+    flatno?: NullableStringFieldUpdateOperationsInput | string | null
+    streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
+    areaLocality?: NullableStringFieldUpdateOperationsInput | string | null
+    fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    state?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    pin?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null

@@ -115,7 +115,7 @@ const handleFinish = async () => {
         share.mode === "Regular"));
   
   return (
-    <div className="w-full flex items-center justify-center">
+    <div className="w-full flex h-[80vh] items-center justify-center">
       {sStep === 1 && <StepBTitle btitle={btitle} setbTitle={setbTitle}/>}
       {sStep === 2 && <StepParticom />}
       {sStep === 3 && <StoreMethodtypecom />}

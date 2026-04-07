@@ -73,18 +73,19 @@ model Store {
   title          String
   desc           String
   peopleDesc     String
-  flatno         String
-  streetAddress  String
-  NearbyLandMark String
-  areaLocality   String
+  flatno         String?
+  streetAddress  String?
+  NearbyLandMark String?
+  areaLocality   String?
+  fullAddress    String
 
   storeSize    String
   businessType String
 
-  country String
-  state   String
-  city    String
-  pin     String
+  country String?
+  state   String?
+  city    String?
+  pin     String?
 
   latitude  Float?
   longitude Float?
