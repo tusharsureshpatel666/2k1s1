@@ -41,6 +41,7 @@ const AddFormStore = () => {
   const [district, setDistrict] = useState("");
   const [city, setCity] = useState("");
   const [state, Sstate] = useState("");
+  const [address, setAddress] = useState("")
 
   const [pin, setPin] = useState("");
 
@@ -68,11 +69,7 @@ const AddFormStore = () => {
     (sStep === 1 && title.trim() !== "") ||
     (sStep === 2 && storeType.trim() !== "") ||
     (sStep === 3 &&
-      country !== "" &&
-      state !== "" &&
-      flat !== "" &&
-      street !== "" &&
-      city !== "" && pin!== "") ||
+       address !=="") ||
     (sStep === 4 &&
       bannerImage !== null &&
       otherImages.filter(Boolean).length === 4) ||
@@ -150,6 +147,8 @@ const AddFormStore = () => {
         district,
         city,
         state,
+        address,
+
 
         pin,
 
@@ -198,22 +197,16 @@ const AddFormStore = () => {
 
       {sStep === 3 && (
         <LocationPicker
-          country={country}
-          setCountry={setCountry}
-          state={state}
-          Sstate={Sstate}
-          city={city}
-          setCity={setCity}
-          pin={pin}
-          setPin={setPin}
-          flatNo={flat}
+          address={address}
+          setAddress={setAddress}
           setFlatNo={setFlat}
-          street={street}
           setStreet={setStreet}
-          nearby={nearby}
           setNearby={setNearby}
-          district={district}
           setDistrict={setDistrict}
+          setCity={setCity}
+          setCountry={setCountry}
+          Sstate={Sstate}
+          setPin={setPin}
         />
       )}
 

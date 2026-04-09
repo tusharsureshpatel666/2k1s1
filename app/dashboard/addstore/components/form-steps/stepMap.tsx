@@ -15,6 +15,9 @@ type Props = {
   setCountry: (v: string) => void;
   Sstate: (v: string) => void;
   setPin: (v: string) => void;
+
+  address: string; // ✅ ADD THIS
+  setAddress: (v: string) => void;
 };
 
 export default function LocationPicker({
@@ -26,15 +29,18 @@ export default function LocationPicker({
   setCountry,
   Sstate,
   setPin,
+  address,
+  setAddress,
+ 
 }: Props) {
   const [loading, setLoading] = useState(false);
-  const [address, setAddress] = useState("");
+  // const [address, setAddress] = useState("");
   const [location, setLocation] = useState<{ lat: number; lng: number } | null>(
     null,
   );
 
   const [results, setResults] = useState<any[]>([]);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); 
 
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<google.maps.Map | null>(null);
@@ -175,7 +181,7 @@ export default function LocationPicker({
   }
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-3 sm:px-4">
+    <div className="w-full max-w-5xl mx-auto  md:px-4 px-0">
       <div className="text-center mb-4">
         <Heading
           title="Where’s your place located?"
@@ -240,7 +246,7 @@ export default function LocationPicker({
           onLoad={(map) => (mapRef.current = map)}
         >
           {/* Marker only when location exists */}
-          {location && <Marker position={location} />}
+          {location && <Marker position={location || DefaultLocation} />}
         </GoogleMap>
       </div>
     </div>

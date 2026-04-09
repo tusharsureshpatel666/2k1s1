@@ -32,6 +32,7 @@ export async function POST(req: Request) {
       state,
       city,
       pin,
+      address,
 
       businessType,
       peopleDesc,
@@ -51,6 +52,7 @@ export async function POST(req: Request) {
       state,
       pin,
       country,
+     address,
     });
 
     const total = priceInr * 1.1;
@@ -65,9 +67,9 @@ export async function POST(req: Request) {
       );
     }
 
-    if (!country || !state || !city || !pin || !flat || !street || !district) {
-      return NextResponse.json({ error: "Invalid location" }, { status: 400 });
-    }
+    // if (!country || !state || !city || !pin || !flat || !street || !district) {
+    //   return NextResponse.json({ error: "Invalid location" }, { status: 400 });
+    // }
 
     if (!bannerImageUrl) {
       return NextResponse.json(
@@ -105,6 +107,7 @@ export async function POST(req: Request) {
         state,
         city,
         pin,
+       fullAddress: address,
         flatno: flat,
         streetAddress: street,
         NearbyLandMark: nearby,

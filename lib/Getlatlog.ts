@@ -7,12 +7,13 @@ type Address = {
   state: string;
   pin: string;
   country: string;
+  address: string;
 };
 
 export const getLatLng = async (
   address: Address,
 ): Promise<{ lat: number; lng: number }> => {
-  const fullAddress = `${address.flat}, ${address.street}, ${address.nearby}, ${address.district}, ${address.city}, ${address.state}, ${address.pin}, ${address.country}`;
+  const fullAddress = `${address.flat}, ${address.street}, ${address.nearby}, ${address.district}, ${address.city}, ${address.state}, ${address.pin}, ${address.country} ${address.address}`;
 
   const res = await fetch(
     `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
