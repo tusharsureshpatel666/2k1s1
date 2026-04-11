@@ -52,6 +52,7 @@ export async function PUT(
         state: body.state,
         city: body.city,
         pin: body.pin,
+        fullAddress: body.fullAddress,
 
         latitude: body.latitude ?? null,
         longitude: body.longitude ?? null,

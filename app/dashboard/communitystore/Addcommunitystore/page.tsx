@@ -3,7 +3,7 @@ import CommunityForm from './components/form/CommunityForm';
 
 const Communitypage = () => {
   return (
-    <div className='w-full'>
+    <div className='w-full flex justify-center items-center'>
           <CommunityForm/>
     </div>
   )

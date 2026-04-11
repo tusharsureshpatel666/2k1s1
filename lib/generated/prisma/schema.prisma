@@ -119,10 +119,11 @@ model CommunityStore {
   desc       String
   peopleDesc String
 
-  flatno         String
-  streetAddress  String
-  NearbyLandMark String
-  areaLocality   String
+  flatno         String?
+  streetAddress  String?
+  NearbyLandMark String?
+  areaLocality   String?
+  fullAddress    String
 
   storeSize    String
   businessType String

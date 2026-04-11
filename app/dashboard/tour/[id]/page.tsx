@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,9 +16,16 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 
-import { User, Mail, Phone, MessageSquare } from "lucide-react";
-
 import { getStoreById } from "@/lib/query/getstore";
+
+const containerVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
 
 const Tourpage = () => {
   const params = useParams<{ id: string }>();
@@ -33,7 +41,6 @@ const Tourpage = () => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
 
-  // Fetch store
   useEffect(() => {
     if (!id) return;
 
@@ -67,12 +74,11 @@ const Tourpage = () => {
       await axios.post("/api/tour", {
         name,
         email,
-        phone,
+        phone: `+91${phone}`,
         message: desc,
         id,
       });
 
-      // Reset form
       setName("");
       setEmail("");
       setPhone("");
@@ -92,89 +98,117 @@ const Tourpage = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center w-full items-center px-4 py-10">
-      <h1 className="text-xl md:text-2xl mb-6 font-semibold">
-        Request a Tour {data?.title}
-      </h1>
+    <div className="flex flex-col justify-center w-full items-center">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="max-w-4xl w-full "
+      >
+        <h1 className="text-xl md:text-3xl font-semibold text-center">
+          Request a Tour {data?.title}
+        </h1>
 
-      <div className="rounded-2xl max-w-4xl w-full space-y-5">
-        {/* Name */}
-        <div className="relative">
-          <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-          <Input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Full name"
-            className="h-14 pl-12 pr-5 rounded-xl"
-          />
-          {!isValidName && name.length > 0 && (
-            <p className="text-red-500 text-sm mt-1">
-              Name must be at least 3 characters
-            </p>
-          )}
-        </div>
-
-        {/* Email & Phone */}
-        <div className="flex md:flex-row flex-col gap-4">
-          <div className="relative w-full">
-            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+        <div className=" p-6 md:p-10 rounded-2xl  space-y-2">
+          {/* Full Name */}
+          <div className="space-y-2">
+            <label className="text-sm font-medium">Full Name</label>
             <Input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-              className="h-14 pl-12 pr-5 rounded-xl"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter your full name"
+              className="h-13 rounded-md"
             />
-            {!isValidEmail && email.length > 0 && (
-              <p className="text-red-500 text-sm mt-1">
-                Enter a valid email address
+            {!isValidName && name.length > 0 && (
+              <p className="text-red-500 text-sm">
+                Name must be at least 3 characters
               </p>
             )}
           </div>
 
-          <div className="relative w-full">
-            <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-            <Input
-              value={phone}
-              onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
-              placeholder="Phone Number"
-              maxLength={10}
-              className="h-14 pl-12 pr-5 rounded-xl"
+          {/* Email & Phone */}
+          <div className="flex flex-col gap-4">
+            <div className="w-full">
+              <label className="text-sm font-medium">Email</label>
+              <Input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                className="h-13 rounded-md"
+              />
+              {!isValidEmail && email.length > 0 && (
+                <p className="text-red-500 text-sm">
+                  Enter a valid email address
+                </p>
+              )}
+            </div>
+
+            {/* Indian Phone */}
+            <div className=" w-full">
+             
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Mobile Number</label>
+
+                <div className="flex items-center border rounded-md h-12 overflow-hidden bg-background">
+                  {/* Country Section */}
+                  <div className="flex items-center gap-2 px-3 border-r bg-muted/40">
+                    <span className="text-base">🇮🇳</span>
+                    <span className="text-sm font-medium">+91</span>
+                    
+                  </div>
+
+                  {/* Input */}
+                  <Input
+                    value={phone}
+                    onChange={(e) =>
+                      setPhone(e.target.value.replace(/\D/g, ""))
+                    }
+                    placeholder="9999 999 999"
+                    maxLength={10}
+                    className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0 h-full rounded-none"
+                  />
+                </div>
+
+              
+              </div>
+
+              {!isValidPhone && phone.length > 0 && (
+                <p className="text-red-500 text-sm">
+                  Phone must be exactly 10 digits
+                </p>
+              )}
+            </div>
+          </div>
+
+          {/* Message */}
+          <div className="space-y-2">
+            <label className="text-sm font-medium">Message</label>
+            <Textarea
+              value={desc}
+              onChange={(e) => setDesc(e.target.value)}
+              placeholder="Write your message..."
+              className="h-32 rounded-md"
             />
-            {!isValidPhone && phone.length > 0 && (
-              <p className="text-red-500 text-sm mt-1">
-                Phone must be exactly 10 digits
-              </p>
+            {!isValidMessage && desc.length > 0 && (
+              <p className="text-red-500 text-sm">Message is required</p>
             )}
           </div>
-        </div>
 
-        {/* Message */}
-        <div className="relative">
-          <MessageSquare className="absolute left-4 top-4 w-5 h-5 text-muted-foreground" />
-          <Textarea
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
-            placeholder="Message"
-            className="h-32 pl-12 pr-5 py-4 rounded-xl"
-          />
-          {!isValidMessage && desc.length > 0 && (
-            <p className="text-red-500 text-sm mt-1">Message is required</p>
-          )}
+          {/* Button */}
+          <Button
+            className="w-full py-6 text-sm rounded-md mt-4 cursor-pointer"
+            onClick={handelSubmit}
+            disabled={!isFormValid || loading}
+          >
+            {loading ? "Sending..." : "Send Request"}
+          </Button>
         </div>
-
-        {/* Submit Button */}
-        <Button
-          className="w-full py-6 text-base rounded-xl"
-          onClick={handelSubmit}
-          disabled={!isFormValid || loading}
-        >
-          {loading ? "Sending..." : "Send Request"}
-        </Button>
-      </div>
+      </motion.div>
 
       {/* Success Dialog */}
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="sm:max-w-md rounded-2xl">
+      <Dialog open={open} onOpenChange={setOpen} >
+        <DialogContent className="sm:max-w-md px-5 py-4 rounded-2xl">
           <DialogHeader>
             <DialogTitle className="text-green-600 text-lg">
               🎉 Request Sent Successfully!

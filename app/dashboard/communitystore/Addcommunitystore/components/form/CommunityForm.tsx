@@ -41,6 +41,7 @@ const CommunityFormStore = () => {
   const [district, setDistrict] = useState("");
   const [city, setCity] = useState("");
   const [state, Sstate] = useState("");
+  const [address, setAddress] = useState("")
 
   const [pin, setPin] = useState("");
 
@@ -68,11 +69,8 @@ const CommunityFormStore = () => {
     (sStep === 1 && title.trim() !== "") ||
     (sStep === 2 && storeType.trim() !== "") ||
     (sStep === 3 &&
-      country !== "" &&
-      state !== "" &&
-      flat !== "" &&
-      street !== "" &&
-      city !== "") ||
+       address !=="")
+      ||
     (sStep === 4 &&
       bannerImage !== null &&
       otherImages.filter(Boolean).length === 4) ||
@@ -139,6 +137,7 @@ const CommunityFormStore = () => {
         district,
         city,
         state,
+        address,
 
         pin,
 
@@ -161,7 +160,7 @@ const CommunityFormStore = () => {
       const res = await axios.post("/api/store/communitystore", payload);
 
       toast.success("Store Created 🎉");
-      router.push(`/dashboard/store/${res.data.store.id}`);
+      router.push(`/dashboard/communitystore/${res.data.store.id}`);
     } catch (err: any) {
       console.error(err);
       toast.error(err?.response?.data?.error || err.message);
@@ -187,22 +186,16 @@ const CommunityFormStore = () => {
 
       {sStep === 3 && (
         <LocationPicker
-          country={country}
-          setCountry={setCountry}
-          state={state}
-          Sstate={Sstate}
-          city={city}
-          setCity={setCity}
-          pin={pin}
-          setPin={setPin}
-          flatNo={flat}
+          address={address}
+          setAddress={setAddress}
           setFlatNo={setFlat}
-          street={street}
           setStreet={setStreet}
-          nearby={nearby}
           setNearby={setNearby}
-          district={district}
           setDistrict={setDistrict}
+          setCity={setCity}
+          setCountry={setCountry}
+          Sstate={Sstate}
+          setPin={setPin}
         />
       )}
 
@@ -214,11 +207,8 @@ const CommunityFormStore = () => {
           setOtherImages={setOtherImages}
         />
       )}
-     
 
       {sStep == 5 && <PriceInput price={price} setPrice={setPrice} />}
-
-
 
       {sStep == 6 && (
         <StepDesc

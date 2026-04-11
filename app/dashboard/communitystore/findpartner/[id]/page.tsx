@@ -8,7 +8,7 @@ import { CommunityuseParticStore, ComuseStoreStep } from '@/store/store'
 import StoreMethodtypecom from '../components/stepStoreMethod'
 import Image from 'next/image'
 import Heading from '@/app/dashboard/components/heading'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import StepBTitle from '../components/Bussinesstype'
 
 
@@ -22,6 +22,7 @@ const Partnerpage = () => {
  const [shake, setShake] = useState(false);
  const { sStep, setSStep, nextSStep, prevStep, resetStep } = ComuseStoreStep();
  const [StoreDATA, setStoreDATA] = useState(null)
+ const router = useRouter()
   useEffect(() => {
     console.log(sStep)
   }, [sStep])
@@ -74,7 +75,7 @@ const handleFinish = async () => {
 
    latitude: StoreDATA?.latitude ?? null,
    longitude: StoreDATA?.longitude ?? null,
-
+   fullAddress: StoreDATA?.fullAddress,
    bannerImageUrl: StoreDATA?.bannerImageUrl ?? null,
    images: StoreDATA?.images ?? [],
 
@@ -88,6 +89,8 @@ const handleFinish = async () => {
  };
 
     const res = await axios.put(`/api/communitystore/${storeId}`, payload);
+    router.push(`/dashboard/store/${res.data.store.id}`)
+    
 
 
     console.log(res.data);

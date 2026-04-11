@@ -29,6 +29,7 @@ export async function POST(req: Request){
         priceInr,
         bannerImageUrl,
         images,
+        address,
       } = body;
 
       const { lat, lng } = await getLatLng({
@@ -40,6 +41,7 @@ export async function POST(req: Request){
         state,
         pin,
         country,
+        address
       });
 
       if (!title || !desc) {
@@ -48,20 +50,7 @@ export async function POST(req: Request){
           { status: 400 },
         );
       }
-      if (
-        !country ||
-        !state ||
-        !city ||
-        !pin ||
-        !flat ||
-        !street ||
-        !district
-      ) {
-        return NextResponse.json(
-          { error: "Invalid location" },
-          { status: 400 },
-        );
-      }
+    
 
       if (!bannerImageUrl) {
         return NextResponse.json(
@@ -90,6 +79,7 @@ export async function POST(req: Request){
           state,
           city,
           pin,
+          fullAddress: address,
           flatno: flat,
           streetAddress: street,
           NearbyLandMark: nearby,
