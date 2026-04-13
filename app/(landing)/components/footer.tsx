@@ -49,7 +49,8 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="mt-8 border-t border-gray-200 pt-4 text-center text-xs text-gray-500 dark:border-gray-800 dark:text-gray-400">
-          © {new Date().getFullYear()} Splitat. All rights reserved.
+          © {new Date().getFullYear()} Splitat. All rights reserved.{" "}
+          <Link href={"/common/privacy"} className="underline text-blue-500">Privacy Policy</Link>
         </div>
       </div>
     </footer>
