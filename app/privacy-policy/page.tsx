@@ -25,7 +25,7 @@ export default function PrivacyPolicyPage() {
         </p>
 
         <p className="text-gray-700 dark:text-gray-500 mb-4">
-          Welcome to <strong>Sklep</strong>. This Privacy Policy describes how
+          Welcome to <strong>Sliptat</strong>. This Privacy Policy describes how
           we collect, use, and protect your information.
         </p>
 
