@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { MapShowerAlso } from '../components/MapShpw'
-import StoreListAlso from '../components/StoreListAlso'
+
 
 
 const Storepage = () => {

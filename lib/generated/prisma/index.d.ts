@@ -4832,6 +4832,7 @@ export namespace Prisma {
     fullAddress: string | null
     storeSize: string | null
     businessType: string | null
+    videoUrl: string | null
     country: string | null
     state: string | null
     city: string | null
@@ -4862,6 +4863,7 @@ export namespace Prisma {
     fullAddress: string | null
     storeSize: string | null
     businessType: string | null
+    videoUrl: string | null
     country: string | null
     state: string | null
     city: string | null
@@ -4892,6 +4894,7 @@ export namespace Prisma {
     fullAddress: number
     storeSize: number
     businessType: number
+    videoUrl: number
     country: number
     state: number
     city: number
@@ -4939,6 +4942,7 @@ export namespace Prisma {
     fullAddress?: true
     storeSize?: true
     businessType?: true
+    videoUrl?: true
     country?: true
     state?: true
     city?: true
@@ -4969,6 +4973,7 @@ export namespace Prisma {
     fullAddress?: true
     storeSize?: true
     businessType?: true
+    videoUrl?: true
     country?: true
     state?: true
     city?: true
@@ -4999,6 +5004,7 @@ export namespace Prisma {
     fullAddress?: true
     storeSize?: true
     businessType?: true
+    videoUrl?: true
     country?: true
     state?: true
     city?: true
@@ -5117,6 +5123,7 @@ export namespace Prisma {
     fullAddress: string
     storeSize: string
     businessType: string
+    videoUrl: string | null
     country: string | null
     state: string | null
     city: string | null
@@ -5167,6 +5174,7 @@ export namespace Prisma {
     fullAddress?: boolean
     storeSize?: boolean
     businessType?: boolean
+    videoUrl?: boolean
     country?: boolean
     state?: boolean
     city?: boolean
@@ -5204,6 +5212,7 @@ export namespace Prisma {
     fullAddress?: boolean
     storeSize?: boolean
     businessType?: boolean
+    videoUrl?: boolean
     country?: boolean
     state?: boolean
     city?: boolean
@@ -5236,6 +5245,7 @@ export namespace Prisma {
     fullAddress?: boolean
     storeSize?: boolean
     businessType?: boolean
+    videoUrl?: boolean
     country?: boolean
     state?: boolean
     city?: boolean
@@ -5268,6 +5278,7 @@ export namespace Prisma {
     fullAddress?: boolean
     storeSize?: boolean
     businessType?: boolean
+    videoUrl?: boolean
     country?: boolean
     state?: boolean
     city?: boolean
@@ -5286,7 +5297,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type StoreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "title" | "desc" | "peopleDesc" | "flatno" | "streetAddress" | "NearbyLandMark" | "areaLocality" | "fullAddress" | "storeSize" | "businessType" | "country" | "state" | "city" | "pin" | "latitude" | "longitude" | "bannerImageUrl" | "priceInr" | "shareMode" | "startTime" | "endTime" | "days" | "sqft" | "dayOrNight" | "createdAt" | "updatedAt", ExtArgs["result"]["store"]>
+  export type StoreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "title" | "desc" | "peopleDesc" | "flatno" | "streetAddress" | "NearbyLandMark" | "areaLocality" | "fullAddress" | "storeSize" | "businessType" | "videoUrl" | "country" | "state" | "city" | "pin" | "latitude" | "longitude" | "bannerImageUrl" | "priceInr" | "shareMode" | "startTime" | "endTime" | "days" | "sqft" | "dayOrNight" | "createdAt" | "updatedAt", ExtArgs["result"]["store"]>
   export type StoreInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | UserDefaultArgs<ExtArgs>
     images?: boolean | Store$imagesArgs<ExtArgs>
@@ -5324,6 +5335,7 @@ export namespace Prisma {
       fullAddress: string
       storeSize: string
       businessType: string
+      videoUrl: string | null
       country: string | null
       state: string | null
       city: string | null
@@ -5780,6 +5792,7 @@ export namespace Prisma {
     readonly fullAddress: FieldRef<"Store", 'String'>
     readonly storeSize: FieldRef<"Store", 'String'>
     readonly businessType: FieldRef<"Store", 'String'>
+    readonly videoUrl: FieldRef<"Store", 'String'>
     readonly country: FieldRef<"Store", 'String'>
     readonly state: FieldRef<"Store", 'String'>
     readonly city: FieldRef<"Store", 'String'>
@@ -6343,6 +6356,7 @@ export namespace Prisma {
     title: string | null
     desc: string | null
     peopleDesc: string | null
+    videoUrl: string | null
     flatno: string | null
     streetAddress: string | null
     NearbyLandMark: string | null
@@ -6372,6 +6386,7 @@ export namespace Prisma {
     title: string | null
     desc: string | null
     peopleDesc: string | null
+    videoUrl: string | null
     flatno: string | null
     streetAddress: string | null
     NearbyLandMark: string | null
@@ -6401,6 +6416,7 @@ export namespace Prisma {
     title: number
     desc: number
     peopleDesc: number
+    videoUrl: number
     flatno: number
     streetAddress: number
     NearbyLandMark: number
@@ -6447,6 +6463,7 @@ export namespace Prisma {
     title?: true
     desc?: true
     peopleDesc?: true
+    videoUrl?: true
     flatno?: true
     streetAddress?: true
     NearbyLandMark?: true
@@ -6476,6 +6493,7 @@ export namespace Prisma {
     title?: true
     desc?: true
     peopleDesc?: true
+    videoUrl?: true
     flatno?: true
     streetAddress?: true
     NearbyLandMark?: true
@@ -6505,6 +6523,7 @@ export namespace Prisma {
     title?: true
     desc?: true
     peopleDesc?: true
+    videoUrl?: true
     flatno?: true
     streetAddress?: true
     NearbyLandMark?: true
@@ -6622,6 +6641,7 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
+    videoUrl: string | null
     flatno: string | null
     streetAddress: string | null
     NearbyLandMark: string | null
@@ -6671,6 +6691,7 @@ export namespace Prisma {
     title?: boolean
     desc?: boolean
     peopleDesc?: boolean
+    videoUrl?: boolean
     flatno?: boolean
     streetAddress?: boolean
     NearbyLandMark?: boolean
@@ -6703,6 +6724,7 @@ export namespace Prisma {
     title?: boolean
     desc?: boolean
     peopleDesc?: boolean
+    videoUrl?: boolean
     flatno?: boolean
     streetAddress?: boolean
     NearbyLandMark?: boolean
@@ -6733,6 +6755,7 @@ export namespace Prisma {
     title?: boolean
     desc?: boolean
     peopleDesc?: boolean
+    videoUrl?: boolean
     flatno?: boolean
     streetAddress?: boolean
     NearbyLandMark?: boolean
@@ -6763,6 +6786,7 @@ export namespace Prisma {
     title?: boolean
     desc?: boolean
     peopleDesc?: boolean
+    videoUrl?: boolean
     flatno?: boolean
     streetAddress?: boolean
     NearbyLandMark?: boolean
@@ -6787,7 +6811,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type CommunityStoreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "title" | "desc" | "peopleDesc" | "flatno" | "streetAddress" | "NearbyLandMark" | "areaLocality" | "fullAddress" | "storeSize" | "businessType" | "country" | "state" | "city" | "pin" | "latitude" | "longitude" | "bannerImageUrl" | "priceInr" | "startTime" | "endTime" | "days" | "sqft" | "dayOrNight" | "createdAt" | "updatedAt", ExtArgs["result"]["communityStore"]>
+  export type CommunityStoreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "title" | "desc" | "peopleDesc" | "videoUrl" | "flatno" | "streetAddress" | "NearbyLandMark" | "areaLocality" | "fullAddress" | "storeSize" | "businessType" | "country" | "state" | "city" | "pin" | "latitude" | "longitude" | "bannerImageUrl" | "priceInr" | "startTime" | "endTime" | "days" | "sqft" | "dayOrNight" | "createdAt" | "updatedAt", ExtArgs["result"]["communityStore"]>
   export type CommunityStoreInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     images?: boolean | CommunityStore$imagesArgs<ExtArgs>
     _count?: boolean | CommunityStoreCountOutputTypeDefaultArgs<ExtArgs>
@@ -6806,6 +6830,7 @@ export namespace Prisma {
       title: string
       desc: string
       peopleDesc: string
+      videoUrl: string | null
       flatno: string | null
       streetAddress: string | null
       NearbyLandMark: string | null
@@ -7257,6 +7282,7 @@ export namespace Prisma {
     readonly title: FieldRef<"CommunityStore", 'String'>
     readonly desc: FieldRef<"CommunityStore", 'String'>
     readonly peopleDesc: FieldRef<"CommunityStore", 'String'>
+    readonly videoUrl: FieldRef<"CommunityStore", 'String'>
     readonly flatno: FieldRef<"CommunityStore", 'String'>
     readonly streetAddress: FieldRef<"CommunityStore", 'String'>
     readonly NearbyLandMark: FieldRef<"CommunityStore", 'String'>
@@ -20853,6 +20879,7 @@ export namespace Prisma {
     fullAddress: 'fullAddress',
     storeSize: 'storeSize',
     businessType: 'businessType',
+    videoUrl: 'videoUrl',
     country: 'country',
     state: 'state',
     city: 'city',
@@ -20880,6 +20907,7 @@ export namespace Prisma {
     title: 'title',
     desc: 'desc',
     peopleDesc: 'peopleDesc',
+    videoUrl: 'videoUrl',
     flatno: 'flatno',
     streetAddress: 'streetAddress',
     NearbyLandMark: 'NearbyLandMark',
@@ -21358,6 +21386,7 @@ export namespace Prisma {
     fullAddress?: StringFilter<"Store"> | string
     storeSize?: StringFilter<"Store"> | string
     businessType?: StringFilter<"Store"> | string
+    videoUrl?: StringNullableFilter<"Store"> | string | null
     country?: StringNullableFilter<"Store"> | string | null
     state?: StringNullableFilter<"Store"> | string | null
     city?: StringNullableFilter<"Store"> | string | null
@@ -21394,6 +21423,7 @@ export namespace Prisma {
     fullAddress?: SortOrder
     storeSize?: SortOrder
     businessType?: SortOrder
+    videoUrl?: SortOrderInput | SortOrder
     country?: SortOrderInput | SortOrder
     state?: SortOrderInput | SortOrder
     city?: SortOrderInput | SortOrder
@@ -21433,6 +21463,7 @@ export namespace Prisma {
     fullAddress?: StringFilter<"Store"> | string
     storeSize?: StringFilter<"Store"> | string
     businessType?: StringFilter<"Store"> | string
+    videoUrl?: StringNullableFilter<"Store"> | string | null
     country?: StringNullableFilter<"Store"> | string | null
     state?: StringNullableFilter<"Store"> | string | null
     city?: StringNullableFilter<"Store"> | string | null
@@ -21469,6 +21500,7 @@ export namespace Prisma {
     fullAddress?: SortOrder
     storeSize?: SortOrder
     businessType?: SortOrder
+    videoUrl?: SortOrderInput | SortOrder
     country?: SortOrderInput | SortOrder
     state?: SortOrderInput | SortOrder
     city?: SortOrderInput | SortOrder
@@ -21508,6 +21540,7 @@ export namespace Prisma {
     fullAddress?: StringWithAggregatesFilter<"Store"> | string
     storeSize?: StringWithAggregatesFilter<"Store"> | string
     businessType?: StringWithAggregatesFilter<"Store"> | string
+    videoUrl?: StringNullableWithAggregatesFilter<"Store"> | string | null
     country?: StringNullableWithAggregatesFilter<"Store"> | string | null
     state?: StringNullableWithAggregatesFilter<"Store"> | string | null
     city?: StringNullableWithAggregatesFilter<"Store"> | string | null
@@ -21535,6 +21568,7 @@ export namespace Prisma {
     title?: StringFilter<"CommunityStore"> | string
     desc?: StringFilter<"CommunityStore"> | string
     peopleDesc?: StringFilter<"CommunityStore"> | string
+    videoUrl?: StringNullableFilter<"CommunityStore"> | string | null
     flatno?: StringNullableFilter<"CommunityStore"> | string | null
     streetAddress?: StringNullableFilter<"CommunityStore"> | string | null
     NearbyLandMark?: StringNullableFilter<"CommunityStore"> | string | null
@@ -21566,6 +21600,7 @@ export namespace Prisma {
     title?: SortOrder
     desc?: SortOrder
     peopleDesc?: SortOrder
+    videoUrl?: SortOrderInput | SortOrder
     flatno?: SortOrderInput | SortOrder
     streetAddress?: SortOrderInput | SortOrder
     NearbyLandMark?: SortOrderInput | SortOrder
@@ -21600,6 +21635,7 @@ export namespace Prisma {
     title?: StringFilter<"CommunityStore"> | string
     desc?: StringFilter<"CommunityStore"> | string
     peopleDesc?: StringFilter<"CommunityStore"> | string
+    videoUrl?: StringNullableFilter<"CommunityStore"> | string | null
     flatno?: StringNullableFilter<"CommunityStore"> | string | null
     streetAddress?: StringNullableFilter<"CommunityStore"> | string | null
     NearbyLandMark?: StringNullableFilter<"CommunityStore"> | string | null
@@ -21631,6 +21667,7 @@ export namespace Prisma {
     title?: SortOrder
     desc?: SortOrder
     peopleDesc?: SortOrder
+    videoUrl?: SortOrderInput | SortOrder
     flatno?: SortOrderInput | SortOrder
     streetAddress?: SortOrderInput | SortOrder
     NearbyLandMark?: SortOrderInput | SortOrder
@@ -21669,6 +21706,7 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"CommunityStore"> | string
     desc?: StringWithAggregatesFilter<"CommunityStore"> | string
     peopleDesc?: StringWithAggregatesFilter<"CommunityStore"> | string
+    videoUrl?: StringNullableWithAggregatesFilter<"CommunityStore"> | string | null
     flatno?: StringNullableWithAggregatesFilter<"CommunityStore"> | string | null
     streetAddress?: StringNullableWithAggregatesFilter<"CommunityStore"> | string | null
     NearbyLandMark?: StringNullableWithAggregatesFilter<"CommunityStore"> | string | null
@@ -22661,6 +22699,7 @@ export namespace Prisma {
     fullAddress: string
     storeSize: string
     businessType: string
+    videoUrl?: string | null
     country?: string | null
     state?: string | null
     city?: string | null
@@ -22697,6 +22736,7 @@ export namespace Prisma {
     fullAddress: string
     storeSize: string
     businessType: string
+    videoUrl?: string | null
     country?: string | null
     state?: string | null
     city?: string | null
@@ -22731,6 +22771,7 @@ export namespace Prisma {
     fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22767,6 +22808,7 @@ export namespace Prisma {
     fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22802,6 +22844,7 @@ export namespace Prisma {
     fullAddress: string
     storeSize: string
     businessType: string
+    videoUrl?: string | null
     country?: string | null
     state?: string | null
     city?: string | null
@@ -22832,6 +22875,7 @@ export namespace Prisma {
     fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22863,6 +22907,7 @@ export namespace Prisma {
     fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22887,6 +22932,7 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
+    videoUrl?: string | null
     flatno?: string | null
     streetAddress?: string | null
     NearbyLandMark?: string | null
@@ -22918,6 +22964,7 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
+    videoUrl?: string | null
     flatno?: string | null
     streetAddress?: string | null
     NearbyLandMark?: string | null
@@ -22949,6 +22996,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     flatno?: NullableStringFieldUpdateOperationsInput | string | null
     streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
     NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22980,6 +23028,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     flatno?: NullableStringFieldUpdateOperationsInput | string | null
     streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
     NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
@@ -23011,6 +23060,7 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
+    videoUrl?: string | null
     flatno?: string | null
     streetAddress?: string | null
     NearbyLandMark?: string | null
@@ -23041,6 +23091,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     flatno?: NullableStringFieldUpdateOperationsInput | string | null
     streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
     NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
@@ -23071,6 +23122,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     flatno?: NullableStringFieldUpdateOperationsInput | string | null
     streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
     NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
@@ -24233,6 +24285,7 @@ export namespace Prisma {
     fullAddress?: SortOrder
     storeSize?: SortOrder
     businessType?: SortOrder
+    videoUrl?: SortOrder
     country?: SortOrder
     state?: SortOrder
     city?: SortOrder
@@ -24271,6 +24324,7 @@ export namespace Prisma {
     fullAddress?: SortOrder
     storeSize?: SortOrder
     businessType?: SortOrder
+    videoUrl?: SortOrder
     country?: SortOrder
     state?: SortOrder
     city?: SortOrder
@@ -24301,6 +24355,7 @@ export namespace Prisma {
     fullAddress?: SortOrder
     storeSize?: SortOrder
     businessType?: SortOrder
+    videoUrl?: SortOrder
     country?: SortOrder
     state?: SortOrder
     city?: SortOrder
@@ -24399,6 +24454,7 @@ export namespace Prisma {
     title?: SortOrder
     desc?: SortOrder
     peopleDesc?: SortOrder
+    videoUrl?: SortOrder
     flatno?: SortOrder
     streetAddress?: SortOrder
     NearbyLandMark?: SortOrder
@@ -24436,6 +24492,7 @@ export namespace Prisma {
     title?: SortOrder
     desc?: SortOrder
     peopleDesc?: SortOrder
+    videoUrl?: SortOrder
     flatno?: SortOrder
     streetAddress?: SortOrder
     NearbyLandMark?: SortOrder
@@ -24465,6 +24522,7 @@ export namespace Prisma {
     title?: SortOrder
     desc?: SortOrder
     peopleDesc?: SortOrder
+    videoUrl?: SortOrder
     flatno?: SortOrder
     streetAddress?: SortOrder
     NearbyLandMark?: SortOrder
@@ -26158,6 +26216,7 @@ export namespace Prisma {
     fullAddress: string
     storeSize: string
     businessType: string
+    videoUrl?: string | null
     country?: string | null
     state?: string | null
     city?: string | null
@@ -26192,6 +26251,7 @@ export namespace Prisma {
     fullAddress: string
     storeSize: string
     businessType: string
+    videoUrl?: string | null
     country?: string | null
     state?: string | null
     city?: string | null
@@ -26464,6 +26524,7 @@ export namespace Prisma {
     fullAddress?: StringFilter<"Store"> | string
     storeSize?: StringFilter<"Store"> | string
     businessType?: StringFilter<"Store"> | string
+    videoUrl?: StringNullableFilter<"Store"> | string | null
     country?: StringNullableFilter<"Store"> | string | null
     state?: StringNullableFilter<"Store"> | string | null
     city?: StringNullableFilter<"Store"> | string | null
@@ -27040,6 +27101,7 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
+    videoUrl?: string | null
     flatno?: string | null
     streetAddress?: string | null
     NearbyLandMark?: string | null
@@ -27070,6 +27132,7 @@ export namespace Prisma {
     title: string
     desc: string
     peopleDesc: string
+    videoUrl?: string | null
     flatno?: string | null
     streetAddress?: string | null
     NearbyLandMark?: string | null
@@ -27116,6 +27179,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     flatno?: NullableStringFieldUpdateOperationsInput | string | null
     streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
     NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27146,6 +27210,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
     peopleDesc?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     flatno?: NullableStringFieldUpdateOperationsInput | string | null
     streetAddress?: NullableStringFieldUpdateOperationsInput | string | null
     NearbyLandMark?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27182,6 +27247,7 @@ export namespace Prisma {
     fullAddress: string
     storeSize: string
     businessType: string
+    videoUrl?: string | null
     country?: string | null
     state?: string | null
     city?: string | null
@@ -27217,6 +27283,7 @@ export namespace Prisma {
     fullAddress: string
     storeSize: string
     businessType: string
+    videoUrl?: string | null
     country?: string | null
     state?: string | null
     city?: string | null
@@ -27266,6 +27333,7 @@ export namespace Prisma {
     fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27301,6 +27369,7 @@ export namespace Prisma {
     fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27375,6 +27444,7 @@ export namespace Prisma {
     fullAddress: string
     storeSize: string
     businessType: string
+    videoUrl?: string | null
     country?: string | null
     state?: string | null
     city?: string | null
@@ -27410,6 +27480,7 @@ export namespace Prisma {
     fullAddress: string
     storeSize: string
     businessType: string
+    videoUrl?: string | null
     country?: string | null
     state?: string | null
     city?: string | null
@@ -27506,6 +27577,7 @@ export namespace Prisma {
     fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27541,6 +27613,7 @@ export namespace Prisma {
     fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27574,6 +27647,7 @@ export namespace Prisma {
     fullAddress: string
     storeSize: string
     businessType: string
+    videoUrl?: string | null
     country?: string | null
     state?: string | null
     city?: string | null
@@ -27609,6 +27683,7 @@ export namespace Prisma {
     fullAddress: string
     storeSize: string
     businessType: string
+    videoUrl?: string | null
     country?: string | null
     state?: string | null
     city?: string | null
@@ -27771,6 +27846,7 @@ export namespace Prisma {
     fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27806,6 +27882,7 @@ export namespace Prisma {
     fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28495,6 +28572,7 @@ export namespace Prisma {
     fullAddress: string
     storeSize: string
     businessType: string
+    videoUrl?: string | null
     country?: string | null
     state?: string | null
     city?: string | null
@@ -28530,6 +28608,7 @@ export namespace Prisma {
     fullAddress: string
     storeSize: string
     businessType: string
+    videoUrl?: string | null
     country?: string | null
     state?: string | null
     city?: string | null
@@ -28626,6 +28705,7 @@ export namespace Prisma {
     fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28661,6 +28741,7 @@ export namespace Prisma {
     fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28694,6 +28775,7 @@ export namespace Prisma {
     fullAddress: string
     storeSize: string
     businessType: string
+    videoUrl?: string | null
     country?: string | null
     state?: string | null
     city?: string | null
@@ -28790,6 +28872,7 @@ export namespace Prisma {
     fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28824,6 +28907,7 @@ export namespace Prisma {
     fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28858,6 +28942,7 @@ export namespace Prisma {
     fullAddress?: StringFieldUpdateOperationsInput | string
     storeSize?: StringFieldUpdateOperationsInput | string
     businessType?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null

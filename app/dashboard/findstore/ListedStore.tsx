@@ -46,7 +46,7 @@ const ListedStore = () => {
   if (error) return <p>Error loading stores</p>;
 
   return (
-    <div className="mx-auto max-w-7xl lg:px-4 px-0 py-8">
+    <div className="mx-auto max-w-7xl lg:px-4 px-0 py-1 lg:py-8">
       <div className="grid grid-cols-2 gap-2 md:gap-4 lg:gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {data?.stores?.map((item: any) => (
           <Link

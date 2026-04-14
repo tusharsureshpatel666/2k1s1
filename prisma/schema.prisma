@@ -92,6 +92,7 @@ model Store {
 
   storeSize       String
   businessType    String
+  videoUrl        String?
 
   country         String?
   state           String?
@@ -131,6 +132,8 @@ model CommunityStore {
   title           String
   desc            String
   peopleDesc      String
+
+   videoUrl        String?
 
     flatno         String?
   streetAddress String?

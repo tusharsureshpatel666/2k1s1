@@ -130,7 +130,7 @@ export default function SharingType({
               Preferred Partner
             </p>
             <p className="text-base font-semibold text-orange-700 dark:text-orange-300 mt-1">
-              {partnerBussiness} {split}
+              {partnerBussiness} {split} sq
             </p>
           </div>
         );
