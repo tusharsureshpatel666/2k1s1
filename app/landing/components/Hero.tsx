@@ -1,30 +1,39 @@
 "use client";
 
 import Image from "next/image";
-import { Home, MapPin, Plane, Search } from "lucide-react";
+import { Home, MapPin, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
   const router = useRouter();
+  const { theme } = useTheme();
+
+  // ✅ Prevent hydration mismatch
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
+
+  // ✅ Only ONE image source
+  const imageSrc = theme === "dark" ? "/helo.webp" : "/dark1.webp";
 
   return (
     <section className="w-full bg-white dark:bg-transparent">
-      <div className="mx-auto justify-center  flex max-w-7xl flex-col items-center gap-10 md:px-6 py-16 lg:flex-row">
+      <div className="mx-auto justify-center flex max-w-7xl flex-col items-center gap-10 md:px-6 py-16 lg:flex-row">
         {/* LEFT CONTENT */}
         <div className="order-1 w-full space-y-6 lg:order-1 lg:w-1/2">
-          {/* Location */}
           <p className="flex items-center gap-2 text-sm text-gray-600">
             <MapPin size={16} />
             Delhi NCR, IN
           </p>
 
-          {/* Heading */}
           <h1 className="text-2xl font-semibold leading-snug text-black dark:text-gray-50 sm:text-5xl">
             Connect with Store Partners with Splitat
           </h1>
 
-          {/* CTA */}
           <div className="flex gap-4">
             <Button
               variant="outline"
@@ -35,9 +44,10 @@ export default function Hero() {
               <Search size={16} />
               Search Partner
             </Button>
+
             <Button
               size={"lg"}
-              className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium "
+              className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium"
               onClick={() => router.push("/dashboard")}
             >
               <Home size={16} />
@@ -54,38 +64,21 @@ export default function Hero() {
         {/* RIGHT IMAGE */}
         <div className="order-2 w-full lg:order-2 lg:w-1/2">
           <div className="relative overflow-hidden rounded-3xl">
-            {/* Light mode image */}
+            {/* ✅ Single Optimized Image */}
             <Image
-              src="/dark1.webp"
+              src={imageSrc}
               alt="Hero illustration"
               width={600}
               height={600}
-     
+              priority
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="
-    block dark:hidden
-    w-full object-cover
-    h-[500px]
-    sm:h-[500px]
-    md:h-[600px]
-    lg:h-full
-  "
-            />
-
-            {/* Dark mode image */}
-            <Image
-              src="/helo.webp"
-              alt="Hero illustration dark"
-              width={600}
-              height={600}
-              
-              className="
-    hidden dark:block
-    w-full object-cover
-    h-[500px]
-    sm:h-[500px]
-    md:h-[600px]
-    lg:h-full
-  "
+                w-full object-cover
+                h-[500px]
+                sm:h-[500px]
+                md:h-[600px]
+                lg:h-full
+              "
             />
 
             {/* Floating Card */}
