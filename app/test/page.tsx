@@ -16,7 +16,7 @@ const Textpage = () => {
         setDescription={setDescription}
       />
       <SingleLocationInput address={address} setAddress={setAddress}/> */}
-      <TrueVideo/>
+      {/* <TrueVideo/> */}
     </div>
   );
 };
