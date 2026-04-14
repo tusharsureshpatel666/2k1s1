@@ -60,7 +60,7 @@ export default function Hero() {
               alt="Hero illustration"
               width={600}
               height={600}
-              priority
+     
               className="
     block dark:hidden
     w-full object-cover
@@ -77,7 +77,7 @@ export default function Hero() {
               alt="Hero illustration dark"
               width={600}
               height={600}
-              priority
+              
               className="
     hidden dark:block
     w-full object-cover
