@@ -66,7 +66,7 @@ export default function Hero() {
           <div className="relative overflow-hidden rounded-3xl">
             {/* ✅ Single Optimized Image */}
             <Image
-              src={imageSrc}
+              src={imageSrc || "/help.webp"}
               alt="Hero illustration"
               width={600}
               height={600}
