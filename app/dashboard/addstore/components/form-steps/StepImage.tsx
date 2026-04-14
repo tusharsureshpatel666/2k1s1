@@ -24,13 +24,12 @@ const StepImage: React.FC<StepImageProps> = ({
     "border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl flex items-center justify-center bg-gray-50 dark:bg-zinc-900 cursor-pointer transition hover:border-primary hover:bg-gray-100 dark:hover:bg-zinc-800";
 
   return (
-    <div className="space-y-6 w-full lg:p-6 rounded-xl  ">
+    <div className="space-y-6 w-full lg:p-6 rounded-xl">
       <Heading
         title="Upload Images"
         description="Add a banner image and room photos"
       />
 
-      {/* Banner + Grid Images */}
       <div className="flex flex-col md:flex-row gap-4">
         {/* Banner Image */}
         <div
@@ -43,8 +42,8 @@ const StepImage: React.FC<StepImageProps> = ({
               src={URL.createObjectURL(bannerImage)}
               alt="banner preview"
               className="w-full h-full object-cover rounded-xl"
-              width={50}
-              height={50}
+              width={500}
+              height={500}
             />
           ) : (
             <span className="text-gray-400 text-center">
@@ -66,7 +65,7 @@ const StepImage: React.FC<StepImageProps> = ({
           {Array.from({ length: 4 }).map((_, index) => (
             <div
               key={index}
-              className={`${uploadBoxClasses} h-32 md:h-64`}
+              className={`${uploadBoxClasses} h-36 md:h-64`}
               onClick={() => imageInputRefs.current[index]?.click()}
             >
               {otherImages[index] ? (
@@ -74,8 +73,8 @@ const StepImage: React.FC<StepImageProps> = ({
                   src={URL.createObjectURL(otherImages[index] as File)}
                   alt={`preview ${index + 1}`}
                   className="w-full h-full object-cover rounded-xl"
-                  width={50}
-                  height={50}
+                  width={300}
+                  height={300}
                 />
               ) : (
                 <span className="text-gray-400 text-sm text-center">
@@ -86,12 +85,20 @@ const StepImage: React.FC<StepImageProps> = ({
               <input
                 type="file"
                 accept="image/*"
+                multiple
                 ref={(el) => (imageInputRefs.current[index] = el)}
                 className="hidden"
                 onChange={(e) => {
-                  const file = e.target.files?.[0] ?? null;
+                  const files = Array.from(e.target.files || []);
+
                   const updated = [...otherImages];
-                  updated[index] = file;
+
+                  files.forEach((file, i) => {
+                    if (index + i < 4) {
+                      updated[index + i] = file;
+                    }
+                  });
+
                   setOtherImages(updated);
                 }}
               />

@@ -12,7 +12,7 @@ const Heading: React.FC<HeadingProps> = ({ title, description, className }) => {
     <div className={clsx("flex flex-col gap-1 sm:gap-2 md:gap-3", className)}>
       <h1
         className="
-          text-lg font-semibold leading-tight
+          text-lg font-semibold leading-tight 
           sm:text-lg
           md:text-2xl
           lg:text-3xl
