@@ -6,8 +6,8 @@ const page = () => {
   return (
     <div>
       <Hero />
-      <StoreTypeGrid/>
-      <SplitatAuthSection/>
+      {/* <StoreTypeGrid/>
+      <SplitatAuthSection/> */}
     </div>
   );
 };
