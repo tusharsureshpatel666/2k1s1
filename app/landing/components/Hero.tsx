@@ -13,12 +13,20 @@ export default function Hero() {
 
   // ✅ Prevent hydration mismatch
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
 
-  if (!mounted) return null;
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // 👇 fallback image BEFORE theme loads
+  const imageSrc = mounted
+    ? theme === "dark"
+      ? "/helo.webp"
+      : "/dark1.webp"
+    : "/dark1.webp"; // default
 
   // ✅ Only ONE image source
-  const imageSrc = theme === "dark" ? "/helo.webp" : "/dark1.webp";
+
 
   return (
     <section className="w-full bg-white dark:bg-transparent">
@@ -66,7 +74,7 @@ export default function Hero() {
           <div className="relative overflow-hidden rounded-3xl">
             {/* ✅ Single Optimized Image */}
             <Image
-              src={imageSrc || "/help.webp"}
+              src={imageSrc}
               alt="Hero illustration"
               width={600}
               height={600}
