@@ -11,6 +11,7 @@ export async function POST(req: Request){
                 latitude:true,
                 longitude:true,
                 streetAddress:true,
+                businessType:true,
                 
             }
         })

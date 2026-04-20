@@ -61,6 +61,7 @@ const StepDesc = ({
         placeholder="Tell people what makes your store special"
         className="
           w-full max-w-5xl
+          h-[100px]
           text-2xl font-medium
           bg-transparent
           border py-8 px-7 rounded-2xl outline-none

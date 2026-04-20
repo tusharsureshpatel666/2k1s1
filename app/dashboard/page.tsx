@@ -15,7 +15,7 @@ export default function Dashboard() {
       <SearchBox />
 
       {/* Custom Tab Bar */}
-      <div className="flex justify-around border-b mt-6 sm:h-[40px] h-[40px] md:h-[50px] lg:h-[70px]">
+      <div className="flex justify-around border-b mt-6 sm:h-[70px] h-[70px] md:h-[70px] lg:h-[70px]">
         {/* Stores Tab */}
         <button
           onClick={() => setActiveTab("stores")}

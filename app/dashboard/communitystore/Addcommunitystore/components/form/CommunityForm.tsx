@@ -14,13 +14,14 @@ import StepImage from "@/app/dashboard/addstore/components/form-steps/StepImage"
 import StepPartic from "@/app/dashboard/addstore/components/form-steps/StepPartic";
 import StoreMethodtype from "@/app/dashboard/addstore/components/form-steps/StoreMethodtype";
 import PriceInput from "@/app/dashboard/addstore/components/form-steps/stepprice";
-import { Heading } from "lucide-react";
+
 import StepDesc from "@/app/test/des";
 import PeopleDesc from "@/app/dashboard/addstore/components/form-steps/PeopleDesc";
 
 import imageCompression from "browser-image-compression";
 import toast from "react-hot-toast";
 import FormNavigation from "./FormNav";
+import Heading from "@/app/dashboard/components/heading";
 
 
 const CommunityFormStore = () => {

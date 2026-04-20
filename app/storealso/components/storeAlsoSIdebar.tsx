@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Bell, PieChart, Package, LucideTarget } from "lucide-react";
 import { useParams, usePathname } from "next/navigation";
 import { IoFootsteps } from "react-icons/io5";
-import { FaBackward } from "react-icons/fa";
+import { FaBackward, FaTrophy } from "react-icons/fa";
 
 
 const StorealsoSidebar = () => {
@@ -23,7 +23,7 @@ const StorealsoSidebar = () => {
           href="/dashboard"
           className="flex items-center gap-3 px-6 py-6 border-b border-gray-200 dark:border-gray-800"
         >
-              <Image src="/logo.svg" alt="logo" width={50} height={50} />
+          <Image src="/logo.svg" alt="logo" width={50} height={50} />
           <h2 className="text-lg font-semibold tracking-tight">Splitat</h2>
         </Link>
 
@@ -67,6 +67,22 @@ const StorealsoSidebar = () => {
           </Link>
 
           <Link
+            href={`/storealso/Competition/${id}`}
+            className={`group flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all relative ${
+              isActive("/storealso/Competition")
+                ? "bg-gray-100 dark:bg-gray-800 font-semibold"
+                : "hover:bg-gray-100 dark:hover:bg-gray-800"
+            }`}
+          >
+            {isActive("/storealso/Competition") && (
+              <span className="absolute left-0 top-1/2 -translate-y-1/2 h-5 w-1 bg-black dark:bg-white rounded-r-full"></span>
+            )}
+
+            <FaTrophy size={18} />
+            <span>Competition</span>
+          </Link>
+
+          <Link
             href={`/storealso/footfall/${id}`}
             className={`group flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all relative ${
               isActive("/storealso/footfall")
@@ -81,15 +97,13 @@ const StorealsoSidebar = () => {
             <IoFootsteps size={18} />
             <span>Footfall</span>
           </Link>
-
           <Link
             href={`/dashboard`}
-             className={`group flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all relative ${
+            className={`group flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all relative ${
               isActive("/adsfajlds")
                 ? "bg-gray-100 dark:bg-gray-800 font-semibold"
                 : "hover:bg-gray-100 dark:hover:bg-gray-800"
             }`}
-          
           >
             <FaBackward size={20} /> Back
           </Link>

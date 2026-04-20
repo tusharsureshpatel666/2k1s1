@@ -2,6 +2,8 @@
 import axios from 'axios'
 import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
+import StoreListAlso from '../../components/StoreListAlso'
+import Compition from '../../components/Compition'
 
 const Compage = () => {
       const params = useParams()
@@ -18,8 +20,14 @@ const Compage = () => {
         
       }, [id])
   return (
-    <div>page</div>
-  )
+    <div className="md:px-5 px-2 py-5 w-full">
+      <Compition
+        lat={Number(store.latitude)}
+        lng={Number(store.longitude)}
+        bussinessType={store.businessType}
+      />
+    </div>
+  );
 }
 
 export default Compage
