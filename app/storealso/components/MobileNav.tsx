@@ -1,5 +1,5 @@
 "use client";
-import { Bell, Home, LucideTarget, Package, PieChart } from "lucide-react";
+import { Bell, Home, LucideTarget, Package, PieChart, Trophy } from "lucide-react";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import React from "react";
@@ -11,10 +11,10 @@ const MobileNav = () => {
   const { id } = useParams();
 
   const isActive = (path) => {
-    if (path === "analytics") return pathname.startsWith(`/storealso/${id}`);
+   
     if (path === "audience") return pathname.startsWith(`/storealso/audience`);
     if (path === "footfall") return pathname.startsWith(`/storealso/footfall`);
-    if (path === "inventory") return pathname === "/inventory";
+    
   };
 
   const base =
@@ -28,8 +28,8 @@ const MobileNav = () => {
   return (
     <nav
       className="fixed bottom-0 left-0 w-full 
-      bg-white/80 dark:bg-gray-900/80 
-      backdrop-blur-md border-t border-gray-200 dark:border-gray-900 
+      bg-white/80 dark:bg-black
+      border-t border-gray-200 dark:border-gray-900 
       flex justify-around items-center 
       py-4 lg:hidden z-50"
     >
@@ -39,12 +39,6 @@ const MobileNav = () => {
       >
         <FaBackward size={20} />
       </Link>
-      <Link
-        href={`/storealso/${id}`}
-        className={`${base} ${isActive("analytics") ? active : normal}`}
-      >
-        <PieChart size={20} />
-      </Link>
 
       <Link
         href={`/storealso/audience/${id}`}
@@ -52,15 +46,19 @@ const MobileNav = () => {
       >
         <LucideTarget size={20} />
       </Link>
+      <Link
+        href={`/storealso/Competition/${id}`}
+        className={`${base} ${isActive("Competition") ? active : normal}`}
+      >
+        <Trophy size={20} />
+      </Link>
 
       <Link
         href={`/storealso/footfall/${id}`}
         className={`${base} ${isActive("footfall") ? active : normal}`}
       >
-       <IoFootsteps size={18} />
+        <IoFootsteps size={18} />
       </Link>
-
-    
     </nav>
   );
 };
