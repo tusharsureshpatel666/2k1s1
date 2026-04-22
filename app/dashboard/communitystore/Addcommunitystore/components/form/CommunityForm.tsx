@@ -22,6 +22,7 @@ import imageCompression from "browser-image-compression";
 import toast from "react-hot-toast";
 import FormNavigation from "./FormNav";
 import Heading from "@/app/dashboard/components/heading";
+import StepIntroComm from "@/app/dashboard/addstore/components/form-steps/Stepintrocomm";
 
 
 const CommunityFormStore = () => {
@@ -177,7 +178,7 @@ const CommunityFormStore = () => {
       {/* STEP 0 */}
       {/* <PhoneVerify /> */}
 
-      {sStep === 0 && <StepIntro />}
+      {sStep === 0 && <StepIntroComm />}
 
       {sStep === 1 && <StepTitle title={title} setTitle={setTitle} />}
 

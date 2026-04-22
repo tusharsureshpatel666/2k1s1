@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { pusherClient } from "@/lib/pusher/client";
 import axios from "axios";
-import { MessageCircle, Plus } from "lucide-react";
+import { MessageCircle, Plus, User } from "lucide-react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -59,9 +59,8 @@ const DashNav = () => {
       "
     >
       <Link href="/dashboard" className="flex items-center ">
-        
-                 <Image src="/logo.svg" alt="logo" width={50} height={50} />
-              
+        <Image src="/logo.svg" alt="logo" width={50} height={50} />
+
         <h2 className="text-xl font-semibold dark:text-white text-black">
           Splitat
         </h2>
@@ -78,6 +77,15 @@ const DashNav = () => {
             <span className="hidden lg:inline">Find Store Partner</span>
           </Button>
         </Link> */}
+        <Link href={"/dashboard/communitystore/Addcommunitystore"}>
+          <Button
+            variant="outline"
+            className="rounded-md lg:rounded-full cursor-pointer dark:text-white text-black flex items-center gap-2"
+          >
+            <User className="w-5 h-5" />
+            <span className="hidden lg:inline">Add As Owner</span>
+          </Button>
+        </Link>
 
         {/* Button 2 — Share Your Store */}
         <Link href="/dashboard/addstore" className="hidden md:flex">
@@ -101,7 +109,7 @@ const DashNav = () => {
           </Button>
         </Link>
         {/* <NotificationBell /> */}
-        <NotificationBell/>
+        <NotificationBell />
 
         <Userbtn />
       </div>

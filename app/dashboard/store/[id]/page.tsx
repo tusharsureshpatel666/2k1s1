@@ -94,7 +94,7 @@ export default async function StorePage({ params }: StorePageProps) {
           <ShareStore paramsId={storeId} />
           <LoveStore storeId={storeId.id} initialLiked={initialLiked} />
           {isOwner && <DeleteStoreButton storeId={store?.id} />}
-          <Link href={`/storealso/${storeId.id}`} className="hidden md:flex">
+          <Link href={`/storealso/audience/${storeId.id}`} className="hidden md:flex">
             <Button className="rounded-full" variant={"outline"}>
               <FaChartArea /> Analytics
             </Button>

@@ -39,13 +39,8 @@ const Storepage = () => {
       <h1 className="text-xl md:text-2xl">Store Analytics</h1>
 
       <div className="w-full">
-        {store?.latitude && store?.longitude && (
-          <MapShowerAlso
-            lat={Number(store.latitude)}
-            log={Number(store.longitude)}
-          />
-        )}
-
+      
+       
       
       </div>
     </div>

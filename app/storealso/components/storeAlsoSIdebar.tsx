@@ -30,25 +30,7 @@ const StorealsoSidebar = () => {
         {/* Menu */}
         <nav className="flex flex-col gap-1 px-3 py-4">
           {/* 🔸 Item */}
-          <Link
-            href={`/storealso/${id}`}
-            className={`group flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all relative ${
-              isActive(`/storealso/${id}`)
-                ? "bg-gray-100 dark:bg-gray-800 font-semibold"
-                : "hover:bg-gray-100 dark:hover:bg-gray-800"
-            }`}
-          >
-            {/* Active Indicator */}
-            {isActive(`/storealso/${id}`) && (
-              <span className="absolute left-0 top-1/2 -translate-y-1/2 h-5 w-1 bg-black dark:bg-white rounded-r-full"></span>
-            )}
-
-            <PieChart
-              size={18}
-              className="opacity-80 group-hover:opacity-100"
-            />
-            <span>Analytics</span>
-          </Link>
+  
 
           <Link
             href={`/storealso/audience/${id}`}
