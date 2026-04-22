@@ -4,12 +4,14 @@ import { Input } from "@/components/ui/input";
 import { auth } from "@/lib/auth";
 import { findUserById } from "@/lib/findUser";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const UserBussiness = () => {
   const [bussiness, setBussiness] = useState("");
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const router = useRouter()
 
   const handleSubmit = async () => {
     if (!bussiness) return; // prevent empty submission
@@ -32,6 +34,9 @@ const UserBussiness = () => {
         // Call API to get user data
         const res = await axios.get("/api/getuserId");
         const user = res.data;
+        if(!user){
+          router.push("/signin")
+        }
         console.log(user)   
         // Show modal if userBussinessType is empty
         if (!user.userBussinessType) {
