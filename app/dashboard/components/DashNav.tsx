@@ -77,7 +77,7 @@ const DashNav = () => {
             <span className="hidden lg:inline">Find Store Partner</span>
           </Button>
         </Link> */}
-        <Link href={"/dashboard/communitystore/Addcommunitystore"}>
+        {/* <Link href={"/dashboard/communitystore/Addcommunitystore"}>
           <Button
             variant="outline"
             className="rounded-md lg:rounded-full cursor-pointer dark:text-white text-black flex items-center gap-2"
@@ -85,7 +85,7 @@ const DashNav = () => {
             <User className="w-5 h-5" />
             <span className="hidden lg:inline">Add As Owner</span>
           </Button>
-        </Link>
+        </Link> */}
 
         {/* Button 2 — Share Your Store */}
         <Link href="/dashboard/addstore" className="hidden md:flex">

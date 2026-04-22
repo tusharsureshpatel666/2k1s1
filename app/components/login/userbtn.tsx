@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import { ModeToggle } from "@/app/dashboard/components/theme/darkbtn";
-import { LogOut, Store, User } from "lucide-react";
+import { LogOut, Store, User, User2 } from "lucide-react";
 import Image from "next/image";
 
 const Userbtn = () => {
@@ -64,6 +64,13 @@ const Userbtn = () => {
 
         {/* Theme Toggle */}
         <ModeToggle />
+
+        <Link href={"/dashboard/communitystore/Addcommunitystore"}>
+          <DropdownMenuItem className="cursor-pointer flex items-center gap-2 hover:bg-accent hover:text-accent-foreground">
+            <User2 className="w-5 h-5" />
+            Add As Owner
+          </DropdownMenuItem>
+        </Link>
 
         <DropdownMenuSeparator />
 
