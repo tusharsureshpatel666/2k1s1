@@ -15,8 +15,8 @@ const Navbar = () => {
   const navHref = [
     { name: "Find Store", href: "/dashboard" },
     { name: "About Us", href: "/common/about" },
-    { name: "Careers", href: "/common/career" },
-
+    
+    { name: "Blog", href: "/common/blog" },
     { name: "Contact Us", href: "/common/contact" },
   ];
 
