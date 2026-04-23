@@ -329,3 +329,15 @@ model Tour {
   phone    String
   message  String
 }
+
+model Blog {
+  id       String  @id @default(uuid())
+  title    String
+  slug     String  @unique
+  content  String // full blog content (HTML or Markdown)
+  excerpt  String? // short summary for listing page
+  imageSrc String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
