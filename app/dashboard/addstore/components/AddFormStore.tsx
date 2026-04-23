@@ -185,7 +185,7 @@ const AddFormStore = () => {
   return (
     <div className="flex flex-col w-full max-w-6xl mx-auto gap-6 mt-4 pb-28">
       {/* STEP 0 */}
-      {/* <PhoneVerify /> */}
+      <PhoneVerify />
 
       {sStep === 0 && <StepIntro />}
 
