@@ -15,7 +15,7 @@ const Blogpage = () => {
         res()
     }, [])
   return (
-    <div className="mt-[50px]">
+    <div className="mt-[90px]">
       <Heading
         title="Splitat Blog"
         description="Explore ideas, guides, and the latest updates in development, tech, and beyond."

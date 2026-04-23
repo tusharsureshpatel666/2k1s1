@@ -34,7 +34,7 @@ const EditButton = () => {
         className="rounded-full w-full opacity-70 cursor-not-allowed"
         size="lg"
       >
-        <Edit className="w-4 h-4 mr-2" />
+        <Edit className="w-4 h-4 " />
         <span className="hidden lg:flex">Edit Store</span>
       </Button>
     </div>
