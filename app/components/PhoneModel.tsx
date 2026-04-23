@@ -77,20 +77,30 @@ export default function PhoneModal() {
 
   return (
     <Dialog open={open}>
-      <DialogContent className="sm:max-w-xl rounded-2xl">
+      <DialogContent
+        className="
+      w-[95%] max-w-lg
+      sm:rounded-2xl rounded-xl
+      p-4 sm:p-6
+    "
+      >
         <DialogHeader>
-          <DialogTitle className="text-xl text-center">
+          <DialogTitle className="text-lg sm:text-xl text-center font-semibold">
             Enter Your Phone Number
           </DialogTitle>
 
-          <DialogDescription className="text-center">
+          <DialogDescription className="text-center text-sm sm:text-base">
             Add your Indian mobile number
           </DialogDescription>
 
           <DialogClose asChild>
             <button
               onClick={handleClose}
-              className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100"
+              className="
+            absolute top-3 right-3
+            w-8 h-8 flex items-center justify-center
+            rounded-full hover:bg-gray-100
+          "
             >
               ✕
             </button>
@@ -98,29 +108,49 @@ export default function PhoneModal() {
         </DialogHeader>
 
         <div className="space-y-4 flex flex-col w-full mt-4">
-          <div className="flex items-center border rounded-xl px-3 h-14">
-            <span className="mr-2">🇮🇳</span>
+          {/* Phone Input */}
+          <div
+            className="
+          flex items-center border rounded-xl
+          px-3 h-12 sm:h-14
+          text-sm sm:text-base
+        "
+          >
+            <span className="mr-2 text-lg">🇮🇳</span>
             <span className="mr-2 text-gray-500 font-medium">+91</span>
+
             <input
               type="text"
               inputMode="numeric"
               placeholder="9876543210"
               value={phone}
               onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
-              className="flex-1 outline-none"
+              className="flex-1 outline-none bg-transparent"
               maxLength={10}
             />
           </div>
 
+          {/* Button */}
           <Button
             onClick={handleSubmit}
             disabled={loading}
-            className="w-full h-14 rounded-xl"
+            className="
+          w-full
+          h-12 sm:h-14
+          rounded-xl
+          text-sm sm:text-base
+          font-medium
+        "
           >
             {loading ? "Saving..." : "Continue"}
           </Button>
 
-          {error && <p className="text-sm text-red-500 text-center">{error}</p>}
+          {/* Error */}
+          {error && (
+            <p className="text-xs sm:text-sm text-red-500 text-center">
+              {error}
+            </p>
+          )}
         </div>
       </DialogContent>
     </Dialog>
