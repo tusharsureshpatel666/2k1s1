@@ -84,7 +84,7 @@ export default function ChatHeader({
         </div>
       </div>
       <div className="flex gap-3">
-        <Button variant={"secondary"} className="rounded-full">
+        <Button variant={"secondary"}  className="rounded-full">
           <Phone className="w-5 h-5" />
           <span className="hidden sm:inline ">Call</span>
         </Button>

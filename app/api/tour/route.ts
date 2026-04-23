@@ -1,6 +1,7 @@
+
 import { auth } from "@/lib/auth";
 import prisma from "@/lib/prisma";
-
+import nodemailer from "nodemailer";
 import { NextResponse } from "next/server"
 
 export async function POST(req: Request){
@@ -22,6 +23,33 @@ export async function POST(req: Request){
        where: { id: body.id },
        include: { owner: true }, 
      });
+
+        const transporter = nodemailer.createTransport({
+           service: "gmail",
+           auth: {
+             user: process.env.GMAIL_USER,
+             pass: process.env.GMAIL_PASS, // Use App Password (not real password)
+           },
+         });
+
+
+       if (store?.owner?.email) {
+    await transporter.sendMail({
+      from: `"Your App" ${session?.user?.email}`,
+      to: process.env.GMAIL_USER,
+      subject: "New Booking Request",
+      html: `
+        <h2>New Booking Request</h2>
+        <p><strong>Name:</strong> ${body.name}</p>
+        <p><strong>Email:</strong> ${body.email}</p>
+        <p><strong>Phone:</strong> ${body.phone}</p>
+        <p><strong>Store Id:</strong> ${body.id}</p>
+
+        <p><strong>Message:</strong> ${body.message}</p>
+
+      `,
+    });
+  }
 
      if(store?.owner.id){
         await prisma.tourNotification.create({
