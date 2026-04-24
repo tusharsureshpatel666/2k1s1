@@ -43,7 +43,7 @@ export default function ContactPage() {
         {/* LEFT IMAGE (LG ONLY) */}
         <div className="relative hidden lg:block">
           <Image
-            src="/contact.jpg"
+            src="/contact.webp"
             alt="Contact illustration"
             fill
             className="object-cover"

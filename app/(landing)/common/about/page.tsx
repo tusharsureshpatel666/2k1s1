@@ -17,7 +17,7 @@ export default function AboutPage() {
       {/* HERO IMAGE SECTION */}
       <section className="relative h-[60vh] w-full md:h-[70vh]">
         <Image
-          src="/about.jpg" // replace with your image
+          src="/about.webp" // replace with your image
           alt="About us hero"
           fill
           priority
