@@ -6,7 +6,7 @@ import { SignIn1 } from "./socialButton";
 
 const LoginForm = () => {
   return (
-    <div className="flex justify-center items-center w-full mt-10 px-4">
+    <div className="flex justify-center items-center w-full mt-10 md:px-4">
       <div className="w-full max-w-md space-y-5">
         {/* Heading */}
         <div>
